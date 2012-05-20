@@ -33,6 +33,7 @@
 		"resolve": "0.2.2",
 		"commondir": "0.0.1",
 		"graphviz": "0.0.6",
+		"uglify-js": "1.2.6",
 		"colors": "0.6.0-1"
 	},
 	"devDependencies": {
