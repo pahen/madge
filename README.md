@@ -62,6 +62,14 @@ Coming soon ..
 
 ## Examples:
 
+### List all module dependencies (CommonJS)
+
+	$ madge /path/src
+
+### List all module dependencies (AMD)
+
+	$ madge --format amd /path/src
+
 ### Finding circular dependencies
 
 	$ madge --circular /path/src
