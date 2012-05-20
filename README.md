@@ -7,7 +7,7 @@ Create graphs from your [CommonJS](http://nodejs.org/api/modules.html) or [AMD](
 ## Example
 Here's a very simple example of a generated image.
 
-![](example.png)
+![](https://github.com/pahen/node-madge/raw/master/example.png)
 
  - blue = has dependencies
  - green = has no dependencies
