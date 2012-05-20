@@ -1,0 +1,3 @@
+define('engine', {
+    name: 'engine'
+});

@@ -1,0 +1,1 @@
+var b = require('./b');

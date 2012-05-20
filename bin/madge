@@ -1,0 +1,92 @@
+#!/usr/bin/env node
+
+'use strict';
+
+/**
+ * Module dependencies
+ */
+var fs = require('fs'),
+	version = require('../lib/version'),
+	program = require('commander'),
+	madge = require('../index');
+
+program
+	.version(version)
+	.usage('[options] <file|dir ...>')
+	.option('-f, --format <name>', 'format to parse (amd/cjs)', 'cjs')
+	.option('-o, --output <type>', 'output format (plain/json)', 'plain')
+	.option('-s, --summary', 'show summary of all dependencies')
+	.option('-c, --circular', 'show circular dependencies')
+	.option('-d, --depends <id>', 'show modules that depends on the given id')
+	.option('-x, --exclude <regex>', 'a regular expression for excluding modules')
+	.option('-t, --dot', 'output graph in the DOT language')
+	.option('-i, --image <filename>', 'write graph to file as a PNG image')
+	.option('-l, --layout <name>', 'layout engine to use for image graph (dot/neato/fdp/sfdp/twopi/circo)', 'dot')
+	.option('-b, --break-on-error', 'break on parse errors & missing modules', false)
+	.option('-n, --no-colors', 'skip colors in output and images', false)
+	.option('-r, --read', 'skip scanning folders and read JSON from stdin')
+	.parse(process.argv);
+
+if (!program.args.length && !program.read) {
+	console.log(program.helpInformation());
+	process.exit(1);
+}
+
+var src = program.args;
+
+if (program.read) {
+	src = JSON.parse(fs.readFileSync('/dev/stdin').toString());
+}
+
+ // Start parsing
+var res = madge(src, {
+	format: program.format,
+	breakOnError: program.breakOnError,
+	exclude: program.exclude
+});
+
+// Ouput summary
+if (program.summary) {
+	require('../lib/print').summary(res.obj(), {
+		colors: program.colors,
+		output: program.output
+	});
+
+// Output circular dependencies
+} else if (program.circular) {
+	require('../lib/print').circular(res.circular(), {
+		colors: program.colors,
+		output: program.output
+	});
+
+// Output module dependencies
+} else if (program.depends) {
+	require('../lib/print').depends(res.depends(program.depends), {
+		colors: program.colors,
+		output: program.output
+	});
+
+// Write image
+} else if (program.image) {
+	res.image({
+		colors: program.colors,
+		layout: program.layout
+	}, function (image) {
+		fs.writeFile(program.image, image, function (err) {
+			if (err) {
+				throw err;
+			}
+		});
+	});
+
+// Output DOT
+} else if (program.dot) {
+	process.stdout.write(res.dot());
+
+// Output text (default)
+} else {
+	require('../lib/print').list(res.obj(), {
+		colors: program.colors,
+		output: program.output
+	});
+}
