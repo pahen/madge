@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/pahen/node-madge.png)](http://travis-ci.org/pahen/node-madge)
 
-Create graphs from your [CommonJS](http://nodejs.org/api/modules.html) or [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) module dependencies. Could also be useful for finding circular dependencies in your code. Tested on [Node.js](http://nodejs.org/) and [RequireJS](http://requirejs.org/) projects. Dependencies are calculated using static code analysis with [UglifyJS](https://github.com/mishoo/UglifyJS).
+Create graphs from your [CommonJS](http://nodejs.org/api/modules.html) or [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) module dependencies. Could also be useful for finding circular dependencies in your code. Tested on [Node.js](http://nodejs.org/) and [RequireJS](http://requirejs.org/) projects. Dependencies are calculated using static code analysis. CommonJS dependencies are found using James Halliday's [detective](https://github.com/substack/node-detective) and for AMD I'm using some parts copied from James Burke's [RequireJS](https://github.com/jrburke/requirejs) (both are using [UglifyJS](https://github.com/mishoo/UglifyJS)).
 
 ## Example
 Here's a very simple example of a generated image.
@@ -80,11 +80,11 @@ Coming soon ..
 
 ### Excluding modules
 
-	$ madge --exclude '^test$|^app\.build$|^tests|^text\!' /path/src
+	$ madge --exclude '^foo$|^bar$|^tests' /path/src
 
 ### Save graph as a PNG image (graphviz required)
 
-	$ madge --image graph.png /path/src && open graph.png
+	$ madge --image graph.png /path/src
 
 ### Save graph as a [DOT](http://en.wikipedia.org/wiki/DOT_language) file for further processing (graphviz required)
 
