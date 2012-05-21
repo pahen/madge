@@ -6,6 +6,7 @@
  * Module dependencies
  */
 var fs = require('fs'),
+	path = require('path'),
 	version = require('../lib/version'),
 	program = require('commander'),
 	madge = require('../index');
@@ -25,6 +26,7 @@ program
 	.option('-b, --break-on-error', 'break on parse errors & missing modules', false)
 	.option('-n, --no-colors', 'skip colors in output and images', false)
 	.option('-r, --read', 'skip scanning folders and read JSON from stdin')
+    .option('-c, --config <filename>', 'provide a config file')
 	.parse(process.argv);
 
 if (!program.args.length && !program.read) {
@@ -37,6 +39,21 @@ var src = program.args;
 if (program.read) {
 	src = JSON.parse(fs.readFileSync('/dev/stdin').toString());
 }
+
+// Check config file
+if (program.config) {
+    if (path.existsSync(program.config)) {
+		var configOptions = JSON.parse(fs.readFileSync(program.config, 'utf8'));
+		// Duck punch the program with the new options
+		// Config file take precedence
+		for (var k in configOptions) {
+			if (configOptions.hasOwnProperty(k)) {
+				program[k] = configOptions[k];
+			}
+		}
+    }
+}
+
 
  // Start parsing
 var res = madge(src, {
@@ -70,7 +87,10 @@ if (program.summary) {
 } else if (program.image) {
 	res.image({
 		colors: program.colors,
-		layout: program.layout
+		layout: program.layout,
+		fontFace: program.font,
+		fontSize: program.fontSize,
+		imageColors: program.imageColors
 	}, function (image) {
 		fs.writeFile(program.image, image, function (err) {
 			if (err) {
