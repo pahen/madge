@@ -1,3 +1,4 @@
 gen.sh
+config.json
 node_modules
 !test/files/cjs/node_modules

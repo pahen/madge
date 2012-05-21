@@ -58,6 +58,7 @@ Coming soon ..
 	  -b, --break-on-error    break on parse errors & missing modules
 	  -n, --no-colors         skip colors in output and images
 	  -r, --read              skip scanning folders and read JSON from stdin
+	  -C, --config <filename> provide a config file
 
 
 ## Examples:
@@ -100,6 +101,22 @@ Coming soon ..
 		"d": ["a"]
 	}
 	EOF
+
+## Config (use with --config)
+
+	{
+	    "format": "amd",
+	    "image": "dependencyMap.png",
+	    "fontFace": "Arial",
+	    "fontSize": "14px",
+	    "imageColors": {
+	        "noDependencies" : "#0000ff",
+	        "dependencies" : "#00ff00",
+	        "circular" : "#bada55",
+	        "edge" : "#666666",
+	        "bgcolor": "#ffffff"
+	    }
+	}
 
 # Running tests
 
