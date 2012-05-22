@@ -1,5 +1,5 @@
 var should = require('should'),
-	madge = require('../index');
+	madge = require('../lib/madge');
 
 describe('module format (CommonJS)', function () {
 

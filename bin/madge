@@ -9,7 +9,7 @@ var fs = require('fs'),
 	path = require('path'),
 	version = require('../lib/version'),
 	program = require('commander'),
-	madge = require('../index');
+	madge = require('../lib/madge');
 
 program
 	.version(version)

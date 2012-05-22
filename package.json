@@ -40,7 +40,7 @@
 		"mocha": "1.0.x",
 		"should": "*"
 	},
-	"main": "./index",
+	"main": "./lib/madge",
 	"bin": {
 		"madge": "./bin/madge"
 	}
