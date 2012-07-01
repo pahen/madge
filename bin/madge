@@ -6,7 +6,6 @@
  * Module dependencies
  */
 var fs = require('fs'),
-	path = require('path'),
 	version = require('../lib/version'),
 	program = require('commander'),
 	madge = require('../lib/madge');
@@ -41,7 +40,7 @@ if (program.read) {
 }
 
 // Check config file
-if (program.config && path.existsSync(program.config)) {
+if (program.config && fs.existsSync(program.config)) {
 	var configOptions = JSON.parse(fs.readFileSync(program.config, 'utf8'));
 	// Duck punch the program with the new options
 	// Config file take precedence

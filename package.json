@@ -27,7 +27,7 @@
 		"test": "node_modules/.bin/mocha --ignore-leaks --reporter spec test/*.js"
 	},
 	"dependencies": {
-		"commander": "0.6.0",
+		"commander": "0.6.1",
 		"detective": "0.1.1",
 		"findit": "0.1.2",
 		"resolve": "0.2.2",
@@ -37,7 +37,7 @@
 		"colors": "0.6.0-1"
 	},
 	"devDependencies": {
-		"mocha": "1.0.x",
+		"mocha": "1.2.x",
 		"should": "*"
 	},
 	"main": "./lib/madge",
