@@ -1,6 +1,6 @@
 {
 	"name": "madge",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"author": "Patrik Henningsson <patrik.henningsson@gmail.com>",
 	"repository": "git://github.com/pahen/node-madge",
 	"homepage" : "https://github.com/pahen/node-madge",
@@ -21,7 +21,7 @@
 		"graph"
 	],
 	"engines": [
-		"node >= 0.6.0"
+		"node >= 0.8.0"
 	],
 	"scripts": {
 		"test": "node_modules/.bin/mocha --ignore-leaks --reporter spec test/*.js"
@@ -32,7 +32,7 @@
 		"findit": "0.1.2",
 		"resolve": "0.2.2",
 		"commondir": "0.0.1",
-		"graphviz": "0.0.6",
+		"graphviz": "0.0.7",
 		"uglify-js": "1.2.6",
 		"colors": "0.6.0-1"
 	},
