@@ -1,6 +1,6 @@
 {
 	"name": "madge",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"author": "Patrik Henningsson <patrik.henningsson@gmail.com>",
 	"repository": "git://github.com/pahen/node-madge",
 	"homepage" : "https://github.com/pahen/node-madge",
@@ -27,7 +27,7 @@
 		"test": "node_modules/.bin/mocha --ignore-leaks --reporter spec test/*.js"
 	},
 	"dependencies": {
-		"commander": "0.6.1",
+		"commander": "1.0.0",
 		"detective": "0.1.1",
 		"findit": "0.1.2",
 		"resolve": "0.2.2",
