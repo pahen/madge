@@ -3,7 +3,7 @@ var should = require('should'),
 
 describe('path', function () {
 
-	it('relative', function () {
+	it('should be ok with relative paths', function () {
 		madge(['test/files/cjs/normal/a.js']).obj().should.eql({ a: [ 'sub/b' ] });
 	});
 

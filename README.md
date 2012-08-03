@@ -126,6 +126,23 @@ Coming soon ..
 
 	$ npm test
 
+# Release Notes
+
+## v0.0.5 (August 8, 2012)
+Added support for CoffeeScript. Files with extension .coffee will automatically be compiled on-the-fly.
+
+## v0.0.4 (August 17, 2012)
+Fixed dependency issues with Node.js v0.8.
+
+## v0.0.3 (July 01, 2012)
+Added support for Node.js v0.8 and dropped support for lower versions.
+
+## v0.0.2 (May 21, 2012)
+Added ability to read config file and customize colors.
+
+## v0.0.1 (May 20, 2012)
+Initial release.
+
 # License
 
 (The MIT License)

@@ -3,15 +3,15 @@ var should = require('should'),
 
 describe('src', function () {
 
-	it('as string', function () {
+	it('should handle a string as argument', function () {
 		madge('test/files/cjs/normal/a.js').obj().should.eql({ a: [ 'sub/b' ] });
 	});
 
-	it('as array', function () {
+	it('should handle an array as argument', function () {
 		madge(['test/files/cjs/normal/a.js']).obj().should.eql({ a: [ 'sub/b' ] });
 	});
 
-	it('as object', function () {
+	it('should handle a object as argument', function () {
 		madge({
 			a: ['b', 'c'],
 			b: ['c'],

@@ -3,31 +3,31 @@ var should = require('should'),
 
 describe('module format (CommonJS)', function () {
 
-	it('relative', function () {
+	it('should behave as expected on ok files', function () {
 		madge([__dirname + '/files/cjs/normal']).obj().should.eql({ a: [ 'sub/b' ], d: [], 'sub/b': [ 'sub/c' ], 'sub/c': [ 'd' ] });
 	});
 
-	it('both', function () {
+	it('should handle expressions in require call', function () {
 		madge([__dirname + '/files/cjs/both.js']).obj().should.eql({ both: [ 'node_modules/a', 'node_modules/b' ] });
 	});
 
-	it('chained', function () {
+	it('should handle require call and chained functions', function () {
 		madge([__dirname + '/files/cjs/chained.js']).obj().should.eql({ chained: [ 'node_modules/a', 'node_modules/b', 'node_modules/c' ] });
 	});
 
-	it('nested', function () {
+	it('should handle nested require call', function () {
 		madge([__dirname + '/files/cjs/nested.js']).obj().should.eql({ nested: [ 'node_modules/a', 'node_modules/b', 'node_modules/c' ] });
 	});
 
-	it('strings', function () {
+	it('should handle strings in require call', function () {
 		madge([__dirname + '/files/cjs/strings.js']).obj().should.eql({ strings: [ 'events', 'node_modules/a', 'node_modules/b', 'node_modules/c', 'node_modules/doom', 'node_modules/events2', 'node_modules/y' ] });
 	});
 
-	it('error', function () {
+	it('should tackle errors in files', function () {
 		madge([__dirname + '/files/cjs/error.js']).obj().should.eql({ error: [] });
 	});
 
-	it('exclude', function () {
+	it('should be able to exclude modules', function () {
 		madge([__dirname + '/files/cjs/normal'], {
 			exclude: '^sub'
 		}).obj().should.eql({ a: [], d: [] });
@@ -37,8 +37,12 @@ describe('module format (CommonJS)', function () {
 		}).obj().should.eql({ a: [ 'sub/b' ], d: [], 'sub/b': [] });
 	});
 
-	it('circular', function () {
+	it('should find circular dependencies', function () {
 		madge([__dirname + '/files/cjs/circular']).circular().should.eql({ 'c': 'a' });
+	});
+
+	it('should compile coffeescript on-the-fly', function () {
+		madge([__dirname + '/files/cjs/coffeescript']).obj().should.eql({ a: ['../node_modules/b'], b: [] });
 	});
 
 });

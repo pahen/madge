@@ -3,7 +3,7 @@ var should = require('should'),
 
 describe('output', function () {
 
-	it('dot', function () {
+	it('should be able to output graphviz DOT format', function () {
 		madge({
 			a: ['b', 'c'],
 			b: ['c'],

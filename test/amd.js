@@ -3,11 +3,11 @@ var should = require('should'),
 
 describe('module format (AMD)', function () {
 
-	it('ok', function () {
+	it('should behave as expected on ok files', function () {
 		madge([__dirname + '/files/amd/ok'], {format: 'amd'}).obj().should.eql({ a: [ 'sub/b' ], d: [], e: [ 'sub/c' ], 'sub/b': [ 'sub/c' ], 'sub/c': [ 'd' ] });
 	});
 
-	it('exclude', function () {
+	it('should be able to exclude modules', function () {
 		madge([__dirname + '/files/amd/ok'], {
 			format: 'amd',
 			exclude: '^sub'
@@ -19,24 +19,28 @@ describe('module format (AMD)', function () {
 		}).obj().should.eql({ a: [ 'sub/b' ], d: [], e: [], 'sub/b': [] });
 	});
 
-	it('error', function () {
+	it('should tackle errors in files', function () {
 		madge([__dirname + '/files/amd/error.js'], {format: 'amd'}).obj().should.eql({ error: [] });
 	});
 
-	it('id different than file', function () {
+	it('should handle id different than file', function () {
 		madge([__dirname + '/files/amd/namedWrapped/diff.js'], {format: 'amd'}).obj().should.eql({ ffid: [] });
 	});
 
-	it('named', function () {
+	it('should handle named modules', function () {
 		madge([__dirname + '/files/amd/namedWrapped/car.js'], {format: 'amd'}).obj().should.eql({ car: [ 'engine', 'wheels' ] });
 	});
 
-	it('circular', function () {
+	it('should find circular dependencies', function () {
 		madge([__dirname + '/files/amd/circular'], {format: 'amd'}).circular().should.eql({ c: 'a' });
 	});
 
-	it('depends', function () {
+	it('should find modules that depends on another', function () {
 		madge([__dirname + '/files/amd/ok'], {format: 'amd'}).depends('sub/c').should.eql([ 'e', 'sub/b' ]);
+	});
+
+	it('should compile coffeescript on-the-fly', function () {
+		madge([__dirname + '/files/amd/coffeescript'], {format: 'amd'}).obj().should.eql({ a: ['b'], b: [] });
 	});
 
 });
