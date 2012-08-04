@@ -17,6 +17,10 @@ Here's an example generated from the [Express](https://github.com/visionmedia/ex
 
 ![](https://github.com/pahen/node-madge/raw/master/examples/express.png)
 
+And some terminal usage.
+
+![](https://github.com/pahen/node-madge/raw/master/examples/terminal.png)
+
 # Installation
 
 To install as a library:
