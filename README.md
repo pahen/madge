@@ -132,6 +132,9 @@ Coming soon ..
 
 # Release Notes
 
+## v0.1.0 (September 3, 2012)
+Complete path in circular dependencies is now printed (and marked as red in image graphs).
+
 ## v0.0.5 (August 8, 2012)
 Added support for CoffeeScript. Files with extension .coffee will automatically be compiled on-the-fly.
 

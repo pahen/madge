@@ -38,7 +38,7 @@ describe('module format (CommonJS)', function () {
 	});
 
 	it('should find circular dependencies', function () {
-		madge([__dirname + '/files/cjs/circular']).circular().should.eql({ 'c': 'a' });
+		madge([__dirname + '/files/cjs/circular']).circular().getArray().should.eql([ ['a', 'b', 'c'] ]);
 	});
 
 	it('should compile coffeescript on-the-fly', function () {
