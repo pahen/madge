@@ -132,6 +132,9 @@ Coming soon ..
 
 # Release Notes
 
+## v0.1.1 (September 3, 2012)
+Tweaked circular dependency path output.
+
 ## v0.1.0 (September 3, 2012)
 Complete path in circular dependencies is now printed (and marked as red in image graphs).
 
