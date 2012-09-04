@@ -32,7 +32,7 @@ describe('module format (AMD)', function () {
 	});
 
 	it('should find circular dependencies', function () {
-		madge([__dirname + '/files/amd/circular'], {format: 'amd'}).circular().getArray().should.eql([ ['a', 'c'], ['e', 'f', 'g'] ]);
+		madge([__dirname + '/files/amd/circular'], {format: 'amd'}).circular().getArray().should.eql([ ['a', 'c'], ['f', 'g', 'h'] ]);
 	});
 
 	it('should find modules that depends on another', function () {
