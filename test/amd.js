@@ -43,4 +43,8 @@ describe('module format (AMD)', function () {
 		madge([__dirname + '/files/amd/coffeescript'], {format: 'amd'}).obj().should.eql({ a: ['b'], b: [] });
 	});
 
+	it('should resolve relative module indentifiers', function () {
+		madge([__dirname + '/files/amd/relative'], {format: 'amd'}).obj().should.eql({ a: [], b: [ 'a' ], 'foo/bar/d': [ 'a' ], 'foo/c': [ 'a' ] });
+	});
+
 });

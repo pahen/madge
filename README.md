@@ -132,6 +132,9 @@ Coming soon ..
 
 # Release Notes
 
+## v0.1.2 (November 15, 2012)
+Relative AMD module identifiers (if the first term is "." or "..") are now resolved.
+
 ## v0.1.1 (September 3, 2012)
 Tweaked circular dependency path output.
 
