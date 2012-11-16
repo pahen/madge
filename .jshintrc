@@ -39,7 +39,7 @@
 	"expr": true,
 	"maxparams": 5,
 	"maxdepth": 5,
-	"maxstatements": 50,
+	"maxstatements": 25,
 	"maxcomplexity": 10,
 	"predef": [
 		"define",
