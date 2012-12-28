@@ -151,6 +151,9 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 
 # Release Notes
 
+## v0.1.3 (December 28, 2012)
+Added proper exit code when running "madge --circular" so it can be used in build scripts.
+
 ## v0.1.2 (November 15, 2012)
 Relative AMD module identifiers (if the first term is "." or "..") are now resolved.
 
