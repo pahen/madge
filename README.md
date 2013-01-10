@@ -151,6 +151,9 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 
 # Release Notes
 
+## v0.1.4 (January 10, 2013)
+Switched library for walking directory tree which should solve issues on [Windows](https://github.com/pahen/node-madge/issues/8).
+
 ## v0.1.3 (December 28, 2012)
 Added proper exit code when running "madge --circular" so it can be used in build scripts.
 
