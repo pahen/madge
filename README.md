@@ -45,7 +45,55 @@ Only required if you want to generate the visual graphs using [Graphviz](http://
 
 # API
 
-Coming soon ..
+	var madge = require('madge');
+	var dependencyGraph = madge("./");
+
+##### madge(src, opts)
+
+src - required
+
+ - Object
+	- a dependency tree
+ - Array
+	- an Array of directories to scan
+ - String
+	- a directory to scan
+
+opts - optional
+
+ - format
+  - the module format to expect, 'cjs' or 'amd'. Commonjs (cjs) is the default format
+ - exclude
+ 	- string from which a regex will be constructed for excluding files from the scan
+ - breakOnError
+  - boolean. true if the parser should stop on parse errors and when modules are missing, false otherwise. Defaults to false
+
+##### dependencyGraph
+
+opts - options object passed used in constructor
+
+tree - dependency tree
+
+obj() - alias to tree
+
+circular() - returns all the modules with circular dependencies
+
+depends() - returns a list of modules that depends on a given module
+
+dot() - get a DOT representation of the module dependency graph
+
+image(opts, callback) - get an image representation of the module dependency graph
+
+ - opts - required Object
+ 	-	layout. The layout to use. Defaults to 'DOT'
+ 	- colors. Object with color information (all colors are strings containing hex values)
+ 	 - bgcolor. The backgound color
+ 	 - edge. The edge color
+ 	 - dependencies. The color for dependencies and for text if fontColor is not present
+ 	 - fontColor. The color for text
+ 	-fontFace. The font face to use. Defaults to 'Times-Roman'
+ - callback - required Function
+  - receives the rendered image as the first argument
 
 # CLI
 
