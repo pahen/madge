@@ -46,54 +46,62 @@ Only required if you want to generate the visual graphs using [Graphviz](http://
 # API
 
 	var madge = require('madge');
-	var dependencyGraph = madge("./");
+	var dependencyObject = ('./');
+	console.log(dependencyObject.tree);
 
-##### madge(src, opts)
+## madge(src, opts)
 
-src - required
+{Object|Array|String} **src** (required)
 
- - Object
-	- a dependency tree
- - Array
-	- an Array of directories to scan
- - String
-	- a directory to scan
+- Object - a dependency tree.
+- Array - an Array of directories to scan.
+- String - a directory to scan.
 
-opts - optional
+{Object} **opts** (optional)
 
- - format
-  - the module format to expect, 'cjs' or 'amd'. Commonjs (cjs) is the default format
- - exclude
- 	- string from which a regex will be constructed for excluding files from the scan
- - breakOnError
-  - boolean. true if the parser should stop on parse errors and when modules are missing, false otherwise. Defaults to false
+- {String} **format**. The module format to expect, 'cjs' or 'amd'. Commonjs (cjs) is the default format.
+- {String} **exclude**. String from which a regex will be constructed for excluding files from the scan.
+- {Boolean} **breakOnError**. True if the parser should stop on parse errors and when modules are missing, false otherwise. Defaults to false.
 
-##### dependencyGraph
+## dependency object (returned from madge)
 
-opts - options object passed used in constructor
+#### .opts
 
-tree - dependency tree
+Options object passed used in the constructor.
 
-obj() - alias to tree
+#### .tree
 
-circular() - returns all the modules with circular dependencies
+Dependency tree object.
 
-depends() - returns a list of modules that depends on a given module
+#### .obj()
 
-dot() - get a DOT representation of the module dependency graph
+Alias to the tree property.
 
-image(opts, callback) - get an image representation of the module dependency graph
+#### .circular()
 
- - opts - required Object
- 	-	layout. The layout to use. Defaults to 'DOT'
- 	- colors. Object with color information (all colors are strings containing hex values)
- 	 - bgcolor. The backgound color
- 	 - edge. The edge color
- 	 - dependencies. The color for dependencies and for text if fontColor is not present
- 	 - fontColor. The color for text
- 	-fontFace. The font face to use. Defaults to 'Times-Roman'
- - callback - required Function
-  - receives the rendered image as the first argument
+Returns all the modules with circular dependencies.
+
+#### .depends()
+
+Returns a list of modules that depends on a given module.
+
+#### .dot()
+
+Get a DOT representation of the module dependency graph.
+
+#### .image(opts, callback)
+
+Get an image representation of the module dependency graph.
+
+- {Object} **opts** (required).
+	- {String} **layout**. The layout to use. Defaults to 'DOT'.
+	- {Object} **colors**. Object with color information (all colors are strings containing hex values).
+		- {String} **bgcolor**. The backgound color.
+		- {String} **edge**. The edge color.
+		- {String} **dependencies**. The color for dependencies and for text if fontColor is not present.
+		- {String} **fontColor**. The color for text.
+		- {String} **fontFace**. The font face to use. Defaults to 'Times-Roman'.
+- {Function} **callback** (required). Receives the rendered image as the first argument.
 
 # CLI
 
