@@ -46,7 +46,7 @@ Only required if you want to generate the visual graphs using [Graphviz](http://
 # API
 
 	var madge = require('madge');
-	var dependencyObject = ('./');
+	var dependencyObject = madge('./');
 	console.log(dependencyObject.tree);
 
 ## madge(src, opts)
