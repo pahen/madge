@@ -6,7 +6,7 @@
  * Module dependencies
  */
 var fs = require('fs'),
-	version = require('../lib/version'),
+	version = require('../package.json').version,
 	program = require('commander'),
 	madge = require('../lib/madge');
 
