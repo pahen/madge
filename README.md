@@ -95,12 +95,12 @@ Get an image representation of the module dependency graph.
 
 - {Object} **opts** (required).
 	- {String} **layout**. The layout to use. Defaults to 'DOT'.
-	- {Object} **colors**. Object with color information (all colors are strings containing hex values).
+	- {String} **fontFace**. The font face to use. Defaults to 'Times-Roman'.
+	- {Object} **imageColors**. Object with color information (all colors are strings containing hex values).
 		- {String} **bgcolor**. The backgound color.
 		- {String} **edge**. The edge color.
 		- {String} **dependencies**. The color for dependencies and for text if fontColor is not present.
 		- {String} **fontColor**. The color for text.
-		- {String} **fontFace**. The font face to use. Defaults to 'Times-Roman'.
 - {Function} **callback** (required). Receives the rendered image as the first argument.
 
 # CLI
