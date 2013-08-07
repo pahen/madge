@@ -74,7 +74,7 @@ Options object passed used in the constructor.
 Dependency tree object. Can be overwritten with an object in the format:
 
 	{
-	     'module1': [ 'dep1a', 'dep1b' ],
+	     'module1': ['dep1a', 'dep1b'],
 	     'module2': ['dep2a']
 	}
 
