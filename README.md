@@ -71,7 +71,12 @@ Options object passed used in the constructor.
 
 #### .tree
 
-Dependency tree object.
+Dependency tree object. Can be overwritten with an object in the format:
+
+	{
+	     'module1': [ 'dep1a', 'dep1b' ],
+	     'module2': ['dep2a']
+	}
 
 #### .obj()
 
