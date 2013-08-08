@@ -1,6 +1,6 @@
 # MaDGe - Module Dependency Graph
 
-[![Build Status](https://secure.travis-ci.org/pahen/node-madge.png)](http://travis-ci.org/pahen/node-madge)
+[![Build Status](https://secure.travis-ci.org/pahen/madge.png)](http://travis-ci.org/pahen/madge)
 
 Create graphs from your [CommonJS](http://nodejs.org/api/modules.html) or [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) module dependencies. Could also be useful for finding circular dependencies in your code. Tested on [Node.js](http://nodejs.org/) and [RequireJS](http://requirejs.org/) projects. Dependencies are calculated using static code analysis. CommonJS dependencies are found using James Halliday's [detective](https://github.com/substack/node-detective) and for AMD I'm using some parts copied from James Burke's [RequireJS](https://github.com/jrburke/requirejs) (both are using [UglifyJS](https://github.com/mishoo/UglifyJS)). Modules written in [CoffeeScript](http://coffeescript.org/) with extension .coffee are supported and will automatically be compiled on-the-fly.
 
