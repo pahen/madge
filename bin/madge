@@ -35,10 +35,6 @@ if (!program.args.length && !program.read) {
 
 var src = program.args;
 
-if (program.read) {
-	src = JSON.parse(fs.readFileSync('/dev/stdin').toString());
-}
-
 // Check config file
 if (program.config && fs.existsSync(program.config)) {
 	var configOptions = JSON.parse(fs.readFileSync(program.config, 'utf8'));
@@ -51,59 +47,76 @@ if (program.config && fs.existsSync(program.config)) {
 	}
 }
 
-
- // Start parsing
-var res = madge(src, {
-	format: program.format,
-	breakOnError: program.breakOnError,
-	exclude: program.exclude
-});
-
-// Ouput summary
-if (program.summary) {
-	require('../lib/print').summary(res.obj(), {
-		colors: program.colors,
-		output: program.output
+// Read from standard input
+if (program.read) {
+	var buffer = '';
+	process.stdin.resume();
+	process.stdin.setEncoding('utf8');
+	process.stdin.on('data', function (chunk) {
+		buffer += chunk;
 	});
-
-// Output circular dependencies
-} else if (program.circular) {
-	require('../lib/print').circular(res.circular(), {
-		colors: program.colors,
-		output: program.output
+	process.stdin.on('end', function () {
+		src = JSON.parse(buffer);
+		run();
 	});
-
-// Output module dependencies
-} else if (program.depends) {
-	require('../lib/print').depends(res.depends(program.depends), {
-		colors: program.colors,
-		output: program.output
-	});
-
-// Write image
-} else if (program.image) {
-	res.image({
-		colors: program.colors,
-		layout: program.layout,
-		fontFace: program.font,
-		fontSize: program.fontSize,
-		imageColors: program.imageColors
-	}, function (image) {
-		fs.writeFile(program.image, image, function (err) {
-			if (err) {
-				throw err;
-			}
-		});
-	});
-
-// Output DOT
-} else if (program.dot) {
-	process.stdout.write(res.dot());
-
-// Output text (default)
 } else {
-	require('../lib/print').list(res.obj(), {
-		colors: program.colors,
-		output: program.output
+	run();
+}
+
+function run() {
+	 // Start parsing
+	var res = madge(src, {
+		format: program.format,
+		breakOnError: program.breakOnError,
+		exclude: program.exclude
 	});
+
+	// Ouput summary
+	if (program.summary) {
+		require('../lib/print').summary(res.obj(), {
+			colors: program.colors,
+			output: program.output
+		});
+
+	// Output circular dependencies
+	} else if (program.circular) {
+		require('../lib/print').circular(res.circular(), {
+			colors: program.colors,
+			output: program.output
+		});
+
+	// Output module dependencies
+	} else if (program.depends) {
+		require('../lib/print').depends(res.depends(program.depends), {
+			colors: program.colors,
+			output: program.output
+		});
+
+	// Write image
+	} else if (program.image) {
+		res.image({
+			colors: program.colors,
+			layout: program.layout,
+			fontFace: program.font,
+			fontSize: program.fontSize,
+			imageColors: program.imageColors
+		}, function (image) {
+			fs.writeFile(program.image, image, function (err) {
+				if (err) {
+					throw err;
+				}
+			});
+		});
+
+	// Output DOT
+	} else if (program.dot) {
+		process.stdout.write(res.dot());
+
+	// Output text (default)
+	} else {
+		require('../lib/print').list(res.obj(), {
+			colors: program.colors,
+			output: program.output
+		});
+	}
 }

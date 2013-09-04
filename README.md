@@ -212,6 +212,9 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 
 # Release Notes
 
+## v0.1.5 (September 04, 2013)
+Fixed Windows [issue](https://github.com/pahen/node-madge/issues/17) when reading from standard input with --read.
+
 ## v0.1.4 (January 10, 2013)
 Switched library for walking directory tree which should solve issues on [Windows](https://github.com/pahen/node-madge/issues/8).
 
