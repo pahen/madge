@@ -47,4 +47,8 @@ describe('module format (AMD)', function () {
 		madge([__dirname + '/files/amd/relative'], {format: 'amd'}).obj().should.eql({ a: [], b: [ 'a' ], 'foo/bar/d': [ 'a' ], 'foo/c': [ 'a' ] });
 	});
 
+	it('should ignore plugins', function () {
+		madge([__dirname + '/files/amd/plugin.js'], {format: 'amd', breakOnError: true}).obj().should.eql({ plugin: [ 'ok/a' ] });
+	});
+
 });

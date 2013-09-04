@@ -212,6 +212,9 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 
 # Release Notes
 
+## v0.1.6 (September 04, 2013)
+AMD plugins are now ignored as dependencies. Fixes [issue](https://github.com/pahen/grunt-madge/issues/1).
+
 ## v0.1.5 (September 04, 2013)
 Fixed Windows [issue](https://github.com/pahen/node-madge/issues/17) when reading from standard input with --read.
 
