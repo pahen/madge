@@ -212,6 +212,9 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 
 # Release Notes
 
+## v0.1.7 (September 20, 2013)
+Added missing fontsize option when generating images.
+
 ## v0.1.6 (September 04, 2013)
 AMD plugins are now ignored as dependencies. Fixes [issue](https://github.com/pahen/grunt-madge/issues/1).
 
