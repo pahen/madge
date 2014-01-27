@@ -1,51 +1,52 @@
 {
-	"name": "madge",
-	"version": "0.1.7",
-	"author": "Patrik Henningsson <patrik.henningsson@gmail.com>",
-	"repository": "git://github.com/pahen/node-madge",
-	"homepage": "https://github.com/pahen/node-madge",
-	"licenses": [
-	{
-		"type": "MIT",
-		"url": "https://github.com/pahen/node-madge/raw/master/LICENSE"
-	}
-	],
-	"description": "Create graphs from your CommonJS or AMD module dependencies.",
-	"keywords": [
-		"AMD",
-		"RequireJS",
-		"require",
-		"module",
-		"circular",
-		"dependency",
-		"dependencies",
-		"graphviz",
-		"graph"
-	],
-	"engines": [
-		"node >= 0.8.0"
-	],
-	"scripts": {
-		"test": "node_modules/jshint/bin/hint test/*.js bin lib && node_modules/.bin/mocha --ignore-leaks --reporter spec test/*.js"
-	},
-	"dependencies": {
-		"commander": "1.0.0",
-		"detective": "0.1.1",
-		"walkdir": "0.0.5",
-		"resolve": "0.2.3",
-		"commondir": "0.0.1",
-		"graphviz": "0.0.7",
-		"uglify-js": "1.2.6",
-		"colors": "0.6.0-1",
-		"coffee-script": "1.3.3"
-	},
-	"devDependencies": {
-		"jshint": "0.9.1",
-		"mocha": "1.3.x",
-		"should": "*"
-	},
-	"main": "./lib/madge",
-	"bin": {
-		"madge": "./bin/madge"
-	}
+  "name": "madge",
+  "version": "0.1.7",
+  "author": "Patrik Henningsson <patrik.henningsson@gmail.com>",
+  "repository": "git://github.com/pahen/node-madge",
+  "homepage": "https://github.com/pahen/node-madge",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/pahen/node-madge/raw/master/LICENSE"
+    }
+  ],
+  "description": "Create graphs from your CommonJS or AMD module dependencies.",
+  "keywords": [
+    "AMD",
+    "RequireJS",
+    "require",
+    "module",
+    "circular",
+    "dependency",
+    "dependencies",
+    "graphviz",
+    "graph"
+  ],
+  "engines": [
+    "node >= 0.8.0"
+  ],
+  "scripts": {
+    "test": "node_modules/jshint/bin/hint test/*.js bin lib && node_modules/.bin/mocha --ignore-leaks --reporter spec test/*.js"
+  },
+  "dependencies": {
+    "commander": "1.0.0",
+    "detective": "0.1.1",
+    "walkdir": "0.0.5",
+    "resolve": "0.2.3",
+    "commondir": "0.0.1",
+    "graphviz": "0.0.7",
+    "uglify-js": "1.2.6",
+    "colors": "0.6.0-1",
+    "coffee-script": "1.3.3",
+    "amdetective": "0.0.1"
+  },
+  "devDependencies": {
+    "jshint": "0.9.1",
+    "mocha": "1.3.x",
+    "should": "*"
+  },
+  "main": "./lib/madge",
+  "bin": {
+    "madge": "./bin/madge"
+  }
 }

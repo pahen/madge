@@ -14,7 +14,6 @@ program
 	.version(version)
 	.usage('[options] <file|dir ...>')
 	.option('-f, --format <name>', 'format to parse (amd/cjs)', 'cjs')
-	.option('-o, --output <type>', 'output format (plain/json)', 'plain')
 	.option('-s, --summary', 'show summary of all dependencies')
 	.option('-c, --circular', 'show circular dependencies')
 	.option('-d, --depends <id>', 'show modules that depends on the given id')
@@ -26,6 +25,7 @@ program
 	.option('-n, --no-colors', 'skip colors in output and images', false)
 	.option('-r, --read', 'skip scanning folders and read JSON from stdin')
     .option('-C, --config <filename>', 'provide a config file')
+    .option('-O, --optimized', 'if given file is optimized with r.js', false)
 	.parse(process.argv);
 
 if (!program.args.length && !program.read) {
@@ -68,7 +68,8 @@ function run() {
 	var res = madge(src, {
 		format: program.format,
 		breakOnError: program.breakOnError,
-		exclude: program.exclude
+		exclude: program.exclude,
+		optimized: program.optimized
 	});
 
 	// Ouput summary

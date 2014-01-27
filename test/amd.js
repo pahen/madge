@@ -7,6 +7,10 @@ describe('module format (AMD)', function () {
 		madge([__dirname + '/files/amd/ok'], {format: 'amd'}).obj().should.eql({ a: [ 'sub/b' ], d: [], e: [ 'sub/c' ], 'sub/b': [ 'sub/c' ], 'sub/c': [ 'd' ] });
 	});
 
+	it('should handle optimized files', function () {
+		madge([__dirname + '/files/amd/a-built.js'], {format: 'amd', optimized: true}).obj().should.eql({ a: [ 'sub/b' ], d: [], 'sub/b': [ 'sub/c' ], 'sub/c': [ 'd' ] });
+	});
+
 	it('should be able to exclude modules', function () {
 		madge([__dirname + '/files/amd/ok'], {
 			format: 'amd',

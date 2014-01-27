@@ -62,6 +62,7 @@ Only required if you want to generate the visual graphs using [Graphviz](http://
 - {String} **format**. The module format to expect, 'cjs' or 'amd'. Commonjs (cjs) is the default format.
 - {String} **exclude**. String from which a regex will be constructed for excluding files from the scan.
 - {Boolean} **breakOnError**. True if the parser should stop on parse errors and when modules are missing, false otherwise. Defaults to false.
+- {Boolean} **optimized**. True if the parser should read modules from a optimized file (r.js). Defaults to false.
 
 ## dependency object (returned from madge)
 
@@ -128,6 +129,7 @@ Get an image representation of the module dependency graph.
 	  -n, --no-colors         skip colors in output and images
 	  -r, --read              skip scanning folders and read JSON from stdin
 	  -C, --config <filename> provide a config file
+	  -O, --optimized          if given file is optimized with r.js
 
 
 ## Examples:
@@ -211,6 +213,9 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 	$ npm test
 
 # Release Notes
+
+## v0.1.8 (January 27, 2014)
+Added support for reading AMD dependencies from a r.js optimized file by using option -O.
 
 ## v0.1.7 (September 20, 2013)
 Added missing fontsize option when generating images.
