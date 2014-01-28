@@ -162,6 +162,10 @@ Get an image representation of the module dependency graph.
 
 	$ madge --dot /path/src > graph.gv
 
+### Run on optimized file by r.js (RequireJS optimizer)
+	$ r.js -o app-build.js
+	$ madge --format amd --optimized app-build.js
+
 ### Pipe predefined results (the example image was produced with the following command)
 
 	$ cat << EOF | madge --read --image example.png
