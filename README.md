@@ -218,6 +218,9 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 
 # Release Notes
 
+## v0.1.9 (February 17, 2014)
+Ensure forward slashes are used in modules paths (Windows).
+
 ## v0.1.8 (January 27, 2014)
 Added support for reading AMD dependencies from a r.js optimized file by using option -O.
 
