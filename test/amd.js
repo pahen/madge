@@ -11,6 +11,13 @@ describe('module format (AMD)', function () {
 		madge([__dirname + '/files/amd/a-built.js'], {format: 'amd', optimized: true}).obj().should.eql({ a: [ 'sub/b' ], d: [], 'sub/b': [ 'sub/c' ], 'sub/c': [ 'd' ] });
 	});
 
+	it('should merge in shim dependencies found in RequireJS config', function () {
+		madge([__dirname + '/files/amd/requirejs/a.js'], {
+			format: 'amd',
+			requireConfig: __dirname + '/files/amd/requirejs/config.js'
+		}).obj().should.eql({ a: [ 'jquery' ], 'jquery': [], 'jquery.foo': [ 'jquery' ], 'jquery.bar': [ 'jquery' ] });
+	});
+
 	it('should be able to exclude modules', function () {
 		madge([__dirname + '/files/amd/ok'], {
 			format: 'amd',

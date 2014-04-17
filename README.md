@@ -63,6 +63,7 @@ Only required if you want to generate the visual graphs using [Graphviz](http://
 - {String} **exclude**. String from which a regex will be constructed for excluding files from the scan.
 - {Boolean} **breakOnError**. True if the parser should stop on parse errors and when modules are missing, false otherwise. Defaults to false.
 - {Boolean} **optimized**. True if the parser should read modules from a optimized file (r.js). Defaults to false.
+- {String} **requireConfig**. Path to RequireJS config used to find shim dependencies. Not used by default.
 
 ## dependency object (returned from madge)
 
@@ -114,22 +115,23 @@ Get an image representation of the module dependency graph.
 	Usage: madge [options] <file|dir ...>
 
 	Options:
-	  -h, --help              output usage information
-	  -V, --version           output the version number
-	  -f, --format <name>     format to parse (amd/cjs)
-	  -o, --output <type>     output format (plain/json)
-	  -s, --summary           show summary of all dependencies
-	  -c, --circular          show circular dependencies
-	  -d, --depends <id>      show modules that depends on the given id
-	  -x, --exclude <regex>   a regular expression for excluding modules
-	  -t, --dot               output graph in the DOT language
-	  -i, --image <filename>  write graph to file as a PNG image
-	  -l, --layout <name>     layout engine to use for image graph (dot/neato/fdp/sfdp/twopi/circo)
-	  -b, --break-on-error    break on parse errors & missing modules
-	  -n, --no-colors         skip colors in output and images
-	  -r, --read              skip scanning folders and read JSON from stdin
-	  -C, --config <filename> provide a config file
-	  -O, --optimized          if given file is optimized with r.js
+
+	-h, --help                       output usage information
+	-V, --version                    output the version number
+	-f, --format <name>              format to parse (amd/cjs)
+	-s, --summary                    show summary of all dependencies
+	-c, --circular                   show circular dependencies
+	-d, --depends <id>               show modules that depends on the given id
+	-x, --exclude <regex>            a regular expression for excluding modules
+	-t, --dot                        output graph in the DOT language
+	-i, --image <filename>           write graph to file as a PNG image
+	-l, --layout <name>              layout engine to use for image graph (dot/neato/fdp/sfdp/twopi/circo)
+	-b, --break-on-error             break on parse errors & missing modules
+	-n, --no-colors                  skip colors in output and images
+	-r, --read                       skip scanning folders and read JSON from stdin
+	-C, --config <filename>          provide a config file
+	-R, --require-config <filename>  include shim dependencies found in RequireJS config file
+	-O, --optimized                  if given file is optimized with r.js
 
 
 ## Examples:
@@ -165,6 +167,9 @@ Get an image representation of the module dependency graph.
 ### Run on optimized file by r.js (RequireJS optimizer)
 	$ r.js -o app-build.js
 	$ madge --format amd --optimized app-build.js
+
+### Include shim dependencies found in RequireJS config
+	$ madge --format amd --require-config path/config.js path/src
 
 ### Pipe predefined results (the example image was produced with the following command)
 
@@ -217,6 +222,9 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 	$ npm test
 
 # Release Notes
+
+## v0.2.0 (April 17, 2014)
+Added support for including shim dependencies found in RequiredJS config (specify with option -R).
 
 ## v0.1.9 (February 17, 2014)
 Ensure forward slashes are used in modules paths (Windows).
