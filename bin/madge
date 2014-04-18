@@ -8,6 +8,7 @@
 var fs = require('fs'),
 	version = require('../package.json').version,
 	program = require('commander'),
+	printResult = require('../lib/print'),
 	madge = require('../lib/madge');
 
 program
@@ -76,21 +77,21 @@ function run() {
 
 	// Ouput summary
 	if (program.summary) {
-		require('../lib/print').summary(res.obj(), {
+		printResult.summary(res.obj(), {
 			colors: program.colors,
 			output: program.output
 		});
 
 	// Output circular dependencies
 	} else if (program.circular) {
-		require('../lib/print').circular(res.circular(), {
+		printResult.circular(res.circular(), {
 			colors: program.colors,
 			output: program.output
 		});
 
 	// Output module dependencies
 	} else if (program.depends) {
-		require('../lib/print').depends(res.depends(program.depends), {
+		printResult.depends(res.depends(program.depends), {
 			colors: program.colors,
 			output: program.output
 		});
@@ -117,7 +118,7 @@ function run() {
 
 	// Output text (default)
 	} else {
-		require('../lib/print').list(res.obj(), {
+		printResult.list(res.obj(), {
 			colors: program.colors,
 			output: program.output
 		});
