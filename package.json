@@ -26,7 +26,7 @@
     "node >= 0.8.0"
   ],
   "scripts": {
-    "test": "node_modules/jshint/bin/hint test/*.js bin lib && node_modules/.bin/mocha --ignore-leaks --reporter spec test/*.js"
+    "test": "grunt"
   },
   "dependencies": {
     "commander": "1.0.0",
@@ -41,8 +41,11 @@
     "amdetective": "0.0.1"
   },
   "devDependencies": {
-    "jshint": "0.9.1",
-    "mocha": "1.3.x",
+    "grunt": "^0.4.4",
+    "grunt-cli": "0.1.8",
+    "grunt-contrib-jshint": "0.10.0",
+    "grunt-mocha-test": "0.10.2",
+    "grunt-release": "0.7.0",
     "should": "*"
   },
   "main": "./lib/madge",
