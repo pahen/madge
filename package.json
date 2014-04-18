@@ -41,7 +41,7 @@
     "amdetective": "0.0.1"
   },
   "devDependencies": {
-    "grunt": "^0.4.4",
+    "grunt": "0.4.4",
     "grunt-cli": "0.1.8",
     "grunt-contrib-jshint": "0.10.0",
     "grunt-mocha-test": "0.10.2",
