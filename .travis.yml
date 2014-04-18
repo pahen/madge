@@ -4,4 +4,3 @@ node_js:
 before_install:
  - sudo apt-get update
  - sudo apt-get install graphviz
- - sudo npm install -g grunt-cli

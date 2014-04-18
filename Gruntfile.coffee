@@ -30,7 +30,6 @@ module.exports = (grunt) ->
 		# Mocha test task.
 		# https://github.com/pghalliday/grunt-mocha-test
 		# -----------------------------------------
-		# node_modules/.bin/mocha --ignore-leaks --reporter spec test/*.js
 		mochaTest:
 			test:
 				options:
