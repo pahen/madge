@@ -33,7 +33,6 @@ describe('Madge', function () {
 				idAdd += obj.id;
 			};
 			opts.format = 'amd';
-			console.log(fileAdd)
 			madge([__dirname + '/files/amd/ok'], opts);
 			(idAdd+fileAdd).should.eql( "adesub/bsub/c" + "a.jsd.jse.jsb.jsc.js" );
 		});
@@ -43,10 +42,12 @@ describe('Madge', function () {
 		it('should add idAdd property to the returned madger', function () {
 			var opts = {};
 			opts.onAddModule = function(obj){
-				if(this.idAdd) 
+				if(this.idAdd){
 					this.idAdd += obj.id;
-				else
+				}
+				else{
 					this.idAdd = ""+obj.id;
+				}
 			};
 			var madger = madge([__dirname + '/files/cjs/normal'], opts);
 			madger.idAdd.should.eql( "adsub/bsub/c" );
