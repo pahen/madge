@@ -35,13 +35,13 @@
 	"sub" : true,
 	"strict" : false,
 	"white" : true,
-	"smarttabs": true,
-	"expr": true,
-	"maxparams": 5,
-	"maxdepth": 5,
-	"maxstatements": 25,
-	"maxcomplexity": 10,
-	"predef": [
+	"smarttabs" : true,
+	"expr" : true,
+	"maxparams" : 5,
+	"maxdepth" : 5,
+	"maxstatements" : 25,
+	"maxcomplexity" : 10,
+	"predef" : [
 		"define",
 		"describe",
 		"it"

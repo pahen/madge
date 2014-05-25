@@ -64,6 +64,8 @@ Only required if you want to generate the visual graphs using [Graphviz](http://
 - {Boolean} **breakOnError**. True if the parser should stop on parse errors and when modules are missing, false otherwise. Defaults to false.
 - {Boolean} **optimized**. True if the parser should read modules from a optimized file (r.js). Defaults to false.
 - {String} **requireConfig**. Path to RequireJS config used to find shim dependencies. Not used by default.
+- {Function} **onParseFile**. Function to be called when parsing a file (argument will be an object with "filename" and "src" property set).
+- {Function} **onAddModule** . Function to be called when adding a module to the module tree (argument will be an object with "id" and "dependencies" property set).
 
 ## dependency object (returned from madge)
 
@@ -222,6 +224,9 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 	$ npm test
 
 # Release Notes
+
+## v0.3.0 (May 25, 2014)
+Added support for onParseFile and onAddModule options (Thanks to Brandon Selway).
 
 ## v0.2.0 (April 17, 2014)
 Added support for including shim dependencies found in RequiredJS config (specify with option -R).
