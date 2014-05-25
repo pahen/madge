@@ -227,7 +227,7 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 
 ## v0.3.0 (May 25, 2014)
 Added support for onParseFile and onAddModule options (Thanks to Brandon Selway).
-Fix for optimized files including dependency information for excluded modules (Thanks to Drew Foehn).
+Fix for optimized files including dependency information for excluded modules (Thanks to Drew Foehn). Fixes [issue](https://github.com/pahen/madge/issues/26).
 
 ## v0.2.0 (April 17, 2014)
 Added support for including shim dependencies found in RequiredJS config (specify with option -R).
