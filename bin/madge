@@ -118,7 +118,7 @@ function run() {
 		process.stdout.write(res.dot());
 	// Output JSON
 	} else if(program.json) {
-		process.stdout.write(JSON.stringify(res.tree));
+		process.stdout.write(JSON.stringify(res.tree) + '\n');
 	// Output text (default)
 	} else {
 		printResult.list(res.obj(), {
