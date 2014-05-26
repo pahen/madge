@@ -134,6 +134,7 @@ Get an image representation of the module dependency graph.
 	-C, --config <filename>          provide a config file
 	-R, --require-config <filename>  include shim dependencies found in RequireJS config file
 	-O, --optimized                  if given file is optimized with r.js
+	-j  --json                       output dependency tree in json
 
 
 ## Examples:
@@ -227,6 +228,7 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 
 ## v0.3.0 (May 25, 2014)
 Added support for onParseFile and onAddModule options (Thanks to Brandon Selway).
+Added JSON output option (Thanks to Drew Foehn).
 Fix for optimized files including dependency information for excluded modules (Thanks to Drew Foehn). Fixes [issue](https://github.com/pahen/madge/issues/26).
 
 ## v0.2.0 (April 17, 2014)
