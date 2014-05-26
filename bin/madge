@@ -25,9 +25,10 @@ program
 	.option('-b, --break-on-error', 'break on parse errors & missing modules', false)
 	.option('-n, --no-colors', 'skip colors in output and images', false)
 	.option('-r, --read', 'skip scanning folders and read JSON from stdin')
-    .option('-C, --config <filename>', 'provide a config file')
-    .option('-R, --require-config <filename>', 'include shim dependencies found in RequireJS config file')
-    .option('-O, --optimized', 'if given file is optimized with r.js', false)
+	.option('-C, --config <filename>', 'provide a config file')
+	.option('-R, --require-config <filename>', 'include shim dependencies found in RequireJS config file')
+	.option('-O, --optimized', 'if given file is optimized with r.js', false)
+	.option('-j --json', 'output dependency tree in json')
 	.parse(process.argv);
 
 if (!program.args.length && !program.read && !program.requireConfig) {
@@ -115,7 +116,9 @@ function run() {
 	// Output DOT
 	} else if (program.dot) {
 		process.stdout.write(res.dot());
-
+	// Output JSON
+	} else if(program.json) {
+		process.stdout.write(JSON.stringify(res.tree));
 	// Output text (default)
 	} else {
 		printResult.list(res.obj(), {
