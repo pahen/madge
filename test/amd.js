@@ -20,7 +20,7 @@ describe('module format (AMD)', function () {
 		madge([__dirname + '/files/amd/requirejs/a.js'], {
 			format: 'amd',
 			requireConfig: __dirname + '/files/amd/requirejs/config.js'
-		}).obj().should.eql({ a: [ 'jquery' ], 'jquery': [], 'jquery.foo': [ 'jquery' ], 'jquery.bar': [ 'jquery' ] });
+		}).obj().should.eql({ a: [ 'jquery' ], 'jquery': [], 'jquery.foo': [ 'jquery' ], 'jquery.bar': [ 'jquery' ], 'baz': [ 'quux' ], 'quux': [] });
 	});
 
 	it('should be able to exclude modules', function () {
@@ -33,6 +33,12 @@ describe('module format (AMD)', function () {
 			format: 'amd',
 			exclude: '.*\/c$'
 		}).obj().should.eql({ 'a': [ 'sub/b' ], 'd': [], 'e': [], 'sub/b': [] });
+
+		madge([__dirname + '/files/amd/requirejs/a.js'], {
+			format: 'amd',
+			requireConfig: __dirname + '/files/amd/requirejs/config.js',
+			exclude: '^jquery.foo|quux$'
+		}).obj().should.eql({ a: [ 'jquery' ], 'jquery': [], 'jquery.bar': [ 'jquery' ] , 'baz': []});
 	});
 
 	it('should tackle errors in files', function () {
