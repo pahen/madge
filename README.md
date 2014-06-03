@@ -226,6 +226,9 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 
 # Release Notes
 
+## v0.3.1 (June 03, 2014)
+Apply exclude to RequireJS shim dependencies (Thanks to Michael White).
+
 ## v0.3.0 (May 25, 2014)
 Added support for onParseFile and onAddModule options (Thanks to Brandon Selway).
 Added JSON output option (Thanks to Drew Foehn).
