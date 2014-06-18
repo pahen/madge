@@ -16,6 +16,21 @@ describe('module format (AMD)', function () {
 		}).obj().should.eql({ 'a': [ 'sub/b' ], 'd': [], 'sub/b': [ 'sub/c' ], 'sub/c': [ 'd' ] });
 	});
 
+	it('should handle optimized files originating with a `require` call', function() {
+		madge([__dirname + '/files/amd/b-built.js'], {
+			format: 'amd',
+			optimized: true,
+		}).obj().should.eql({ '': [ 'sub/b' ], 'a': [], 'd': [], 'sub/b': [ 'sub/c' ], 'sub/c': [ 'd' ] });
+	});
+
+	it('should handle optimized files originating with a `require` call and a designated main module', function() {
+		madge([__dirname + '/files/amd/b-built.js'], {
+			format: 'amd',
+			optimized: true,
+			mainRequireModule: 'a'
+		}).obj().should.eql({ 'a': [ 'sub/b' ], 'd': [], 'sub/b': [ 'sub/c' ], 'sub/c': [ 'd' ] });
+	});
+
 	it('should merge in shim dependencies found in RequireJS config', function () {
 		madge([__dirname + '/files/amd/requirejs/a.js'], {
 			format: 'amd',

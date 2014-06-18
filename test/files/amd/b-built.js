@@ -1,0 +1,1 @@
+define("d",function(){}),define("sub/c",["d"],function(e){return"C"}),define("sub/b",["sub/c"],function(e){return"B"}),require(["sub/b"],function(e){return"A"}),define("a",function(){});
