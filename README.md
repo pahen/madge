@@ -135,7 +135,7 @@ Get an image representation of the module dependency graph.
 	-C, --config <filename>          provide a config file
 	-R, --require-config <filename>  include shim dependencies found in RequireJS config file
 	-O, --optimized                  if given file is optimized with r.js
-	--main-require-module            name of the primary RequireJS module, if it is included with `require()`
+	-M  --main-require-module        name of the primary RequireJS module, if it's included with `require()`
 	-j  --json                       output dependency tree in json
 
 
@@ -227,6 +227,9 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 	$ npm test
 
 # Release Notes
+
+## v0.3.2 (June 25, 2014)
+Handle anonymous require() as entry in the RequireJS optimized file (Thanks to Benjamin Horsleben).
 
 ## v0.3.1 (June 03, 2014)
 Apply exclude to RequireJS shim dependencies (Thanks to Michael White).

@@ -28,7 +28,7 @@ program
 	.option('-C, --config <filename>', 'provide a config file')
 	.option('-R, --require-config <filename>', 'include shim dependencies found in RequireJS config file')
 	.option('-O, --optimized', 'if given file is optimized with r.js', false)
-	.option('--main-require-module', 'name of the primary RequireJS module, if it is included with `require()`', '')
+	.option('-M, --main-require-module', 'name of the primary RequireJS module, if it\'s included with `require()`', '')
 	.option('-j --json', 'output dependency tree in json')
 	.parse(process.argv);
 
