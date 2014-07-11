@@ -80,6 +80,12 @@ describe('module format (AMD)', function () {
 		}).circular().getArray().should.eql([ ['a', 'c'], ['f', 'g', 'h'] ]);
 	});
 
+	it('should find circular dependencies with relative paths', function () {
+		madge([__dirname + '/files/amd/circularRelative'], {
+			format: 'amd'
+		}).circular().getArray().should.eql([ [ 'a', 'foo/b' ] ]);
+	});
+
 	it('should find modules that depends on another', function () {
 		madge([__dirname + '/files/amd/ok'], {
 			format: 'amd'

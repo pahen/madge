@@ -228,6 +228,9 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 
 # Release Notes
 
+## v0.3.3 (July 11, 2014)
+Fixed bug with relative paths in AMD not handled properly when checking for cyclic dependencies.
+
 ## v0.3.2 (June 25, 2014)
 Handle anonymous require() as entry in the RequireJS optimized file (Thanks to Benjamin Horsleben).
 
