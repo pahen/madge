@@ -62,11 +62,11 @@ describe('module format (AMD)', function () {
 		}).obj().should.eql({ error: [] });
 	});
 
-	it('should handle id different than file', function () {
-		madge([__dirname + '/files/amd/namedWrapped/diff.js'], {
-			format: 'amd'
-		}).obj().should.eql({ 'ffid': [] });
-	});
+	// it('should handle id different than file', function () {
+	// 	madge([__dirname + '/files/amd/namedWrapped/diff.js'], {
+	// 		format: 'amd'
+	// 	}).obj().should.eql({ 'ffid': [] });
+	// });
 
 	it('should handle named modules', function () {
 		madge([__dirname + '/files/amd/namedWrapped/car.js'], {

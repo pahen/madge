@@ -38,7 +38,7 @@
     "uglify-js": "1.2.6",
     "colors": "0.6.0-1",
     "coffee-script": "1.3.3",
-    "amdetective": "0.0.1"
+    "amdetective": "0.0.2"
   },
   "devDependencies": {
     "grunt": "0.4.4",
