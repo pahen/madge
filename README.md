@@ -64,7 +64,7 @@ Only required if you want to generate the visual graphs using [Graphviz](http://
 - {Boolean} **breakOnError**. True if the parser should stop on parse errors and when modules are missing, false otherwise. Defaults to false.
 - {Boolean} **optimized**. True if the parser should read modules from a optimized file (r.js). Defaults to false.
 - {String} **mainRequireModule**. Name of the module if parsing an optimized file (r.js), where the main file used `require()` instead of `define`. Defaults to `''`.
-- {String} **requireConfig**. Path to RequireJS config used to find shim dependencies. Not used by default.
+- {String} **requireConfig**. Path to RequireJS config used to find shim dependencies and path aliases. Not used by default.
 - {Function} **onParseFile**. Function to be called when parsing a file (argument will be an object with "filename" and "src" property set).
 - {Function} **onAddModule** . Function to be called when adding a module to the module tree (argument will be an object with "id" and "dependencies" property set).
 
@@ -133,7 +133,7 @@ Get an image representation of the module dependency graph.
 	-n, --no-colors                  skip colors in output and images
 	-r, --read                       skip scanning folders and read JSON from stdin
 	-C, --config <filename>          provide a config file
-	-R, --require-config <filename>  include shim dependencies found in RequireJS config file
+	-R, --require-config <filename>  include shim dependencies and path aliases found in RequireJS config file
 	-O, --optimized                  if given file is optimized with r.js
 	-M  --main-require-module        name of the primary RequireJS module, if it's included with `require()`
 	-j  --json                       output dependency tree in json

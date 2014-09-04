@@ -35,7 +35,7 @@ describe('module format (AMD)', function () {
 		madge([__dirname + '/files/amd/requirejs/a.js'], {
 			format: 'amd',
 			requireConfig: __dirname + '/files/amd/requirejs/config.js'
-		}).obj().should.eql({ a: [ 'jquery' ], 'jquery': [], 'jquery.foo': [ 'jquery' ], 'jquery.bar': [ 'jquery' ], 'baz': [ 'quux' ], 'quux': [] });
+		}).obj().should.eql({ a: [ 'vendor/jquery-2.0.3' ], 'jquery': [], 'jquery.foo': [ 'vendor/jquery-2.0.3' ], 'jquery.bar': [ 'vendor/jquery-2.0.3' ], 'baz': [ 'vendor/quux' ], 'quux': [] });
 	});
 
 	it('should be able to exclude modules', function () {
@@ -53,7 +53,7 @@ describe('module format (AMD)', function () {
 			format: 'amd',
 			requireConfig: __dirname + '/files/amd/requirejs/config.js',
 			exclude: '^jquery.foo|quux$'
-		}).obj().should.eql({ a: [ 'jquery' ], 'jquery': [], 'jquery.bar': [ 'jquery' ] , 'baz': []});
+		}).obj().should.eql({ a: [ 'vendor/jquery-2.0.3' ], 'jquery': [], 'jquery.bar': [ 'vendor/jquery-2.0.3' ] , 'baz': []});
 	});
 
 	it('should tackle errors in files', function () {
@@ -84,6 +84,13 @@ describe('module format (AMD)', function () {
 		madge([__dirname + '/files/amd/circularRelative'], {
 			format: 'amd'
 		}).circular().getArray().should.eql([ [ 'a', 'foo/b' ] ]);
+	});
+
+	it('should find circular dependencies with alias', function () {
+		madge([__dirname + '/files/amd/circularAlias'], {
+			format: 'amd',
+			requireConfig: __dirname + '/files/amd/circularAlias/config.js'
+		}).circular().getArray().should.eql([ [ 'dos', 'x86' ] ]);
 	});
 
 	it('should find modules that depends on another', function () {

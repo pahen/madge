@@ -26,7 +26,7 @@ program
 	.option('-n, --no-colors', 'skip colors in output and images', false)
 	.option('-r, --read', 'skip scanning folders and read JSON from stdin')
 	.option('-C, --config <filename>', 'provide a config file')
-	.option('-R, --require-config <filename>', 'include shim dependencies found in RequireJS config file')
+	.option('-R, --require-config <filename>', 'include shim dependencies and paths found in RequireJS config file')
 	.option('-O, --optimized', 'if given file is optimized with r.js', false)
 	.option('-M, --main-require-module', 'name of the primary RequireJS module, if it\'s included with `require()`', '')
 	.option('-j --json', 'output dependency tree in json')
