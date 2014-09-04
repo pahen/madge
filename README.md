@@ -228,6 +228,9 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 
 # Release Notes
 
+## v0.3.4 (Septemper 04, 2014)
+Correctly detect circular dependencies when using path aliases in RequireJS config (Thanks to Nicolas Ramz).
+
 ## v0.3.3 (July 11, 2014)
 Fixed bug with relative paths in AMD not handled properly when checking for cyclic dependencies.
 
