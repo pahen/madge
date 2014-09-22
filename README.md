@@ -228,6 +228,9 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 
 # Release Notes
 
+## v0.3.5 (Septemper 22, 2014)
+Fix issue with number of graph node lines increased with each render (Thanks to Colin H. Fredericks).
+
 ## v0.3.4 (Septemper 04, 2014)
 Correctly detect circular dependencies when using path aliases in RequireJS config (Thanks to Nicolas Ramz).
 
