@@ -46,7 +46,8 @@
     "grunt-contrib-jshint": "0.10.0",
     "grunt-mocha-test": "0.10.2",
     "grunt-release": "0.7.0",
-    "should": "*"
+    "should": "*",
+    "underscore": "^1.7.0"
   },
   "main": "./lib/madge",
   "bin": {
