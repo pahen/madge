@@ -5,7 +5,7 @@ describe('module format (CommonJS)', function () {
 
 	it('should behave as expected on ok files', function () {
 		madge([__dirname + '/files/cjs/normal'])
-			.obj().should.eql({ 'a': [ 'sub/b' ], 'd': [], 'sub/b': [ 'sub/c' ], 'sub/c': [ 'd' ] });
+			.obj().should.eql({ 'a': [ 'sub/b' ], 'fancy-main/not-index': [], 'd': [], 'sub/b': [ 'sub/c' ], 'sub/c': [ 'd' ] });
 	});
 
 	it('should handle expressions in require call', function () {
@@ -39,11 +39,11 @@ describe('module format (CommonJS)', function () {
 	it('should be able to exclude modules', function () {
 		madge([__dirname + '/files/cjs/normal'], {
 			exclude: '^sub'
-		}).obj().should.eql({ 'a': [], 'd': [] });
+		}).obj().should.eql({ 'a': [], 'd': [], 'fancy-main/not-index': [] });
 
 		madge([__dirname + '/files/cjs/normal'], {
 			exclude: '.*\/c$'
-		}).obj().should.eql({ 'a': [ 'sub/b' ], 'd': [], 'sub/b': [] });
+		}).obj().should.eql({ 'a': [ 'sub/b' ], 'd': [], 'sub/b': [], 'fancy-main/not-index': [], });
 	});
 
 	it('should find circular dependencies', function () {

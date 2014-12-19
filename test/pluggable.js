@@ -16,7 +16,7 @@ describe('Madge', function () {
 				idAdd += obj.id;
 			};
 			madge([__dirname + '/files/cjs/normal'], opts);
-			(fileAdd + idAdd).should.eql( "a.jsd.jsb.jsc.js" + "adsub/bsub/c" );
+			(fileAdd + idAdd).should.eql( "a.jsd.jsnot-index.jsb.jsc.js" + "adfancy-main/not-indexsub/bsub/c" );
 		});
 	});
 
@@ -49,7 +49,7 @@ describe('Madge', function () {
 				}
 			};
 			var madger = madge([__dirname + '/files/cjs/normal'], opts);
-			madger.idAdd.should.eql( "adsub/bsub/c" );
+			madger.idAdd.should.eql( "adfancy-main/not-indexsub/bsub/c" );
 		});
 	});
 
