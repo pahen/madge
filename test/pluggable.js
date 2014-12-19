@@ -9,7 +9,7 @@ describe('Madge', function () {
 			var idAdd = "";
 			var opts = {};
 			opts.onParseFile = function(obj) {
-				var arr = obj.filename.split(path.sep);
+				var arr = obj.filename.split('/');
 				fileAdd += arr[arr.length-1];
 			};
 			opts.onAddModule = function(obj) {
@@ -26,7 +26,7 @@ describe('Madge', function () {
 			var idAdd = "";
 			var opts = {};
 			opts.onParseFile = function(obj) {
-				var arr = obj.filename.split(path.sep);
+				var arr = obj.filename.split('/');
 				fileAdd += arr[arr.length-1];
 			};
 			opts.onAddModule = function(obj) {
