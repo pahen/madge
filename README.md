@@ -63,6 +63,7 @@ Only required if you want to generate the visual graphs using [Graphviz](http://
 - {String} **exclude**. String from which a regex will be constructed for excluding files from the scan.
 - {Boolean} **breakOnError**. True if the parser should stop on parse errors and when modules are missing, false otherwise. Defaults to false.
 - {Boolean} **optimized**. True if the parser should read modules from a optimized file (r.js). Defaults to false.
+- {Boolean} **findNestedDependencies**. True if nested dependencies should be found in AMD modules. Defaults to false.
 - {String} **mainRequireModule**. Name of the module if parsing an optimized file (r.js), where the main file used `require()` instead of `define`. Defaults to `''`.
 - {String} **requireConfig**. Path to RequireJS config used to find shim dependencies and path aliases. Not used by default.
 - {Function} **onParseFile**. Function to be called when parsing a file (argument will be an object with "filename" and "src" property set).
@@ -231,6 +232,7 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 ## v0.4.0 (December 19, 2014)
 Add support for JSX (React) and additional module paths (Thanks to Ben Lowery).
 Fix for detecting presence of AMD or CommonJS modules (Thanks to Aaron Russ).
+Added support for option findNestedDependencies to find nested dependencies in AMD modules.
 
 ## v0.3.5 (Septemper 22, 2014)
 Fix issue with number of graph node lines increased with each render (Thanks to Colin H. Fredericks).

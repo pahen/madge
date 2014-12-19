@@ -28,6 +28,7 @@ program
 	.option('-C, --config <filename>', 'provide a config file')
 	.option('-R, --require-config <filename>', 'include shim dependencies and paths found in RequireJS config file')
 	.option('-O, --optimized', 'if given file is optimized with r.js', false)
+	.option('-N, --find-nested-dependencies', 'find nested dependencies in AMD modules', false)
 	.option('-M, --main-require-module', 'name of the primary RequireJS module, if it\'s included with `require()`', '')
 	.option('-j --json', 'output dependency tree in json')
 	.option('-p --paths <directory>', 'additional paths to search for dependencies (CJS only)', '')
@@ -77,7 +78,8 @@ function run() {
 		optimized: program.optimized,
 		requireConfig: program.requireConfig,
 		mainRequireModule: program.mainRequireModule,
-		paths: program.paths ? program.paths.split(',') : undefined
+		paths: program.paths ? program.paths.split(',') : undefined,
+		findNestedDependencies: program.findNestedDependencies
 	});
 
 	// Ouput summary

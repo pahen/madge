@@ -117,4 +117,11 @@ describe('module format (AMD)', function () {
 			breakOnError: true
 		}).obj().should.eql({ plugin: [ 'ok/a' ] });
 	});
+
+	it('should find nested dependencies', function () {
+		madge([__dirname + '/files/amd/nested/main.js'], {
+			format: 'amd',
+			findNestedDependencies: true
+		}).obj().should.eql({ 'main': ['a', 'b'] });
+	});
 });
