@@ -232,6 +232,7 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 ## v0.4.0 (December 19, 2014)
 Add support for JSX (React) and additional module paths (Thanks to Ben Lowery).
 Fix for detecting presence of AMD or CommonJS modules (Thanks to Aaron Russ).
+Now resolves the module IDs from the RequireJS paths-config properly (Thanks to russaa).
 Added support for option findNestedDependencies to find nested dependencies in AMD modules.
 
 ## v0.3.5 (Septemper 22, 2014)
