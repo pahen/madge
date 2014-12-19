@@ -229,6 +229,9 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 
 # Release Notes
 
+## v0.4.1 (December 19, 2014)
+Fixed issues with absolute paths for modules IDs in Windows (all tests should now pass on Windows too).
+
 ## v0.4.0 (December 19, 2014)
 Add support for JSX (React) and additional module paths (Thanks to Ben Lowery).
 Fix for detecting presence of AMD or CommonJS modules (Thanks to Aaron Russ).
