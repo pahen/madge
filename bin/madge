@@ -31,7 +31,7 @@ program
 	.option('-N, --find-nested-dependencies', 'find nested dependencies in AMD modules', false)
 	.option('-M, --main-require-module', 'name of the primary RequireJS module, if it\'s included with `require()`', '')
 	.option('-j --json', 'output dependency tree in json')
-	.option('-p --paths <directory>', 'additional paths to search for dependencies (CJS only)', '')
+	.option('-p --paths <directory>', 'additional comma separated paths to search for dependencies (CJS only)', '')
 	.parse(process.argv);
 
 if (!program.args.length && !program.read && !program.requireConfig) {
