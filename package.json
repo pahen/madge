@@ -26,7 +26,8 @@
     "node >= 0.8.0"
   ],
   "scripts": {
-    "test": "grunt"
+    "test": "grunt",
+    "shrinkwrap": "npm-shrinkwrap"
   },
   "dependencies": {
     "amdetective": "0.0.2",
@@ -47,6 +48,7 @@
     "grunt-contrib-jshint": "0.10.0",
     "grunt-mocha-test": "0.10.2",
     "grunt-release": "0.7.0",
+    "npm-shrinkwrap": "5.2.0",
     "should": "*"
   },
   "main": "./lib/madge",
