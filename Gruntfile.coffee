@@ -15,7 +15,7 @@ module.exports = (grunt) ->
 				tag: true
 				push: true
 				pushTags: true
-				npm: false
+				npm: true
 				commitMessage: "Bump to version <%= version %>"
 				tagMessage: "Tagged <%= version %>"
 
