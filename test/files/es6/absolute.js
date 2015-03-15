@@ -1,0 +1,1 @@
+import {A} from 'test/files/es6/absolute/a';

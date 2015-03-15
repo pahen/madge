@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/pahen/madge.png)](http://travis-ci.org/pahen/madge)
 
-Create graphs from your [CommonJS](http://nodejs.org/api/modules.html) or [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) module dependencies. Could also be useful for finding circular dependencies in your code. Tested on [Node.js](http://nodejs.org/) and [RequireJS](http://requirejs.org/) projects. Dependencies are calculated using static code analysis. CommonJS dependencies are found using James Halliday's [detective](https://github.com/substack/node-detective) and for AMD I'm using [amdetective](https://www.npmjs.org/package/amdetective). Modules written in [CoffeeScript](http://coffeescript.org/) with extension .coffee are supported and will automatically be compiled on-the-fly.
+Create graphs from your [CommonJS](http://nodejs.org/api/modules.html), [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) or [ES6](https://people.mozilla.org/~jorendorff/es6-draft.html) module dependencies. Could also be useful for finding circular dependencies in your code. Tested on [Node.js](http://nodejs.org/) and [RequireJS](http://requirejs.org/) projects. Dependencies are calculated using static code analysis. CommonJS dependencies are found using James Halliday's [detective](https://github.com/substack/node-detective), for AMD I'm using [amdetective](https://www.npmjs.org/package/amdetective) and for ES6 [detective-es6](https://www.npmjs.com/package/detective-es6) is used. Modules written in [CoffeeScript](http://coffeescript.org/) with extension .coffee are supported and will automatically be compiled on-the-fly.
 
 ## Examples
 Here's a very simple example of a generated image.
@@ -59,7 +59,7 @@ Only required if you want to generate the visual graphs using [Graphviz](http://
 
 {Object} **opts** (optional)
 
-- {String} **format**. The module format to expect, 'cjs' or 'amd'. Commonjs (cjs) is the default format.
+- {String} **format**. The module format to expect, 'cjs', 'amd' or 'es6'. Commonjs (cjs) is the default format.
 - {String} **exclude**. String from which a regex will be constructed for excluding files from the scan.
 - {Boolean} **breakOnError**. True if the parser should stop on parse errors and when modules are missing, false otherwise. Defaults to false.
 - {Boolean} **optimized**. True if the parser should read modules from a optimized file (r.js). Defaults to false.
@@ -68,6 +68,7 @@ Only required if you want to generate the visual graphs using [Graphviz](http://
 - {String} **requireConfig**. Path to RequireJS config used to find shim dependencies and path aliases. Not used by default.
 - {Function} **onParseFile**. Function to be called when parsing a file (argument will be an object with "filename" and "src" property set).
 - {Function} **onAddModule** . Function to be called when adding a module to the module tree (argument will be an object with "id" and "dependencies" property set).
+- {Array} **extensions**. List of file extensions which are considered. Defaults to `['.js']`.
 
 ## dependency object (returned from madge)
 
@@ -122,7 +123,7 @@ Get an image representation of the module dependency graph.
 
 	-h, --help                       output usage information
 	-V, --version                    output the version number
-	-f, --format <name>              format to parse (amd/cjs)
+	-f, --format <name>              format to parse (amd/cjs/es6)
 	-s, --summary                    show summary of all dependencies
 	-c, --circular                   show circular dependencies
 	-d, --depends <id>               show modules that depends on the given id
@@ -149,6 +150,10 @@ Get an image representation of the module dependency graph.
 ### List all module dependencies (AMD)
 
 	$ madge --format amd /path/src
+
+### List all module dependencies (ES6)
+
+	$ madge --format es6 /path/src
 
 ### Finding circular dependencies
 

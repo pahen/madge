@@ -36,6 +36,7 @@
     "commander": "1.0.0",
     "commondir": "0.0.1",
     "detective": "0.1.1",
+    "detective-es6": "1.1.0",
     "graphviz": "0.0.7",
     "react-tools": "0.12.1",
     "resolve": "0.2.3",

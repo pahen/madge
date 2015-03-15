@@ -34,6 +34,10 @@
       "version": "0.1.1",
       "resolved": "https://registry.npmjs.org/detective/-/detective-0.1.1.tgz"
     },
+    "detective-es6": {
+      "version": "1.1.0",
+      "resolved": "https://registry.npmjs.org/detective-es6/-/detective-es6-1.1.0.tgz"
+    },
     "graphviz": {
       "version": "0.0.7",
       "resolved": "https://registry.npmjs.org/graphviz/-/graphviz-0.0.7.tgz",

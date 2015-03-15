@@ -40,7 +40,7 @@
 	"maxparams" : 5,
 	"maxdepth" : 5,
 	"maxstatements" : 25,
-	"maxcomplexity" : 10,
+	"maxcomplexity" : 11,
 	"predef" : [
 		"define",
 		"describe",

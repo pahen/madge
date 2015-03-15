@@ -38,6 +38,12 @@ describe('Madge', function () {
 		});
 	});
 
+	describe('extensions', function () {
+		it('should be ok with custom extensions', function () {
+			madge(['test/files/cjs/extensions'], {extensions: ['.js', '.cjs']}).obj().should.eql({ a: [ 'b' ], b: [] });
+		});
+	});
+
 	describe('.tree', function () {
 		it('should accessible as an object', function () {
 			madge({a: ['b', 'c']}).tree.should.be.an.Object;
