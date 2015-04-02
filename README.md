@@ -234,6 +234,10 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 
 # Release Notes
 
+## v0.5.0 (April 2, 2015)
+Added support for ES6 modules (Thanks to Marc Laval).
+Added support for setting custom file extension name (Thanks to Marc Laval).
+
 ## v0.4.1 (December 19, 2014)
 Fixed issues with absolute paths for modules IDs in Windows (all tests should now pass on Windows too).
 

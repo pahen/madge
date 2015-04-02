@@ -32,6 +32,7 @@ program
 	.option('-M, --main-require-module', 'name of the primary RequireJS module, if it\'s included with `require()`', '')
 	.option('-j --json', 'output dependency tree in json')
 	.option('-p --paths <directory>', 'additional comma separated paths to search for dependencies (CJS only)', '')
+	.option('-e --extensions <list>', 'comma separated string of valid file extensions', 'js,coffee')
 	.parse(process.argv);
 
 if (!program.args.length && !program.read && !program.requireConfig) {
@@ -79,6 +80,7 @@ function run() {
 		requireConfig: program.requireConfig,
 		mainRequireModule: program.mainRequireModule,
 		paths: program.paths ? program.paths.split(',') : undefined,
+		extensions: program.extensions.split(',').map(function (str) { return '.' + str; }),
 		findNestedDependencies: program.findNestedDependencies
 	});
 
