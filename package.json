@@ -1,6 +1,6 @@
 {
   "name": "madge",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "author": "Patrik Henningsson <patrik.henningsson@gmail.com>",
   "repository": "git://github.com/pahen/node-madge",
   "homepage": "https://github.com/pahen/node-madge",
@@ -32,16 +32,16 @@
   "dependencies": {
     "amdetective": "0.0.2",
     "coffee-script": "1.3.3",
-    "colors": "0.6.0-1",
-    "commander": "1.0.0",
-    "commondir": "0.0.1",
-    "detective": "0.1.1",
-    "detective-es6": "1.1.0",
-    "graphviz": "0.0.7",
-    "react-tools": "0.12.1",
-    "resolve": "0.2.3",
-    "uglify-js": "1.2.6",
-    "walkdir": "0.0.5"
+    "colors": "1.1.2",
+    "commander": "2.8.1",
+    "commondir": "1.0.1",
+    "detective": "4.1.1",
+    "detective-es6": "1.1.2",
+    "graphviz": "0.0.8",
+    "react-tools": "0.13.3",
+    "resolve": "1.1.6",
+    "uglify-js": "1.3.5",
+    "walkdir": "0.0.10"
   },
   "devDependencies": {
     "grunt": "0.4.4",
