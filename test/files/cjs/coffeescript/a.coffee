@@ -1,3 +1,3 @@
-b = require './b'
+b = require 'b'
 
 module.exports = 'A'
