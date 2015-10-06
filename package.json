@@ -30,6 +30,7 @@
     "shrinkwrap": "./node_modules/.bin/npm-shrinkwrap"
   },
   "dependencies": {
+    "coffee-script": "1.3.3",
     "amdetective": "0.0.2",
     "colors": "^1.1.2",
     "commander": "^2.8.1",
@@ -43,7 +44,6 @@
     "walkdir": "0.0.10"
   },
   "devDependencies": {
-    "coffee-script": "1.3.3",
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
     "grunt-contrib-jshint": "^0.11.3",
