@@ -234,6 +234,9 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 
 # Release Notes
 
+## v0.5.1 (October 15, 2015)
+Updated dependencies to newer versions (Thanks to Martin Kapp).
+
 ## v0.5.0 (April 2, 2015)
 Added support for ES6 modules (Thanks to Marc Laval).
 Added support for setting custom file extension name (Thanks to Marc Laval).
