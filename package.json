@@ -26,30 +26,31 @@
     "node >= 0.8.0"
   ],
   "scripts": {
-    "test": "grunt",
-    "shrinkwrap": "npm-shrinkwrap"
+    "test": "./node_modules/.bin/grunt",
+    "shrinkwrap": "./node_modules/.bin/npm-shrinkwrap"
   },
   "dependencies": {
     "amdetective": "0.0.2",
     "coffee-script": "1.3.3",
-    "colors": "0.6.0-1",
-    "commander": "1.0.0",
-    "commondir": "0.0.1",
-    "detective": "0.1.1",
-    "detective-es6": "1.1.0",
-    "graphviz": "0.0.7",
-    "react-tools": "0.12.1",
+    "colors": "^1.1.2",
+    "commander": "^2.8.1",
+    "commondir": "^1.0.1",
+    "detective": "^4.2.0",
+    "detective-es6": "1.1.2",
+    "graphviz": "0.0.8",
+    "react-tools": "^0.13.3",
     "resolve": "0.2.3",
-    "uglify-js": "1.2.6",
-    "walkdir": "0.0.5"
+    "uglify-js": "^1.3.5",
+    "walkdir": "0.0.10"
   },
   "devDependencies": {
-    "grunt": "0.4.4",
-    "grunt-cli": "0.1.8",
-    "grunt-contrib-jshint": "0.10.0",
-    "grunt-mocha-test": "0.10.2",
-    "grunt-release": "0.7.0",
-    "npm-shrinkwrap": "5.2.0",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-mocha-test": "^0.12.7",
+    "grunt-release": "^0.13.0",
+    "mocha": "^2.3.3",
+    "npm-shrinkwrap": "^5.4.0",
     "should": "*"
   },
   "main": "./lib/madge",
