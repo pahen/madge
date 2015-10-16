@@ -53,7 +53,7 @@ describe('module format (CommonJS)', function () {
 
 	it('should compile coffeescript on-the-fly', function () {
 		madge([__dirname + '/files/cjs/coffeescript'])
-			.obj().should.eql({ 'a': ['../node_modules/b'], 'b': [] });
+			.obj().should.eql({ 'a': ['./b'], 'b': [] });
 	});
 
 });

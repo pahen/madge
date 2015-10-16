@@ -234,6 +234,9 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 
 # Release Notes
 
+## v0.5.2 (October 16, 2015)
+Updated dependency resolve to latest version.
+
 ## v0.5.1 (October 15, 2015)
 Updated dependencies to newer versions (Thanks to Martin Kapp).
 
