@@ -14,7 +14,7 @@ var fs = require('fs'),
 program
 	.version(version)
 	.usage('[options] <file|dir ...>')
-	.option('-f, --format <name>', 'format to parse (amd/cjs)', 'cjs')
+	.option('-f, --format <name>', 'format to parse (amd/cjs/es6)', 'cjs')
 	.option('-s, --summary', 'show summary of all dependencies')
 	.option('-c, --circular', 'show circular dependencies')
 	.option('-d, --depends <id>', 'show modules that depends on the given id')
