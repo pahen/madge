@@ -39,6 +39,10 @@ Only required if you want to generate the visual graphs using [Graphviz](http://
 
 	$ sudo port install graphviz
 
+OR
+
+	$ brew install graphviz
+
 ### Ubuntu
 
 	$ sudo apt-get install graphviz
