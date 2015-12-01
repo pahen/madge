@@ -1,6 +1,11 @@
 # MaDGe - Module Dependency Graph
 
-[![Build Status](https://secure.travis-ci.org/pahen/madge.png)](http://travis-ci.org/pahen/madge)
+![Last version](https://img.shields.io/github/tag/pahen/madge.svg?style=flat-square)
+[![Build Status](http://img.shields.io/travis/pahen/madge/master.svg?style=flat-square)](https://travis-ci.org/pahen/madge)
+[![Dependency status](http://img.shields.io/david/pahen/madge.svg?style=flat-square)](https://david-dm.org/pahen/madge)
+[![Dev Dependencies Status](http://img.shields.io/david/dev/pahen/madge.svg?style=flat-square)](https://david-dm.org/pahen/madge#info=devDependencies)
+[![NPM Status](http://img.shields.io/npm/dm/madge.svg?style=flat-square)](https://www.npmjs.org/package/madge)
+[![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/pahen)
 
 Create graphs from your [CommonJS](http://nodejs.org/api/modules.html), [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) or [ES6](https://people.mozilla.org/~jorendorff/es6-draft.html) module dependencies. Could also be useful for finding circular dependencies in your code. Tested on [Node.js](http://nodejs.org/) and [RequireJS](http://requirejs.org/) projects. Dependencies are calculated using static code analysis. CommonJS dependencies are found using James Halliday's [detective](https://github.com/substack/node-detective), for AMD I'm using [amdetective](https://www.npmjs.org/package/amdetective) and for ES6 [detective-es6](https://www.npmjs.com/package/detective-es6) is used. Modules written in [CoffeeScript](http://coffeescript.org/) with extension .coffee are supported and will automatically be compiled on-the-fly.
 
