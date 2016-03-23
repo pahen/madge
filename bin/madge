@@ -31,6 +31,7 @@ program
 	.option('-N, --find-nested-dependencies', 'find nested dependencies in AMD modules', false)
 	.option('-M, --main-require-module <name>', 'name of the primary RequireJS module, if it\'s included with `require()`', '')
 	.option('-S, --squash <regex>', 'simplify dependency graph by squashing dependencies matching regex; e.g. C depends on B depends on A, squash B, results in C depends on A', '')
+	.option('-a, --aliases <string>', 'aliases as comma separated list; e.g. ', 'A:A/index,B:B/index')
 	.option('-j --json', 'output dependency tree in json')
 	.option('-p --paths <directory>', 'additional comma separated paths to search for dependencies (CJS only)', '')
 	.option('-e --extensions <list>', 'comma separated string of valid file extensions', 'js,coffee')
@@ -83,7 +84,8 @@ function run() {
 		paths: program.paths ? program.paths.split(',') : undefined,
 		extensions: program.extensions.split(',').map(function (str) { return '.' + str; }),
 		findNestedDependencies: program.findNestedDependencies,
-		squash: program.squash
+		squash: program.squash,
+		aliases: program.aliases ? program.aliases.split(',').map(function(pair) {return pair.split(':');}) : []
 	});
 
 	// Ouput summary
