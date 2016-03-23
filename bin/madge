@@ -30,7 +30,7 @@ program
 	.option('-O, --optimized', 'if given file is optimized with r.js', false)
 	.option('-N, --find-nested-dependencies', 'find nested dependencies in AMD modules', false)
 	.option('-M, --main-require-module <name>', 'name of the primary RequireJS module, if it\'s included with `require()`', '')
-	.option('-S, --squash <regex>', 'squash dependencies matching regex', '')
+	.option('-S, --squash <regex>', 'simplify dependency graph by squashing dependencies matching regex; e.g. C depends on B depends on A, squash B, results in C depends on A', '')
 	.option('-j --json', 'output dependency tree in json')
 	.option('-p --paths <directory>', 'additional comma separated paths to search for dependencies (CJS only)', '')
 	.option('-e --extensions <list>', 'comma separated string of valid file extensions', 'js,coffee')
