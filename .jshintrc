@@ -44,6 +44,7 @@
 	"predef" : [
 		"define",
 		"describe",
-		"it"
+		"it",
+		"Set"
 	]
 }
