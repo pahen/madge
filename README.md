@@ -34,7 +34,7 @@ To install as a library:
 
 To install the command-line tool:
 
-	$ sudo npm -g install madge
+	$ npm -g install madge
 
 ## Graphviz (optional)
 
