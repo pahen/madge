@@ -30,7 +30,7 @@
     "commander": "^2.8.1",
     "commondir": "^1.0.1",
     "detective": "^4.2.0",
-    "detective-es6": "1.1.2",
+    "detective-es6": "1.1.4",
     "graphviz": "0.0.8",
     "react-tools": "^0.13.3",
     "resolve": "^1.1.6",
