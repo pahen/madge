@@ -243,6 +243,9 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 
 # Release Notes
 
+## v0.5.4 (June 13, 2016)
+* Improved JSX and ES7 support (Thanks to Joel Kemp).
+
 ## v0.5.3 (November 25, 2015)
 * Correct regex on CommonJS parser to detect a core module (Thanks to Guillaume Gomez).
 
