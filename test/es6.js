@@ -38,4 +38,16 @@ describe('module format (ES6)', function () {
       format: 'es6'
     }).obj().should.eql({ 'absolute': [ 'absolute/a' ], 'absolute/a': [ 'absolute/b' ], 'absolute/b': [] });
   });
+
+  it('should find imports on files with jsx', function() {
+    var result = madge([__dirname + '/files/es6/jsx.js'], {
+      format: 'es6'
+    }).obj().should.eql({ 'jsx': [ 'absolute/b' ] });
+  });
+
+  it('should should find imports on files with ES7', function() {
+    madge([__dirname + '/files/es6/async.js'], {
+      format: 'es6'
+    }).obj().should.eql({ 'async': [ 'absolute/b' ] });
+  });
 });
