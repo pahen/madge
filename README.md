@@ -104,7 +104,7 @@ Circular dependencies object, returns:
 
     {
         'getArray': function,           /** @param {}   array   */
-        'isCyclic': function,           /** @param {id} boolean */
+        'isCyclic': function            /** @param {id} boolean */
     }
 
 #### .depends()
