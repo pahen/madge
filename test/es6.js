@@ -50,4 +50,9 @@ describe('module format (ES6)', function () {
       format: 'es6'
     }).obj().should.eql({ 'async': [ 'absolute/b' ] });
   });
+  it('should should support export x from "./file"', function() {
+    madge([__dirname + '/files/es6/re-export'], {
+      format: 'es6'
+    }).obj().should.eql({ 'a': [], 'b-default': ['a'], 'b-named': ['a'], 'b-star': ['a'], 'c': ['b-default', 'b-named', 'b-star'] });
+  });
 });
