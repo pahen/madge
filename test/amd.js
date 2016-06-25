@@ -118,4 +118,10 @@ describe('module format (AMD)', function () {
 			findNestedDependencies: true
 		}).obj().should.eql({ 'main': ['a', 'b'] });
 	});
+
+	it('should work for amd files with es6 code inside', function () {
+		madge([__dirname + '/files/amd/amdes6.js'], {
+			format: 'amd'
+		}).obj().should.eql({ 'amdes6': ['ok/a'] });
+	});
 });

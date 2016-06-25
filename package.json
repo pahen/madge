@@ -24,7 +24,7 @@
     "test": "./node_modules/.bin/grunt"
   },
   "dependencies": {
-    "amdetective": "0.0.2",
+    "amdetective": "~0.2.1",
     "coffee-script": "1.3.3",
     "colors": "^1.1.2",
     "commander": "^2.8.1",
