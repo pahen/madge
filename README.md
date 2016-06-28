@@ -100,7 +100,12 @@ Alias to the tree property.
 
 #### .circular()
 
-Returns all the modules with circular dependencies.
+Circular dependencies object, returns:
+
+    {
+        'getArray': function,           /** @param {}   array   */
+        'isCyclic': function            /** @param {id} boolean */
+    }
 
 #### .depends()
 
