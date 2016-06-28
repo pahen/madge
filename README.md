@@ -32,7 +32,7 @@ To install as a library:
 
 	$ npm install madge
 
-To install the command-line tool:
+To install the CLI:
 
 	$ npm -g install madge
 
@@ -42,7 +42,7 @@ Only required if you want to generate the visual graphs using [Graphviz](http://
 
 ### Mac OS X
 
-	$ sudo port install graphviz
+	$ port install graphviz
 
 OR
 
@@ -50,7 +50,7 @@ OR
 
 ### Ubuntu
 
-	$ sudo apt-get install graphviz
+	$ apt-get install graphviz
 
 # API
 
@@ -224,6 +224,10 @@ Get an image representation of the module dependency graph.
 	}
 
 # FAQ
+
+## What's the "Error: write EPIPE" when exporting graph to image?
+
+Ensure you have Graphviz installed. And if you're running Windows graphviz is not setting PATH variable during install. You should add folder of gvpr.exe (typically %Graphviz_folder%/bin) to PATH variable.
 
 ## The image produced by madge is very hard to read, what's wrong?
 
