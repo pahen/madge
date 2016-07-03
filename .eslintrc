@@ -1,7 +1,8 @@
 {
-	"extends": "@aptoma/eslint-config/lib/es5",
+	"extends": "@aptoma/eslint-config",
 	"env": {
 		"node": true,
-		"mocha": true
+		"mocha": true,
+		"es6": true
 	}
 }

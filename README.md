@@ -139,6 +139,7 @@ Get an image representation of the module dependency graph.
 	-V, --version                    output the version number
 	-f, --format <name>              format to parse (amd/cjs/es6)
 	-s, --summary                    show summary of all dependencies
+	-L, --list                       show list of all dependencies
 	-c, --circular                   show circular dependencies
 	-d, --depends <id>               show modules that depends on the given id
 	-x, --exclude <regex>            a regular expression for excluding modules
