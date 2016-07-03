@@ -21,7 +21,8 @@
     "node >= 0.8.0"
   ],
   "scripts": {
-    "test": "./node_modules/.bin/grunt"
+    "test": "./node_modules/.bin/grunt && npm run madge",
+    "madge": "./bin/madge -c -f cjs ./lib"
   },
   "dependencies": {
     "amdetective": "~0.2.1",
