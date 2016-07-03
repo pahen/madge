@@ -23,8 +23,13 @@
     "node >= 0.8.0"
   ],
   "scripts": {
-    "test": "./node_modules/.bin/grunt && npm run madge",
-    "madge": "./bin/madge -c -f cjs ./lib"
+    "test": "mocha test/*.js",
+    "ci": "npm run lint && npm test && npm run madge",
+    "lint": "eslint test/*.js bin lib",
+    "madge": "madge -c -f cjs ./lib",
+    "release": "npm run ci && release-it -n -i patch",
+    "release:minor": "npm run ci && release-it -n -i minor",
+    "release:major": "npm run ci && release-it -n -i major"
   },
   "dependencies": {
     "amdetective": "~0.2.1",
@@ -40,13 +45,11 @@
     "walkdir": "0.0.10"
   },
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-cli": "^0.1.13",
-    "grunt-contrib-jshint": "^0.11.3",
-    "grunt-mocha-test": "^0.12.7",
-    "grunt-release": "^0.13.0",
+    "@aptoma/eslint-config": "^4.0.0",
+    "eslint": "^3.0.0",
     "mocha": "^2.3.3",
-    "should": "*"
+    "should": "*",
+    "release-it": "^2.4.0"
   },
   "main": "./lib/madge",
   "bin": {
