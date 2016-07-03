@@ -252,6 +252,13 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 
 # Release Notes
 
+## v0.5.5 (July 03, 2016)
+* Add note about Graphviz and Windows in README
+* Fix matching absolute path in Windows (Thanks to nadejdashed)
+* Support for ES6 re-export syntax (Thanks to Oli Lalonde)
+* Support files with ES6 (Thanks to Joel Kemp)
+* Improve readme circular return object (Thanks to Way Of The Future)
+
 ## v0.5.4 (June 13, 2016)
 * Improved JSX and ES7 support (Thanks to Joel Kemp).
 
