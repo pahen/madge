@@ -1,6 +1,8 @@
 language: node_js
+
 node_js:
-  - "0.10"
+- 4
+
 before_install:
-  - "sudo apt-get update"
-  - "sudo apt-get install graphviz"
+- sudo apt-get update
+- sudo apt-get install graphviz
