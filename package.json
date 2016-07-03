@@ -27,9 +27,9 @@
     "mocha": "mocha test/*.js",
     "lint": "eslint bin lib",
     "madge": "bin/madge -c -f cjs ./lib",
-    "release": "npm run ci && release-it -n -i patch",
-    "release:minor": "npm run ci && release-it -n -i minor",
-    "release:major": "npm run ci && release-it -n -i major"
+    "release": "npm test && release-it -n -i patch",
+    "release:minor": "npm run test && release-it -n -i minor",
+    "release:major": "npm run test && release-it -n -i major"
   },
   "dependencies": {
     "amdetective": "~0.2.1",
