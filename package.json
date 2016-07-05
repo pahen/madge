@@ -25,7 +25,7 @@
   "scripts": {
     "test": "npm run lint && npm run mocha && npm run madge",
     "mocha": "mocha test/*.js",
-    "lint": "eslint bin/madge lib",
+    "lint": "eslint bin/madge lib test/*.js",
     "madge": "bin/madge -c -L ./lib",
     "release": "npm test && release-it -n -i patch",
     "release:minor": "npm run test && release-it -n -i minor",

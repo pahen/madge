@@ -1,57 +1,57 @@
-var should = require('should'),
-	path = require('path'),
-	madge = require('../lib/madge');
+/* eslint-env mocha */
+'use strict';
 
-describe('Madge', function () {
-	describe('pluggable', function () {
-		it('should serve parseFile and addModule events for cjs', function () {
-			var fileAdd = "";
-			var idAdd = "";
-			var opts = {};
-			opts.onParseFile = function(obj) {
-				var arr = obj.filename.split('/');
-				fileAdd += arr[arr.length-1];
+const madge = require('../lib/madge');
+require('should');
+
+describe('Madge', () => {
+	describe('pluggable', () => {
+		it('should serve parseFile and addModule events for cjs', () => {
+			let fileAdd = '';
+			let idAdd = '';
+			const opts = {};
+			opts.onParseFile = (obj) => {
+				const arr = obj.filename.split('/');
+				fileAdd += arr[arr.length - 1];
 			};
-			opts.onAddModule = function(obj) {
+			opts.onAddModule = (obj) => {
 				idAdd += obj.id;
 			};
 			madge([__dirname + '/files/cjs/normal'], opts);
-			(fileAdd + idAdd).should.eql( "a.jsd.jsnot-index.jsb.jsc.js" + "adfancy-main/not-indexsub/bsub/c" );
+			(fileAdd + idAdd).should.eql('a.jsd.jsnot-index.jsb.jsc.js' + 'adfancy-main/not-indexsub/bsub/c');
 		});
 	});
 
-	describe('pluggable - amd', function () {
-		it('should serve parseFile and addModule events for amd', function () {
-			var fileAdd = "";
-			var idAdd = "";
-			var opts = {};
-			opts.onParseFile = function(obj) {
-				var arr = obj.filename.split('/');
-				fileAdd += arr[arr.length-1];
+	describe('pluggable - amd', () => {
+		it('should serve parseFile and addModule events for amd', () => {
+			let fileAdd = '';
+			let idAdd = '';
+			const opts = {};
+			opts.onParseFile = (obj) => {
+				const arr = obj.filename.split('/');
+				fileAdd += arr[arr.length - 1];
 			};
-			opts.onAddModule = function(obj) {
+			opts.onAddModule = (obj) => {
 				idAdd += obj.id;
 			};
 			opts.format = 'amd';
 			madge([__dirname + '/files/amd/ok'], opts);
-			(idAdd + fileAdd).should.eql( "adesub/bsub/c" + "a.jsd.jse.jsb.jsc.js" );
+			(idAdd + fileAdd).should.eql('adesub/bsub/c' + 'a.jsd.jse.jsb.jsc.js');
 		});
 	});
 
-	describe('pluggable - scope', function () {
-		it('should add idAdd property to the returned madger', function () {
-			var opts = {};
-			opts.onAddModule = function(obj) {
+	describe('pluggable - scope', () => {
+		it('should add idAdd property to the returned madger', () => {
+			const opts = {};
+			opts.onAddModule = function (obj) {
 				if (this.idAdd) {
 					this.idAdd += obj.id;
 				} else {
-					this.idAdd = "" + obj.id;
+					this.idAdd = obj.id;
 				}
 			};
-			var madger = madge([__dirname + '/files/cjs/normal'], opts);
-			madger.idAdd.should.eql( "adfancy-main/not-indexsub/bsub/c" );
+			const madger = madge([__dirname + '/files/cjs/normal'], opts);
+			madger.idAdd.should.eql('adfancy-main/not-indexsub/bsub/c');
 		});
 	});
-
-
 });
