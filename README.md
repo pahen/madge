@@ -253,6 +253,9 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 
 # Release Notes
 
+## v1.0.0 (still in development)
+* Refactored Madge to use ES6 and now requires Node.js 4 to run.
+
 ## v0.5.5 (July 03, 2016)
 * Add note about Graphviz and Windows in README
 * Fix matching absolute path in Windows (Thanks to nadejdashed)

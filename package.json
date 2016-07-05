@@ -20,7 +20,7 @@
     "graph"
   ],
   "engines": [
-    "node >= 4.4.7"
+    "node": ">=4.x.x"
   ],
   "scripts": {
     "test": "npm run lint && npm run mocha && npm run madge",
