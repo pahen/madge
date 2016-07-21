@@ -1,5 +1,5 @@
 define([
-  'ok/a'
+  'ok/d'
 ], function(a) {
   'use strict';
 

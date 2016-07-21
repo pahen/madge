@@ -5,7 +5,7 @@
   "repository": "git://github.com/pahen/madge",
   "homepage": "https://github.com/pahen/madge",
   "license": "MIT",
-  "description": "Create graphs from your CommonJS, AMD or ES6 module dependencies.",
+  "description": "Create graphs from module dependencies.",
   "keywords": [
     "ES6",
     "ES7",
@@ -23,36 +23,32 @@
     "node": ">=4.x.x"
   },
   "scripts": {
-    "test": "npm run lint && npm run mocha && npm run madge",
+    "test": "npm run lint && npm run madge && npm run mocha",
     "mocha": "mocha test/*.js",
-    "lint": "eslint bin/madge lib test/*.js",
-    "madge": "bin/madge -c -L ./lib",
+    "watch": "mocha --watch --growl test/*.js",
+    "lint": "eslint bin/cli.js lib test/*.js",
+    "madge": "bin/cli.js bin/cli.js",
     "release": "npm test && release-it -n -i patch",
     "release:minor": "npm run test && release-it -n -i minor",
     "release:major": "npm run test && release-it -n -i major"
   },
   "dependencies": {
-    "amdetective": "~0.2.1",
-    "coffee-script": "1.10.0",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
-    "commondir": "^1.0.1",
-    "detective": "^4.3.1",
-    "detective-es6": "1.1.5",
-    "graphviz": "0.0.8",
-    "resolve": "^1.1.7",
-    "uglify-js": "^1.3.5",
-    "walkdir": "0.0.11"
+    "debug": "^2.2.0",
+    "dependency-tree": "^5.4.1",
+    "graphviz": "^0.0.8",
+    "rc": "^1.1.6"
   },
   "devDependencies": {
     "@aptoma/eslint-config": "^4.0.0",
     "eslint": "^3.0.0",
     "mocha": "^2.3.3",
-    "should": "*",
-    "release-it": "^2.4.0"
+    "release-it": "^2.4.0",
+    "should": "^9.0.2"
   },
   "main": "./lib/madge",
   "bin": {
-    "madge": "./bin/madge"
+    "madge": "./bin/cli.js"
   }
 }
