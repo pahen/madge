@@ -55,56 +55,61 @@ if (!program.color) {
 	config.edgeColor = '#757575';
 }
 
-const res = madge(program.args[0], config);
+madge(program.args[0], config)
+	.then((res) => {
+		if (program.list || (!program.summary && !program.circular && !program.depends && !program.image && !program.dot && !program.json)) {
+			printResult.list(res.obj(), {
+				colors: program.color,
+				output: program.output
+			});
+		}
 
-if (program.list || (!program.summary && !program.circular && !program.depends && !program.image && !program.dot && !program.json)) {
-	printResult.list(res.obj(), {
-		colors: program.color,
-		output: program.output
-	});
-}
+		if (program.summary) {
+			printResult.summary(res.obj(), {
+				colors: program.color,
+				output: program.output
+			});
+		}
 
-if (program.summary) {
-	printResult.summary(res.obj(), {
-		colors: program.color,
-		output: program.output
-	});
-}
+		if (program.json) {
+			process.stdout.write(JSON.stringify(res.tree) + '\n');
+		}
 
-if (program.json) {
-	process.stdout.write(JSON.stringify(res.tree) + '\n');
-}
+		if (program.circular) {
+			const circular = res.circular();
 
-if (program.circular) {
-	const circular = res.circular();
+			printResult.circular(circular, {
+				colors: program.color,
+				output: program.output
+			});
 
-	printResult.circular(circular, {
-		colors: program.color,
-		output: program.output
-	});
-
-	if (circular.length) {
-		process.exit(1);
-	}
-}
-
-if (program.depends) {
-	printResult.depends(res.depends(program.depends), {
-		colors: program.color,
-		output: program.output
-	});
-}
-
-if (program.image) {
-	res.image((image) => {
-		fs.writeFile(program.image, image, (err) => {
-			if (err) {
-				throw err;
+			if (circular.length) {
+				process.exit(1);
 			}
-		});
-	});
-}
+		}
 
-if (program.dot) {
-	process.stdout.write(res.dot());
-}
+		if (program.depends) {
+			printResult.depends(res.depends(program.depends), {
+				colors: program.color,
+				output: program.output
+			});
+		}
+
+		if (program.image) {
+			return res.image().then((image) => {
+				fs.writeFile(program.image, image, (err) => {
+					if (err) {
+						throw err;
+					}
+				});
+			});
+		}
+
+		if (program.dot) {
+			process.stdout.write(res.dot());
+		}
+	})
+	.catch((err) => {
+		console.log(err);
+		process.exit(1);
+	});
