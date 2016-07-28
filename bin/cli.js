@@ -2,12 +2,12 @@
 'use strict';
 
 const fs = require('fs');
-const version = require('../package.json').version;
 const program = require('commander');
-const printResult = require('../lib/print');
-const madge = require('../lib/madge');
 const rc = require('rc')('madge');
 const debug = require('debug')('madge');
+const version = require('../package.json').version;
+const output = require('../lib/output');
+const madge = require('../lib/api');
 
 program
 	.version(version)
@@ -58,14 +58,14 @@ if (!program.color) {
 madge(program.args[0], config)
 	.then((res) => {
 		if (program.list || (!program.summary && !program.circular && !program.depends && !program.image && !program.dot && !program.json)) {
-			printResult.list(res.obj(), {
+			output.list(res.obj(), {
 				colors: program.color,
 				output: program.output
 			});
 		}
 
 		if (program.summary) {
-			printResult.summary(res.obj(), {
+			output.summary(res.obj(), {
 				colors: program.color,
 				output: program.output
 			});
@@ -78,7 +78,7 @@ madge(program.args[0], config)
 		if (program.circular) {
 			const circular = res.circular();
 
-			printResult.circular(circular, {
+			output.circular(circular, {
 				colors: program.color,
 				output: program.output
 			});
@@ -89,7 +89,7 @@ madge(program.args[0], config)
 		}
 
 		if (program.depends) {
-			printResult.depends(res.depends(program.depends), {
+			output.depends(res.depends(program.depends), {
 				colors: program.color,
 				output: program.output
 			});
@@ -110,6 +110,9 @@ madge(program.args[0], config)
 		}
 	})
 	.catch((err) => {
-		console.log(err);
+		output.error(err, {
+			colors: program.color
+		});
+
 		process.exit(1);
 	});
