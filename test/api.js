@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 'use strict';
 
-const madge = require('../lib/madge');
+const madge = require('../lib/api');
 require('should');
 
 describe('Madge', () => {
