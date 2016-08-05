@@ -96,7 +96,7 @@ madge(program.args[0], config)
 		}
 
 		if (program.image) {
-			return res.image().then((image) => {
+			return res.image(program.image).then((image) => {
 				fs.writeFile(program.image, image, (err) => {
 					if (err) {
 						throw err;
