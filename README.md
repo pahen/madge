@@ -104,7 +104,8 @@ Returns a `Promise` resolved with the Madge instance object.
 	const madge = require('madge');
 
 	madge('path/to/app.js')
-		.then((res) => res.image())
+		// Supported file types .svg/.svgz/.png/.ps/.gif/.fig
+		.then((res) => res.image('.svg'))
 		.then((image) => {
 			// write image to file
 		});

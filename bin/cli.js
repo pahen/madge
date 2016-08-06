@@ -18,7 +18,7 @@ program
 	.option('--json', 'show list of dependencies as JSON')
 	.option('--circular', 'show circular dependencies')
 	.option('--depends', 'show modules that depends on the given id')
-	.option('--image <filename>', 'write graph to file as a PNG image')
+	.option('--image <filename>.<format>', 'write graph to file (supported formats svg/svgz/png/ps/gif/fig)')
 	.option('--layout <name>', 'layout engine to use for graph (dot/neato/fdp/sfdp/twopi/circo)')
 	.option('--dot', 'show graph using the DOT language')
 	.option('--no-color', 'disable color in output and image', false)
@@ -96,7 +96,7 @@ madge(program.args[0], config)
 		}
 
 		if (program.image) {
-			return res.image().then((image) => {
+			return res.image(program.image).then((image) => {
 				fs.writeFile(program.image, image, (err) => {
 					if (err) {
 						throw err;
