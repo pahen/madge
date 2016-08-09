@@ -7,11 +7,11 @@
 [![NPM Status](http://img.shields.io/npm/dm/madge.svg?style=flat-square)](https://www.npmjs.org/package/madge)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/pahen)
 
-Can be used for creating graphs from your dependencies or find circular dependencies in your code. The dependencies are calculated using Joel Kemp's awesome [dependency-tree](https://github.com/mrjoelkemp/node-dependency-tree).
+A tool for generating a visual graph from your module dependencies. Can also find circular dependencies and give you other useful info about your dependencies. The dependencies are generated using Joel Kemp's awesome [dependency-tree](https://github.com/mrjoelkemp/node-dependency-tree).
 
 Works for JS (AMD, CommonJS, ES6 modules) and CSS preprocessors (Sass, Stylus); basically, any filetype supported by [precinct](https://github.com/mrjoelkemp/node-precinct).
 
-  - For CommonJS modules, 3rd party dependencies (npm installed dependencies) are included in the tree by default
+  - For CommonJS modules, 3rd party dependencies (npm installed dependencies) are exluded in the tree
   - Dependency path resolutions are handled by [filing-cabinet](https://github.com/mrjoelkemp/node-filing-cabinet)
   - Supports RequireJS and Webpack loaders
   - All core Node modules (assert, path, fs, etc) are removed from the dependency list by default
@@ -37,7 +37,7 @@ Here's an example generated from the madge source using the command `madge bin/c
 
 ## Graphviz (optional)
 
-Only required if you want to generate the visual graphs using [Graphviz](http://www.graphviz.org/).
+> Only required if you want to generate the visual graphs using [Graphviz](http://www.graphviz.org/).
 
 ### Mac OS X
 
@@ -49,7 +49,7 @@ Only required if you want to generate the visual graphs using [Graphviz](http://
 
 # API
 
-## madge(filename: string, config: object)
+## madge(filePath: string, config: object)
 
 > `config` is optional and should be [configuration](#configuration) to be used.
 
@@ -123,8 +123,8 @@ Property | Type | Default | Description
 `fontSize` | String | 14px | Font size  to use in graph
 `backgroundColor` | String | #000000 | Background color for the graph
 `nodeColor` | String | #c6c5fe | The default node color to use in the graph
-`noDependenciesColor` | String | #cfffac | Color to use for nodes with dependencies
-`circularDependencyColor` | String | #ff6c60 | The color to used for circular dependencies
+`noDependencyColor` | String | #cfffac | The color to use for nodes with no dependencies
+`cyclicNodeColor` | String | #ff6c60 | The color to used for circular dependencies
 `edgeColor` | String | #757575 | The edge color to use in the graph
 
 > Note that when running the CLI it's possible to use a runtime configuration file. The config should placed in `.madgerc` in your project or home folder. Look [here](https://github.com/dominictarr/rc#standards) for alternative locations for the file. Here's an example:
@@ -138,33 +138,33 @@ Property | Type | Default | Description
 
 ## Examples
 
-### List all module dependencies
+> List all module dependencies
 
 	$ madge path/src/app.js
 
-### Finding circular dependencies
+> Finding circular dependencies
 
 	$ madge --circular path/src/app.js
 
-### Show modules that depends on a given module
+> Show modules that depends on a given module
 
 	$ madge --depends 'wheels' path/src/app.js
 
-### Excluding modules
+> Excluding modules
 
 	$ madge --exclude '^foo$|^bar$|^tests' path/src/app.js
 
-### Save graph as a PNG image (graphviz required)
+> Save graph as a PNG image (graphviz required)
 
 	$ madge --image graph.png path/src/app.js
 
-### Save graph as a [DOT](http://en.wikipedia.org/wiki/DOT_language) file for further processing (graphviz required)
+> Save graph as a [DOT](http://en.wikipedia.org/wiki/DOT_language) file for further processing (graphviz required)
 
 	$ madge --dot path/src/app.js > graph.gv
 
 # Debugging
 
-To enable debugging output if you encounter problems, run madge in the following way
+> To enable debugging output if you encounter problems, run madge in the following way
 
 	$ DEBUG=* madge path/src/app.js
 

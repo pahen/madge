@@ -90,35 +90,4 @@ describe('AMD', () => {
 			done();
 		}).catch(done);
 	});
-
-	it.skip('should compile coffeescript on-the-fly', () => {
-		madge(dir + '/coffeescript/a.coffee').obj().should.eql({
-			'a': ['b'], 'b': []
-		});
-	});
-
-	it.skip('should handle optimized files', () => {
-		madge(dir + '/a-built.js').obj().should.eql(
-			{'a': ['sub/b'], 'd': [], 'sub/b': ['sub/c'], 'sub/c': ['d']
-		});
-	});
-
-	it.skip('should handle optimized files originating with a `require` call', () => {
-		madge(dir + '/b-built.js').obj().should.eql({
-			'': ['sub/b'],
-			'a': [],
-			'd': [],
-			'sub/b': ['sub/c'], 'sub/c': ['d']
-		});
-	});
-
-	it.skip('should handle optimized files originating with a `require` call and a designated main module', () => {
-		madge(dir + '/b-built.js', {
-			mainRequireModule: 'a'
-		}).obj().should.eql({
-			'a': ['sub/b'],
-			'd': [],
-			'sub/b': ['sub/c'], 'sub/c': ['d']
-		});
-	});
 });

@@ -17,8 +17,8 @@ program
 	.option('--summary', 'show summary of all dependencies')
 	.option('--json', 'show list of dependencies as JSON')
 	.option('--circular', 'show circular dependencies')
-	.option('--depends', 'show modules that depends on the given id')
-	.option('--image <filename>', 'write graph to file as a PNG image')
+	.option('--depends <name>', 'show modules that depends on the given id')
+	.option('--image <file>', 'write graph to file as a PNG image')
 	.option('--layout <name>', 'layout engine to use for graph (dot/neato/fdp/sfdp/twopi/circo)')
 	.option('--dot', 'show graph using the DOT language')
 	.option('--no-color', 'disable color in output and image', false)
@@ -50,8 +50,8 @@ delete config.configs;
 if (!program.color) {
 	config.backgroundColor = '#ffffff';
 	config.nodeColor = '#00000';
-	config.noDependenciesColor = '#00000';
-	config.circularDependencyColor = '#000000';
+	config.noDependencyColor = '#00000';
+	config.cyclicNodeColor = '#000000';
 	config.edgeColor = '#757575';
 }
 
@@ -72,7 +72,7 @@ madge(program.args[0], config)
 		}
 
 		if (program.json) {
-			process.stdout.write(JSON.stringify(res.tree) + '\n');
+			process.stdout.write(JSON.stringify(res.obj()) + '\n');
 		}
 
 		if (program.circular) {
