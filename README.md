@@ -141,6 +141,7 @@ Property | Type | Default | Description
 `noDependencyColor` | String | #cfffac | The color to use for nodes with no dependencies
 `cyclicNodeColor` | String | #ff6c60 | The color to used for circular dependencies
 `edgeColor` | String | #757575 | The edge color to use in the graph
+`graphVizPath` | String | null | Set GraphViz path (if not in your path)
 
 > Note that when running the CLI it's possible to use a runtime configuration file. The config should placed in `.madgerc` in your project or home folder. Look [here](https://github.com/dominictarr/rc#standards) for alternative locations for the file. Here's an example:
 

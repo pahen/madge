@@ -96,6 +96,16 @@ describe('Madge', () => {
 				});
 		});
 
+		it('rejects if graphviz is not installed', (done) => {
+			madge(__dirname + '/files/cjs/a.js', {graphVizPath: '/invalid/path'})
+				.then((res) => res.image('image.png'))
+				.catch((err) => {
+					console.log(err.message);
+					err.message.should.eql('Could not execute /invalid/path/gvpr -V');
+					done();
+				});
+		});
+
 		it('writes image to file', (done) => {
 			madge(__dirname + '/files/cjs/a.js')
 				.then((res) => res.image(imagePath))
