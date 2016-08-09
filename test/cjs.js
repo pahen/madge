@@ -32,7 +32,7 @@ describe('CommonJS', () => {
 	it('finds circular dependencies', (done) => {
 		madge(dir + '/circular/a.js').then((res) => {
 			res.circular().should.eql([
-				['a', 'b', 'c']
+				['a', 'd']
 			]);
 			done();
 		}).catch(done);
