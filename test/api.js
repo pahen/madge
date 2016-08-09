@@ -47,11 +47,14 @@ describe('Madge', () => {
 	});
 
 	describe('#dot', () => {
-		it('should be able to output graphviz DOT format', (done) => {
-			madge(__dirname + '/files/cjs/b.js').then((res) => {
-				res.dot().should.eql('digraph G {\n  "b";\n  "c";\n  "b" -> "c";\n}\n');
-				done();
-			}).catch(done);
+		it('should return a promise resolved with graphviz DOT output', (done) => {
+			madge(__dirname + '/files/cjs/b.js')
+				.then((res) => res.dot())
+				.then((output) => {
+					output.should.eql('digraph G {\n  "b";\n  "c";\n  "b" -> "c";\n}\n');
+					done();
+				})
+				.catch(done);
 		});
 	});
 
@@ -75,7 +78,7 @@ describe('Madge', () => {
 			fs.unlink(imagePath);
 		});
 
-		it('rejects if a filename is not supplied', (done) => {
+		it('should reject if a filename is not supplied', (done) => {
 			madge(__dirname + '/files/cjs/a.js')
 				.then((res) => res.image())
 				.catch((err) => {
@@ -84,7 +87,7 @@ describe('Madge', () => {
 				});
 		});
 
-		it('writes image to file', (done) => {
+		it('should write image to file', (done) => {
 			madge(__dirname + '/files/cjs/a.js')
 				.then((res) => res.image(imagePath))
 				.then(() => {

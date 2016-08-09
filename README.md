@@ -89,13 +89,15 @@ Returns a `Promise` resolved with the Madge instance object.
 
 #### .dot()
 
-> Returns a `String` with a DOT representation of the module dependency graph.
+> Returns a `Promise` resolved with a DOT representation of the module dependency graph.
 
 	const madge = require('madge');
 
-	madge('path/to/app.js').then((res) => {
-		console.log(res.dot());
-	});
+	madge('path/to/app.js')
+		.then((res) => res.dot())
+		.then((output) => {
+			console.log(output;
+		});
 
 #### .image(imagePath: string)
 

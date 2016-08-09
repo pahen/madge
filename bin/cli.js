@@ -99,7 +99,9 @@ madge(program.args[0], config)
 		}
 
 		if (program.dot) {
-			process.stdout.write(res.dot());
+			return res.dot().then((output) => {
+				process.stdout.write(output);
+			});
 		}
 	})
 	.catch((err) => {
