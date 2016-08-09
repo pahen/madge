@@ -18,7 +18,7 @@ program
 	.option('--circular', 'show circular dependencies')
 	.option('--depends <name>', 'show modules that depends on the given id')
 	.option('--json', 'show output as JSON')
-	.option('--image <file>', 'write graph to file as a PNG image')
+	.option('--image <file>', 'write graph to file as an image')
 	.option('--layout <name>', 'layout engine to use for graph (dot/neato/fdp/sfdp/twopi/circo)')
 	.option('--dot', 'show graph using the DOT language')
 	.option('--no-color', 'disable color in output and image', false)

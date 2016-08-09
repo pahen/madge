@@ -19,17 +19,22 @@ Works for JS (AMD, CommonJS, ES6 modules) and CSS preprocessors (Sass, Stylus); 
 See [CHANGELOG](CHANGELOG.md) for latest changes.
 
 ## Examples
-Here's a very simple example of a generated image.
 
-![](examples/small.png)
+> Simple example of a generated image.
 
- - blue = has dependencies
- - green = has no dependencies
- - red = has circular dependencies
+<a href="http://pahen.github.io/madge/simple.svg">
+	<img src="http://pahen.github.io/madge/simple.svg" width=200/>
+</a>
 
-Here's an example generated from the madge source using the command `madge bin/cli.js --directory . --image examples/madge.png`.
+* blue = has dependencies
+* green = has no dependencies
+* red = has circular dependencies
 
-![](examples/madge.png)
+> Example generated from the madge source.
+
+<a href="http://pahen.github.io/madge/madge.svg">
+	<img src="http://pahen.github.io/madge/madge.svg" width=400/>
+</a>
 
 # Installation
 
@@ -180,10 +185,10 @@ $ madge --depends 'wheels' path/src/app.js
 $ madge --exclude '^foo$|^bar$|^tests' path/src/app.js
 ```
 
-> Save graph as a PNG image (graphviz required)
+> Save graph as a SVG image (graphviz required)
 
 ```sh
-$ madge --image graph.png path/src/app.js
+$ madge --image graph.svg path/src/app.js
 ```
 
 > Save graph as a [DOT](http://en.wikipedia.org/wiki/DOT_language) file for further processing (graphviz required)

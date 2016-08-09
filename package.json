@@ -27,11 +27,14 @@
     "madge": "./bin/cli.js"
   },
   "scripts": {
-    "test": "npm run lint && npm run madge && npm run mocha",
+    "test": "npm run lint && npm run mocha",
     "mocha": "mocha test/*.js",
     "watch": "mocha --watch --growl test/*.js",
     "lint": "eslint bin/cli.js lib test/*.js",
     "madge": "bin/cli.js bin/cli.js",
+    "generate": "npm run generate:small && npm run generate:madge",
+    "generate:small": "bin/cli.js test/files/cjs/circular/a.js --image simple.svg",
+    "generate:madge": "bin/cli.js bin/cli.js --directory . --image madge.svg",
     "release": "npm test && release-it -n -i patch",
     "release:minor": "npm run test && release-it -n -i minor",
     "release:major": "npm run test && release-it -n -i major"
