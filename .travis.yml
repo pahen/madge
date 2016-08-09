@@ -7,3 +7,7 @@ node_js:
 before_install:
 - sudo apt-get update
 - sudo apt-get install graphviz
+
+script:
+- npm test
+- npm run debug
