@@ -14,9 +14,9 @@ program
 	.option('--directory <path>', '')
 	.option('--list', 'show list of all dependencies (default)')
 	.option('--summary', 'show summary of all dependencies')
-	.option('--json', 'show list of dependencies as JSON')
 	.option('--circular', 'show circular dependencies')
 	.option('--depends <name>', 'show modules that depends on the given id')
+	.option('--json', 'show output as JSON')
 	.option('--image <file>', 'write graph to file as a PNG image')
 	.option('--layout <name>', 'layout engine to use for graph (dot/neato/fdp/sfdp/twopi/circo)')
 	.option('--dot', 'show graph using the DOT language')
@@ -56,22 +56,18 @@ if (!program.color) {
 
 madge(program.args[0], config)
 	.then((res) => {
-		if (program.list || (!program.summary && !program.circular && !program.depends && !program.image && !program.dot && !program.json)) {
+		if (program.list || (!program.summary && !program.circular && !program.depends && !program.image && !program.dot)) {
 			output.list(res.obj(), {
 				colors: program.color,
-				output: program.output
+				json: program.json
 			});
 		}
 
 		if (program.summary) {
 			output.summary(res.obj(), {
 				colors: program.color,
-				output: program.output
+				json: program.json
 			});
-		}
-
-		if (program.json) {
-			process.stdout.write(JSON.stringify(res.obj()) + '\n');
 		}
 
 		if (program.circular) {
@@ -79,7 +75,7 @@ madge(program.args[0], config)
 
 			output.circular(circular, {
 				colors: program.color,
-				output: program.output
+				json: program.json
 			});
 
 			if (circular.length) {
@@ -90,7 +86,7 @@ madge(program.args[0], config)
 		if (program.depends) {
 			output.depends(res.depends(program.depends), {
 				colors: program.color,
-				output: program.output
+				json: program.json
 			});
 		}
 
