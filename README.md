@@ -97,17 +97,14 @@ Returns a `Promise` resolved with the Madge instance object.
 		console.log(res.dot());
 	});
 
-#### .image()
+#### .image(imagePath: string)
 
-> Returns a `Promise` resolved with an image representation of the module dependency graph.
+> Write the graph as an image to the given image path. Returns a `Promise`.
 
 	const madge = require('madge');
 
 	madge('path/to/app.js')
-		.then((res) => res.image())
-		.then((image) => {
-			// write image to file
-		});
+		.then((res) => res.image('path/to/image.png'))
 	});
 
 # Configuration

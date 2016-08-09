@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 'use strict';
 
-const fs = require('fs');
 const program = require('commander');
 const rc = require('rc')('madge');
 const debug = require('debug')('madge');
@@ -96,13 +95,7 @@ madge(program.args[0], config)
 		}
 
 		if (program.image) {
-			return res.image().then((image) => {
-				fs.writeFile(program.image, image, (err) => {
-					if (err) {
-						throw err;
-					}
-				});
-			});
+			return res.image(program.image);
 		}
 
 		if (program.dot) {

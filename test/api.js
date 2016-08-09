@@ -1,7 +1,11 @@
 /* eslint-env mocha */
 'use strict';
 
+const os = require('os');
+const path = require('path');
+const fs = require('mz/fs');
 const madge = require('../lib/api');
+
 require('should');
 
 describe('Madge', () => {
@@ -61,11 +65,39 @@ describe('Madge', () => {
 	});
 
 	describe('#image', () => {
-		it('should return a Promise', (done) => {
-			madge(__dirname + '/files/cjs/a.js').then((res) => {
-				res.image('c').should.be.Promise(); // eslint-disable-line new-cap
-				done();
-			}).catch(done);
+		let imagePath;
+
+		beforeEach(() => {
+			imagePath = path.join(os.tmpdir(), 'madge_' + Date.now() + '_image.png');
+		});
+
+		afterEach(() => {
+			fs.unlink(imagePath);
+		});
+
+		it('rejects if a filename is not supplied', (done) => {
+			madge(__dirname + '/files/cjs/a.js')
+				.then((res) => res.image())
+				.catch((err) => {
+					err.message.should.eql('imagePath not provided');
+					done();
+				});
+		});
+
+		it('writes image to file', (done) => {
+			madge(__dirname + '/files/cjs/a.js')
+				.then((res) => res.image(imagePath))
+				.then(() => {
+					return fs
+						.exists(imagePath)
+						.then((exists) => {
+							if (!exists) {
+								throw new Error(imagePath + ' not created');
+							}
+							done();
+						});
+				})
+				.catch(done);
 		});
 	});
 });
