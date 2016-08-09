@@ -7,7 +7,7 @@ require('should');
 describe('CommonJS', () => {
 	const dir = __dirname + '/files/cjs';
 
-	it('should find recursive dependencies', (done) => {
+	it('finds recursive dependencies', (done) => {
 		madge(dir + '/normal/a.js').then((res) => {
 			res.obj().should.eql({
 				'a': ['sub/b'],
@@ -19,7 +19,7 @@ describe('CommonJS', () => {
 		}).catch(done);
 	});
 
-	it('should handle paths outside directory', (done) => {
+	it('handles path outside directory', (done) => {
 		madge(dir + '/normal/sub/c.js').then((res) => {
 			res.obj().should.eql({
 				'../d': [],
@@ -29,7 +29,7 @@ describe('CommonJS', () => {
 		}).catch(done);
 	});
 
-	it('should find circular dependencies', (done) => {
+	it('finds circular dependencies', (done) => {
 		madge(dir + '/circular/a.js').then((res) => {
 			res.circular().should.eql([
 				['a', 'b', 'c']
@@ -38,7 +38,7 @@ describe('CommonJS', () => {
 		}).catch(done);
 	});
 
-	it('should exclude core modules by default', (done) => {
+	it('excludes core modules by default', (done) => {
 		madge(dir + '/core.js').then((res) => {
 			res.obj().should.eql({
 				'core': []
@@ -47,7 +47,7 @@ describe('CommonJS', () => {
 		}).catch(done);
 	});
 
-	it('should exclude NPM modules by default', (done) => {
+	it('excludes NPM modules by default', (done) => {
 		madge(dir + '/npm.js').then((res) => {
 			res.obj().should.eql({
 				'normal/d': [],
@@ -57,7 +57,7 @@ describe('CommonJS', () => {
 		}).catch(done);
 	});
 
-	it('should be able to include NPM modules', (done) => {
+	it('can include NPM modules', (done) => {
 		madge(dir + '/npm.js', {
 			includeNpm: true
 		}).then((res) => {
@@ -70,7 +70,7 @@ describe('CommonJS', () => {
 		}).catch(done);
 	});
 
-	it('should be able to show file extensions', (done) => {
+	it('can show file extensions', (done) => {
 		madge(dir + '/normal/a.js', {
 			showFileExtension: true
 		}).then((res) => {

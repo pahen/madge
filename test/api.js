@@ -9,24 +9,24 @@ const madge = require('../lib/api');
 require('should');
 
 describe('Madge', () => {
-	it('should throw error on missing filename argument', () => {
+	it('throws error on missing filename argument', () => {
 		(() => {
 			madge();
 		}).should.throw('Filename argument is missing');
 	});
 
-	it('should return a Promise', () => {
+	it('returns a Promise', () => {
 		madge(__dirname + '/files/cjs/a.js').should.be.Promise(); // eslint-disable-line new-cap
 	});
 
-	it('should throw error if filename argument is not a file', (done) => {
+	it('throws error if filename argument is not a file', (done) => {
 		madge(__dirname + '/files').catch((err) => {
 			err.message.should.match(/is not a file/);
 			done();
 		}).catch(done);
 	});
 
-	it('should throw error if file does not exists', (done) => {
+	it('throws error if file does not exists', (done) => {
 		madge(__dirname + '/missing.js').catch((err) => {
 			err.message.should.match(/does not exists/);
 			done();
@@ -34,7 +34,7 @@ describe('Madge', () => {
 	});
 
 	describe('#obj', () => {
-		it('should return dependency object', (done) => {
+		it('returns dependency object', (done) => {
 			madge(__dirname + '/files/cjs/a.js').then((res) => {
 				res.obj().should.eql({
 					a: ['b', 'c'],
@@ -47,7 +47,7 @@ describe('Madge', () => {
 	});
 
 	describe('#dot', () => {
-		it('should return a promise resolved with graphviz DOT output', (done) => {
+		it('returns a promise resolved with graphviz DOT output', (done) => {
 			madge(__dirname + '/files/cjs/b.js')
 				.then((res) => res.dot())
 				.then((output) => {
@@ -59,7 +59,7 @@ describe('Madge', () => {
 	});
 
 	describe('#depends', () => {
-		it('should return modules that depends on another', (done) => {
+		it('returns modules that depends on another', (done) => {
 			madge(__dirname + '/files/cjs/a.js').then((res) => {
 				res.depends('c').should.eql(['a', 'b']);
 				done();
@@ -78,7 +78,7 @@ describe('Madge', () => {
 			fs.unlink(imagePath);
 		});
 
-		it('should reject if a filename is not supplied', (done) => {
+		it('rejects if a filename is not supplied', (done) => {
 			madge(__dirname + '/files/cjs/a.js')
 				.then((res) => res.image())
 				.catch((err) => {
@@ -87,7 +87,7 @@ describe('Madge', () => {
 				});
 		});
 
-		it('should write image to file', (done) => {
+		it('writes image to file', (done) => {
 			madge(__dirname + '/files/cjs/a.js')
 				.then((res) => res.image(imagePath))
 				.then(() => {
