@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
+const process = require('process');
 const program = require('commander');
 const rc = require('rc')('madge');
 const debug = require('debug')('madge');
@@ -28,6 +29,10 @@ program
 if (!program.args.length) {
 	console.log(program.helpInformation());
 	process.exit(1);
+}
+
+if (!program.color) {
+	process.env.DEBUG_COLORS = false;
 }
 
 if (rc.config) {
