@@ -87,6 +87,15 @@ describe('Madge', () => {
 				});
 		});
 
+		it('rejects on unsupported image format', (done) => {
+			madge(__dirname + '/files/cjs/a.js')
+				.then((res) => res.image('image.zyx'))
+				.catch((err) => {
+					err.message.should.match(/Format: "zyx" not recognized/);
+					done();
+				});
+		});
+
 		it('writes image to file', (done) => {
 			madge(__dirname + '/files/cjs/a.js')
 				.then((res) => res.image(imagePath))

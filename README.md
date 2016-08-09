@@ -101,13 +101,14 @@ Returns a `Promise` resolved with the Madge instance object.
 
 #### .image(imagePath: string)
 
-> Write the graph as an image to the given image path. Returns a `Promise`.
+> Write the graph as an image to the given image path. The [image format](http://www.graphviz.org/content/output-formats) to use is determined from the file extension. Returns a `Promise`.
 
 	const madge = require('madge');
 
 	madge('path/to/app.js')
-		.then((res) => res.image('path/to/image.png'))
+		.then((res) => res.image('path/to/image.svg'))
 	});
+
 
 # Configuration
 
