@@ -33,7 +33,9 @@ Here's an example generated from the madge source using the command `madge bin/c
 
 # Installation
 
-	$ npm -g install madge
+```sh
+$ npm -g install madge
+```
 
 ## Graphviz (optional)
 
@@ -41,11 +43,15 @@ Here's an example generated from the madge source using the command `madge bin/c
 
 ### Mac OS X
 
-	$ brew install graphviz || port install graphviz
+```sh
+$ brew install graphviz || port install graphviz
+```
 
 ### Ubuntu
 
-	$ apt-get install graphviz
+```sh
+$ apt-get install graphviz
+```
 
 # API
 
@@ -61,54 +67,63 @@ Returns a `Promise` resolved with the Madge instance object.
 
 > Returns an `Object` with all dependencies.
 
-	const madge = require('madge');
+```javascript
+const madge = require('madge');
 
-	madge('path/to/app.js').then((res) => {
-		console.log(res.obj());
-	});
+madge('path/to/app.js').then((res) => {
+	console.log(res.obj());
+});
+```
 
 #### .circular()
 
 > Returns an `Array` with all modules that has circular dependencies.
 
-	const madge = require('madge');
+```javascript
+const madge = require('madge');
 
-	madge('path/to/app.js').then((res) => {
-		console.log(res.circular());
-	});
+madge('path/to/app.js').then((res) => {
+	console.log(res.circular());
+});
+```
 
 #### .depends()
 
 > Returns an `Array` with all modules that depends on a given module.
 
-	const madge = require('madge');
+```javascript
+const madge = require('madge');
 
-	madge('path/to/app.js').then((res) => {
-		console.log(res.depends());
-	});
+madge('path/to/app.js').then((res) => {
+	console.log(res.depends());
+});
+```
 
 #### .dot()
 
 > Returns a `Promise` resolved with a DOT representation of the module dependency graph.
 
-	const madge = require('madge');
+```javascript
+const madge = require('madge');
 
-	madge('path/to/app.js')
-		.then((res) => res.dot())
-		.then((output) => {
-			console.log(output;
-		});
+madge('path/to/app.js')
+	.then((res) => res.dot())
+	.then((output) => {
+		console.log(output);
+	});
+```
 
 #### .image(imagePath: string)
 
 > Write the graph as an image to the given image path. The [image format](http://www.graphviz.org/content/output-formats) to use is determined from the file extension. Returns a `Promise`.
 
-	const madge = require('madge');
+```javascript
+const madge = require('madge');
 
-	madge('path/to/app.js')
-		.then((res) => res.image('path/to/image.svg'))
-	});
-
+madge('path/to/app.js')
+	.then((res) => res.image('path/to/image.svg'))
+});
+```
 
 # Configuration
 
@@ -129,10 +144,12 @@ Property | Type | Default | Description
 
 > Note that when running the CLI it's possible to use a runtime configuration file. The config should placed in `.madgerc` in your project or home folder. Look [here](https://github.com/dominictarr/rc#standards) for alternative locations for the file. Here's an example:
 
-	{
-		"showFileExtension": true,
-		"fontSize": "10px"
-	}
+```json
+{
+	"showFileExtension": true,
+	"fontSize": "10px"
+}
+```
 
 # CLI
 
@@ -140,37 +157,53 @@ Property | Type | Default | Description
 
 > List all module dependencies
 
-	$ madge path/src/app.js
+```sh
+$ madge path/src/app.js
+```
 
 > Finding circular dependencies
 
-	$ madge --circular path/src/app.js
+```sh
+$ madge --circular path/src/app.js
+```
 
 > Show modules that depends on a given module
 
-	$ madge --depends 'wheels' path/src/app.js
+```sh
+$ madge --depends 'wheels' path/src/app.js
+```
 
 > Excluding modules
 
-	$ madge --exclude '^foo$|^bar$|^tests' path/src/app.js
+```sh
+$ madge --exclude '^foo$|^bar$|^tests' path/src/app.js
+```
 
 > Save graph as a PNG image (graphviz required)
 
-	$ madge --image graph.png path/src/app.js
+```sh
+$ madge --image graph.png path/src/app.js
+```
 
 > Save graph as a [DOT](http://en.wikipedia.org/wiki/DOT_language) file for further processing (graphviz required)
 
-	$ madge --dot path/src/app.js > graph.gv
+```sh
+$ madge --dot path/src/app.js > graph.gv
+```
 
 # Debugging
 
 > To enable debugging output if you encounter problems, run madge in the following way
 
-	$ DEBUG=* madge path/src/app.js
+```sh
+$ DEBUG=* madge path/src/app.js
+```
 
 # Running tests
 
-	$ npm test
+```sh
+$ npm test
+```
 
 # FAQ
 
