@@ -108,7 +108,9 @@ describe('Madge', () => {
 		it('writes image to file', (done) => {
 			madge(__dirname + '/files/cjs/a.js')
 				.then((res) => res.image(imagePath))
-				.then(() => {
+				.then((writtenImagePath) => {
+					writtenImagePath.should.eql(imagePath);
+
 					return fs
 						.exists(imagePath)
 						.then((exists) => {

@@ -117,7 +117,7 @@ madge('path/to/app.js')
 
 #### .image(imagePath: string)
 
-> Write the graph as an image to the given image path. The [image format](http://www.graphviz.org/content/output-formats) to use is determined from the file extension. Returns a `Promise`.
+> Write the graph as an image to the given image path. The [image format](http://www.graphviz.org/content/output-formats) to use is determined from the file extension. Returns a `Promise` resolved with a full path to the written image.
 
 ```javascript
 const madge = require('madge');

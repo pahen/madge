@@ -95,7 +95,9 @@ madge(program.args[0], config)
 		}
 
 		if (program.image) {
-			return res.image(program.image);
+			return res.image(program.image).then((imagePath) => {
+				console.log('Image created at %s', imagePath);
+			});
 		}
 
 		if (program.dot) {
