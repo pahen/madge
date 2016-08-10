@@ -4,7 +4,7 @@
 const process = require('process');
 const program = require('commander');
 const rc = require('rc')('madge');
-const debug = require('debug')('madge');
+const log = require('../lib/log');
 const version = require('../package.json').version;
 const output = require('../lib/output');
 const madge = require('../lib/api');
@@ -36,7 +36,7 @@ if (!program.color) {
 }
 
 if (rc.config) {
-	debug('using runtime configuration from %s', rc.config);
+	log('using runtime configuration from %s', rc.config);
 }
 
 const config = Object.assign({}, rc);
