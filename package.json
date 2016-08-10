@@ -34,7 +34,7 @@
     "debug": "DEBUG=* bin/cli.js bin/cli.js",
     "generate": "npm run generate:small && npm run generate:madge",
     "generate:small": "bin/cli.js test/files/cjs/circular/a.js --image simple.svg",
-    "generate:madge": "bin/cli.js bin/cli.js --directory . --image madge.svg",
+    "generate:madge": "bin/cli.js bin/cli.js --basedir . --image madge.svg",
     "release": "npm test && release-it -n -i patch",
     "release:minor": "npm run test && release-it -n -i minor",
     "release:major": "npm run test && release-it -n -i major"

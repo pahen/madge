@@ -12,7 +12,7 @@ const madge = require('../lib/api');
 program
 	.version(version)
 	.usage('[options] <file>')
-	.option('--directory <path>', '')
+	.option('--basedir <path>', 'base directory to use when resolving paths')
 	.option('--list', 'show list of all dependencies (default)')
 	.option('--summary', 'show summary of all dependencies')
 	.option('--circular', 'show circular dependencies')
@@ -45,11 +45,15 @@ delete config._;
 delete config.config;
 delete config.configs;
 
-['directory', 'layout', 'requireConfig', 'webpackConfig'].forEach((option) => {
+['layout', 'requireConfig', 'webpackConfig'].forEach((option) => {
 	if (program[option]) {
 		config[option] = program[option];
 	}
 });
+
+if (program.basedir) {
+	config.baseDir = program.basedir;
+}
 
 if (!program.color) {
 	config.backgroundColor = '#ffffff';

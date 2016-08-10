@@ -7,14 +7,11 @@
 [![NPM Status](http://img.shields.io/npm/dm/madge.svg?style=flat-square)](https://www.npmjs.org/package/madge)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/pahen)
 
-A tool for generating a visual graph from your module dependencies. Can also find circular dependencies and give you other useful info about your dependencies. The dependencies are generated using Joel Kemp's awesome [dependency-tree](https://github.com/mrjoelkemp/node-dependency-tree).
+**Madge** is a developer tool for generating a visual graph of your module dependencies. Can also find circular dependencies and give you other useful info. The dependencies are generated using Joel Kemp's awesome [dependency-tree](https://github.com/mrjoelkemp/node-dependency-tree).
 
-Works for JS (AMD, CommonJS, ES6 modules) and CSS preprocessors (Sass, Stylus); basically, any filetype supported by [precinct](https://github.com/mrjoelkemp/node-precinct).
-
-  - For CommonJS modules, 3rd party dependencies (npm installed dependencies) are exluded in the tree
-  - Dependency path resolutions are handled by [filing-cabinet](https://github.com/mrjoelkemp/node-filing-cabinet)
-  - Supports RequireJS and Webpack loaders
-  - All core Node modules (assert, path, fs, etc) are removed from the dependency list by default
+* Works for JavaScript (AMD, CommonJS, ES6 modules) and CSS preprocessors (Sass, Stylus)
+* For CommonJS modules, NPM installed dependencies are exluded by default but can be enabled in config
+* All core Node.js modules (assert, path, fs, etc) are excluded
 
 See [CHANGELOG](CHANGELOG.md) for latest changes.
 
@@ -134,6 +131,7 @@ madge('path/to/app.js')
 
 Property | Type | Default | Description
 --- | --- | --- | ---
+`baseDir` | String | null | Base directory to use when resolving paths (defaults to `filePath` directory)
 `includeNpm` | Boolean | false | If node_modules should be included
 `showFileExtension` | Boolean | false | If file extensions should be included in module name
 `requireConfig` | String | null | RequireJS config for resolving aliased modules
