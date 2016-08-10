@@ -65,15 +65,15 @@ if (!program.color) {
 
 madge(program.args[0], config)
 	.then((res) => {
-		if (program.list || (!program.summary && !program.circular && !program.depends && !program.image && !program.dot)) {
-			output.list(res.obj(), {
+		if (program.summary) {
+			return output.summary(res.obj(), {
 				colors: program.color,
 				json: program.json
 			});
 		}
 
-		if (program.summary) {
-			output.summary(res.obj(), {
+		if (program.depends) {
+			return output.depends(res.depends(program.depends), {
 				colors: program.color,
 				json: program.json
 			});
@@ -90,13 +90,8 @@ madge(program.args[0], config)
 			if (circular.length) {
 				process.exit(1);
 			}
-		}
 
-		if (program.depends) {
-			output.depends(res.depends(program.depends), {
-				colors: program.color,
-				json: program.json
-			});
+			return;
 		}
 
 		if (program.image) {
@@ -108,6 +103,11 @@ madge(program.args[0], config)
 				process.stdout.write(output);
 			});
 		}
+
+		return output.list(res.obj(), {
+			colors: program.color,
+			json: program.json
+		});
 	})
 	.catch((err) => {
 		output.error(err, {
