@@ -81,15 +81,4 @@ describe('ES6', () => {
 			done();
 		}).catch(done);
 	});
-
-	it('can exclude modules', (done) => {
-		madge(dir + '/normal/a.js', {
-			exclude: '.*\/sub'
-		}).then((res) => {
-			res.obj().should.eql({
-				'a': []
-			});
-			done();
-		}).catch(done);
-	});
 });

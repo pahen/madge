@@ -33,6 +33,18 @@ describe('Madge', () => {
 		}).catch(done);
 	});
 
+	it('can exclude modules using RegExp', (done) => {
+		madge(__dirname + '/files/cjs/a.js', {
+			excludeRegExp: ['^b$']
+		}).then((res) => {
+			res.obj().should.eql({
+				a: ['c'],
+				c: []
+			});
+			done();
+		}).catch(done);
+	});
+
 	describe('#obj', () => {
 		it('returns dependency object', (done) => {
 			madge(__dirname + '/files/cjs/a.js').then((res) => {

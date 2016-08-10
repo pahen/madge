@@ -134,17 +134,18 @@ Property | Type | Default | Description
 `baseDir` | String | null | Base directory to use when resolving paths (defaults to `filePath` directory)
 `includeNpm` | Boolean | false | If node_modules should be included
 `showFileExtension` | Boolean | false | If file extensions should be included in module name
+`excludeRegExp` | Array | false | An array of RegExp to use for excluding modules from the graph
 `requireConfig` | String | null | RequireJS config for resolving aliased modules
 `webpackConfig` | String | null | Webpack config for resolving aliased modules
 `layout` | String | dot | Layout to use in graph
 `fontName` | String | Arial | Font name to use in graph
-`fontSize` | String | 14px | Font size  to use in graph
+`fontSize` | String | 14px | Font size to use in graph
 `backgroundColor` | String | #000000 | Background color for the graph
 `nodeColor` | String | #c6c5fe | The default node color to use in the graph
 `noDependencyColor` | String | #cfffac | The color to use for nodes with no dependencies
 `cyclicNodeColor` | String | #ff6c60 | The color to used for circular dependencies
 `edgeColor` | String | #757575 | The edge color to use in the graph
-`graphVizPath` | String | null | Set GraphViz path (if not in your path)
+`graphVizPath` | String | null | Custom GraphViz path
 
 > Note that when running the CLI it's possible to use a runtime configuration file. The config should placed in `.madgerc` in your project or home folder. Look [here](https://github.com/dominictarr/rc#standards) for alternative locations for the file. Here's an example:
 
@@ -180,7 +181,7 @@ $ madge --depends 'wheels' path/src/app.js
 > Excluding modules
 
 ```sh
-$ madge --exclude '^foo$|^bar$|^tests' path/src/app.js
+$ madge --exclude-regexp '^(foo|bar)$' path/src/app.js
 ```
 
 > Save graph as a SVG image (graphviz required)

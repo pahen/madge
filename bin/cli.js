@@ -18,6 +18,7 @@ program
 	.option('--circular', 'show circular dependencies')
 	.option('--depends <name>', 'show modules that depends on the given id')
 	.option('--json', 'show output as JSON')
+	.option('--exclude-regexp <regexp>', 'Exclude modules using a RegExp')
 	.option('--image <file>', 'write graph to file as an image')
 	.option('--layout <name>', 'layout engine to use for graph (dot/neato/fdp/sfdp/twopi/circo)')
 	.option('--dot', 'show graph using the DOT language')
@@ -53,6 +54,10 @@ delete config.configs;
 
 if (program.basedir) {
 	config.baseDir = program.basedir;
+}
+
+if (program.excludeRegexp) {
+	config.excludeRegExp = [program.excludeRegexp];
 }
 
 if (!program.color) {
