@@ -72,14 +72,12 @@ madge(program.args[0], config)
 	.then((res) => {
 		if (program.summary) {
 			return output.summary(res.obj(), {
-				colors: program.color,
 				json: program.json
 			});
 		}
 
 		if (program.depends) {
 			return output.depends(res.depends(program.depends), {
-				colors: program.color,
 				json: program.json
 			});
 		}
@@ -88,7 +86,6 @@ madge(program.args[0], config)
 			const circular = res.circular();
 
 			output.circular(circular, {
-				colors: program.color,
 				json: program.json
 			});
 
@@ -112,14 +109,11 @@ madge(program.args[0], config)
 		}
 
 		return output.list(res.obj(), {
-			colors: program.color,
 			json: program.json
 		});
 	})
 	.catch((err) => {
-		output.error(err, {
-			colors: program.color
-		});
+		output.error(err);
 
 		process.exit(1);
 	});
