@@ -7,13 +7,13 @@
 [![NPM Status](http://img.shields.io/npm/dm/madge.svg?style=flat-square)](https://www.npmjs.org/package/madge)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/pahen)
 
-**Madge** is a developer tool for generating a visual graph of your module dependencies. Can also find circular dependencies and give you other useful info. The dependencies are generated using Joel Kemp's awesome [dependency-tree](https://github.com/mrjoelkemp/node-dependency-tree).
+**Madge** is a developer tool for generating a visual graph of your module dependencies, finding circular dependencies, and give you other useful info. Joel Kemp's awesome [dependency-tree](https://github.com/mrjoelkemp/node-dependency-tree) is used for extracting the dependency tree.
 
 * Works for JavaScript (AMD, CommonJS, ES6 modules) and CSS preprocessors (Sass, Stylus)
-* For CommonJS modules, NPM installed dependencies are exluded by default but can be enabled in config
+* NPM installed dependencies are excluded by default (can be enabled in config)
 * All core Node.js modules (assert, path, fs, etc) are excluded
 
-See [CHANGELOG](CHANGELOG.md) for latest changes.
+Read the [changelog](CHANGELOG.md) for latest changes.
 
 ## Examples
 

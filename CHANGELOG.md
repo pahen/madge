@@ -1,5 +1,45 @@
 # CHANGELOG
 
+## v1.0.0 (????)
+
+After 4 years of adding features/fixes it started to be hard to maintain the project and fix some outstanding issues due to how madge was designed to work.
+
+So I decided it was high time for version 1.0 to be released and take the opportunity to do a major rewrite and reduce the size and responsibility of the project and delegate some work to [external libraries](https://github.com/mrjoelkemp/node-dependency-tree). This introduced many breaking changes. Here's the most important ones.
+
+**Added:**
+
+* Automatic module type detection thanks to [precinct](https://github.com/mrjoelkemp/node-precinct)
+* Determine image format based on file extension (SVG support)
+* Reading [config](README.md#configuration) from `.madgerc` (replaces `--config`)
+* Option `--webpack-config` for supporting aliased module paths
+
+**Changed:**
+
+* Renamed many of the settings in the [config](README.md#configuration)
+* Option `--json` should now be used instead of `--output json`
+* Option `--exclude` renamed to `--exclude-regexp`
+* The generation of the dependency tree is now delegated to the external module [dependency-tree](https://github.com/mrjoelkemp/node-dependency-tree)
+* A single file will now be used as an entry instead if scanning entire folder(s)
+* Dependencies will now be extracted recursively from the single file
+* NPM installed dependencies are now excluded by default
+* Node.js core modules are now excluded
+* The [API](README.md#api) is now using promises
+
+**Removed:**
+
+* Option `--format` since the format is now detected automatically from the file content
+* Option `--optimized` and `--main-require-module` since we no longer support RequireJS builds (r.js)
+* Option `--read`
+* Option `--find-nested-dependencies`
+* Option `--paths`
+* Option `--extensions`
+* Option `--config`
+* Option `--output`
+* Option `--break-on-error`
+* CoffeScript support
+* Event callbacks `onParseFile` and `onAddModule`
+* NPM shrinkwrap no longer used
+
 ## v0.6.0 (July 06, 2016)
 * Refactored Madge to use ES6 and now requires Node.js 4 to run.
 
