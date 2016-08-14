@@ -12,6 +12,7 @@
 * Works for JavaScript (AMD, CommonJS, ES6 modules) and CSS preprocessors (Sass, Stylus)
 * NPM installed dependencies are excluded by default (can be enabled in config)
 * All core Node.js modules (assert, path, fs, etc) are excluded
+* Get default file to scan from package.json (bin or main)
 
 Read the [changelog](CHANGELOG.md) for latest changes.
 
@@ -198,10 +199,10 @@ $ madge --dot path/src/app.js > graph.gv
 
 # Debugging
 
-> To enable debugging output if you encounter problems, run madge in the following way
+> To enable debugging output if you encounter problems, run madge with the `--debug` option then throw the result in a gist when creating issues on GitHub.
 
 ```sh
-$ DEBUG=* madge path/src/app.js
+$ madge --debug path/src/app.js
 ```
 
 # Running tests

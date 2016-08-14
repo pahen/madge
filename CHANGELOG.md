@@ -12,6 +12,8 @@ So I decided it was high time for version 1.0 to be released and take the opport
 * Determine image format based on file extension (SVG support)
 * Reading [config](README.md#configuration) from `.madgerc` (replaces `--config`)
 * Option `--webpack-config` for supporting aliased module paths
+* Option `--debug` for turning on debug output
+* Get default file to read from package.json
 
 **Changed:**
 
@@ -19,7 +21,7 @@ So I decided it was high time for version 1.0 to be released and take the opport
 * Option `--json` should now be used instead of `--output json`
 * Option `--exclude` renamed to `--exclude-regexp`
 * The generation of the dependency tree is now delegated to the external module [dependency-tree](https://github.com/mrjoelkemp/node-dependency-tree)
-* A single file will now be used as an entry instead if scanning entire folder(s)
+* A single file will now be used as an entry instead of scanning entire folder(s)
 * Dependencies will now be extracted recursively from the single file
 * NPM installed dependencies are now excluded by default
 * Node.js core modules are now excluded

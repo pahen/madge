@@ -2,49 +2,53 @@
 'use strict';
 
 const process = require('process');
+const path = require('path');
+const fs = require('mz/fs');
 const program = require('commander');
 const rc = require('rc')('madge');
-const log = require('../lib/log');
+const readPackage = require('read-package-json');
 const version = require('../package.json').version;
-const output = require('../lib/output');
-const madge = require('../lib/api');
 
 program
 	.version(version)
-	.usage('[options] <file>')
+	.usage('[options] [file|dir]')
 	.option('--basedir <path>', 'base directory to use when resolving paths')
 	.option('--list', 'show list of all dependencies (default)')
 	.option('--summary', 'show summary of all dependencies')
 	.option('--circular', 'show circular dependencies')
 	.option('--depends <name>', 'show modules that depends on the given id')
 	.option('--json', 'show output as JSON')
-	.option('--exclude-regexp <regexp>', 'Exclude modules using a RegExp')
+	.option('--exclude-regexp <regexp>', 'exclude modules using a RegExp')
 	.option('--image <file>', 'write graph to file as an image')
 	.option('--layout <name>', 'layout engine to use for graph (dot/neato/fdp/sfdp/twopi/circo)')
 	.option('--dot', 'show graph using the DOT language')
-	.option('--no-color', 'disable color in output and image', false)
 	.option('--require-config <file>', 'path to RequireJS config')
 	.option('--webpack-config <file>', 'path to webpack config')
+	.option('--no-color', 'disable color in output and image', false)
+	.option('--debug', 'turn on debug output', false)
 	.parse(process.argv);
 
-if (!program.args.length) {
-	console.log(program.helpInformation());
-	process.exit(1);
+if (program.debug) {
+	process.env.DEBUG = '*';
 }
 
 if (!program.color) {
 	process.env.DEBUG_COLORS = false;
 }
 
-if (rc.config) {
-	log('using runtime configuration from %s', rc.config);
-}
-
+const log = require('../lib/log');
+const output = require('../lib/output');
+const madge = require('../lib/api');
+const target = program.args[0] || process.cwd();
 const config = Object.assign({}, rc);
 
 delete config._;
 delete config.config;
 delete config.configs;
+
+if (rc.config) {
+	log('using runtime configuration from %s', rc.config);
+}
 
 ['layout', 'requireConfig', 'webpackConfig'].forEach((option) => {
 	if (program[option]) {
@@ -68,7 +72,37 @@ if (!program.color) {
 	config.edgeColor = '#757575';
 }
 
-madge(program.args[0], config)
+fs
+	.stat(target)
+	.then((stats) => {
+		if (stats.isFile()) {
+			return program.args[0];
+		}
+
+		const pkgPath = path.join(target, 'package.json');
+
+		return new Promise((resolve, reject) => {
+			readPackage(pkgPath, (err, pkg) => {
+				if (err) {
+					reject('Could not read ' + pkgPath + '. Choose another directory or specify file.');
+					return;
+				}
+
+				config.baseDir = target;
+
+				if (pkg.bin) {
+					log('extracted file path from "bin" entry in ' + pkgPath);
+					resolve(path.join(target, pkg.bin[Object.keys(pkg.bin)[0]]));
+				} else if (pkg.main) {
+					log('extracted file path from "main" entry in ' + pkgPath);
+					resolve(path.join(target, pkg.main));
+				} else {
+					reject('Could not get file to scan by reading package.json. Update package.json or specify a file.');
+				}
+			});
+		});
+	})
+	.then((filePath) => madge(filePath, config))
 	.then((res) => {
 		if (program.summary) {
 			return output.summary(res.obj(), {

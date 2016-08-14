@@ -31,10 +31,10 @@
     "mocha": "mocha test/*.js",
     "watch": "mocha --watch --growl test/*.js",
     "lint": "eslint bin/cli.js lib test/*.js",
-    "debug": "DEBUG=* bin/cli.js bin/cli.js",
+    "debug": "bin/cli.js --debug",
     "generate": "npm run generate:small && npm run generate:madge",
     "generate:small": "bin/cli.js test/files/cjs/circular/a.js --image simple.svg",
-    "generate:madge": "bin/cli.js bin/cli.js --basedir . --image madge.svg"
+    "generate:madge": "bin/cli.js --image madge.svg"
   },
   "dependencies": {
     "chalk": "^1.1.3",
@@ -43,7 +43,8 @@
     "dependency-tree": "^5.4.1",
     "graphviz": "^0.0.8",
     "mz": "^2.4.0",
-    "rc": "^1.1.6"
+    "rc": "^1.1.6",
+    "read-package-json": "^2.0.4"
   },
   "devDependencies": {
     "@aptoma/eslint-config": "^4.0.0",
