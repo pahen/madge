@@ -19,7 +19,6 @@ So I decided it was high time for version 1.0 to be released and take the opport
 
 * Renamed many of the settings in the [config](README.md#configuration)
 * Option `--json` should now be used instead of `--output json`
-* Option `--exclude` renamed to `--exclude-regexp`
 * The generation of the dependency tree is now delegated to the external module [dependency-tree](https://github.com/mrjoelkemp/node-dependency-tree)
 * A single file will now be used as an entry instead of scanning entire folder(s)
 * Dependencies will now be extracted recursively from the single file

@@ -182,7 +182,7 @@ $ madge --depends 'wheels' path/src/app.js
 > Excluding modules
 
 ```sh
-$ madge --exclude-regexp '^(foo|bar)$' path/src/app.js
+$ madge --exclude '^(foo|bar)$' path/src/app.js
 ```
 
 > Save graph as a SVG image (graphviz required)
