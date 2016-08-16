@@ -12,7 +12,6 @@
 * Works for JavaScript (AMD, CommonJS, ES6 modules) and CSS preprocessors (Sass, Stylus)
 * NPM installed dependencies are excluded by default (can be enabled in config)
 * All core Node.js modules (assert, path, fs, etc) are excluded
-* Get default file to scan from package.json (bin or main)
 
 Read the [changelog](CHANGELOG.md) for latest changes.
 
@@ -58,11 +57,13 @@ $ apt-get install graphviz
 
 # API
 
-## madge(filePath: string, config: object)
+## madge(path: string|array, config: object)
+
+> `path` is a single file or directory to read (or an array of files/directories).
 
 > `config` is optional and should be [configuration](#configuration) to be used.
 
-Returns a `Promise` resolved with the Madge instance object.
+> Returns a `Promise` resolved with the Madge instance object.
 
 ## Functions
 
@@ -134,6 +135,7 @@ Property | Type | Default | Description
 --- | --- | --- | ---
 `baseDir` | String | null | Base directory to use when resolving paths (defaults to `filePath` directory)
 `includeNpm` | Boolean | false | If node_modules should be included
+`fileExtensions` | Array | ['js'] | Valid file extensions used when scanning a folder for files
 `showFileExtension` | Boolean | false | If file extensions should be included in module name
 `excludeRegExp` | Array | false | An array of RegExp to use for excluding modules from the graph
 `requireConfig` | String | null | RequireJS config for resolving aliased modules
@@ -161,10 +163,34 @@ Property | Type | Default | Description
 
 ## Examples
 
-> List all module dependencies
+> List dependencies from a single file
 
 ```sh
 $ madge path/src/app.js
+```
+
+> List dependencies from multiple files
+
+```sh
+$ madge path/src/foo.js path/src/bar.js
+```
+
+> List dependencies from all *.js files found in a directory
+
+```sh
+$ madge path/src
+```
+
+> List dependencies from multiple directories
+
+```sh
+$ madge path/src/foo path/src/bar
+```
+
+> List dependencies from all *.js and *.jsx files found in a directory
+
+```sh
+$ madge --extensions js,jsx path/src
 ```
 
 > Finding circular dependencies
