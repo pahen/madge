@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v1.0.0 (????)
+## v1.0.0 (Aug 19, 2016)
 
 After 4 years of adding features/fixes it started to be hard to maintain the project and fix some outstanding issues due to how madge was designed to work.
 
@@ -13,14 +13,13 @@ So I decided it was high time for version 1.0 to be released and take the opport
 * Reading [config](README.md#configuration) from `.madgerc` (replaces `--config`)
 * Option `--webpack-config` for supporting aliased module paths
 * Option `--debug` for turning on debug output
-* Get default file to read from package.json
 
 **Changed:**
 
 * Renamed many of the settings in the [config](README.md#configuration)
 * Option `--json` should now be used instead of `--output json`
 * The generation of the dependency tree is now delegated to the external module [dependency-tree](https://github.com/mrjoelkemp/node-dependency-tree)
-* Dependencies will now be extracted recursively
+* Recurse into child dependencies to get a complete dependency tree of a file
 * NPM installed dependencies are now excluded by default
 * Node.js core modules are now excluded
 * The [API](README.md#api) is now using promises
@@ -35,7 +34,7 @@ So I decided it was high time for version 1.0 to be released and take the opport
 * Option `--config`
 * Option `--output`
 * Option `--break-on-error`
-* CoffeScript support
+* CoffeeScript support
 * Event callbacks `onParseFile` and `onAddModule`
 * NPM shrinkwrap no longer used
 

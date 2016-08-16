@@ -12,25 +12,28 @@
 * Works for JavaScript (AMD, CommonJS, ES6 modules) and CSS preprocessors (Sass, Stylus)
 * NPM installed dependencies are excluded by default (can be enabled in config)
 * All core Node.js modules (assert, path, fs, etc) are excluded
+* Recurse into child dependencies to get a complete dependency tree of a file
 
 Read the [changelog](CHANGELOG.md) for latest changes.
 
 ## Examples
 
-> Simple example of a generated image.
-
-<a href="http://pahen.github.io/madge/simple.svg">
-	<img src="http://pahen.github.io/madge/simple.svg" width=200/>
-</a>
-
-* blue = has dependencies
-* green = has no dependencies
-* red = has circular dependencies
-
-> Example generated from the madge source.
+> Graph generated from the madge source code.
 
 <a href="http://pahen.github.io/madge/madge.svg">
-	<img src="http://pahen.github.io/madge/madge.svg" width=400/>
+	<img src="http://pahen.github.io/madge/madge.svg" width="888"/>
+</a>
+
+> A graph with circular dependencies. Blue has dependencies, green has no dependencies, and red has circular dependencies.
+
+<a href="http://pahen.github.io/madge/simple.svg">
+	<img src="http://pahen.github.io/madge/simple.svg" width="300"/>
+</a>
+
+## See it in action
+
+<a href="https://asciinema.org/a/8zhzdbpisjqtwgrsifclyqpuz?autoplay=1">
+	<img src="https://asciinema.org/a/8zhzdbpisjqtwgrsifclyqpuz.png" width="590"/>
 </a>
 
 # Installation
@@ -133,21 +136,21 @@ madge('path/to/app.js')
 
 Property | Type | Default | Description
 --- | --- | --- | ---
-`baseDir` | String | null | Base directory to use when resolving paths (defaults to `filePath` directory)
+`baseDir` | String | null | Base directory to use instead of the default
 `includeNpm` | Boolean | false | If node_modules should be included
-`fileExtensions` | Array | ['js'] | Valid file extensions used when scanning a folder for files
-`showFileExtension` | Boolean | false | If file extensions should be included in module name
-`excludeRegExp` | Array | false | An array of RegExp to use for excluding modules from the graph
+`fileExtensions` | Array | ['js'] | Valid file extensions used to find files in directories
+`showFileExtension` | Boolean | false | If file extension should be included in module name
+`excludeRegExp` | Array | false | An array of RegExp for excluding modules
 `requireConfig` | String | null | RequireJS config for resolving aliased modules
 `webpackConfig` | String | null | Webpack config for resolving aliased modules
-`layout` | String | dot | Layout to use in graph
-`fontName` | String | Arial | Font name to use in graph
-`fontSize` | String | 14px | Font size to use in graph
+`layout` | String | dot | Layout to use in the graph
+`fontName` | String | Arial | Font name to use in the graph
+`fontSize` | String | 14px | Font size to use in the graph
 `backgroundColor` | String | #000000 | Background color for the graph
-`nodeColor` | String | #c6c5fe | The default node color to use in the graph
-`noDependencyColor` | String | #cfffac | The color to use for nodes with no dependencies
-`cyclicNodeColor` | String | #ff6c60 | The color to used for circular dependencies
-`edgeColor` | String | #757575 | The edge color to use in the graph
+`nodeColor` | String | #c6c5fe | Default node color to use in the graph
+`noDependencyColor` | String | #cfffac | Color to use for nodes with no dependencies
+`cyclicNodeColor` | String | #ff6c60 | Color to use for circular dependencies
+`edgeColor` | String | #757575 | Edge color to use in the graph
 `graphVizPath` | String | null | Custom GraphViz path
 
 > Note that when running the CLI it's possible to use a runtime configuration file. The config should placed in `.madgerc` in your project or home folder. Look [here](https://github.com/dominictarr/rc#standards) for alternative locations for the file. Here's an example:
