@@ -1,2 +1,2 @@
-import {B} from 'test/files/es6/absolute/b';
+import {B} from 'absolute/b';
 async function foo() {}

@@ -7,222 +7,238 @@
 [![NPM Status](http://img.shields.io/npm/dm/madge.svg?style=flat-square)](https://www.npmjs.org/package/madge)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/pahen)
 
-Create graphs from your [CommonJS](http://nodejs.org/api/modules.html), [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) or [ES6](https://people.mozilla.org/~jorendorff/es6-draft.html) module dependencies. Could also be useful for finding circular dependencies in your code. Tested on [Node.js](http://nodejs.org/) and [RequireJS](http://requirejs.org/) projects. Dependencies are calculated using static code analysis. CommonJS dependencies are found using James Halliday's [detective](https://github.com/substack/node-detective), for AMD I'm using [amdetective](https://www.npmjs.org/package/amdetective) and for ES6 [detective-es6](https://www.npmjs.com/package/detective-es6) is used. Modules written in [CoffeeScript](http://coffeescript.org/) with extension .coffee are supported and will automatically be compiled on-the-fly.
+**Madge** is a developer tool for generating a visual graph of your module dependencies, finding circular dependencies, and give you other useful info. Joel Kemp's awesome [dependency-tree](https://github.com/mrjoelkemp/node-dependency-tree) is used for extracting the dependency tree.
+
+* Works for JavaScript (AMD, CommonJS, ES6 modules) and CSS preprocessors (Sass, Stylus)
+* NPM installed dependencies are excluded by default (can be enabled in config)
+* All core Node.js modules (assert, path, fs, etc) are excluded
+* Recurse into child dependencies to get a complete dependency tree of a file
+
+Read the [changelog](CHANGELOG.md) for latest changes.
 
 ## Examples
-Here's a very simple example of a generated image.
 
-![](https://github.com/pahen/node-madge/raw/master/examples/small.png)
+> Graph generated from the madge source code.
 
- - blue = has dependencies
- - green = has no dependencies
- - red = has circular dependencies
+<a href="http://pahen.github.io/madge/madge.svg">
+	<img src="http://pahen.github.io/madge/madge.svg" width="888"/>
+</a>
 
-Here's an example generated from the [Express](https://github.com/visionmedia/express) project.
+> A graph with circular dependencies. Blue has dependencies, green has no dependencies, and red has circular dependencies.
 
-![](https://github.com/pahen/node-madge/raw/master/examples/express.png)
+<a href="http://pahen.github.io/madge/simple.svg">
+	<img src="http://pahen.github.io/madge/simple.svg" width="300"/>
+</a>
 
-And some terminal usage.
+## See it in action
 
-![](https://github.com/pahen/node-madge/raw/master/examples/terminal.png)
+<a href="https://asciinema.org/a/8zhzdbpisjqtwgrsifclyqpuz?autoplay=1">
+	<img src="https://asciinema.org/a/8zhzdbpisjqtwgrsifclyqpuz.png" width="590"/>
+</a>
 
 # Installation
 
-To install as a library:
-
-	$ npm install madge
-
-To install the CLI:
-
-	$ npm -g install madge
+```sh
+$ npm -g install madge
+```
 
 ## Graphviz (optional)
 
-Only required if you want to generate the visual graphs using [Graphviz](http://www.graphviz.org/).
+> Only required if you want to generate the visual graphs using [Graphviz](http://www.graphviz.org/).
 
 ### Mac OS X
 
-	$ port install graphviz
-
-OR
-
-	$ brew install graphviz
+```sh
+$ brew install graphviz || port install graphviz
+```
 
 ### Ubuntu
 
-	$ apt-get install graphviz
+```sh
+$ apt-get install graphviz
+```
 
 # API
 
-	var madge = require('madge');
-	var dependencyObject = madge('./');
-	console.log(dependencyObject.tree);
+## madge(path: string|array, config: object)
 
-## madge(src, opts)
+> `path` is a single file or directory to read (or an array of files/directories).
 
-{Object|Array|String} **src** (required)
+> `config` is optional and should be [configuration](#configuration) to be used.
 
-- Object - a dependency tree.
-- Array - an Array of directories to scan.
-- String - a directory to scan.
+> Returns a `Promise` resolved with the Madge instance object.
 
-{Object} **opts** (optional)
-
-- {String} **format**. The module format to expect, 'cjs', 'amd' or 'es6'. Commonjs (cjs) is the default format.
-- {String} **exclude**. String from which a regex will be constructed for excluding files from the scan.
-- {Boolean} **breakOnError**. True if the parser should stop on parse errors and when modules are missing, false otherwise. Defaults to false.
-- {Boolean} **optimized**. True if the parser should read modules from a optimized file (r.js). Defaults to false.
-- {Boolean} **findNestedDependencies**. True if nested dependencies should be found in AMD modules. Defaults to false.
-- {String} **mainRequireModule**. Name of the module if parsing an optimized file (r.js), where the main file used `require()` instead of `define`. Defaults to `''`.
-- {String} **requireConfig**. Path to RequireJS config used to find shim dependencies and path aliases. Not used by default.
-- {Function} **onParseFile**. Function to be called when parsing a file (argument will be an object with "filename" and "src" property set).
-- {Function} **onAddModule** . Function to be called when adding a module to the module tree (argument will be an object with "id" and "dependencies" property set).
-- {Array} **extensions**. List of file extensions which are considered. Defaults to `['.js']`.
-
-## dependency object (returned from madge)
-
-#### .opts
-
-Options object passed used in the constructor.
-
-#### .tree
-
-Dependency tree object. Can be overwritten with an object in the format:
-
-	{
-	     'module1': ['dep1a', 'dep1b'],
-	     'module2': ['dep2a']
-	}
+## Functions
 
 #### .obj()
 
-Alias to the tree property.
+> Returns an `Object` with all dependencies.
+
+```javascript
+const madge = require('madge');
+
+madge('path/to/app.js').then((res) => {
+	console.log(res.obj());
+});
+```
 
 #### .circular()
 
-Circular dependencies object, returns:
+> Returns an `Array` with all modules that has circular dependencies.
 
-    {
-        'getArray': function,           /** @param {}   array   */
-        'isCyclic': function            /** @param {id} boolean */
-    }
+```javascript
+const madge = require('madge');
+
+madge('path/to/app.js').then((res) => {
+	console.log(res.circular());
+});
+```
 
 #### .depends()
 
-Returns a list of modules that depends on a given module.
+> Returns an `Array` with all modules that depends on a given module.
+
+```javascript
+const madge = require('madge');
+
+madge('path/to/app.js').then((res) => {
+	console.log(res.depends());
+});
+```
 
 #### .dot()
 
-Get a DOT representation of the module dependency graph.
+> Returns a `Promise` resolved with a DOT representation of the module dependency graph.
 
-#### .image(opts, callback)
+```javascript
+const madge = require('madge');
 
-Get an image representation of the module dependency graph.
+madge('path/to/app.js')
+	.then((res) => res.dot())
+	.then((output) => {
+		console.log(output);
+	});
+```
 
-- {Object} **opts** (required).
-	- {String} **layout**. The layout to use. Defaults to 'DOT'.
-	- {String} **fontFace**. The font face to use. Defaults to 'Times-Roman'.
-	- {Object} **imageColors**. Object with color information (all colors are strings containing hex values).
-		- {String} **bgcolor**. The backgound color.
-		- {String} **edge**. The edge color.
-		- {String} **dependencies**. The color for dependencies and for text if fontColor is not present.
-		- {String} **fontColor**. The color for text.
-- {Function} **callback** (required). Receives the rendered image as the first argument.
+#### .image(imagePath: string)
+
+> Write the graph as an image to the given image path. The [image format](http://www.graphviz.org/content/output-formats) to use is determined from the file extension. Returns a `Promise` resolved with a full path to the written image.
+
+```javascript
+const madge = require('madge');
+
+madge('path/to/app.js')
+	.then((res) => res.image('path/to/image.svg'))
+});
+```
+
+# Configuration
+
+Property | Type | Default | Description
+--- | --- | --- | ---
+`baseDir` | String | null | Base directory to use instead of the default
+`includeNpm` | Boolean | false | If node_modules should be included
+`fileExtensions` | Array | ['js'] | Valid file extensions used to find files in directories
+`showFileExtension` | Boolean | false | If file extension should be included in module name
+`excludeRegExp` | Array | false | An array of RegExp for excluding modules
+`requireConfig` | String | null | RequireJS config for resolving aliased modules
+`webpackConfig` | String | null | Webpack config for resolving aliased modules
+`layout` | String | dot | Layout to use in the graph
+`fontName` | String | Arial | Font name to use in the graph
+`fontSize` | String | 14px | Font size to use in the graph
+`backgroundColor` | String | #000000 | Background color for the graph
+`nodeColor` | String | #c6c5fe | Default node color to use in the graph
+`noDependencyColor` | String | #cfffac | Color to use for nodes with no dependencies
+`cyclicNodeColor` | String | #ff6c60 | Color to use for circular dependencies
+`edgeColor` | String | #757575 | Edge color to use in the graph
+`graphVizPath` | String | null | Custom GraphViz path
+
+> Note that when running the CLI it's possible to use a runtime configuration file. The config should placed in `.madgerc` in your project or home folder. Look [here](https://github.com/dominictarr/rc#standards) for alternative locations for the file. Here's an example:
+
+```json
+{
+	"showFileExtension": true,
+	"fontSize": "10px"
+}
+```
 
 # CLI
 
-	Usage: madge [options] <file|dir ...>
+## Examples
 
-	Options:
+> List dependencies from a single file
 
-	-h, --help                       output usage information
-	-V, --version                    output the version number
-	-f, --format <name>              format to parse (amd/cjs/es6)
-	-s, --summary                    show summary of all dependencies
-	-L, --list                       show list of all dependencies
-	-c, --circular                   show circular dependencies
-	-d, --depends <id>               show modules that depends on the given id
-	-x, --exclude <regex>            a regular expression for excluding modules
-	-t, --dot                        output graph in the DOT language
-	-i, --image <filename>           write graph to file as a PNG image
-	-l, --layout <name>              layout engine to use for image graph (dot/neato/fdp/sfdp/twopi/circo)
-	-b, --break-on-error             break on parse errors & missing modules
-	-n, --no-colors                  skip colors in output and images
-	-r, --read                       skip scanning folders and read JSON from stdin
-	-C, --config <filename>          provide a config file
-	-R, --require-config <filename>  include shim dependencies and path aliases found in RequireJS config file
-	-O, --optimized                  if given file is optimized with r.js
-	-M  --main-require-module        name of the primary RequireJS module, if it's included with `require()`
-	-j  --json                       output dependency tree in json
+```sh
+$ madge path/src/app.js
+```
 
+> List dependencies from multiple files
 
-## Examples:
+```sh
+$ madge path/src/foo.js path/src/bar.js
+```
 
-### List all module dependencies (CommonJS)
+> List dependencies from all *.js files found in a directory
 
-	$ madge /path/src
+```sh
+$ madge path/src
+```
 
-### List all module dependencies (AMD)
+> List dependencies from multiple directories
 
-	$ madge --format amd /path/src
+```sh
+$ madge path/src/foo path/src/bar
+```
 
-### List all module dependencies (ES6)
+> List dependencies from all *.js and *.jsx files found in a directory
 
-	$ madge --format es6 /path/src
+```sh
+$ madge --extensions js,jsx path/src
+```
 
-### Finding circular dependencies
+> Finding circular dependencies
 
-	$ madge --circular /path/src
+```sh
+$ madge --circular path/src/app.js
+```
 
-### Show modules that depends on a given module
+> Show modules that depends on a given module
 
-	$ madge --depends 'wheels' /path/src
+```sh
+$ madge --depends 'wheels' path/src/app.js
+```
 
-### Excluding modules
+> Excluding modules
 
-	$ madge --exclude '^foo$|^bar$|^tests' /path/src
+```sh
+$ madge --exclude '^(foo|bar)$' path/src/app.js
+```
 
-### Save graph as a PNG image (graphviz required)
+> Save graph as a SVG image (graphviz required)
 
-	$ madge --image graph.png /path/src
+```sh
+$ madge --image graph.svg path/src/app.js
+```
 
-### Save graph as a [DOT](http://en.wikipedia.org/wiki/DOT_language) file for further processing (graphviz required)
+> Save graph as a [DOT](http://en.wikipedia.org/wiki/DOT_language) file for further processing (graphviz required)
 
-	$ madge --dot /path/src > graph.gv
+```sh
+$ madge --dot path/src/app.js > graph.gv
+```
 
-### Run on optimized file by r.js (RequireJS optimizer)
-	$ r.js -o app-build.js
-	$ madge --format amd --optimized app-build.js
+# Debugging
 
-### Include shim dependencies found in RequireJS config
-	$ madge --format amd --require-config path/config.js path/src
+> To enable debugging output if you encounter problems, run madge with the `--debug` option then throw the result in a gist when creating issues on GitHub.
 
-### Pipe predefined results (the example image was produced with the following command)
+```sh
+$ madge --debug path/src/app.js
+```
 
-	$ cat << EOF | madge --read --image example.png
-	{
-		"a": ["b", "c", "d"],
-		"b": ["c"],
-		"c": [],
-		"d": ["a"]
-	}
-	EOF
+# Running tests
 
-## Config (use with --config)
-
-	{
-	    "format": "amd",
-	    "image": "dependencyMap.png",
-	    "fontFace": "Arial",
-	    "fontSize": "14px",
-	    "imageColors": {
-	        "noDependencies" : "#0000ff",
-	        "dependencies" : "#00ff00",
-	        "circular" : "#bada55",
-	        "edge" : "#666666",
-	        "bgcolor": "#ffffff"
-	    }
-	}
+```sh
+$ npm test
+```
 
 # FAQ
 
@@ -247,136 +263,6 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 
 * **circo** circular layout, after Six and Tollis 99, Kauffman and Wiese 02. This is suitable for certain diagrams of multiple cyclic structures, such as certain telecommunications networks.
 
-# Running tests
-
-	$ npm test
-
-# Release Notes
-
-## v0.6.0 (July 06, 2016)
-* Refactored Madge to use ES6 and now requires Node.js 4 to run.
-
-## v0.5.5 (July 03, 2016)
-* Add note about Graphviz and Windows in README.
-* Fix matching absolute path in Windows (Thanks to nadejdashed).
-* Support for ES6 re-export syntax (Thanks to Oli Lalonde).
-* Support files with ES6 (Thanks to Joel Kemp).
-* Improve readme circular return object (Thanks to Way Of The Future).
-
-## v0.5.4 (June 13, 2016)
-* Improved JSX and ES7 support (Thanks to Joel Kemp).
-
-## v0.5.3 (November 25, 2015)
-* Correct regex on CommonJS parser to detect a core module (Thanks to Guillaume Gomez).
-
-## v0.5.2 (October 16, 2015)
-* Updated dependency resolve to latest version.
-
-## v0.5.1 (October 15, 2015)
-* Updated dependencies to newer versions (Thanks to Martin Kapp).
-
-## v0.5.0 (April 2, 2015)
-* Added support for ES6 modules (Thanks to Marc Laval).
-* Added support for setting custom file extension name (Thanks to Marc Laval).
-
-## v0.4.1 (December 19, 2014)
-* Fixed issues with absolute paths for modules IDs in Windows (all tests should now pass on Windows too).
-
-## v0.4.0 (December 19, 2014)
-* Add support for JSX (React) and additional module paths (Thanks to Ben Lowery).
-* Fix for detecting presence of AMD or CommonJS modules (Thanks to Aaron Russ).
-* Now resolves the module IDs from the RequireJS paths-config properly (Thanks to russaa).
-* Added support for option findNestedDependencies to find nested dependencies in AMD modules.
-
-## v0.3.5 (Septemper 22, 2014)
-* Fix issue with number of graph node lines increased with each render (Thanks to Colin H. Fredericks).
-
-## v0.3.4 (Septemper 04, 2014)
-* Correctly detect circular dependencies when using path aliases in RequireJS config (Thanks to Nicolas Ramz).
-
-## v0.3.3 (July 11, 2014)
-* Fixed bug with relative paths in AMD not handled properly when checking for cyclic dependencies.
-
-## v0.3.2 (June 25, 2014)
-* Handle anonymous require() as entry in the RequireJS optimized file (Thanks to Benjamin Horsleben).
-
-## v0.3.1 (June 03, 2014)
-* Apply exclude to RequireJS shim dependencies (Thanks to Michael White).
-
-## v0.3.0 (May 25, 2014)
-* Added support for onParseFile and onAddModule options (Thanks to Brandon Selway).
-* Added JSON output option (Thanks to Drew Foehn).
-* Fix for optimized files including dependency information for excluded modules (Thanks to Drew Foehn). Fixes [issue](https://github.com/pahen/madge/issues/26).
-
-## v0.2.0 (April 17, 2014)
-* Added support for including shim dependencies found in RequiredJS config (specify with option -R).
-
-## v0.1.9 (February 17, 2014)
-* Ensure forward slashes are used in modules paths (Windows).
-
-## v0.1.8 (January 27, 2014)
-* Added support for reading AMD dependencies from a r.js optimized file by using option -O.
-
-## v0.1.7 (September 20, 2013)
-* Added missing fontsize option when generating images.
-
-## v0.1.6 (September 04, 2013)
-* AMD plugins are now ignored as dependencies. Fixes [issue](https://github.com/pahen/grunt-madge/issues/1).
-
-## v0.1.5 (September 04, 2013)
-* Fixed Windows [issue](https://github.com/pahen/node-madge/issues/17) when reading from standard input with --read.
-
-## v0.1.4 (January 10, 2013)
-* Switched library for walking directory tree which should solve issues on [Windows](https://github.com/pahen/node-madge/issues/8).
-
-## v0.1.3 (December 28, 2012)
-* Added proper exit code when running "madge --circular" so it can be used in build scripts.
-
-## v0.1.2 (November 15, 2012)
-* Relative AMD module identifiers (if the first term is "." or "..") are now resolved.
-
-## v0.1.1 (September 3, 2012)
-* Tweaked circular dependency path output.
-
-## v0.1.0 (September 3, 2012)
-* Complete path in circular dependencies is now printed (and marked as red in image graphs).
-
-## v0.0.5 (August 8, 2012)
-* Added support for CoffeeScript. Files with extension .coffee will automatically be compiled on-the-fly.
-
-## v0.0.4 (August 17, 2012)
-* Fixed dependency issues with Node.js v0.8.
-
-## v0.0.3 (July 01, 2012)
-* Added support for Node.js v0.8 and dropped support for lower versions.
-
-## v0.0.2 (May 21, 2012)
-* Added ability to read config file and customize colors.
-
-## v0.0.1 (May 20, 2012)
-* Initial release.
-
 # License
 
-(The MIT License)
-
-Copyright (c) 2012 Patrik Henningsson &lt;patrik.henningsson@gmail.com&gt;
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+MIT License

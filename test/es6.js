@@ -1,71 +1,84 @@
 /* eslint-env mocha */
 'use strict';
 
-const madge = require('../lib/madge');
+const madge = require('../lib/api');
 require('should');
 
-describe('module format (ES6)', () => {
+describe('ES6', () => {
+	const dir = __dirname + '/files/es6';
 
-	it('should behave as expected on ok files', () => {
-		madge([__dirname + '/files/es6/normal'], {
-			format: 'es6'
-		}).obj().should.eql({'a': ['sub/b'], 'fancy-main/not-index': [], 'd': [], 'sub/b': ['sub/c'], 'sub/c': ['d']});
+	it('finds circular dependencies', (done) => {
+		madge(dir + '/circular/a.js').then((res) => {
+			res.circular().should.eql([
+				['a', 'b', 'c']
+			]);
+			done();
+		}).catch(done);
 	});
 
-	it('should tackle errors in files', () => {
-		madge([__dirname + '/files/es6/error.js'], {
-			format: 'es6'
-		}).obj().should.eql({'error': []});
+	it('tackles error in files', (done) => {
+		madge(dir + '/error.js').then((res) => {
+			res.obj().should.eql({
+				'error': []
+			});
+			done();
+		}).catch(done);
 	});
 
-	it('should be able to exclude modules', () => {
-		madge([__dirname + '/files/es6/normal'], {
-			exclude: '^sub',
-			format: 'es6'
-		}).obj().should.eql({'a': [], 'd': [], 'fancy-main/not-index': []});
-
-		madge([__dirname + '/files/es6/normal'], {
-			exclude: '.*\/c$',
-			format: 'es6'
-		}).obj().should.eql({'a': ['sub/b'], 'd': [], 'sub/b': [], 'fancy-main/not-index': []});
+	it('finds absolute imports from the root', (done) => {
+		madge(dir + '/absolute.js').then((res) => {
+			res.obj().should.eql({
+				'absolute': ['absolute/a'],
+				'absolute/a': []
+			});
+			done();
+		}).catch(done);
 	});
 
-	it('should find circular dependencies', () => {
-		madge([__dirname + '/files/es6/circular'], {
-			format: 'es6'
-		}).circular().getArray().should.eql([['a', 'b', 'c']]);
+	it('finds imports on files with ES7', (done) => {
+		madge(dir + '/async.js').then((res) => {
+			res.obj().should.eql({
+				'absolute/b': [],
+				'async': ['absolute/b']
+			});
+			done();
+		}).catch(done);
 	});
 
-	it('should find absolute imports from the root', () => {
-		madge([__dirname + '/files/es6/absolute.js', __dirname + '/files/es6/absolute'], {
-			format: 'es6'
-		}).obj().should.eql({'absolute': ['absolute/a'], 'absolute/a': ['absolute/b'], 'absolute/b': []});
+	it('supports export x from "./file"', (done) => {
+		madge(dir + '/re-export/c.js').then((res) => {
+			res.obj().should.eql({
+				'a': [],
+				'b-default': ['a'],
+				'b-named': ['a'],
+				'b-star': ['a'],
+				'c': [
+					'b-default',
+					'b-named',
+					'b-star'
+				]
+			});
+			done();
+		}).catch(done);
 	});
 
-	it('should find imports on files with jsx', () => {
-		madge([__dirname + '/files/es6/jsx.js'], {
-			format: 'es6'
-		}).obj().should.eql({'jsx': ['absolute/b']});
+	it('finds imports on files with JSX content', (done) => {
+		madge(dir + '/jsx.js').then((res) => {
+			res.obj().should.eql({
+				'jsx': ['absolute/b'],
+				'absolute/b': []
+			});
+			done();
+		}).catch(done);
 	});
 
-	it('should find imports on files with ES7', () => {
-		madge([__dirname + '/files/es6/async.js'], {
-			format: 'es6'
-		}).obj().should.eql({'async': ['absolute/b']});
-	});
-
-	it('should support export x from "./file"', () => {
-		madge([__dirname + '/files/es6/re-export'], {
-			format: 'es6'
-		}).obj().should.eql({'a': [], 'b-default': ['a'], 'b-named': ['a'], 'b-star': ['a'], 'c': ['b-default', 'b-named', 'b-star']});
-	});
-
-	it('can detect imports in JSX files', () => {
-		madge([__dirname + '/files/es6/jsx/basic.jsx'], {
-			format: 'es6'
-		}).obj().should.eql({basic: [
-			'../../../../other',
-			'../../../../react'
-		]});
+	it('finds import in JSX files', (done) => {
+		madge(dir + '/jsx/basic.jsx').then((res) => {
+			res.obj().should.eql({
+				'basic': ['other'],
+				'other': []
+			});
+			done();
+		}).catch(done);
 	});
 });

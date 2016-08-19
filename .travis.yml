@@ -2,7 +2,15 @@ language: node_js
 
 node_js:
 - 4
+- 6
 
-before_install:
-- sudo apt-get update
-- sudo apt-get install graphviz
+sudo: false
+
+addons:
+  apt:
+    packages:
+      - graphviz
+
+script:
+- npm test
+- npm run debug

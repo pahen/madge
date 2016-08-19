@@ -1,1 +1,1 @@
-import {A} from 'test/files/es6/absolute/a';
+import {A} from 'absolute/a';

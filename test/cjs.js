@@ -1,61 +1,87 @@
 /* eslint-env mocha */
 'use strict';
 
-const madge = require('../lib/madge');
+const madge = require('../lib/api');
 require('should');
 
-describe('module format (CommonJS)', () => {
+describe('CommonJS', () => {
+	const dir = __dirname + '/files/cjs';
 
-	it('should behave as expected on ok files', () => {
-		madge([__dirname + '/files/cjs/normal'])
-			.obj().should.eql({'a': ['sub/b'], 'fancy-main/not-index': [], 'd': [], 'sub/b': ['sub/c'], 'sub/c': ['d']});
+	it('finds recursive dependencies', (done) => {
+		madge(dir + '/normal/a.js').then((res) => {
+			res.obj().should.eql({
+				'a': ['sub/b'],
+				'd': [],
+				'sub/b': ['sub/c'],
+				'sub/c': ['d']
+			});
+			done();
+		}).catch(done);
 	});
 
-	it('should handle expressions in require call', () => {
-		madge([__dirname + '/files/cjs/both.js'])
-			.obj().should.eql({'both': ['node_modules/a', 'node_modules/b']});
+	it('handles path outside directory', (done) => {
+		madge(dir + '/normal/sub/c.js').then((res) => {
+			res.obj().should.eql({
+				'../d': [],
+				'c': ['../d']
+			});
+			done();
+		}).catch(done);
 	});
 
-	it('should handle require call and chained functions', () => {
-		madge([__dirname + '/files/cjs/chained.js'])
-			.obj().should.eql({'chained': ['node_modules/a', 'node_modules/b', 'node_modules/c']});
+	it('finds circular dependencies', (done) => {
+		madge(dir + '/circular/a.js').then((res) => {
+			res.circular().should.eql([
+				['a', 'd']
+			]);
+			done();
+		}).catch(done);
 	});
 
-	it('should handle nested require call', () => {
-		madge([__dirname + '/files/cjs/nested.js'])
-			.obj().should.eql({'nested': ['node_modules/a', 'node_modules/b', 'node_modules/c']});
+	it('excludes core modules by default', (done) => {
+		madge(dir + '/core.js').then((res) => {
+			res.obj().should.eql({
+				'core': []
+			});
+			done();
+		}).catch(done);
 	});
 
-	it('should handle strings in require call', () => {
-		madge([__dirname + '/files/cjs/strings.js'])
-			.obj().should.eql({strings: [
-				'events', 'node_modules/a', 'node_modules/b', 'node_modules/c',
-				'node_modules/doom', 'node_modules/events2', 'node_modules/y'
-			]});
+	it('excludes NPM modules by default', (done) => {
+		madge(dir + '/npm.js').then((res) => {
+			res.obj().should.eql({
+				'normal/d': [],
+				'npm': ['normal/d']
+			});
+			done();
+		}).catch(done);
 	});
 
-	it('should tackle errors in files', () => {
-		madge([__dirname + '/files/cjs/error.js'])
-			.obj().should.eql({'error': []});
+	it('can include NPM modules', (done) => {
+		madge(dir + '/npm.js', {
+			includeNpm: true
+		}).then((res) => {
+			res.obj().should.eql({
+				'node_modules/a': [],
+				'normal/d': [],
+				'npm': ['node_modules/a', 'normal/d']
+			});
+			done();
+		}).catch(done);
 	});
 
-	it('should be able to exclude modules', () => {
-		madge([__dirname + '/files/cjs/normal'], {
-			exclude: '^sub'
-		}).obj().should.eql({'a': [], 'd': [], 'fancy-main/not-index': []});
-
-		madge([__dirname + '/files/cjs/normal'], {
-			exclude: '.*\/c$'
-		}).obj().should.eql({'a': ['sub/b'], 'd': [], 'sub/b': [], 'fancy-main/not-index': []});
+	it('can show file extensions', (done) => {
+		madge(dir + '/normal/a.js', {
+			showFileExtension: true
+		}).then((res) => {
+			res.obj().should.eql({
+				'a.js': ['sub/b.js'],
+				'd.js': [],
+				'sub/b.js': ['sub/c.js'],
+				'sub/c.js': ['d.js']
+			});
+			done();
+		}).catch(done);
 	});
 
-	it('should find circular dependencies', () => {
-		madge([__dirname + '/files/cjs/circular'])
-			.circular().getArray().should.eql([['a', 'b', 'c']]);
-	});
-
-	it('should compile coffeescript on-the-fly', () => {
-		madge([__dirname + '/files/cjs/coffeescript'])
-			.obj().should.eql({'a': ['./b'], 'b': []});
-	});
 });
