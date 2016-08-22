@@ -32,7 +32,7 @@
     "mocha": "mocha test/*.js",
     "watch": "mocha --watch --growl test/*.js",
     "lint": "eslint bin/cli.js lib test/*.js",
-    "debug": "bin/cli.js --debug bin lib",
+    "debug": "node bin/cli.js --debug bin lib",
     "generate": "npm run generate:small && npm run generate:madge",
     "generate:small": "bin/cli.js --image /tmp/simple.svg test/files/cjs/circular/a.js",
     "generate:madge": "bin/cli.js --image /tmp/madge.svg bin lib"

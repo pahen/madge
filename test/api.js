@@ -150,7 +150,7 @@ describe('Madge', () => {
 			madge(__dirname + '/files/cjs/a.js', {graphVizPath: '/invalid/path'})
 				.then((res) => res.image('image.png'))
 				.catch((err) => {
-					err.message.should.eql('Could not execute /invalid/path/gvpr -V');
+					err.message.should.match(/Could not execute .*gvpr \-V/);
 					done();
 				});
 		});
