@@ -5,6 +5,7 @@
   "repository": "git://github.com/pahen/madge",
   "homepage": "https://github.com/pahen/madge",
   "license": "MIT",
+  "reveal": true,
   "description": "Create graphs from module dependencies.",
   "keywords": [
     "ES6",
