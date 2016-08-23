@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v1.1.0 (Aug 23, 2016)
+* Support for setting custom GraphViz options with config `graphVizOptions`.
+
 ## v1.0.0 (Aug 19, 2016)
 
 After 4 years of adding features/fixes it started to be hard to maintain the project and fix some outstanding issues due to how madge was designed to work.

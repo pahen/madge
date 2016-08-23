@@ -18,7 +18,7 @@ Read the [changelog](CHANGELOG.md) for latest changes.
 
 ## Examples
 
-> Graph generated from the madge source code.
+> Graph generated from the madge's own code and dependencies.
 
 <a href="http://pahen.github.io/madge/madge.svg">
 	<img src="http://pahen.github.io/madge/madge.svg" width="888"/>
@@ -151,6 +151,7 @@ Property | Type | Default | Description
 `noDependencyColor` | String | #cfffac | Color to use for nodes with no dependencies
 `cyclicNodeColor` | String | #ff6c60 | Color to use for circular dependencies
 `edgeColor` | String | #757575 | Edge color to use in the graph
+`graphVizOptions` | Object | false | Custom GraphViz [options](http://www.graphviz.org/content/attrs)
 `graphVizPath` | String | null | Custom GraphViz path
 
 > Note that when running the CLI it's possible to use a runtime configuration file. The config should placed in `.madgerc` in your project or home folder. Look [here](https://github.com/dominictarr/rc#standards) for alternative locations for the file. Here's an example:
@@ -158,7 +159,12 @@ Property | Type | Default | Description
 ```json
 {
 	"showFileExtension": true,
-	"fontSize": "10px"
+	"fontSize": "10px",
+	"graphVizOptions": {
+		"G": {
+			"rankdir": "LR"
+		}
+	}
 }
 ```
 

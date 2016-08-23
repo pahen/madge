@@ -9,7 +9,7 @@ const version = require('../package.json').version;
 program
 	.version(version)
 	.usage('[options] <src...>')
-	.option('-b --basedir <path>', 'base directory for resolving paths')
+	.option('-b, --basedir <path>', 'base directory for resolving paths')
 	.option('-s, --summary', 'show dependency count summary')
 	.option('-c, --circular', 'show circular dependencies')
 	.option('-d, --depends <name>', 'show module dependents')
