@@ -8,7 +8,7 @@ const madge = require('../lib/api');
 
 require('should');
 
-describe('Madge', () => {
+describe('API', () => {
 	it('throws error on missing path argument', () => {
 		(() => {
 			madge();
@@ -16,7 +16,7 @@ describe('Madge', () => {
 	});
 
 	it('returns a Promise', () => {
-		madge(__dirname + '/files/cjs/a.js').should.be.Promise(); // eslint-disable-line new-cap
+		madge(__dirname + '/commonjs/a.js').should.be.Promise(); // eslint-disable-line new-cap
 	});
 
 	it('throws error if file or directory does not exists', (done) => {
@@ -27,7 +27,7 @@ describe('Madge', () => {
 	});
 
 	it('takes single file as path', (done) => {
-		madge(__dirname + '/files/cjs/a.js').then((res) => {
+		madge(__dirname + '/commonjs/a.js').then((res) => {
 			res.obj().should.eql({
 				'a': ['b', 'c'],
 				'b': ['c'],
@@ -38,7 +38,7 @@ describe('Madge', () => {
 	});
 
 	it('takes an array of files as path and combines the result', (done) => {
-		madge([__dirname + '/files/cjs/a.js', __dirname + '/files/cjs/normal/d.js']).then((res) => {
+		madge([__dirname + '/commonjs/a.js', __dirname + '/commonjs/normal/d.js']).then((res) => {
 			res.obj().should.eql({
 				'a': ['b', 'c'],
 				'b': ['c'],
@@ -50,7 +50,7 @@ describe('Madge', () => {
 	});
 
 	it('take a single directory as path and find files in it', (done) => {
-		madge(__dirname + '/files/cjs/normal').then((res) => {
+		madge(__dirname + '/commonjs/normal').then((res) => {
 			res.obj().should.eql({
 				'a': ['sub/b'],
 				'd': [],
@@ -62,7 +62,7 @@ describe('Madge', () => {
 	});
 
 	it('takes an array of directories as path and compute the basedir correctly', (done) => {
-		madge([__dirname + '/files/cjs/multibase/1', __dirname + '/files/cjs/multibase/2']).then((res) => {
+		madge([__dirname + '/commonjs/multibase/1', __dirname + '/commonjs/multibase/2']).then((res) => {
 			res.obj().should.eql({
 				'1/a': [],
 				'2/b': []
@@ -72,7 +72,7 @@ describe('Madge', () => {
 	});
 
 	it('can exclude modules using RegExp', (done) => {
-		madge(__dirname + '/files/cjs/a.js', {
+		madge(__dirname + '/commonjs/a.js', {
 			excludeRegExp: ['^b$']
 		}).then((res) => {
 			res.obj().should.eql({
@@ -83,9 +83,9 @@ describe('Madge', () => {
 		}).catch(done);
 	});
 
-	describe('#obj', () => {
+	describe('obj()', () => {
 		it('returns dependency object', (done) => {
-			madge(__dirname + '/files/cjs/a.js').then((res) => {
+			madge(__dirname + '/commonjs/a.js').then((res) => {
 				res.obj().should.eql({
 					a: ['b', 'c'],
 					b: ['c'],
@@ -96,9 +96,9 @@ describe('Madge', () => {
 		});
 	});
 
-	describe('#dot', () => {
+	describe('dot()', () => {
 		it('returns a promise resolved with graphviz DOT output', (done) => {
-			madge(__dirname + '/files/cjs/b.js')
+			madge(__dirname + '/commonjs/b.js')
 				.then((res) => res.dot())
 				.then((output) => {
 					output.should.eql('digraph G {\n  "b";\n  "c";\n  "b" -> "c";\n}\n');
@@ -108,16 +108,16 @@ describe('Madge', () => {
 		});
 	});
 
-	describe('#depends', () => {
+	describe('depends()', () => {
 		it('returns modules that depends on another', (done) => {
-			madge(__dirname + '/files/cjs/a.js').then((res) => {
+			madge(__dirname + '/commonjs/a.js').then((res) => {
 				res.depends('c').should.eql(['a', 'b']);
 				done();
 			}).catch(done);
 		});
 	});
 
-	describe('#image', () => {
+	describe('image()', () => {
 		let imagePath;
 
 		beforeEach(() => {
@@ -129,7 +129,7 @@ describe('Madge', () => {
 		});
 
 		it('rejects if a filename is not supplied', (done) => {
-			madge(__dirname + '/files/cjs/a.js')
+			madge(__dirname + '/commonjs/a.js')
 				.then((res) => res.image())
 				.catch((err) => {
 					err.message.should.eql('imagePath not provided');
@@ -138,7 +138,7 @@ describe('Madge', () => {
 		});
 
 		it('rejects on unsupported image format', (done) => {
-			madge(__dirname + '/files/cjs/a.js')
+			madge(__dirname + '/commonjs/a.js')
 				.then((res) => res.image('image.zyx'))
 				.catch((err) => {
 					err.message.should.match(/Format: "zyx" not recognized/);
@@ -147,7 +147,7 @@ describe('Madge', () => {
 		});
 
 		it('rejects if graphviz is not installed', (done) => {
-			madge(__dirname + '/files/cjs/a.js', {graphVizPath: '/invalid/path'})
+			madge(__dirname + '/commonjs/a.js', {graphVizPath: '/invalid/path'})
 				.then((res) => res.image('image.png'))
 				.catch((err) => {
 					err.message.should.match(/Could not execute .*gvpr \-V/);
@@ -156,7 +156,7 @@ describe('Madge', () => {
 		});
 
 		it('writes image to file', (done) => {
-			madge(__dirname + '/files/cjs/a.js')
+			madge(__dirname + '/commonjs/a.js')
 				.then((res) => res.image(imagePath))
 				.then((writtenImagePath) => {
 					writtenImagePath.should.eql(imagePath);

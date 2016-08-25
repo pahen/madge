@@ -18,7 +18,7 @@ Read the [changelog](CHANGELOG.md) for latest changes.
 
 ## Examples
 
-> Graph generated from the madge's own code and dependencies.
+> Graph generated from madge's own code and dependencies.
 
 <a href="http://pahen.github.io/madge/madge.svg">
 	<img src="http://pahen.github.io/madge/madge.svg" width="888"/>
@@ -129,6 +129,9 @@ const madge = require('madge');
 
 madge('path/to/app.js')
 	.then((res) => res.image('path/to/image.svg'))
+	.then((writtenImagePath) => {
+		console.log('Image written to ' + writtenImagePath);
+	});
 });
 ```
 

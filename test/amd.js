@@ -5,7 +5,7 @@ const madge = require('../lib/api');
 require('should');
 
 describe('AMD', () => {
-	const dir = __dirname + '/files/amd';
+	const dir = __dirname + '/amd';
 
 	it('finds recursive dependencies', (done) => {
 		madge(dir + '/ok/a.js').then((res) => {
