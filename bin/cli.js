@@ -23,10 +23,11 @@ program
 	.option('--require-config <file>', 'path to RequireJS config')
 	.option('--webpack-config <file>', 'path to webpack config')
 	.option('--no-color', 'disable color in output and image', false)
+	.option('--stdin', 'read predefined tree from STDIN', false)
 	.option('--debug', 'turn on debug output', false)
 	.parse(process.argv);
 
-if (!program.args.length) {
+if (!program.args.length && !program.stdin) {
 	console.log(program.helpInformation());
 	process.exit(1);
 }
@@ -82,52 +83,75 @@ if (!program.color) {
 	config.edgeColor = '#757575';
 }
 
-madge(program.args, config)
-	.then((res) => {
-		if (program.summary) {
-			return output.summary(res.obj(), {
-				json: program.json
+new Promise((resolve, reject) => {
+	if (program.stdin) {
+		let buffer = '';
+
+		process.stdin
+			.resume()
+			.setEncoding('utf8')
+			.on('data', (chunk) => {
+				buffer += chunk;
+			})
+			.on('end', () => {
+				try {
+					resolve(JSON.parse(buffer));
+				} catch (e) {
+					reject(e);
+				}
 			});
-		}
-
-		if (program.depends) {
-			return output.depends(res.depends(program.depends), {
-				json: program.json
-			});
-		}
-
-		if (program.circular) {
-			const circular = res.circular();
-
-			output.circular(circular, {
-				json: program.json
-			});
-
-			if (circular.length) {
-				process.exit(1);
-			}
-
-			return;
-		}
-
-		if (program.image) {
-			return res.image(program.image).then((imagePath) => {
-				console.log('Image created at %s', imagePath);
-			});
-		}
-
-		if (program.dot) {
-			return res.dot().then((output) => {
-				process.stdout.write(output);
-			});
-		}
-
-		return output.list(res.obj(), {
+	} else {
+		resolve(program.args);
+	}
+})
+.then((src) => {
+	return madge(src, config);
+})
+.then((res) => {
+	if (program.summary) {
+		return output.summary(res.obj(), {
 			json: program.json
 		});
-	})
-	.catch((err) => {
-		output.error(err);
+	}
 
-		process.exit(1);
+	if (program.depends) {
+		return output.depends(res.depends(program.depends), {
+			json: program.json
+		});
+	}
+
+	if (program.circular) {
+		const circular = res.circular();
+
+		output.circular(circular, {
+			json: program.json
+		});
+
+		if (circular.length) {
+			process.exit(1);
+		}
+
+		return;
+	}
+
+	if (program.image) {
+		return res.image(program.image).then((imagePath) => {
+			console.log('Image created at %s', imagePath);
+		});
+	}
+
+	if (program.dot) {
+		return res.dot().then((output) => {
+			process.stdout.write(output);
+		});
+	}
+
+	return output.list(res.obj(), {
+		json: program.json
 	});
+})
+.catch((err) => {
+	output.error(err);
+
+	process.exit(1);
+});

@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v1.2.0 (Sep 1, 2016)
+* Added option `--stdin` to be used for piping a predefined tree.
+
 ## v1.1.0 (Aug 23, 2016)
 * Support for setting custom GraphViz options with config `graphVizOptions`.
 

@@ -71,6 +71,23 @@ describe('API', () => {
 		}).catch(done);
 	});
 
+	it('takes a predefined tree', (done) => {
+		madge({
+			a: ['b', 'c', 'd'],
+			b: ['c'],
+			c: [],
+			d: ['a']
+		}).then((res) => {
+			res.obj().should.eql({
+				a: ['b', 'c', 'd'],
+				b: ['c'],
+				c: [],
+				d: ['a']
+			});
+			done();
+		}).catch(done);
+	});
+
 	it('can exclude modules using RegExp', (done) => {
 		madge(__dirname + '/commonjs/a.js', {
 			excludeRegExp: ['^b$']
