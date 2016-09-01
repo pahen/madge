@@ -60,11 +60,11 @@ $ apt-get install graphviz
 
 # API
 
-## madge(path: string|array, config: object)
+## madge(path: string|array|object, config: object)
 
-> `path` is a single file or directory to read (or an array of files/directories).
+> `path` is a single file or directory, or an array of files/directories to read. A predefined tree can also be passed in as an object.
 
-> `config` is optional and should be [configuration](#configuration) to be used.
+> `config` is optional and should be the [configuration](#configuration) to use.
 
 > Returns a `Promise` resolved with the Madge instance object.
 
@@ -233,6 +233,12 @@ $ madge --image graph.svg path/src/app.js
 
 ```sh
 $ madge --dot path/src/app.js > graph.gv
+```
+
+> Using pipe to transform tree (this example will uppercase all paths)
+
+```sh
+$ madge --json path/src/app.js | tr '[a-z]' '[A-Z]' | madge --stdin
 ```
 
 # Debugging
