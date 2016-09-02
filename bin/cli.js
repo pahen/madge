@@ -53,12 +53,6 @@ if (rc.config) {
 	log('using runtime config %s', rc.config);
 }
 
-['layout', 'requireConfig', 'webpackConfig'].forEach((option) => {
-	if (program[option]) {
-		config[option] = program[option];
-	}
-});
-
 if (program.basedir) {
 	config.baseDir = program.basedir;
 }
