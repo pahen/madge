@@ -1,5 +1,5 @@
 import React from 'react';
-import other from './other';
+import other from './other.jsx';
 
 export default React.createClass({
   render: function() {

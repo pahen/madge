@@ -16,7 +16,7 @@ describe('API', () => {
 	});
 
 	it('returns a Promise', () => {
-		madge(__dirname + '/commonjs/a.js').should.be.Promise(); // eslint-disable-line new-cap
+		madge(__dirname + '/cjs/a.js').should.be.Promise(); // eslint-disable-line new-cap
 	});
 
 	it('throws error if file or directory does not exists', (done) => {
@@ -27,7 +27,7 @@ describe('API', () => {
 	});
 
 	it('takes single file as path', (done) => {
-		madge(__dirname + '/commonjs/a.js').then((res) => {
+		madge(__dirname + '/cjs/a.js').then((res) => {
 			res.obj().should.eql({
 				'a': ['b', 'c'],
 				'b': ['c'],
@@ -38,7 +38,7 @@ describe('API', () => {
 	});
 
 	it('takes an array of files as path and combines the result', (done) => {
-		madge([__dirname + '/commonjs/a.js', __dirname + '/commonjs/normal/d.js']).then((res) => {
+		madge([__dirname + '/cjs/a.js', __dirname + '/cjs/normal/d.js']).then((res) => {
 			res.obj().should.eql({
 				'a': ['b', 'c'],
 				'b': ['c'],
@@ -50,7 +50,7 @@ describe('API', () => {
 	});
 
 	it('take a single directory as path and find files in it', (done) => {
-		madge(__dirname + '/commonjs/normal').then((res) => {
+		madge(__dirname + '/cjs/normal').then((res) => {
 			res.obj().should.eql({
 				'a': ['sub/b'],
 				'd': [],
@@ -62,7 +62,7 @@ describe('API', () => {
 	});
 
 	it('takes an array of directories as path and compute the basedir correctly', (done) => {
-		madge([__dirname + '/commonjs/multibase/1', __dirname + '/commonjs/multibase/2']).then((res) => {
+		madge([__dirname + '/cjs/multibase/1', __dirname + '/cjs/multibase/2']).then((res) => {
 			res.obj().should.eql({
 				'1/a': [],
 				'2/b': []
@@ -89,7 +89,7 @@ describe('API', () => {
 	});
 
 	it('can exclude modules using RegExp', (done) => {
-		madge(__dirname + '/commonjs/a.js', {
+		madge(__dirname + '/cjs/a.js', {
 			excludeRegExp: ['^b$']
 		}).then((res) => {
 			res.obj().should.eql({
@@ -102,7 +102,7 @@ describe('API', () => {
 
 	describe('obj()', () => {
 		it('returns dependency object', (done) => {
-			madge(__dirname + '/commonjs/a.js').then((res) => {
+			madge(__dirname + '/cjs/a.js').then((res) => {
 				res.obj().should.eql({
 					a: ['b', 'c'],
 					b: ['c'],
@@ -115,7 +115,7 @@ describe('API', () => {
 
 	describe('dot()', () => {
 		it('returns a promise resolved with graphviz DOT output', (done) => {
-			madge(__dirname + '/commonjs/b.js')
+			madge(__dirname + '/cjs/b.js')
 				.then((res) => res.dot())
 				.then((output) => {
 					output.should.eql('digraph G {\n  "b";\n  "c";\n  "b" -> "c";\n}\n');
@@ -127,7 +127,7 @@ describe('API', () => {
 
 	describe('depends()', () => {
 		it('returns modules that depends on another', (done) => {
-			madge(__dirname + '/commonjs/a.js').then((res) => {
+			madge(__dirname + '/cjs/a.js').then((res) => {
 				res.depends('c').should.eql(['a', 'b']);
 				done();
 			}).catch(done);
@@ -146,7 +146,7 @@ describe('API', () => {
 		});
 
 		it('rejects if a filename is not supplied', (done) => {
-			madge(__dirname + '/commonjs/a.js')
+			madge(__dirname + '/cjs/a.js')
 				.then((res) => res.image())
 				.catch((err) => {
 					err.message.should.eql('imagePath not provided');
@@ -155,7 +155,7 @@ describe('API', () => {
 		});
 
 		it('rejects on unsupported image format', (done) => {
-			madge(__dirname + '/commonjs/a.js')
+			madge(__dirname + '/cjs/a.js')
 				.then((res) => res.image('image.zyx'))
 				.catch((err) => {
 					err.message.should.match(/Format: "zyx" not recognized/);
@@ -164,7 +164,7 @@ describe('API', () => {
 		});
 
 		it('rejects if graphviz is not installed', (done) => {
-			madge(__dirname + '/commonjs/a.js', {graphVizPath: '/invalid/path'})
+			madge(__dirname + '/cjs/a.js', {graphVizPath: '/invalid/path'})
 				.then((res) => res.image('image.png'))
 				.catch((err) => {
 					err.message.should.match(/Could not execute .*gvpr \-V/);
@@ -173,7 +173,7 @@ describe('API', () => {
 		});
 
 		it('writes image to file', (done) => {
-			madge(__dirname + '/commonjs/a.js')
+			madge(__dirname + '/cjs/a.js')
 				.then((res) => res.image(imagePath))
 				.then((writtenImagePath) => {
 					writtenImagePath.should.eql(imagePath);

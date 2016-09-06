@@ -5,7 +5,7 @@ const madge = require('../lib/api');
 require('should');
 
 describe('CommonJS', () => {
-	const dir = __dirname + '/commonjs';
+	const dir = __dirname + '/cjs';
 
 	it('finds recursive dependencies', (done) => {
 		madge(dir + '/normal/a.js').then((res) => {

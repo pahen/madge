@@ -34,7 +34,7 @@
     "lint": "eslint bin/cli.js lib test/*.js",
     "debug": "node bin/cli.js --debug bin lib",
     "generate": "npm run generate:small && npm run generate:madge",
-    "generate:small": "bin/cli.js --image /tmp/simple.svg test/commonjs/circular/a.js",
+    "generate:small": "bin/cli.js --image /tmp/simple.svg test/cjs/circular/a.js",
     "generate:madge": "bin/cli.js --image /tmp/madge.svg bin lib"
   },
   "dependencies": {
@@ -42,7 +42,7 @@
     "commander": "^2.9.0",
     "commondir": "^1.0.1",
     "debug": "^2.2.0",
-    "dependency-tree": "^5.5.1",
+    "dependency-tree": "^5.5.3",
     "graphviz": "^0.0.8",
     "mz": "^2.4.0",
     "rc": "^1.1.6",
