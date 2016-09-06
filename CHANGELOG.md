@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v1.3.0 (Sep 6, 2016)
+* Big performance boost when running on large codebases.
+
 ## v1.2.0 (Sep 1, 2016)
 * Added option `--stdin` to be used for piping a predefined tree.
 
