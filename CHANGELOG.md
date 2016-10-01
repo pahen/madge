@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v1.3.1 (Oct 1, 2016)
+* Allow to pass options to [dependency-tree](https://github.com/dependents/node-dependency-tree) detectives (Thanks to [Fabio Crisci](https://github.com/piuccio)).
+
 ## v1.3.0 (Sep 6, 2016)
 * Big performance boost when running on large codebases.
 
