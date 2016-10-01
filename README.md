@@ -156,6 +156,7 @@ Property | Type | Default | Description
 `edgeColor` | String | #757575 | Edge color to use in the graph
 `graphVizOptions` | Object | false | Custom GraphViz [options](http://www.graphviz.org/content/attrs)
 `graphVizPath` | String | null | Custom GraphViz path
+`detectiveOptions` | Object | false | Custom `detective` options for [dependency-tree](https://github.com/dependents/node-dependency-tree)
 
 > Note that when running the CLI it's possible to use a runtime configuration file. The config should placed in `.madgerc` in your project or home folder. Look [here](https://github.com/dominictarr/rc#standards) for alternative locations for the file. Here's an example:
 
