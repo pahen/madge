@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v1.3.2 (Oct 3, 2016)
+* Support for [precinct](https://github.com/dependents/node-precinct) detective option `es6.mixedImports`.
+
 ## v1.3.1 (Oct 1, 2016)
 * Allow to pass options to [dependency-tree](https://github.com/dependents/node-dependency-tree) detectives (Thanks to [Fabio Crisci](https://github.com/piuccio)).
 
