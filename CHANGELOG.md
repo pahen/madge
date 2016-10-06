@@ -1,6 +1,9 @@
 # CHANGELOG
 
 ## v1.4.1 (Oct 6, 2016)
+* Renamed `--show-skipped` to `--warning`.
+
+## v1.4.1 (Oct 6, 2016)
 * Don't show warnings about skipped files by default (enable with --show-skipped).
 
 ## v1.4.0 (Oct 6, 2016)

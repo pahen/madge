@@ -270,6 +270,10 @@ $ npm test
 
 # FAQ
 
+## Missing dependencies?
+
+It could happen that the files you're not seeing have been skipped due to errors or that they can't be resolved. Run madge with the `--warning` option to see skipped files. If you need even more info run with the `--debug` option.
+
 ## What's the "Error: write EPIPE" when exporting graph to image?
 
 Ensure you have Graphviz installed. And if you're running Windows graphviz is not setting PATH variable during install. You should add folder of gvpr.exe (typically %Graphviz_folder%/bin) to PATH variable.
