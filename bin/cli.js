@@ -20,10 +20,10 @@ program
 	.option('--dot', 'show graph using the DOT language')
 	.option('--extensions <list>', 'comma separated string of valid file extensions')
 	.option('--show-extension', 'include file extension in module name', false)
+	.option('--show-skipped', 'show warning about skipped files', false)
 	.option('--require-config <file>', 'path to RequireJS config')
 	.option('--webpack-config <file>', 'path to webpack config')
 	.option('--no-color', 'disable color in output and image', false)
-	.option('--no-warning', 'disable warnings', false)
 	.option('--stdin', 'read predefined tree from STDIN', false)
 	.option('--debug', 'turn on debug output', false)
 	.parse(process.argv);
@@ -154,7 +154,7 @@ new Promise((resolve, reject) => {
 	return res;
 })
 .then((res) => {
-	if (program.warning && !program.json) {
+	if (program.showSkipped && !program.json) {
 		output.warnings(res);
 	}
 })
