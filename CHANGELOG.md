@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v1.4.1 (Oct 6, 2016)
+## v1.4.2 (Oct 6, 2016)
 * Renamed `--show-skipped` to `--warning`.
 
 ## v1.4.1 (Oct 6, 2016)
