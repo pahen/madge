@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v1.4.0 (Oct 6, 2016)
+* Show skipped files that can't be resolved as warnings (can be disabled with --no-warning).
+
 ## v1.3.2 (Oct 3, 2016)
 * Support for [precinct](https://github.com/dependents/node-precinct) detective option `es6.mixedImports`.
 
