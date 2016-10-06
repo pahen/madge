@@ -82,6 +82,18 @@ madge('path/to/app.js').then((res) => {
 });
 ```
 
+#### .warnings()
+
+> Returns an `Object` of warnings.
+
+```javascript
+const madge = require('madge');
+
+madge('path/to/app.js').then((res) => {
+	console.log(res.warnings());
+});
+```
+
 #### .circular()
 
 > Returns an `Array` with all modules that has circular dependencies.

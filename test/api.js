@@ -113,6 +113,21 @@ describe('API', () => {
 		});
 	});
 
+	describe('warnings()', () => {
+		it('returns an array of skipped files', (done) => {
+			madge(__dirname + '/cjs/missing.js').then((res) => {
+				res.obj().should.eql({
+					missing: ['c'],
+					c: []
+				});
+				res.warnings().should.eql({
+					skipped: ['./path/non/existing/file']
+				});
+				done();
+			}).catch(done);
+		});
+	});
+
 	describe('dot()', () => {
 		it('returns a promise resolved with graphviz DOT output', (done) => {
 			madge(__dirname + '/cjs/b.js')

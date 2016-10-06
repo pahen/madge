@@ -23,6 +23,7 @@ program
 	.option('--require-config <file>', 'path to RequireJS config')
 	.option('--webpack-config <file>', 'path to webpack config')
 	.option('--no-color', 'disable color in output and image', false)
+	.option('--no-warning', 'disable warnings', false)
 	.option('--stdin', 'read predefined tree from STDIN', false)
 	.option('--debug', 'turn on debug output', false)
 	.parse(process.argv);
@@ -103,15 +104,19 @@ new Promise((resolve, reject) => {
 })
 .then((res) => {
 	if (program.summary) {
-		return output.summary(res.obj(), {
+		output.summary(res.obj(), {
 			json: program.json
 		});
+
+		return res;
 	}
 
 	if (program.depends) {
-		return output.depends(res.depends(program.depends), {
+		output.depends(res.depends(program.depends), {
 			json: program.json
 		});
+
+		return res;
 	}
 
 	if (program.circular) {
@@ -125,24 +130,33 @@ new Promise((resolve, reject) => {
 			process.exit(1);
 		}
 
-		return;
+		return res;
 	}
 
 	if (program.image) {
 		return res.image(program.image).then((imagePath) => {
 			console.log('Image created at %s', imagePath);
+			return res;
 		});
 	}
 
 	if (program.dot) {
 		return res.dot().then((output) => {
 			process.stdout.write(output);
+			return res;
 		});
 	}
 
-	return output.list(res.obj(), {
+	output.list(res.obj(), {
 		json: program.json
 	});
+
+	return res;
+})
+.then((res) => {
+	if (program.warning && !program.json) {
+		output.warnings(res);
+	}
 })
 .catch((err) => {
 	output.error(err);
