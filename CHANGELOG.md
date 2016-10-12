@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v1.4.3 (Oct 12, 2016)
+* Fixed bug with —-require-config and --webpack-config options in CLI not working.
+
 ## v1.4.2 (Oct 6, 2016)
 * Renamed `--show-skipped` to `--warning`.
 
