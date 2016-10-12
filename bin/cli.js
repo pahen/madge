@@ -70,6 +70,14 @@ if (program.showExtension) {
 	config.showFileExtension = true;
 }
 
+if (program.requireConfig) {
+	config.requireConfig = program.requireConfig;
+}
+
+if (program.webpackConfig) {
+	config.webpackConfig = program.webpackConfig;
+}
+
 if (!program.color) {
 	config.backgroundColor = '#ffffff';
 	config.nodeColor = '#00000';
