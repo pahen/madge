@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.4.4 (Jan 4, 2017)
+* Better support for resolving paths using Webpack config.
+* Show number of skipped files.
+
 ## v1.4.3 (Oct 12, 2016)
 * Fixed bug with —-require-config and --webpack-config options in CLI not working.
 
