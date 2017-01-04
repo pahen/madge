@@ -51,4 +51,17 @@ describe('ES6', () => {
 			done();
 		}).catch(done);
 	});
+
+	it('supports resolve root paths in webpack config', (done) => {
+		madge(dir + '/webpack/src/sub/index.js', {
+			webpackConfig: dir + '/webpack/webpack.config.js'
+		}).then((res) => {
+			res.obj().should.eql({
+				'index': ['rel'],
+				'abs': [],
+				'rel': ['abs']
+			});
+			done();
+		}).catch(done);
+	});
 });
