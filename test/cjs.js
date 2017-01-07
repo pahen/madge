@@ -38,6 +38,13 @@ describe('CommonJS', () => {
 		}).catch(done);
 	});
 
+	it('handle extensions when finding circular dependencies', (done) => {
+		madge(dir + '/circular/foo.js').then((res) => {
+			res.circular().should.eql([]);
+			done();
+		}).catch(done);
+	});
+
 	it('excludes core modules by default', (done) => {
 		madge(dir + '/core.js').then((res) => {
 			res.obj().should.eql({
