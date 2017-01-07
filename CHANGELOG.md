@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v1.4.5 (Jan 7, 2017)
+* Bug with circular dependency reported for `foo.js` > `foo.json` due to how file extensions are handled.
+
 ## v1.4.4 (Jan 4, 2017)
 * Better support for resolving paths using Webpack config.
 * Show number of skipped files.
