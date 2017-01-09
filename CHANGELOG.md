@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v1.4.6 (Jan 9, 2017)
+* Updated output in circular dependency check to include file count and better colors.
+
 ## v1.4.5 (Jan 7, 2017)
 * Bug with circular dependency reported for `foo.js` > `foo.json` due to how file extensions are handled.
 
