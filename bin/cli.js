@@ -130,7 +130,7 @@ new Promise((resolve, reject) => {
 	if (program.circular) {
 		const circular = res.circular();
 
-		output.circular(circular, {
+		output.circular(circular, res.obj(), {
 			json: program.json
 		});
 
