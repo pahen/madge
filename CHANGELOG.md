@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.5.0 (Jan 13, 2017)
+* Tweaked output colors and error messages
+* Support running —circular with —-warning
+
 ## v1.4.6 (Jan 9, 2017)
 * Updated output in circular dependency check to include file count and better colors.
 
