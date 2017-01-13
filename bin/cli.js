@@ -45,6 +45,7 @@ const log = require('../lib/log');
 const output = require('../lib/output');
 const madge = require('../lib/api');
 const config = Object.assign({}, rc);
+let exitCode = 0;
 
 delete config._;
 delete config.config;
@@ -135,7 +136,7 @@ new Promise((resolve, reject) => {
 		});
 
 		if (circular.length) {
-			process.exit(1);
+			exitCode = 1;
 		}
 
 		return res;
@@ -165,6 +166,8 @@ new Promise((resolve, reject) => {
 	if (program.warning && !program.json) {
 		output.warnings(res);
 	}
+
+	process.exit(exitCode);
 })
 .catch((err) => {
 	output.error(err);
