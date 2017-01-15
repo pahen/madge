@@ -45,6 +45,7 @@
     "dependency-tree": "^5.7.6",
     "graphviz": "^0.0.8",
     "mz": "^2.4.0",
+    "pluralize": "^3.1.0",
     "rc": "^1.1.6",
     "walkdir": "^0.0.11"
   },
