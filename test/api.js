@@ -100,6 +100,64 @@ describe('API', () => {
 		}).catch(done);
 	});
 
+	describe('dependencyFilter', () => {
+		it('will stop traversing when returning false', (done) => {
+			madge(__dirname + '/cjs/a.js', {
+				dependencyFilter: () => {
+					return false;
+				}
+			}).then((res) => {
+				res.obj().should.eql({
+					a: []
+				});
+				done();
+			}).catch(done);
+		});
+
+		it('will not stop traversing when not returning anything', (done) => {
+			madge(__dirname + '/cjs/a.js', {
+				dependencyFilter: () => {}
+			}).then((res) => {
+				res.obj().should.eql({
+					a: ['b', 'c'],
+					b: ['c'],
+					c: []
+				});
+				done();
+			}).catch(done);
+		});
+
+		it('will pass arguments to the function', (done) => {
+			let counter = 0;
+
+			madge(__dirname + '/cjs/a.js', {
+				dependencyFilter: (dependencyFilePath, traversedFilePath, baseDir) => {
+					if (counter === 0) {
+						dependencyFilePath.should.match(/test\/cjs\/b\.js$/);
+						traversedFilePath.should.match(/test\/cjs\/a\.js$/);
+						baseDir.should.match(/test\/cjs$/);
+					}
+
+					if (counter === 1) {
+						dependencyFilePath.should.match(/test\/cjs\/c\.js$/);
+						traversedFilePath.should.match(/test\/cjs\/a\.js$/);
+						baseDir.should.match(/test\/cjs$/);
+					}
+
+					if (counter === 2) {
+						dependencyFilePath.should.match(/test\/cjs\/c\.js$/);
+						traversedFilePath.should.match(/test\/cjs\/b\.js$/);
+						baseDir.should.match(/test\/cjs$/);
+					}
+
+					counter++;
+				}
+			}).then(() => {
+				done();
+			}).catch(done);
+		});
+	});
+
 	describe('obj()', () => {
 		it('returns dependency object', (done) => {
 			madge(__dirname + '/cjs/a.js').then((res) => {
