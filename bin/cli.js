@@ -22,6 +22,7 @@ program
 	.option('--show-extension', 'include file extension in module name', false)
 	.option('--require-config <file>', 'path to RequireJS config')
 	.option('--webpack-config <file>', 'path to webpack config')
+	.option('--include-npm', 'include shallow NPM modules', false)
 	.option('--no-color', 'disable color in output and image', false)
 	.option('--stdin', 'read predefined tree from STDIN', false)
 	.option('--warning', 'show warnings about skipped files', false)
@@ -77,6 +78,10 @@ if (program.requireConfig) {
 
 if (program.webpackConfig) {
 	config.webpackConfig = program.webpackConfig;
+}
+
+if (program.includeNpm) {
+	config.includeNpm = program.includeNpm;
 }
 
 if (!program.color) {

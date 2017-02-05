@@ -64,12 +64,11 @@ describe('CommonJS', () => {
 		}).catch(done);
 	});
 
-	it('can include NPM modules', (done) => {
+	it('can include shallow NPM modules', (done) => {
 		madge(dir + '/npm.js', {
 			includeNpm: true
 		}).then((res) => {
 			res.obj().should.eql({
-				'node_modules/a': [],
 				'normal/d': [],
 				'npm': ['node_modules/a', 'normal/d']
 			});

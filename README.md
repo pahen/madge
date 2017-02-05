@@ -10,9 +10,9 @@
 **Madge** is a developer tool for generating a visual graph of your module dependencies, finding circular dependencies, and give you other useful info. Joel Kemp's awesome [dependency-tree](https://github.com/mrjoelkemp/node-dependency-tree) is used for extracting the dependency tree.
 
 * Works for JavaScript (AMD, CommonJS, ES6 modules) and CSS preprocessors (Sass, Stylus)
-* NPM installed dependencies are excluded by default (can be enabled in config)
+* NPM installed dependencies are excluded by default (can be enabled)
 * All core Node.js modules (assert, path, fs, etc) are excluded
-* Recurse into child dependencies to get a complete dependency tree of a file
+* Will traverse child dependencies automatically
 
 Read the [changelog](CHANGELOG.md) for latest changes.
 
@@ -152,7 +152,7 @@ madge('path/to/app.js')
 Property | Type | Default | Description
 --- | --- | --- | ---
 `baseDir` | String | null | Base directory to use instead of the default
-`includeNpm` | Boolean | false | If node_modules should be included
+`includeNpm` | Boolean | false | If shallow NPM modules should be included
 `fileExtensions` | Array | ['js'] | Valid file extensions used to find files in directories
 `showFileExtension` | Boolean | false | If file extension should be included in module name
 `excludeRegExp` | Array | false | An array of RegExp for excluding modules
