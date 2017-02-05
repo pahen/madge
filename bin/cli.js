@@ -1,10 +1,14 @@
 #!/usr/bin/env node
 'use strict';
 
+const path = require('path');
 const process = require('process');
 const program = require('commander');
 const rc = require('rc')('madge');
 const version = require('../package.json').version;
+const ora = require('ora');
+const chalk = require('chalk');
+const startTime = Date.now();
 
 program
 	.version(version)
@@ -46,6 +50,12 @@ const log = require('../lib/log');
 const output = require('../lib/output');
 const madge = require('../lib/api');
 const config = Object.assign({}, rc);
+const spinner = ora({
+	text: 'Finding files',
+	color: 'white',
+	interval: 100000
+});
+
 let exitCode = 0;
 
 delete config._;
@@ -92,6 +102,22 @@ if (!program.color) {
 	config.edgeColor = '#757575';
 }
 
+function dependencyFilter() {
+	let prevFile;
+
+	return (dependencyFilePath, traversedFilePath, baseDir) => {
+		if (prevFile !== traversedFilePath) {
+			const relPath = path.relative(baseDir, traversedFilePath);
+			const dir = path.dirname(relPath) + '/';
+			const file = path.basename(relPath);
+
+			spinner.text = chalk.grey(dir) + chalk.cyan(file);
+			spinner.render();
+			prevFile = traversedFilePath;
+		}
+	};
+}
+
 new Promise((resolve, reject) => {
 	if (program.stdin) {
 		let buffer = '';
@@ -114,9 +140,19 @@ new Promise((resolve, reject) => {
 	}
 })
 .then((src) => {
+	if (!program.json && !program.dot) {
+		spinner.start();
+		config.dependencyFilter = dependencyFilter();
+	}
+
 	return madge(src, config);
 })
 .then((res) => {
+	if (!program.json && !program.dot) {
+		spinner.stop();
+		output.getResultSummary(res, startTime);
+	}
+
 	if (program.summary) {
 		output.summary(res.obj(), {
 			json: program.json
@@ -136,7 +172,7 @@ new Promise((resolve, reject) => {
 	if (program.circular) {
 		const circular = res.circular();
 
-		output.circular(res, circular, {
+		output.circular(spinner, res, circular, {
 			json: program.json
 		});
 
@@ -149,7 +185,7 @@ new Promise((resolve, reject) => {
 
 	if (program.image) {
 		return res.image(program.image).then((imagePath) => {
-			console.log('Image created at %s', imagePath);
+			spinner.succeed(`${chalk.bold('Image created at')} ${chalk.cyan.bold(imagePath)}`);
 			return res;
 		});
 	}
@@ -172,10 +208,14 @@ new Promise((resolve, reject) => {
 		output.warnings(res);
 	}
 
+	if (!program.json && !program.dot) {
+		console.log('');
+	}
+
 	process.exit(exitCode);
 })
 .catch((err) => {
-	output.error(err);
-
+	spinner.stop();
+	console.log('\n%s %s\n', chalk.red('✖'), err.stack);
 	process.exit(1);
 });
