@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v1.6.0 (Feb 8, 2017)
+* Don't traverses NPM modules anymore (only shallow include)
+* Option `--include-npm` added
+* Show CLI spinner with the currently processed file
+* Updated CLI output and colors
+* Added support for option `dependencyFilter`
+* Bug with —-stdin not working properly
+
 ## v1.5.0 (Jan 13, 2017)
 * Tweaked output colors and error messages
 * Support running —circular with —-warning
