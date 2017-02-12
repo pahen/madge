@@ -9,7 +9,8 @@
 
 **Madge** is a developer tool for generating a visual graph of your module dependencies, finding circular dependencies, and give you other useful info. Joel Kemp's awesome [dependency-tree](https://github.com/mrjoelkemp/node-dependency-tree) is used for extracting the dependency tree.
 
-* Works for JavaScript (AMD, CommonJS, ES6 modules) and CSS preprocessors (Sass, Stylus)
+* Works for JavaScript (AMD, CommonJS, and ES6 modules)
+* Also works for CSS preprocessors (Sass, Stylus, and Less)
 * NPM installed dependencies are excluded by default (can be enabled)
 * All core Node.js modules (assert, path, fs, etc) are excluded
 * Will traverse child dependencies automatically
@@ -96,7 +97,7 @@ madge('path/to/app.js').then((res) => {
 
 #### .circular()
 
-> Returns an `Array` with all modules that has circular dependencies.
+> Returns an `Array` of all modules that has circular dependencies.
 
 ```javascript
 const madge = require('madge');
@@ -108,7 +109,7 @@ madge('path/to/app.js').then((res) => {
 
 #### .depends()
 
-> Returns an `Array` with all modules that depends on a given module.
+> Returns an `Array` of all modules that depends on a given module.
 
 ```javascript
 const madge = require('madge');
@@ -277,7 +278,7 @@ It could happen that the files you're not seeing have been skipped due to errors
 
 ## What's the "Error: write EPIPE" when exporting graph to image?
 
-Ensure you have Graphviz installed. And if you're running Windows graphviz is not setting PATH variable during install. You should add folder of gvpr.exe (typically %Graphviz_folder%/bin) to PATH variable.
+Ensure you have Graphviz installed. And if you're running Windows graphviz is not setting PATH variable during install. You should add the folder of gvpr.exe (typically %Graphviz_folder%/bin) to PATH variable.
 
 ## The image produced by madge is very hard to read, what's wrong?
 
