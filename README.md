@@ -145,7 +145,6 @@ madge('path/to/app.js')
 	.then((writtenImagePath) => {
 		console.log('Image written to ' + writtenImagePath);
 	});
-});
 ```
 
 # Configuration
