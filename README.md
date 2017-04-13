@@ -109,7 +109,7 @@ madge('path/to/app.js').then((res) => {
 
 #### .depends()
 
-> Returns an `Array` of all modules that depends on a given module.
+> Returns an `Array` of all modules that depend on a given module.
 
 ```javascript
 const madge = require('madge');
