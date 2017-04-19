@@ -215,7 +215,7 @@ describe('API', () => {
 		});
 
 		afterEach(() => {
-			fs.unlink(imagePath);
+			return fs.unlink(imagePath).catch(() => {});
 		});
 
 		it('rejects if a filename is not supplied', (done) => {
