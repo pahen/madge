@@ -33,8 +33,8 @@ Read the [changelog](CHANGELOG.md) for latest changes.
 
 ## See it in action
 
-<a href="https://asciinema.org/a/8zhzdbpisjqtwgrsifclyqpuz?autoplay=1">
-	<img src="https://asciinema.org/a/8zhzdbpisjqtwgrsifclyqpuz.png" width="590"/>
+<a href="https://asciinema.org/a/M5tS7FrwKo8N3KUaCVO41J7iW?autoplay=1">
+	<img src="https://asciinema.org/a/M5tS7FrwKo8N3KUaCVO41J7iW.png" width="590"/>
 </a>
 
 # Installation
