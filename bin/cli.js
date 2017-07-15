@@ -162,7 +162,12 @@ new Promise((resolve, reject) => {
 	}
 
 	if (program.depends) {
-		output.depends(res.depends(program.depends), {
+		output.modules(res.depends(program.depends), {
+			json: program.json
+		});
+
+		return res;
+	}
 			json: program.json
 		});
 
