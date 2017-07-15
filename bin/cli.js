@@ -168,11 +168,6 @@ new Promise((resolve, reject) => {
 
 		return res;
 	}
-			json: program.json
-		});
-
-		return res;
-	}
 
 	if (program.circular) {
 		const circular = res.circular();
