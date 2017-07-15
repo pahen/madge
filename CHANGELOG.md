@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v2.0.0 (July 15, 2017)
+* To prevent issues with corrupt dependency trees the file extension in filenames will now always be included. Note that this affect how `--depends` and `--exclude` match filenames.
+* Added `--orphans` to show modules that no one is depending on.
+
 ## v1.6.0 (Feb 8, 2017)
 * Don't traverses NPM modules anymore (only shallow include)
 * Option `--include-npm` added
