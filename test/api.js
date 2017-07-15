@@ -207,6 +207,15 @@ describe('API', () => {
 		});
 	});
 
+	describe('orphans()', () => {
+		it('returns modules that no one is depending on', (done) => {
+			madge(__dirname + '/cjs/normal').then((res) => {
+				res.orphans().should.eql(['a.js']);
+				done();
+			}).catch(done);
+		});
+	});
+
 	describe('image()', () => {
 		let imagePath;
 
