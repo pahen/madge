@@ -115,7 +115,19 @@ madge('path/to/app.js').then((res) => {
 const madge = require('madge');
 
 madge('path/to/app.js').then((res) => {
-	console.log(res.depends());
+	console.log(res.depends('lib/log.js'));
+});
+```
+
+#### .orphans()
+
+> Return a `Array` of all modules that no one is depending on.
+
+```javascript
+const madge = require('madge');
+
+madge('path/to/app.js').then((res) => {
+	console.log(res.orphans());
 });
 ```
 
@@ -226,13 +238,13 @@ $ madge --circular path/src/app.js
 > Show modules that depends on a given module
 
 ```sh
-$ madge --depends 'wheels' path/src/app.js
+$ madge --depends wheels.js path/src/app.js
 ```
 
 > Excluding modules
 
 ```sh
-$ madge --exclude '^(foo|bar)$' path/src/app.js
+$ madge --exclude '^(foo|bar)\.js$' path/src/app.js
 ```
 
 > Save graph as a SVG image (graphviz required)
