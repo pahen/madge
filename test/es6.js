@@ -10,8 +10,8 @@ describe('ES6', () => {
 	it('extracts dependencies', (done) => {
 		madge(dir + '/absolute.js').then((res) => {
 			res.obj().should.eql({
-				'absolute': ['absolute/a'],
-				'absolute/a': []
+				'absolute.js': ['absolute/a.js'],
+				'absolute/a.js': []
 			});
 			done();
 		}).catch(done);
@@ -20,7 +20,7 @@ describe('ES6', () => {
 	it('finds circular dependencies', (done) => {
 		madge(dir + '/circular/a.js').then((res) => {
 			res.circular().should.eql([
-				['a', 'b', 'c']
+				['a.js', 'b.js', 'c.js']
 			]);
 			done();
 		}).catch(done);
@@ -29,7 +29,7 @@ describe('ES6', () => {
 	it('tackles error in files', (done) => {
 		madge(dir + '/error.js').then((res) => {
 			res.obj().should.eql({
-				'error': []
+				'error.js': []
 			});
 			done();
 		}).catch(done);
@@ -38,14 +38,14 @@ describe('ES6', () => {
 	it('supports export x from "./file"', (done) => {
 		madge(dir + '/re-export/c.js').then((res) => {
 			res.obj().should.eql({
-				'a': [],
-				'b-default': ['a'],
-				'b-named': ['a'],
-				'b-star': ['a'],
-				'c': [
-					'b-default',
-					'b-named',
-					'b-star'
+				'a.js': [],
+				'b-default.js': ['a.js'],
+				'b-named.js': ['a.js'],
+				'b-star.js': ['a.js'],
+				'c.js': [
+					'b-default.js',
+					'b-named.js',
+					'b-star.js'
 				]
 			});
 			done();
@@ -57,9 +57,9 @@ describe('ES6', () => {
 			webpackConfig: dir + '/webpack/webpack.config.js'
 		}).then((res) => {
 			res.obj().should.eql({
-				'index': ['rel'],
-				'abs': [],
-				'rel': ['abs']
+				'index.js': ['rel.js'],
+				'abs.js': [],
+				'rel.js': ['abs.js']
 			});
 			done();
 		}).catch(done);

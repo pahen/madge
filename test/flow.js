@@ -10,8 +10,8 @@ describe('Flow', () => {
 	it('extracts ES module ependencies', (done) => {
 		madge(dir + '/es/calc.js').then((res) => {
 			res.obj().should.eql({
-				'math': [],
-				'calc': ['math']
+				'math.js': [],
+				'calc.js': ['math.js']
 			});
 			done();
 		}).catch(done);
@@ -20,8 +20,8 @@ describe('Flow', () => {
 	it('extracts CommonsJS module dependencies', (done) => {
 		madge(dir + '/cjs/calc.js').then((res) => {
 			res.obj().should.eql({
-				'math': [],
-				'calc': ['math']
+				'math.js': [],
+				'calc.js': ['math.js']
 			});
 			done();
 		}).catch(done);

@@ -10,8 +10,8 @@ describe('ES7', () => {
 	it('extracts dependencies', (done) => {
 		madge(dir + '/async.js').then((res) => {
 			res.obj().should.eql({
-				'other': [],
-				'async': ['other']
+				'other.js': [],
+				'async.js': ['other.js']
 			});
 			done();
 		}).catch(done);

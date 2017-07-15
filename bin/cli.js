@@ -23,7 +23,6 @@ program
 	.option('-l, --layout <name>', 'layout engine to use for graph (dot/neato/fdp/sfdp/twopi/circo)')
 	.option('--dot', 'show graph using the DOT language')
 	.option('--extensions <list>', 'comma separated string of valid file extensions')
-	.option('--show-extension', 'include file extension in module name', false)
 	.option('--require-config <file>', 'path to RequireJS config')
 	.option('--webpack-config <file>', 'path to webpack config')
 	.option('--include-npm', 'include shallow NPM modules', false)
@@ -76,10 +75,6 @@ if (program.exclude) {
 
 if (program.extensions) {
 	config.fileExtensions = program.extensions.split(',').map((s) => s.trim());
-}
-
-if (program.showExtension) {
-	config.showFileExtension = true;
 }
 
 if (program.requireConfig) {

@@ -29,9 +29,9 @@ describe('API', () => {
 	it('takes single file as path', (done) => {
 		madge(__dirname + '/cjs/a.js').then((res) => {
 			res.obj().should.eql({
-				'a': ['b', 'c'],
-				'b': ['c'],
-				'c': []
+				'a.js': ['b.js', 'c.js'],
+				'b.js': ['c.js'],
+				'c.js': []
 			});
 			done();
 		}).catch(done);
@@ -40,10 +40,10 @@ describe('API', () => {
 	it('takes an array of files as path and combines the result', (done) => {
 		madge([__dirname + '/cjs/a.js', __dirname + '/cjs/normal/d.js']).then((res) => {
 			res.obj().should.eql({
-				'a': ['b', 'c'],
-				'b': ['c'],
-				'c': [],
-				'normal/d': []
+				'a.js': ['b.js', 'c.js'],
+				'b.js': ['c.js'],
+				'c.js': [],
+				'normal/d.js': []
 			});
 			done();
 		}).catch(done);
@@ -52,10 +52,10 @@ describe('API', () => {
 	it('take a single directory as path and find files in it', (done) => {
 		madge(__dirname + '/cjs/normal').then((res) => {
 			res.obj().should.eql({
-				'a': ['sub/b'],
-				'd': [],
-				'sub/b': ['sub/c'],
-				'sub/c': ['d']
+				'a.js': ['sub/b.js'],
+				'd.js': [],
+				'sub/b.js': ['sub/c.js'],
+				'sub/c.js': ['d.js']
 			});
 			done();
 		}).catch(done);
@@ -64,8 +64,8 @@ describe('API', () => {
 	it('takes an array of directories as path and compute the basedir correctly', (done) => {
 		madge([__dirname + '/cjs/multibase/1', __dirname + '/cjs/multibase/2']).then((res) => {
 			res.obj().should.eql({
-				'1/a': [],
-				'2/b': []
+				'1/a.js': [],
+				'2/b.js': []
 			});
 			done();
 		}).catch(done);
@@ -90,11 +90,11 @@ describe('API', () => {
 
 	it('can exclude modules using RegExp', (done) => {
 		madge(__dirname + '/cjs/a.js', {
-			excludeRegExp: ['^b$']
+			excludeRegExp: ['^b.js$']
 		}).then((res) => {
 			res.obj().should.eql({
-				a: ['c'],
-				c: []
+				'a.js': ['c.js'],
+				'c.js': []
 			});
 			done();
 		}).catch(done);
@@ -108,7 +108,7 @@ describe('API', () => {
 				}
 			}).then((res) => {
 				res.obj().should.eql({
-					a: []
+					'a.js': []
 				});
 				done();
 			}).catch(done);
@@ -119,9 +119,9 @@ describe('API', () => {
 				dependencyFilter: () => {}
 			}).then((res) => {
 				res.obj().should.eql({
-					a: ['b', 'c'],
-					b: ['c'],
-					c: []
+					'a.js': ['b.js', 'c.js'],
+					'b.js': ['c.js'],
+					'c.js': []
 				});
 				done();
 			}).catch(done);
@@ -162,9 +162,9 @@ describe('API', () => {
 		it('returns dependency object', (done) => {
 			madge(__dirname + '/cjs/a.js').then((res) => {
 				res.obj().should.eql({
-					a: ['b', 'c'],
-					b: ['c'],
-					c: []
+					'a.js': ['b.js', 'c.js'],
+					'b.js': ['c.js'],
+					'c.js': []
 				});
 				done();
 			}).catch(done);
@@ -175,8 +175,8 @@ describe('API', () => {
 		it('returns an array of skipped files', (done) => {
 			madge(__dirname + '/cjs/missing.js').then((res) => {
 				res.obj().should.eql({
-					missing: ['c'],
-					c: []
+					'missing.js': ['c.js'],
+					'c.js': []
 				});
 				res.warnings().should.eql({
 					skipped: ['./path/non/existing/file']
@@ -191,7 +191,7 @@ describe('API', () => {
 			madge(__dirname + '/cjs/b.js')
 				.then((res) => res.dot())
 				.then((output) => {
-					output.should.eql('digraph G {\n  "b";\n  "c";\n  "b" -> "c";\n}\n');
+					output.should.eql('digraph G {\n  "b.js";\n  "c.js";\n  "b.js" -> "c.js";\n}\n');
 					done();
 				})
 				.catch(done);
@@ -201,7 +201,7 @@ describe('API', () => {
 	describe('depends()', () => {
 		it('returns modules that depends on another', (done) => {
 			madge(__dirname + '/cjs/a.js').then((res) => {
-				res.depends('c').should.eql(['a', 'b']);
+				res.depends('c.js').should.eql(['a.js', 'b.js']);
 				done();
 			}).catch(done);
 		});

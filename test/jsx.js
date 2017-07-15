@@ -10,8 +10,8 @@ describe('JSX', () => {
 	it('finds import in JSX files', (done) => {
 		madge(dir + '/basic.jsx').then((res) => {
 			res.obj().should.eql({
-				'basic': ['other'],
-				'other': []
+				'basic.jsx': ['other.jsx'],
+				'other.jsx': []
 			});
 			done();
 		}).catch(done);

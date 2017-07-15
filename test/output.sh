@@ -11,7 +11,7 @@ desc "SUMMARY"
 ./bin/cli.js lib/api.js -s
 
 desc "DEPENDS"
-./bin/cli.js lib/api.js -d log
+./bin/cli.js lib/api.js -d log.js
 
 desc "CIRCULAR (OK)"
 ./bin/cli.js test/cjs/a.js -c
