@@ -121,7 +121,7 @@ madge('path/to/app.js').then((res) => {
 
 #### .orphans()
 
-> Return a `Array` of all modules that no one is depending on.
+> Return an `Array` of all modules that no one is depending on.
 
 ```javascript
 const madge = require('madge');
