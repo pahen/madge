@@ -6,18 +6,18 @@
     <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="Artboard">
-            <path d="M68.5,78.5 L104.5,54.5" id="Line" stroke="#4A4A4A" stroke-width="3" stroke-linecap="square"></path>
-            <g id="Group" transform="translate(49.000000, 62.000000)" stroke="#4A4A4A" font-family="MINIMALHARD" font-size="99" fill="#FFD7D7" font-weight="normal">
+            <path d="M68.5,78.5 L128.5,43.5" id="Line" stroke="#4A4A4A" stroke-width="3" stroke-linecap="square"></path>
+            <g id="Group" transform="translate(49.000000, 62.000000)" stroke="#000000" font-family="MINIMALHARD" fill="#FFAAAA" font-size="99" font-weight="normal">
                 <text id="madge">
                     <tspan x="3.14453125" y="82">madge</tspan>
                 </text>
             </g>
-            <path d="M128.5,51.5 L173.5,75.5" id="Line" stroke="#4A4A4A" stroke-width="3" stroke-linecap="square"></path>
-            <path d="M177.972232,71.0277683 L215.5,78.5" id="Line" stroke="#4A4A4A" stroke-width="3" stroke-linecap="square"></path>
+            <path d="M113.5,44.5 L173.5,75.5" id="Line" stroke="#4A4A4A" stroke-width="3" stroke-linecap="square"></path>
+            <path d="M170.5,78.5 L205.5,62.5" id="Line" stroke="#4A4A4A" stroke-width="3" stroke-linecap="square"></path>
             <ellipse id="Oval" stroke="#4A4A4A" stroke-width="3" fill="#ECEDFF" cx="70.5" cy="77" rx="12.5" ry="12"></ellipse>
             <ellipse id="Oval" stroke="#4A4A4A" stroke-width="3" fill="#FFFFFF" cx="121" cy="57.5" rx="30" ry="28.5"></ellipse>
             <ellipse id="Oval" stroke="#4A4A4A" stroke-width="3" fill="#FFFDC4" cx="174" cy="75.5" rx="14" ry="13.5"></ellipse>
-            <ellipse id="Oval" stroke="#4A4A4A" stroke-width="3" fill="#FFFFFF" cx="214" cy="76.5" rx="9" ry="8.5"></ellipse>
+            <ellipse id="Oval" stroke="#4A4A4A" stroke-width="3" fill="#FFFFFF" cx="203" cy="63.5" rx="7" ry="6.5"></ellipse>
             <text id="Module-Dependency-Gr" font-family="ArialUnicodeMS, Arial Unicode MS" font-size="15" font-weight="normal" fill="#000000">
                 <tspan x="51.2751465" y="168">Module Dependency Graph</tspan>
             </text>
