@@ -1,4 +1,6 @@
-# MaDGe - Module Dependency Graph
+<p align="center">
+	<img alt="madge" src="http://pahen.github.io/madge/logo.svg" width="546">
+</p>
 
 ![Last version](https://img.shields.io/github/tag/pahen/madge.svg?style=flat-square)
 [![Build Status](http://img.shields.io/travis/pahen/madge/master.svg?style=flat-square)](https://travis-ci.org/pahen/madge)
