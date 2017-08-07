@@ -1,5 +1,5 @@
 <p align="center">
-	<img alt="madge" src="http://pahen.github.io/madge/logo.svg" width="546">
+	<img alt="madge" src="http://pahen.github.io/madge/logo.svg" width="320">
 </p>
 
 ![Last version](https://img.shields.io/github/tag/pahen/madge.svg?style=flat-square)
