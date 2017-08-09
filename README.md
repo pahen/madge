@@ -2,15 +2,23 @@
 	<img alt="madge" src="http://pahen.github.io/madge/logo.svg" width="320">
 </p>
 
-<p align="center" markdown="1">
-
-![Last version](https://img.shields.io/github/tag/pahen/madge.svg?style=flat-square)
-[![Build Status](http://img.shields.io/travis/pahen/madge/master.svg?style=flat-square)](https://travis-ci.org/pahen/madge)
-[![Dependency status](http://img.shields.io/david/pahen/madge.svg?style=flat-square)](https://david-dm.org/pahen/madge)
-[![Dev Dependencies Status](http://img.shields.io/david/dev/pahen/madge.svg?style=flat-square)](https://david-dm.org/pahen/madge#info=devDependencies)
-[![NPM Status](http://img.shields.io/npm/dm/madge.svg?style=flat-square)](https://www.npmjs.org/package/madge)
-[![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/pahen)
-
+<p align="center">
+	<img alt="Last version" src="https://img.shields.io/github/tag/pahen/madge.svg?style=flat-square" />
+	<a href="https://travis-ci.org/pahen/madge">
+		<img alt="Build Status" src="http://img.shields.io/travis/pahen/madge/master.svg?style=flat-square" />
+	</a>
+	<a href="https://david-dm.org/pahen/madge">
+		<img alt="Dependency status" src="http://img.shields.io/david/pahen/madge.svg?style=flat-square" />
+	</a>
+	<a href="https://david-dm.org/pahen/madge#info=devDependencies">
+		<img alg="Dev Dependencies status" src="http://img.shields.io/david/dev/pahen/madge.svg?style=flat-square" />
+	</a>
+	<a href="https://www.npmjs.org/package/madge">
+		<img alg="NPM Status" src="http://img.shields.io/npm/dm/madge.svg?style=flat-square" />
+	</a>
+	<a href="https://paypal.me/pahen">
+		<img alt="Donate" src="https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square" />
+	</a>
 </p>
 
 **Madge** is a developer tool for generating a visual graph of your module dependencies, finding circular dependencies, and give you other useful info. Joel Kemp's awesome [dependency-tree](https://github.com/mrjoelkemp/node-dependency-tree) is used for extracting the dependency tree.
