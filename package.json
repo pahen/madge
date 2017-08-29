@@ -1,6 +1,6 @@
 {
   "name": "madge",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "author": "Patrik Henningsson <patrik.henningsson@gmail.com>",
   "repository": "git://github.com/pahen/madge",
   "homepage": "https://github.com/pahen/madge",
@@ -43,7 +43,7 @@
     "commander": "2.9.0",
     "commondir": "1.0.1",
     "debug": "2.2.0",
-    "dependency-tree": "5.10.1",
+    "dependency-tree": "5.11.0",
     "graphviz": "0.0.8",
     "mz": "2.4.0",
     "ora": "1.2.0",

@@ -1,7 +1,10 @@
 # CHANGELOG
 
+## v2.2.0 (Aug 29, 2017)
+* Support for dynamic imports thanks to @mrjoelkemp and @gmathieu
+
 ## v2.1.0 (Aug 26, 2017)
-* Added support for TypeScript (big thanks to @mrjoelkemp and @davidfirst)
+* Support for TypeScript thanks to @mrjoelkemp and @davidfirst
 
 ## v2.0.0 (July 15, 2017)
 * To prevent issues with corrupt dependency trees the file extension in filenames will now always be included. Note that this affect how `--depends` and `--exclude` match filenames.
