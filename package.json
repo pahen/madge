@@ -43,7 +43,7 @@
     "commander": "2.9.0",
     "commondir": "1.0.1",
     "debug": "^3.1.0",
-    "dependency-tree": "5.11.0",
+    "dependency-tree": "5.11.1",
     "graphviz": "0.0.8",
     "mz": "2.4.0",
     "ora": "1.2.0",
