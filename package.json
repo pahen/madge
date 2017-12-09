@@ -56,6 +56,6 @@
     "@aptoma/eslint-config": "^6.0.0",
     "eslint": "^3.19.0",
     "mocha": "^4.0.1",
-    "should": "^11.2.1"
+    "should": "^13.1.3"
   }
 }
