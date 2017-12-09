@@ -135,91 +135,91 @@ new Promise((resolve, reject) => {
 		resolve(program.args);
 	}
 })
-.then((src) => {
-	if (!program.json && !program.dot) {
-		spinner.start();
-		config.dependencyFilter = dependencyFilter();
-	}
-
-	return madge(src, config);
-})
-.then((res) => {
-	if (!program.json && !program.dot) {
-		spinner.stop();
-		output.getResultSummary(res, startTime);
-	}
-
-	if (program.summary) {
-		output.summary(res.obj(), {
-			json: program.json
-		});
-
-		return res;
-	}
-
-	if (program.depends) {
-		output.modules(res.depends(program.depends), {
-			json: program.json
-		});
-
-		return res;
-	}
-
-	if (program.orphans) {
-		output.modules(res.orphans(), {
-			json: program.json
-		});
-
-		return res;
-	}
-
-	if (program.circular) {
-		const circular = res.circular();
-
-		output.circular(spinner, res, circular, {
-			json: program.json
-		});
-
-		if (circular.length) {
-			exitCode = 1;
+	.then((src) => {
+		if (!program.json && !program.dot) {
+			spinner.start();
+			config.dependencyFilter = dependencyFilter();
 		}
 
+		return madge(src, config);
+	})
+	.then((res) => {
+		if (!program.json && !program.dot) {
+			spinner.stop();
+			output.getResultSummary(res, startTime);
+		}
+
+		if (program.summary) {
+			output.summary(res.obj(), {
+				json: program.json
+			});
+
+			return res;
+		}
+
+		if (program.depends) {
+			output.modules(res.depends(program.depends), {
+				json: program.json
+			});
+
+			return res;
+		}
+
+		if (program.orphans) {
+			output.modules(res.orphans(), {
+				json: program.json
+			});
+
+			return res;
+		}
+
+		if (program.circular) {
+			const circular = res.circular();
+
+			output.circular(spinner, res, circular, {
+				json: program.json
+			});
+
+			if (circular.length) {
+				exitCode = 1;
+			}
+
+			return res;
+		}
+
+		if (program.image) {
+			return res.image(program.image).then((imagePath) => {
+				spinner.succeed(`${chalk.bold('Image created at')} ${chalk.cyan.bold(imagePath)}`);
+				return res;
+			});
+		}
+
+		if (program.dot) {
+			return res.dot().then((output) => {
+				process.stdout.write(output);
+				return res;
+			});
+		}
+
+		output.list(res.obj(), {
+			json: program.json
+		});
+
 		return res;
-	}
+	})
+	.then((res) => {
+		if (program.warning && !program.json) {
+			output.warnings(res);
+		}
 
-	if (program.image) {
-		return res.image(program.image).then((imagePath) => {
-			spinner.succeed(`${chalk.bold('Image created at')} ${chalk.cyan.bold(imagePath)}`);
-			return res;
-		});
-	}
+		if (!program.json && !program.dot) {
+			console.log('');
+		}
 
-	if (program.dot) {
-		return res.dot().then((output) => {
-			process.stdout.write(output);
-			return res;
-		});
-	}
-
-	output.list(res.obj(), {
-		json: program.json
+		process.exit(exitCode);
+	})
+	.catch((err) => {
+		spinner.stop();
+		console.log('\n%s %s\n', chalk.red('✖'), err.stack);
+		process.exit(1);
 	});
-
-	return res;
-})
-.then((res) => {
-	if (program.warning && !program.json) {
-		output.warnings(res);
-	}
-
-	if (!program.json && !program.dot) {
-		console.log('');
-	}
-
-	process.exit(exitCode);
-})
-.catch((err) => {
-	spinner.stop();
-	console.log('\n%s %s\n', chalk.red('✖'), err.stack);
-	process.exit(1);
-});

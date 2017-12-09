@@ -53,9 +53,9 @@
     "walkdir": "^0.0.12"
   },
   "devDependencies": {
-    "@aptoma/eslint-config": "^6.0.0",
-    "eslint": "^3.19.0",
-    "mocha": "^3.2.0",
-    "should": "^11.2.1"
+    "@aptoma/eslint-config": "^7.0.1",
+    "eslint": "^4.13.0",
+    "mocha": "^4.0.1",
+    "should": "^13.1.3"
   }
 }
