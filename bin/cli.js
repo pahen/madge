@@ -27,6 +27,7 @@ program
 	.option('--require-config <file>', 'path to RequireJS config')
 	.option('--webpack-config <file>', 'path to webpack config')
 	.option('--include-npm', 'include shallow NPM modules', false)
+	.option('--background-color <color>', 'set the background color of the image')
 	.option('--no-color', 'disable color in output and image', false)
 	.option('--stdin', 'read predefined tree from STDIN', false)
 	.option('--warning', 'show warnings about skipped files', false)
@@ -88,6 +89,10 @@ if (program.webpackConfig) {
 
 if (program.includeNpm) {
 	config.includeNpm = program.includeNpm;
+}
+
+if (program.backgroundColor) {
+	config.backgroundColor = program.backgroundColor;
 }
 
 if (!program.color) {
