@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v3.0.0 (Jan 01, 2018)
+* Upgraded `dependency-tree` to 6.0.0
+
 ## v2.2.0 (Aug 29, 2017)
 * Support for dynamic imports thanks to @mrjoelkemp and @gmathieu
 
