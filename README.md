@@ -191,7 +191,7 @@ Property | Type | Default | Description
 `noDependencyColor` | String | #cfffac | Color to use for nodes with no dependencies
 `cyclicNodeColor` | String | #ff6c60 | Color to use for circular dependencies
 `edgeColor` | String | #757575 | Edge color to use in the graph
-`graphVizOptions` | Object | false | Custom GraphViz [options](http://www.graphviz.org/content/attrs)
+`graphVizOptions` | Object | false | Custom GraphViz [options](https://graphviz.gitlab.io/_pages/doc/info/attrs.html)
 `graphVizPath` | String | null | Custom GraphViz path
 `detectiveOptions` | Object | false | Custom `detective` options for [dependency-tree](https://github.com/dependents/node-dependency-tree)
 `dependencyFilter` | Function | false | Function called with a dependency filepath (exclude substree by returning false)
