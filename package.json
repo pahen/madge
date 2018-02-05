@@ -40,22 +40,22 @@
   },
   "dependencies": {
     "chalk": "^2.3.0",
-    "commander": "^2.11.0",
+    "commander": "2.13.0",
     "commondir": "^1.0.1",
     "debug": "^3.1.0",
     "dependency-tree": "^6.0.0",
     "graphviz": "^0.0.8",
     "mz": "^2.7.0",
-    "ora": "^1.3.0",
+    "ora": "1.4.0",
     "pluralize": "^7.0.0",
     "pretty-ms": "^3.0.1",
-    "rc": "^1.2.2",
+    "rc": "1.2.5",
     "walkdir": "^0.0.12"
   },
   "devDependencies": {
     "@aptoma/eslint-config": "^7.0.1",
-    "eslint": "^4.13.0",
-    "mocha": "^4.0.1",
-    "should": "^13.1.3"
+    "eslint": "4.17.0",
+    "mocha": "5.0.0",
+    "should": "13.2.1"
   }
 }
