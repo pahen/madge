@@ -50,6 +50,15 @@ const log = require('../lib/log');
 const output = require('../lib/output');
 const madge = require('../lib/api');
 const config = Object.assign({}, rc);
+
+program.options.forEach((opt) => {
+	const name = opt.name();
+
+	if (program[name]) {
+		config[name] = program[name];
+	}
+});
+
 const spinner = ora({
 	text: 'Finding files',
 	color: 'white',
