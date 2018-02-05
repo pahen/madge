@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v3.0.1 (Feb 05, 2018)
+* Fix issue with short CLI options not working properly
+* Upgraded deps
+
 ## v3.0.0 (Jan 01, 2018)
 * Upgraded `dependency-tree` to 6.0.0
 
