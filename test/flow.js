@@ -20,8 +20,9 @@ describe('Flow', () => {
 	it('extracts CommonsJS module dependencies', (done) => {
 		madge(dir + '/cjs/calc.js').then((res) => {
 			res.obj().should.eql({
+				'geometry.js': [],
 				'math.js': [],
-				'calc.js': ['math.js']
+				'calc.js': ['geometry.js', 'math.js']
 			});
 			done();
 		}).catch(done);
