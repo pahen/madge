@@ -4,3 +4,4 @@
 .madgerc
 *.sublime-project
 *.sublime-workspace
+.idea
