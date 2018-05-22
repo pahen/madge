@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v3.1.0 (May 22, 2018)
+* Fix performance issue when flattening the dependency tree (Thanks to @wjohnsto)
+
 ## v3.0.1 (Feb 05, 2018)
 * Fix issue with short CLI options not working properly
 * Upgraded deps
