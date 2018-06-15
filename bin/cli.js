@@ -101,8 +101,8 @@ if (program.includeNpm) {
 
 if (!program.color) {
 	config.backgroundColor = '#ffffff';
-	config.nodeColor = '#00000';
-	config.noDependencyColor = '#00000';
+	config.nodeColor = '#000000';
+	config.noDependencyColor = '#000000';
 	config.cyclicNodeColor = '#000000';
 	config.edgeColor = '#757575';
 }
