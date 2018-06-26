@@ -184,9 +184,12 @@ Property | Type | Default | Description
 `requireConfig` | String | null | RequireJS config for resolving aliased modules
 `webpackConfig` | String | null | Webpack config for resolving aliased modules
 `layout` | String | dot | Layout to use in the graph
+`rankdir` | String | LR | Sets [direction](https://graphviz.gitlab.io/_pages/doc/info/attrs.html#d:rankdir) of the graph layout
 `fontName` | String | Arial | Font name to use in the graph
 `fontSize` | String | 14px | Font size to use in the graph
 `backgroundColor` | String | #000000 | Background color for the graph
+`nodeShape` | String | box | A string specifying the [shape](https://graphviz.gitlab.io/_pages/doc/info/attrs.html#k:shape) of a node in the graph
+`nodeStyle` | String | rounded | A string specifying the [style](https://graphviz.gitlab.io/_pages/doc/info/attrs.html#k:style) of a node in the graph
 `nodeColor` | String | #c6c5fe | Default node color to use in the graph
 `noDependencyColor` | String | #cfffac | Color to use for nodes with no dependencies
 `cyclicNodeColor` | String | #ff6c60 | Color to use for circular dependencies
