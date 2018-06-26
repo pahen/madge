@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v3.2.0 (June 26, 2018)
+* Plot rounded boxes, prefer left to right by default (Thanks to @paulirish)
+
 ## v3.1.0 (May 22, 2018)
 * Fix performance issue when flattening the dependency tree (Thanks to @wjohnsto)
 
