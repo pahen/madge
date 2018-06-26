@@ -184,7 +184,7 @@ Property | Type | Default | Description
 `requireConfig` | String | null | RequireJS config for resolving aliased modules
 `webpackConfig` | String | null | Webpack config for resolving aliased modules
 `layout` | String | dot | Layout to use in the graph
-`rankdir` | String | LR | Sets [direction](https://graphviz.gitlab.io/_pages/doc/info/attrs.html#d:rankdir) of the graph layout
+`rankdir` | String | LR | Sets the [direction](https://graphviz.gitlab.io/_pages/doc/info/attrs.html#d:rankdir) of the graph layout
 `fontName` | String | Arial | Font name to use in the graph
 `fontSize` | String | 14px | Font size to use in the graph
 `backgroundColor` | String | #000000 | Background color for the graph
