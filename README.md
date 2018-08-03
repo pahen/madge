@@ -173,6 +173,20 @@ madge('path/to/app.js')
 	});
 ```
 
+#### .svg()
+
+> Return a `Promise` resolved with the XML SVG representation of the dependency graph as a `Buffer`.
+
+```javascript
+const madge = require('madge');
+
+madge('path/to/app.js')
+	.then((res) => res.svg())
+	.then((output) => {
+		console.log(output.toString());
+	});
+```
+
 # Configuration
 
 Property | Type | Default | Description
