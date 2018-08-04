@@ -222,6 +222,7 @@ describe('API', () => {
 				.then((res) => res.svg())
 				.then((output) => {
 					output.should.instanceof(Buffer);
+					output.toString().should.match(/<svg.*/);
 					done();
 				})
 				.catch(done);
