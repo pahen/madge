@@ -28,6 +28,7 @@ program
 	.option('--webpack-config <file>', 'path to webpack config')
 	.option('--include-npm', 'include shallow NPM modules', false)
 	.option('--no-color', 'disable color in output and image', false)
+	.option('--no-spinner', 'disable progress spinner', false)
 	.option('--stdin', 'read predefined tree from STDIN', false)
 	.option('--warning', 'show warnings about skipped files', false)
 	.option('--debug', 'turn on debug output', false)
@@ -105,6 +106,10 @@ if (!program.color) {
 	config.noDependencyColor = '#000000';
 	config.cyclicNodeColor = '#000000';
 	config.edgeColor = '#757575';
+}
+
+if (!program.spinner) {
+	spinner.isEnabled = false;
 }
 
 function dependencyFilter() {
