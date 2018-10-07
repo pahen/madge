@@ -63,7 +63,8 @@ program.options.forEach((opt) => {
 const spinner = ora({
 	text: 'Finding files',
 	color: 'white',
-	interval: 100000
+	interval: 100000,
+	isEnabled: program.spinner
 });
 
 let exitCode = 0;
@@ -108,10 +109,6 @@ if (!program.color) {
 	config.edgeColor = '#757575';
 }
 
-if (!program.spinner) {
-	spinner.isEnabled = false;
-}
-
 function dependencyFilter() {
 	let prevFile;
 
@@ -121,8 +118,10 @@ function dependencyFilter() {
 			const dir = path.dirname(relPath) + '/';
 			const file = path.basename(relPath);
 
-			spinner.text = chalk.grey(dir) + chalk.cyan(file);
-			spinner.render();
+			if (program.spinner) {
+				spinner.text = chalk.grey(dir) + chalk.cyan(file);
+				spinner.render();
+			}
 			prevFile = traversedFilePath;
 		}
 	};
