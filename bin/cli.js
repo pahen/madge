@@ -28,6 +28,7 @@ program
 	.option('--webpack-config <file>', 'path to webpack config')
 	.option('--include-npm', 'include shallow NPM modules', false)
 	.option('--no-color', 'disable color in output and image', false)
+	.option('--no-spinner', 'disable progress spinner', false)
 	.option('--stdin', 'read predefined tree from STDIN', false)
 	.option('--warning', 'show warnings about skipped files', false)
 	.option('--debug', 'turn on debug output', false)
@@ -62,7 +63,8 @@ program.options.forEach((opt) => {
 const spinner = ora({
 	text: 'Finding files',
 	color: 'white',
-	interval: 100000
+	interval: 100000,
+	isEnabled: program.spinner
 });
 
 let exitCode = 0;
@@ -116,8 +118,10 @@ function dependencyFilter() {
 			const dir = path.dirname(relPath) + '/';
 			const file = path.basename(relPath);
 
-			spinner.text = chalk.grey(dir) + chalk.cyan(file);
-			spinner.render();
+			if (program.spinner) {
+				spinner.text = chalk.grey(dir) + chalk.cyan(file);
+				spinner.render();
+			}
 			prevFile = traversedFilePath;
 		}
 	};
