@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v3.3.0 (Oct 31, 2018)
+* Add --no-spinner option (Thanks to @joebowbeer)
+
 ## v3.2.0 (June 26, 2018)
 * Plot rounded boxes, prefer left to right by default (Thanks to @paulirish)
 
