@@ -59,7 +59,7 @@ $ npm -g install madge
 
 ## Graphviz (optional)
 
-> [Graphviz](http://www.graphviz.org/) is only required if you want to generate visual graphs in SVG format.
+> [Graphviz](http://www.graphviz.org/) is only required if you want to generate visual graphs (e.g. in SVG or DOT format).
 
 ### Mac OS X
 
