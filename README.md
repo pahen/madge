@@ -59,7 +59,7 @@ $ npm -g install madge
 
 ## Graphviz (optional)
 
-> Only required if you want to generate the visual graphs using [Graphviz](http://www.graphviz.org/).
+> [Graphviz](http://www.graphviz.org/) is only required if you want to generate visual graphs (e.g. in SVG or DOT format).
 
 ### Mac OS X
 
@@ -194,8 +194,8 @@ Property | Type | Default | Description
 `noDependencyColor` | String | #cfffac | Color to use for nodes with no dependencies
 `cyclicNodeColor` | String | #ff6c60 | Color to use for circular dependencies
 `edgeColor` | String | #757575 | Edge color to use in the graph
-`graphVizOptions` | Object | false | Custom GraphViz [options](https://graphviz.gitlab.io/_pages/doc/info/attrs.html)
-`graphVizPath` | String | null | Custom GraphViz path
+`graphVizOptions` | Object | false | Custom Graphviz [options](https://graphviz.gitlab.io/_pages/doc/info/attrs.html)
+`graphVizPath` | String | null | Custom Graphviz path
 `detectiveOptions` | Object | false | Custom `detective` options for [dependency-tree](https://github.com/dependents/node-dependency-tree)
 `dependencyFilter` | Function | false | Function called with a dependency filepath (exclude substree by returning false)
 
@@ -264,13 +264,13 @@ $ madge --depends wheels.js path/src/app.js
 $ madge --exclude '^(foo|bar)\.js$' path/src/app.js
 ```
 
-> Save graph as a SVG image (graphviz required)
+> Save graph as a SVG image (requires [Graphviz](#graphviz-optional))
 
 ```sh
 $ madge --image graph.svg path/src/app.js
 ```
 
-> Save graph as a [DOT](http://en.wikipedia.org/wiki/DOT_language) file for further processing (graphviz required)
+> Save graph as a [DOT](http://en.wikipedia.org/wiki/DOT_language) file for further processing (requires [Graphviz](#graphviz-optional))
 
 ```sh
 $ madge --dot path/src/app.js > graph.gv
@@ -304,7 +304,7 @@ It could happen that the files you're not seeing have been skipped due to errors
 
 ## What's the "Error: write EPIPE" when exporting graph to image?
 
-Ensure you have Graphviz installed. And if you're running Windows graphviz is not setting PATH variable during install. You should add the folder of gvpr.exe (typically %Graphviz_folder%/bin) to PATH variable.
+Ensure you have [installed Graphviz](#graphviz-optional). If you're running Windows, note that Graphviz is not added to the `PATH` variable during install. You should add the folder of `gvpr.exe` (typically `%Graphviz_folder%/bin`) to the `PATH` variable manually.
 
 ## The image produced by madge is very hard to read, what's wrong?
 
