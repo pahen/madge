@@ -4,30 +4,30 @@
 const os = require('os');
 const path = require('path');
 const fs = require('mz/fs');
-const madge = require('../lib/api');
+const Madge = require('../lib/api')();
 
 require('should');
 
 describe('API', () => {
 	it('throws error on missing path argument', () => {
 		(() => {
-			madge();
+			return new Madge();
 		}).should.throw('path argument not provided');
 	});
 
 	it('returns a Promise', () => {
-		madge(__dirname + '/cjs/a.js').should.be.Promise(); // eslint-disable-line new-cap
+		new Madge(__dirname + '/cjs/a.js').should.be.Promise(); // eslint-disable-line new-cap
 	});
 
 	it('throws error if file or directory does not exists', (done) => {
-		madge(__dirname + '/missing.js').catch((err) => {
+		new Madge(__dirname + '/missing.js').catch((err) => {
 			err.message.should.match(/no such file or directory/);
 			done();
 		}).catch(done);
 	});
 
 	it('takes single file as path', (done) => {
-		madge(__dirname + '/cjs/a.js').then((res) => {
+		new Madge(__dirname + '/cjs/a.js').then((res) => {
 			res.obj().should.eql({
 				'a.js': ['b.js', 'c.js'],
 				'b.js': ['c.js'],
@@ -38,7 +38,7 @@ describe('API', () => {
 	});
 
 	it('takes an array of files as path and combines the result', (done) => {
-		madge([__dirname + '/cjs/a.js', __dirname + '/cjs/normal/d.js']).then((res) => {
+		new Madge([__dirname + '/cjs/a.js', __dirname + '/cjs/normal/d.js']).then((res) => {
 			res.obj().should.eql({
 				'a.js': ['b.js', 'c.js'],
 				'b.js': ['c.js'],
@@ -50,7 +50,7 @@ describe('API', () => {
 	});
 
 	it('take a single directory as path and find files in it', (done) => {
-		madge(__dirname + '/cjs/normal').then((res) => {
+		new Madge(__dirname + '/cjs/normal').then((res) => {
 			res.obj().should.eql({
 				'a.js': ['sub/b.js'],
 				'd.js': [],
@@ -62,7 +62,7 @@ describe('API', () => {
 	});
 
 	it('takes an array of directories as path and compute the basedir correctly', (done) => {
-		madge([__dirname + '/cjs/multibase/1', __dirname + '/cjs/multibase/2']).then((res) => {
+		new Madge([__dirname + '/cjs/multibase/1', __dirname + '/cjs/multibase/2']).then((res) => {
 			res.obj().should.eql({
 				'1/a.js': [],
 				'2/b.js': []
@@ -72,7 +72,7 @@ describe('API', () => {
 	});
 
 	it('takes a predefined tree', (done) => {
-		madge({
+		new Madge({
 			a: ['b', 'c', 'd'],
 			b: ['c'],
 			c: [],
@@ -89,7 +89,7 @@ describe('API', () => {
 	});
 
 	it('can exclude modules using RegExp', (done) => {
-		madge(__dirname + '/cjs/a.js', {
+		new Madge(__dirname + '/cjs/a.js', {
 			excludeRegExp: ['^b.js$']
 		}).then((res) => {
 			res.obj().should.eql({
@@ -102,7 +102,7 @@ describe('API', () => {
 
 	describe('dependencyFilter', () => {
 		it('will stop traversing when returning false', (done) => {
-			madge(__dirname + '/cjs/a.js', {
+			new Madge(__dirname + '/cjs/a.js', {
 				dependencyFilter: () => {
 					return false;
 				}
@@ -115,7 +115,7 @@ describe('API', () => {
 		});
 
 		it('will not stop traversing when not returning anything', (done) => {
-			madge(__dirname + '/cjs/a.js', {
+			new Madge(__dirname + '/cjs/a.js', {
 				dependencyFilter: () => {}
 			}).then((res) => {
 				res.obj().should.eql({
@@ -130,7 +130,7 @@ describe('API', () => {
 		it('will pass arguments to the function', (done) => {
 			let counter = 0;
 
-			madge(__dirname + '/cjs/a.js', {
+			new Madge(__dirname + '/cjs/a.js', {
 				dependencyFilter: (dependencyFilePath, traversedFilePath, baseDir) => {
 					if (counter === 0) {
 						dependencyFilePath.should.match(/test\/cjs\/b\.js$/);
@@ -160,7 +160,7 @@ describe('API', () => {
 
 	describe('obj()', () => {
 		it('returns dependency object', (done) => {
-			madge(__dirname + '/cjs/a.js').then((res) => {
+			new Madge(__dirname + '/cjs/a.js').then((res) => {
 				res.obj().should.eql({
 					'a.js': ['b.js', 'c.js'],
 					'b.js': ['c.js'],
@@ -173,7 +173,7 @@ describe('API', () => {
 
 	describe('warnings()', () => {
 		it('returns an array of skipped files', (done) => {
-			madge(__dirname + '/cjs/missing.js').then((res) => {
+			new Madge(__dirname + '/cjs/missing.js').then((res) => {
 				res.obj().should.eql({
 					'missing.js': ['c.js'],
 					'c.js': []
@@ -188,7 +188,7 @@ describe('API', () => {
 
 	describe('dot()', () => {
 		it('returns a promise resolved with graphviz DOT output', (done) => {
-			madge(__dirname + '/cjs/b.js')
+			new Madge(__dirname + '/cjs/b.js')
 				.then((res) => res.dot())
 				.then((output) => {
 					output.should.eql('digraph G {\n  "b.js";\n  "c.js";\n  "b.js" -> "c.js";\n}\n');
@@ -200,7 +200,7 @@ describe('API', () => {
 
 	describe('depends()', () => {
 		it('returns modules that depends on another', (done) => {
-			madge(__dirname + '/cjs/a.js').then((res) => {
+			new Madge(__dirname + '/cjs/a.js').then((res) => {
 				res.depends('c.js').should.eql(['a.js', 'b.js']);
 				done();
 			}).catch(done);
@@ -209,7 +209,7 @@ describe('API', () => {
 
 	describe('orphans()', () => {
 		it('returns modules that no one is depending on', (done) => {
-			madge(__dirname + '/cjs/normal').then((res) => {
+			new Madge(__dirname + '/cjs/normal').then((res) => {
 				res.orphans().should.eql(['a.js']);
 				done();
 			}).catch(done);
@@ -228,7 +228,7 @@ describe('API', () => {
 		});
 
 		it('rejects if a filename is not supplied', (done) => {
-			madge(__dirname + '/cjs/a.js')
+			new Madge(__dirname + '/cjs/a.js')
 				.then((res) => res.image())
 				.catch((err) => {
 					err.message.should.eql('imagePath not provided');
@@ -237,7 +237,7 @@ describe('API', () => {
 		});
 
 		it('rejects on unsupported image format', (done) => {
-			madge(__dirname + '/cjs/a.js')
+			new Madge(__dirname + '/cjs/a.js')
 				.then((res) => res.image('image.zyx'))
 				.catch((err) => {
 					err.message.should.match(/Format: "zyx" not recognized/);
@@ -246,8 +246,8 @@ describe('API', () => {
 		});
 
 		it('rejects if graphviz is not installed', (done) => {
-			madge(__dirname + '/cjs/a.js', {graphVizPath: '/invalid/path'})
-				.then((res) => res.image('image.png'))
+			const invalidGraphVizPath = '/invalid/path';
+			Madge.checkGraphviz(invalidGraphVizPath)
 				.catch((err) => {
 					err.message.should.match(/Could not execute .*gvpr \-V/);
 					done();
@@ -255,7 +255,7 @@ describe('API', () => {
 		});
 
 		it('writes image to file', (done) => {
-			madge(__dirname + '/cjs/a.js')
+			new Madge(__dirname + '/cjs/a.js')
 				.then((res) => res.image(imagePath))
 				.then((writtenImagePath) => {
 					writtenImagePath.should.eql(imagePath);

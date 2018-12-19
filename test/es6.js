@@ -1,14 +1,14 @@
 /* eslint-env mocha */
 'use strict';
 
-const madge = require('../lib/api');
+const Madge = require('../lib/api')();
 require('should');
 
 describe('ES6', () => {
 	const dir = __dirname + '/es6';
 
 	it('extracts dependencies', (done) => {
-		madge(dir + '/absolute.js').then((res) => {
+		new Madge(dir + '/absolute.js').then((res) => {
 			res.obj().should.eql({
 				'absolute.js': ['absolute/a.js'],
 				'absolute/a.js': []
@@ -18,7 +18,7 @@ describe('ES6', () => {
 	});
 
 	it('finds circular dependencies', (done) => {
-		madge(dir + '/circular/a.js').then((res) => {
+		new Madge(dir + '/circular/a.js').then((res) => {
 			res.circular().should.eql([
 				['a.js', 'b.js', 'c.js']
 			]);
@@ -27,7 +27,7 @@ describe('ES6', () => {
 	});
 
 	it('tackles error in files', (done) => {
-		madge(dir + '/error.js').then((res) => {
+		new Madge(dir + '/error.js').then((res) => {
 			res.obj().should.eql({
 				'error.js': []
 			});
@@ -36,7 +36,7 @@ describe('ES6', () => {
 	});
 
 	it('supports export x from "./file"', (done) => {
-		madge(dir + '/re-export/c.js').then((res) => {
+		new Madge(dir + '/re-export/c.js').then((res) => {
 			res.obj().should.eql({
 				'a.js': [],
 				'b-default.js': ['a.js'],
@@ -53,7 +53,7 @@ describe('ES6', () => {
 	});
 
 	it('supports resolve root paths in webpack config', (done) => {
-		madge(dir + '/webpack/src/sub/index.js', {
+		new Madge(dir + '/webpack/src/sub/index.js', {
 			webpackConfig: dir + '/webpack/webpack.config.js'
 		}).then((res) => {
 			res.obj().should.eql({
