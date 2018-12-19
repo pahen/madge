@@ -49,7 +49,7 @@ if (!program.color) {
 
 const log = require('../lib/log');
 const output = require('../lib/output');
-const madge = require('../lib/api');
+const Madge = require('../lib/api')();
 const config = Object.assign({}, rc);
 
 program.options.forEach((opt) => {
@@ -149,12 +149,18 @@ new Promise((resolve, reject) => {
 	}
 })
 	.then((src) => {
+		if (program.dot || program.image) {
+			return Madge.checkGraphviz(config.graphVizPath).then(() => {
+				return new Madge(src, config);
+			});
+		}
+
 		if (!program.json && !program.dot) {
 			spinner.start();
 			config.dependencyFilter = dependencyFilter();
 		}
 
-		return madge(src, config);
+		return new Madge(src, config);
 	})
 	.then((res) => {
 		if (!program.json && !program.dot) {
