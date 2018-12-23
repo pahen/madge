@@ -191,7 +191,9 @@ describe('API', () => {
 			madge(__dirname + '/cjs/b.js')
 				.then((res) => res.dot())
 				.then((output) => {
-					output.should.eql('digraph G {\n  "b.js";\n  "c.js";\n  "b.js" -> "c.js";\n}\n');
+					const data = output.toString('utf8');
+					data.should.match(/digraph .*{$/gm);
+					data.should.match(/"b\.js" ?\-\> ?"c\.js"/gm);
 					done();
 				})
 				.catch(done);
