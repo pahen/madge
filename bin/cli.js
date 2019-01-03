@@ -26,6 +26,7 @@ program
 	.option('--extensions <list>', 'comma separated string of valid file extensions')
 	.option('--require-config <file>', 'path to RequireJS config')
 	.option('--webpack-config <file>', 'path to webpack config')
+	.option('--ts-config <file>', 'path to typescript config')
 	.option('--include-npm', 'include shallow NPM modules', false)
 	.option('--no-color', 'disable color in output and image', false)
 	.option('--no-spinner', 'disable progress spinner', false)
@@ -95,6 +96,10 @@ if (program.requireConfig) {
 
 if (program.webpackConfig) {
 	config.webpackConfig = program.webpackConfig;
+}
+
+if (program.tsConfig) {
+	config.tsConfig = program.tsConfig;
 }
 
 if (program.includeNpm) {
