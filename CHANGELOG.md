@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v3.4.1 (Jan 10, 2019)
+
+* Fix peer dependency issue with typescript-eslint-parser causing error: Cannot find module 'eslint/lib/util/traverser'
+
 ## v3.4.0 (Jan 07, 2019)
 
 * Support .tsx files and specifying a tsconfig (Thanks to @BPScott and @mrjoelkemp)
