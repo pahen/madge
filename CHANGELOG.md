@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v3.4.2 (Jan 10, 2019)
+
+* One more fix for missing eslint dependency
+
 ## v3.4.1 (Jan 10, 2019)
 
 * Fix peer dependency issue with typescript-eslint-parser causing error: Cannot find module 'eslint/lib/util/traverser'
