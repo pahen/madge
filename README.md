@@ -259,6 +259,12 @@ $ madge --circular path/src/app.js
 $ madge --depends wheels.js path/src/app.js
 ```
 
+> Return an `Array` of all modules that no one is depending on.
+
+```sh
+$ madge --orphans path/src/
+```
+
 > Excluding modules
 
 ```sh
