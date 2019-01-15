@@ -21,7 +21,14 @@
 	</a>
 </p>
 
+<p align="center">
+	<a href="https://www.patreon.com/bePatron?u=16473892">
+		<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" alt"Become a Patron" width="170" />
+	</a>
+</p>
+
 **Madge** is a developer tool for generating a visual graph of your module dependencies, finding circular dependencies, and give you other useful info. Joel Kemp's awesome [dependency-tree](https://github.com/mrjoelkemp/node-dependency-tree) is used for extracting the dependency tree.
+
 
 * Works for JavaScript (AMD, CommonJS, and ES6 modules)
 * Also works for CSS preprocessors (Sass, Stylus, and Less)
@@ -259,7 +266,7 @@ $ madge --circular path/src/app.js
 $ madge --depends wheels.js path/src/app.js
 ```
 
-> Show modules that no one is depending on.
+> Show modules that no one is depending on
 
 ```sh
 $ madge --orphans path/src/
