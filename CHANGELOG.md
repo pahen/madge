@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v3.4.3 (Jan 17, 2019)
+
+* Updated the `dependency-tree` module to get rid of the eslint dependency
+
 ## v3.4.2 (Jan 10, 2019)
 
 * One more fix for missing eslint dependency
