@@ -43,8 +43,7 @@
     "commander": "^2.15.1",
     "commondir": "^1.0.1",
     "debug": "^4.0.1",
-    "dependency-tree": "^7.0.0",
-    "eslint": "^5.12.0",
+    "dependency-tree": "^7.0.2",
     "graphviz": "^0.0.8",
     "ora": "^3.0.0",
     "pify": "^4.0.0",
@@ -55,6 +54,7 @@
   },
   "devDependencies": {
     "@aptoma/eslint-config": "^7.0.1",
+    "eslint": "^5.12.0",
     "mocha": "^5.1.1",
     "mz": "^2.7.0",
     "should": "^13.2.3"
