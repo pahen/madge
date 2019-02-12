@@ -1,17 +1,20 @@
 language: node_js
-
 node_js:
 - 6
 - 8
 - 10
-
 sudo: false
-
 addons:
   apt:
     packages:
-      - graphviz
-
+    - graphviz
 script:
 - npm test
 - npm run debug
+deploy:
+  provider: npm
+  email: "patrik.henningsson@gmail.com"
+  api_key:
+    secure: nArcGw6OdS7J1bC+BuXk/2ER7z2Cc+Rjk0oBE/hoTsYo4+ry2LUzWM+nl28om5pF1xtXWwe0fb1rG4f3Ls28iHpH7E5Uz5+RfVfB4VH9w1HL4nBfLW5Ljj9J0ViQzSN1OPJ45B2lwHU8JH7N2c62FDJ5kqLn83WTGdb7Bgyau6o=
+  on:
+    tags: true
