@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v3.4.4 (Feb 12, 2019)
+
+* Exclude test folder from npm registry (Thanks to @SethDavenport)
+
 ## v3.4.3 (Jan 17, 2019)
 
 * Updated the `dependency-tree` module to get rid of the eslint dependency
