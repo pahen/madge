@@ -54,8 +54,8 @@ Read the [changelog](CHANGELOG.md) for latest changes.
 
 ## See it in action
 
-<a href="https://asciinema.org/a/M5tS7FrwKo8N3KUaCVO41J7iW?autoplay=1">
-	<img src="https://asciinema.org/a/M5tS7FrwKo8N3KUaCVO41J7iW.png" width="590"/>
+<a href="https://asciinema.org/a/l9tM7lIraCpmzH0rdWw2KLrMc?autoplay=1">
+	<img src="https://asciinema.org/a/l9tM7lIraCpmzH0rdWw2KLrMc.png" width="590"/>
 </a>
 
 # Installation
