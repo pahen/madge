@@ -16,16 +16,11 @@
 	<a href="https://www.npmjs.org/package/madge">
 		<img alg="NPM Status" src="http://img.shields.io/npm/dm/madge.svg?style=flat-square" />
 	</a>
-	<a href="https://paypal.me/pahen">
+	<a href="https://paypal.me/pahen" target="_blank">
 		<img alt="Donate" src="https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square" />
 	</a>
 </p>
 
-<p align="center">
-	<a href="https://www.patreon.com/bePatron?u=16473892">
-		<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" alt"Become a Patron" width="170" />
-	</a>
-</p>
 
 **Madge** is a developer tool for generating a visual graph of your module dependencies, finding circular dependencies, and give you other useful info. Joel Kemp's awesome [dependency-tree](https://github.com/mrjoelkemp/node-dependency-tree) is used for extracting the dependency tree.
 
@@ -37,6 +32,8 @@
 * Will traverse child dependencies automatically
 
 Read the [changelog](CHANGELOG.md) for latest changes.
+
+If you found this tool useful, I'm very happy to accept donations and new sponsors 🙏 See [Credits](#credits) for more info!
 
 ## Examples
 
@@ -336,6 +333,48 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 * **twopi** radial layouts, after Graham Wills 97. Nodes are placed on concentric circles depending their distance from a given root node.
 
 * **circo** circular layout, after Six and Tollis 99, Kauffman and Wiese 02. This is suitable for certain diagrams of multiple cyclic structures, such as certain telecommunications networks.
+
+# Credits
+
+## Contributors
+
+This project exists thanks to all the people who contribute.
+<a href="https://github.com/pahen/madge/graphs/contributors"><img src="https://opencollective.com/madge/contributors.svg?width=890&button=false" alt="Contributors"/></a>
+
+## Donations
+
+Thanks to the awesome people below for making donations! 🙏[[Donate](https://paypal.me/pahen)]
+
+**Landon Alder**
+
+<a href="https://github.com/landonalder" target="_blank">
+	<img src="https://github.com/landonalder.png" width="64"/>
+</a>
+
+## Backers
+
+Thank you to all our backers! 🙏[[Become a backer](https://opencollective.com/madge#backer)]
+
+<a href="https://opencollective.com/madge#backers" target="_blank"><img src="https://opencollective.com/madge/backers.svg?width=890&button=false"></a>
+
+## Sponsors
+
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/madge#sponsor)]
+
+<!-- <a href="https://opencollective.com/madge/sponsor/0/website" target="_blank"><img src="https://opencollective.com/madge/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/madge/sponsor/1/website" target="_blank"><img src="https://opencollective.com/madge/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/madge/sponsor/2/website" target="_blank"><img src="https://opencollective.com/madge/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/madge/sponsor/3/website" target="_blank"><img src="https://opencollective.com/madge/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/madge/sponsor/4/website" target="_blank"><img src="https://opencollective.com/madge/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/madge/sponsor/5/website" target="_blank"><img src="https://opencollective.com/madge/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/madge/sponsor/6/website" target="_blank"><img src="https://opencollective.com/madge/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/madge/sponsor/7/website" target="_blank"><img src="https://opencollective.com/madge/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/madge/sponsor/8/website" target="_blank"><img src="https://opencollective.com/madge/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/madge/sponsor/9/website" target="_blank"><img src="https://opencollective.com/madge/sponsor/9/avatar.svg"></a> -->
+
+## Patreon
+
+You can also support the project on Patreon. [[Become a backer or sponsor](https://www.patreon.com/bePatron?u=16473892)]
 
 # License
 

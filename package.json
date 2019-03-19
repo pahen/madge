@@ -36,7 +36,12 @@
     "generate": "npm run generate:small && npm run generate:madge",
     "generate:small": "bin/cli.js --image /tmp/simple.svg test/cjs/circular/a.js",
     "generate:madge": "bin/cli.js --image /tmp/madge.svg bin lib",
-    "test:output": "./test/output.sh"
+    "test:output": "./test/output.sh",
+    "postinstall": "node -e \"console.log('\\u001b[35m\\u001b[1mLove Madge? You can now donate to our open collective:\\u001b[22m\\u001b[39m\\n > \\u001b[34mhttps://opencollective.com/madge/donate\\u001b[0m')\""
+  },
+  "collective": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/madge"
   },
   "dependencies": {
     "chalk": "^2.4.1",
