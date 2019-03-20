@@ -33,7 +33,9 @@
 
 Read the [changelog](CHANGELOG.md) for latest changes.
 
-If you found this tool useful, I'm very happy to accept donations and new sponsors 🙏 See [Credits](#credits) for more info!
+> I've worked with Madge on my free time for the last couple of years and it's been a great experience. It started as an experiment but turned out to be a very useful tool for many developers. I have many ideas for the project and it would definitely be easier to dedicate more time to it with some [financial support](#donations) 🙏
+>
+> Regardless of your contribution, thanks for your support!
 
 ## Examples
 
@@ -353,7 +355,7 @@ Thanks to the awesome people below for making donations! 🙏[[Donate](https://p
 
 ## Backers
 
-Thank you to all our backers! 🙏[[Become a backer](https://opencollective.com/madge#backer)]
+Thank you so much all awesome backers! 🙏[[Become a backer](https://opencollective.com/madge#backer)]
 
 <a href="https://opencollective.com/madge#backers" target="_blank"><img src="https://opencollective.com/madge/backers.svg?width=890&button=false"></a>
 
