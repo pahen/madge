@@ -2,32 +2,31 @@
 
 exports[`API dot() returns a promise resolved with graphviz DOT output 1`] = `
 "digraph G {
-	graph [bb=\\"0,0,144,24.099\\",
+	graph [bb=\\"0,0,54,72\\",
 		bgcolor=\\"#111111\\",
-		layout=dot,
-		overlap=false,
+		layout=neato,
+		overlap=true,
 		pad=0.3,
 		rankdir=LR
 	];
 	node [color=\\"#c6c5fe\\",
 		fontcolor=\\"#c6c5fe\\",
 		fontname=Arial,
-		fontsize=\\"14px\\",
-		height=0,
+		fontsize=0,
+		height=1,
 		label=\\"\\\\N\\",
+		pos=\\"0,0!\\",
 		shape=box,
 		style=rounded
 	];
 	edge [color=\\"#757575\\"];
-	\\"b.js\\"	 [height=0.3347,
-		pos=\\"27,12.049\\",
+	\\"b.js\\"	 [pos=\\"27,36\\",
 		width=0.75];
 	\\"c.js\\"	 [color=\\"#cfffac\\",
 		fontcolor=\\"#cfffac\\",
-		height=0.3347,
-		pos=\\"117,12.049\\",
+		pos=\\"27,36\\",
 		width=0.75];
-	\\"b.js\\" -> \\"c.js\\"	 [pos=\\"e,89.705,12.049 54.003,12.049 62.028,12.049 70.967,12.049 79.531,12.049\\"];
+	\\"b.js\\" -> \\"c.js\\"	 [pos=\\"e,27,36 27,36 27,36 27,36 27,36\\"];
 }
 "
 `;

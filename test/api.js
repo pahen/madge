@@ -191,7 +191,20 @@ describe('API', () => {
 
 	describe('dot()', () => {
 		it('returns a promise resolved with graphviz DOT output', async function () {
-			const res = await madge(__dirname + '/cjs/b.js');
+			const res = await madge(__dirname + '/cjs/b.js', {
+				fontSize: '0',
+				// Custom config to make test pass on different OS
+				graphVizOptions: {
+					G: {
+						layout: 'neato',
+						overlap: true
+					},
+					N: {
+						pos: '0,0!',
+						height: 1
+					}
+				}
+			});
 			expect(await res.dot()).toMatchSnapshot(this);
 		});
 	});
