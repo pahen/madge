@@ -5,6 +5,9 @@ const os = require('os');
 const path = require('path');
 const fs = require('mz/fs');
 const madge = require('../lib/api');
+const expect = require('expect');
+const toMatchSnapshot = require('expect-mocha-snapshot');
+expect.extend({toMatchSnapshot});
 
 require('should');
 
@@ -187,14 +190,9 @@ describe('API', () => {
 	});
 
 	describe('dot()', () => {
-		it('returns a promise resolved with graphviz DOT output', (done) => {
-			madge(__dirname + '/cjs/b.js')
-				.then((res) => res.dot())
-				.then((output) => {
-					output.should.eql('digraph G {\n  "b.js";\n  "c.js";\n  "b.js" -> "c.js";\n}\n');
-					done();
-				})
-				.catch(done);
+		it('returns a promise resolved with graphviz DOT output', async function () {
+			const res = await madge(__dirname + '/cjs/b.js');
+			expect(await res.dot()).toMatchSnapshot(this);
 		});
 	});
 

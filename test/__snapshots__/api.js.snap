@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`API dot() returns a promise resolved with graphviz DOT output 1`] = `
+"digraph G {
+	graph [bb=\\"0,0,144,24.099\\",
+		bgcolor=\\"#111111\\",
+		layout=dot,
+		overlap=false,
+		pad=0.3,
+		rankdir=LR
+	];
+	node [color=\\"#c6c5fe\\",
+		fontcolor=\\"#c6c5fe\\",
+		fontname=Arial,
+		fontsize=\\"14px\\",
+		height=0,
+		label=\\"\\\\N\\",
+		shape=box,
+		style=rounded
+	];
+	edge [color=\\"#757575\\"];
+	\\"b.js\\"	 [height=0.3347,
+		pos=\\"27,12.049\\",
+		width=0.75];
+	\\"c.js\\"	 [color=\\"#cfffac\\",
+		fontcolor=\\"#cfffac\\",
+		height=0.3347,
+		pos=\\"117,12.049\\",
+		width=0.75];
+	\\"b.js\\" -> \\"c.js\\"	 [pos=\\"e,89.705,12.049 54.003,12.049 62.028,12.049 70.967,12.049 79.531,12.049\\"];
+}
+"
+`;
