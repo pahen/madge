@@ -216,6 +216,19 @@ describe('API', () => {
 		});
 	});
 
+	describe('svg()', () => {
+		it('returns a promise resolved with XML SVG output in a Buffer', (done) => {
+			madge(__dirname + '/cjs/b.js')
+				.then((res) => res.svg())
+				.then((output) => {
+					output.should.instanceof(Buffer);
+					output.toString().should.match(/<svg.*/);
+					done();
+				})
+				.catch(done);
+		});
+	});
+
 	describe('image()', () => {
 		let imagePath;
 
