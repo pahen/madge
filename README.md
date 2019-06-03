@@ -203,7 +203,7 @@ Property | Type | Default | Description
 `edgeColor` | String | #757575 | Edge color to use in the graph
 `graphVizOptions` | Object | false | Custom Graphviz [options](https://graphviz.gitlab.io/_pages/doc/info/attrs.html)
 `graphVizPath` | String | null | Custom Graphviz path
-`detectiveOptions` | Object | false | Custom `detective` options for [dependency-tree](https://github.com/dependents/node-dependency-tree)
+`detectiveOptions` | Object | false | Custom `detective` options for [dependency-tree](https://github.com/dependents/node-dependency-tree) and [precinct](https://github.com/dependents/node-precinct#usage)
 `dependencyFilter` | Function | false | Function called with a dependency filepath (exclude substree by returning false)
 
 > Note that when running the CLI it's possible to use a runtime configuration file. The config should placed in `.madgerc` in your project or home folder. Look [here](https://github.com/dominictarr/rc#standards) for alternative locations for the file. Here's an example:
@@ -314,6 +314,20 @@ $ npm test
 ## Missing dependencies?
 
 It could happen that the files you're not seeing have been skipped due to errors or that they can't be resolved. Run madge with the `--warning` option to see skipped files. If you need even more info run with the `--debug` option.
+
+## Using both CommonJS and ES6 imports in same file?
+
+Only one syntax is used by default. You can use both though if you're willing to take the degraded performance. Put this in your madge config to enable mixed imports.
+
+```json
+{
+	"detectiveOptions": {
+		"es6": {
+			"mixedImports": true
+		}
+	}
+}
+```
 
 ## What's the "Error: write EPIPE" when exporting graph to image?
 
