@@ -320,6 +320,7 @@ $ madge --debug path/src/app.js
 # Running tests
 
 ```sh
+$ npm install
 $ npm test
 ```
 
