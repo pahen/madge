@@ -90,4 +90,16 @@ describe('AMD', () => {
 			done();
 		}).catch(done);
 	});
+
+	it('returns modules that no one is depending on', (done) => {
+		madge(dir + '/requirejs/orphans', {
+			requireConfig: dir + '/requirejs/config.js'
+		}).then((res) => {
+			res.orphans().should.eql([
+				'a.js',
+				'c.js'
+			]);
+			done();
+		}).catch(done);
+	});
 });
