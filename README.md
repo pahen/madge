@@ -348,6 +348,16 @@ Only one syntax is used by default. You can use both though if you're willing to
 
 Ensure you have [installed Graphviz](#graphviz-optional). If you're running Windows, note that Graphviz is not added to the `PATH` variable during install. You should add the folder of `gvpr.exe` (typically `%Graphviz_folder%/bin`) to the `PATH` variable manually.
 
+## How do I fix the "Graphviz not built with triangulation library" error when using sfdp layout?
+
+Homebrew doesn't include GTS by default. Fix this by doing:
+
+```sh
+brew uninstall graphviz
+brew install gts
+brew install graphviz
+```
+
 ## The image produced by madge is very hard to read, what's wrong?
 
 Try running madge with a different layout, here's a list of the ones you can try:
