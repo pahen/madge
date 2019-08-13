@@ -344,6 +344,34 @@ Only one syntax is used by default. You can use both though if you're willing to
 }
 ```
 
+## How to ignore `import type` statements in ES6 + Flow?
+
+Put this in your madge config.
+
+```json
+{
+	"detectiveOptions": {
+		"es6": {
+			"skipTypeImports": true
+		}
+	}
+}
+```
+
+## How to ignore `import` in type annotations in TypeScript?
+
+Put this in your madge config.
+
+```json
+{
+	"detectiveOptions": {
+		"ts": {
+			"skipTypeImports": true
+		}
+	}
+}
+```
+
 ## What's the "Error: write EPIPE" when exporting graph to image?
 
 Ensure you have [installed Graphviz](#graphviz-optional). If you're running Windows, note that Graphviz is not added to the `PATH` variable during install. You should add the folder of `gvpr.exe` (typically `%Graphviz_folder%/bin`) to the `PATH` variable manually.
