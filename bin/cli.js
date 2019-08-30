@@ -10,6 +10,8 @@ const ora = require('ora');
 const chalk = require('chalk');
 const startTime = Date.now();
 
+const collect = (value, prev) => prev.concat([value]);
+
 program
 	.version(version)
 	.usage('[options] <src...>')
@@ -17,7 +19,8 @@ program
 	.option('-s, --summary', 'show dependency count summary')
 	.option('-c, --circular', 'show circular dependencies')
 	.option('-d, --depends <name>', 'show module dependents')
-	.option('-x, --exclude <regexp>', 'exclude modules using RegExp')
+	.option('-x, --exclude <regexp>', 'exclude modules using RegExp (can be used multiple times)', collect, [])
+	.option('--include <regexp>', 'include modules using RegExp (can be used multiple times)', collect, [])
 	.option('-j, --json', 'output as JSON')
 	.option('-i, --image <file>', 'write graph to file as an image')
 	.option('-l, --layout <name>', 'layout engine to use for graph (dot/neato/fdp/sfdp/twopi/circo)')
@@ -82,8 +85,12 @@ if (program.basedir) {
 	config.baseDir = program.basedir;
 }
 
-if (program.exclude) {
-	config.excludeRegExp = [program.exclude];
+if (program.exclude.length) {
+	config.excludeRegExp = program.exclude;
+}
+
+if (program.include.length) {
+	config.includeRegExp = program.include;
 }
 
 if (program.extensions) {
