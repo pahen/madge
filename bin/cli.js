@@ -202,12 +202,23 @@ new Promise((resolve, reject) => {
 				exitCode = 1;
 			}
 
+			if (program.image) {
+				return res.circularImage(program.image).then((imagePath) => {
+					spinner.succeed(
+						`${chalk.bold('Image created at')} ${chalk.cyan.bold(imagePath)}`
+					);
+					return res;
+				});
+			}
+
 			return res;
 		}
 
 		if (program.image) {
 			return res.image(program.image).then((imagePath) => {
-				spinner.succeed(`${chalk.bold('Image created at')} ${chalk.cyan.bold(imagePath)}`);
+				spinner.succeed(
+					`${chalk.bold('Image created at')} ${chalk.cyan.bold(imagePath)}`
+				);
 				return res;
 			});
 		}
