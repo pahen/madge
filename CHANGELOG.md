@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v3.5.0 (Oct 28, 2019)
+
+* Reduce processing by excluding .git content (Thanks to @villelaitila)
+
 ## v3.4.4 (Feb 12, 2019)
 
 * Exclude test folder from npm registry (Thanks to @SethDavenport)
