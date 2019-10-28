@@ -103,6 +103,25 @@ describe('API', () => {
 		}).catch(done);
 	});
 
+	it('extracts dependencies but excludes .git', (done) => {
+		// eslint-disable-next-line no-sync
+		fs.renameSync(`${__dirname}/git/.git_tmp`, `${__dirname}/git/.git`);
+
+		madge(__dirname + '/git/a.js', {}).then((res) => {
+			res.obj().should.eql({
+				'a.js': ['b.js', 'c.js'],
+				'b.js': ['c.js'],
+				'c.js': []
+			});
+			done();
+		}).catch(() => {
+			done();
+		}).finally(() => {
+			// eslint-disable-next-line no-sync
+			fs.renameSync(`${__dirname}/git/.git`, `${__dirname}/git/.git_tmp`);
+		});
+	});
+
 	describe('dependencyFilter', () => {
 		it('will stop traversing when returning false', (done) => {
 			madge(__dirname + '/cjs/a.js', {
