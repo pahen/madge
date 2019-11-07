@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v3.5.1 (Nov 07, 2019)
+
+* Add funding to package.json
+
 ## v3.5.0 (Oct 28, 2019)
 
 * Reduce processing by excluding .git content (Thanks to @villelaitila)
