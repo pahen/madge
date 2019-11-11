@@ -5,9 +5,6 @@ const os = require('os');
 const path = require('path');
 const fs = require('mz/fs');
 const madge = require('../lib/api');
-const expect = require('expect');
-const toMatchSnapshot = require('expect-mocha-snapshot');
-expect.extend({toMatchSnapshot});
 
 require('should');
 
@@ -209,22 +206,14 @@ describe('API', () => {
 	});
 
 	describe('dot()', () => {
-		it('returns a promise resolved with graphviz DOT output', async function () {
-			const res = await madge(__dirname + '/cjs/b.js', {
-				fontSize: '0',
-				// Custom config to make test pass on different OS
-				graphVizOptions: {
-					G: {
-						layout: 'neato',
-						overlap: true
-					},
-					N: {
-						pos: '0,0!',
-						height: 1
-					}
-				}
-			});
-			expect(await res.dot()).toMatchSnapshot(this);
+		it('returns a promise resolved with graphviz DOT output', async () => {
+			const res = await madge(__dirname + '/cjs/b.js');
+			const output = await res.dot();
+			output.should.match(/digraph G/);
+			output.should.match(/bgcolor="#111111"/);
+			output.should.match(/fontcolor="#c6c5fe"/);
+			output.should.match(/color="#757575"/);
+			output.should.match(/fontcolor="#cfffac"/);
 		});
 	});
 

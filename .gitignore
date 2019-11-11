@@ -5,3 +5,4 @@
 *.sublime-project
 *.sublime-workspace
 .idea
+package-lock.json

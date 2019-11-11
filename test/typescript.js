@@ -41,4 +41,15 @@ describe('TypeScript', () => {
 			done();
 		}).catch(done);
 	});
+
+	it('supports CJS modules when using mixedImports option', (done) => {
+		madge(dir + '/mixed.ts', {detectiveOptions: {ts: {mixedImports: true}}}).then((res) => {
+			res.obj().should.eql({
+				'export-x.tsx': [],
+				'export.ts': [],
+				'mixed.ts': ['export-x.tsx', 'export.ts']
+			});
+			done();
+		}).catch(done);
+	});
 });

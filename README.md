@@ -330,14 +330,26 @@ $ npm test
 
 It could happen that the files you're not seeing have been skipped due to errors or that they can't be resolved. Run madge with the `--warning` option to see skipped files. If you need even more info run with the `--debug` option.
 
-## Using both CommonJS and ES6 imports in same file?
+## Using mixed import syntax in the same file?
 
 Only one syntax is used by default. You can use both though if you're willing to take the degraded performance. Put this in your madge config to enable mixed imports.
 
+For ES6 + CommonJS:
 ```json
 {
 	"detectiveOptions": {
 		"es6": {
+			"mixedImports": true
+		}
+	}
+}
+```
+
+For TypeScript + CommonJS:
+```json
+{
+	"detectiveOptions": {
+		"ts": {
 			"mixedImports": true
 		}
 	}
