@@ -1,8 +1,12 @@
 # CHANGELOG
 
+## v3.6.0 (Nov 11, 2019)
+
+* Added support for TypeScript with mixed import syntax (Thanks to @codemonkey800)
+
 ## v3.5.1 (Nov 07, 2019)
 
-* Add funding to package.json
+* Added funding to package.json
 
 ## v3.5.0 (Oct 28, 2019)
 
