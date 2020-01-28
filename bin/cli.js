@@ -51,7 +51,7 @@ if (!program.color) {
 const log = require('../lib/log');
 const output = require('../lib/output');
 const madge = require('../lib/api');
-const config = Object.assign({}, rc);
+const config = Object.assign(rc, getPackageConfig());
 
 program.options.forEach((opt) => {
 	const name = opt.name();
@@ -130,6 +130,14 @@ function dependencyFilter() {
 			prevFile = traversedFilePath;
 		}
 	};
+}
+
+function getPackageConfig() {
+	try {
+		return require(path.join(process.cwd(), 'package.json')).madge;
+	} catch (err) {
+		return {};
+	}
 }
 
 new Promise((resolve, reject) => {
