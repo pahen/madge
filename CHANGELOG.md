@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v3.7.0 (Jan 30, 2020)
+
+* Support package.json config (Thanks to @zekth)
+
 ## v3.6.0 (Nov 11, 2019)
 
 * Added support for TypeScript with mixed import syntax (Thanks to @codemonkey800)
