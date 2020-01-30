@@ -51,7 +51,12 @@ if (!program.color) {
 const log = require('../lib/log');
 const output = require('../lib/output');
 const madge = require('../lib/api');
-const config = Object.assign({}, rc);
+
+let packageConfig = {};
+try {
+	packageConfig = require(path.join(process.cwd(), 'package.json')).madge;
+} catch (e) { }
+const config = Object.assign(rc, packageConfig);
 
 program.options.forEach((opt) => {
 	const name = opt.name();

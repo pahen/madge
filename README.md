@@ -220,7 +220,9 @@ Property | Type | Default | Description
 `detectiveOptions` | Object | false | Custom `detective` options for [dependency-tree](https://github.com/dependents/node-dependency-tree) and [precinct](https://github.com/dependents/node-precinct#usage)
 `dependencyFilter` | Function | false | Function called with a dependency filepath (exclude substree by returning false)
 
-> Note that when running the CLI it's possible to use a runtime configuration file. The config should placed in `.madgerc` in your project or home folder. Look [here](https://github.com/dominictarr/rc#standards) for alternative locations for the file. Here's an example:
+You can use configuration file either in `.madgerc` in your project or home folder or directly in `package.json`. Look [here](https://github.com/dominictarr/rc#standards) for alternative locations for the file.
+
+> .madgerc
 
 ```json
 {
@@ -228,6 +230,23 @@ Property | Type | Default | Description
 	"graphVizOptions": {
 		"G": {
 			"rankdir": "LR"
+		}
+	}
+}
+```
+
+> package.json
+```json
+{
+	"name": "foo",
+	"version": "0.0.1",
+	...
+	"madge": {
+		"fontSize": "10px",
+		"graphVizOptions": {
+			"G": {
+				"rankdir": "LR"
+			}
 		}
 	}
 }
