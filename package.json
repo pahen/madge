@@ -67,6 +67,7 @@
     "pluralize": "^8.0.0",
     "pretty-ms": "^5.0.0",
     "rc": "^1.2.7",
+    "typescript": "^3.7.5",
     "walkdir": "^0.4.1"
   },
   "devDependencies": {
