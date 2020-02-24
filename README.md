@@ -441,7 +441,7 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 This project exists thanks to all the people who contribute.
 <a href="https://github.com/pahen/madge/graphs/contributors"><img src="https://opencollective.com/madge/contributors.svg?width=890&button=false" alt="Contributors"/></a>
 
-## Donations
+## Donations ❤️
 
 Thanks to the awesome people below for making donations! 🙏[[Donate](https://paypal.me/pahen)]
 
@@ -451,9 +451,15 @@ Thanks to the awesome people below for making donations! 🙏[[Donate](https://p
 	<img src="https://github.com/landonalder.png" width="64"/>
 </a>
 
+**Peter Verswyvelen**
+
+<a href="https://github.com/Ziriax" target="_blank">
+	<img src="https://github.com/Ziriax.png" width="64"/>
+</a>
+
 ## Backers
 
-Thank you so much all awesome backers! 🙏[[Become a backer](https://opencollective.com/madge#backer)]
+[[Become a backer](https://opencollective.com/madge#backer)]
 
 <a href="https://opencollective.com/madge#backers" target="_blank"><img src="https://opencollective.com/madge/backers.svg?width=890&button=false"></a>
 
