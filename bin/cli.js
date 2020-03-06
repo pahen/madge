@@ -22,6 +22,7 @@ program
 	.option('-i, --image <file>', 'write graph to file as an image')
 	.option('-l, --layout <name>', 'layout engine to use for graph (dot/neato/fdp/sfdp/twopi/circo)')
 	.option('--orphans', 'show modules that no one is depending on')
+	.option('--leaves', 'show modules that have no dependencies')
 	.option('--dot', 'show graph using the DOT language')
 	.option('--extensions <list>', 'comma separated string of valid file extensions')
 	.option('--require-config <file>', 'path to RequireJS config')
@@ -195,6 +196,15 @@ new Promise((resolve, reject) => {
 
 			return res;
 		}
+
+		if (program.leaves) {
+			output.modules(res.leaves(), {
+				json: program.json
+			});
+
+			return res;
+		}
+
 
 		if (program.circular) {
 			const circular = res.circular();
