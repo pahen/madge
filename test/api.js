@@ -235,6 +235,15 @@ describe('API', () => {
 		});
 	});
 
+	describe('leaves()', () => {
+		it('returns modules that have no dependencies', (done) => {
+			madge(__dirname + '/cjs/normal').then((res) => {
+				res.leaves().should.eql(['d.js']);
+				done();
+			}).catch(done);
+		});
+	});
+
 	describe('svg()', () => {
 		it('returns a promise resolved with XML SVG output in a Buffer', (done) => {
 			madge(__dirname + '/cjs/b.js')

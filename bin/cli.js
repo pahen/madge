@@ -173,65 +173,9 @@ new Promise((resolve, reject) => {
 			output.getResultSummary(res, startTime);
 		}
 
-		if (program.summary) {
-			output.summary(res.obj(), {
-				json: program.json
-			});
-
-			return res;
-		}
-
-		if (program.depends) {
-			output.modules(res.depends(program.depends), {
-				json: program.json
-			});
-
-			return res;
-		}
-
-		if (program.orphans) {
-			output.modules(res.orphans(), {
-				json: program.json
-			});
-
-			return res;
-		}
-
-		if (program.leaves) {
-			output.modules(res.leaves(), {
-				json: program.json
-			});
-
-			return res;
-		}
-
-
-		if (program.circular) {
-			const circular = res.circular();
-
-			output.circular(spinner, res, circular, {
-				json: program.json
-			});
-
-			if (circular.length) {
-				exitCode = 1;
-			}
-
-			return res;
-		}
-
-		if (program.image) {
-			return res.image(program.image).then((imagePath) => {
-				spinner.succeed(`${chalk.bold('Image created at')} ${chalk.cyan.bold(imagePath)}`);
-				return res;
-			});
-		}
-
-		if (program.dot) {
-			return res.dot().then((output) => {
-				process.stdout.write(output);
-				return res;
-			});
+		const result = createOutputFromOptions(program, res);
+		if (result !== undefined) {
+			return result;
 		}
 
 		output.list(res.obj(), {
@@ -256,3 +200,65 @@ new Promise((resolve, reject) => {
 		console.log('\n%s %s\n', chalk.red('✖'), err.stack);
 		process.exit(1);
 	});
+
+function createOutputFromOptions(program, res) {
+	if (program.summary) {
+		output.summary(res.obj(), {
+			json: program.json
+		});
+
+		return res;
+	}
+
+	if (program.depends) {
+		output.modules(res.depends(program.depends), {
+			json: program.json
+		});
+
+		return res;
+	}
+
+	if (program.orphans) {
+		output.modules(res.orphans(), {
+			json: program.json
+		});
+
+		return res;
+	}
+
+	if (program.leaves) {
+		output.modules(res.leaves(), {
+			json: program.json
+		});
+
+		return res;
+	}
+
+	if (program.circular) {
+		const circular = res.circular();
+
+		output.circular(spinner, res, circular, {
+			json: program.json
+		});
+
+		if (circular.length) {
+			exitCode = 1;
+		}
+
+		return res;
+	}
+
+	if (program.image) {
+		return res.image(program.image).then((imagePath) => {
+			spinner.succeed(`${chalk.bold('Image created at')} ${chalk.cyan.bold(imagePath)}`);
+			return res;
+		});
+	}
+
+	if (program.dot) {
+		return res.dot().then((output) => {
+			process.stdout.write(output);
+			return res;
+		});
+	}
+}
