@@ -151,6 +151,18 @@ madge('path/to/app.js').then((res) => {
 });
 ```
 
+#### .leaves()
+
+> Return an `Array` of all modules that have no dependencies.
+
+```javascript
+const madge = require('madge');
+
+madge('path/to/app.js').then((res) => {
+	console.log(res.leaves());
+});
+```
+
 #### .dot()
 
 > Returns a `Promise` resolved with a DOT representation of the module dependency graph.
@@ -302,6 +314,10 @@ $ madge --depends wheels.js path/src/app.js
 
 ```sh
 $ madge --orphans path/src/
+```
+
+```sh
+$ madge --leaves path/src/
 ```
 
 > Excluding modules
