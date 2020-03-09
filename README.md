@@ -60,7 +60,7 @@ Read the [changelog](CHANGELOG.md) for latest changes.
 # Installation
 
 ```sh
-$ npm -g install madge
+npm -g install madge
 ```
 
 ## Graphviz (optional)
@@ -70,13 +70,13 @@ $ npm -g install madge
 ### Mac OS X
 
 ```sh
-$ brew install graphviz || port install graphviz
+brew install graphviz || port install graphviz
 ```
 
 ### Ubuntu
 
 ```sh
-$ apt-get install graphviz
+apt-get install graphviz
 ```
 
 # API
@@ -271,77 +271,79 @@ You can use configuration file either in `.madgerc` in your project or home fold
 > List dependencies from a single file
 
 ```sh
-$ madge path/src/app.js
+madge path/src/app.js
 ```
 
 > List dependencies from multiple files
 
 ```sh
-$ madge path/src/foo.js path/src/bar.js
+madge path/src/foo.js path/src/bar.js
 ```
 
 > List dependencies from all *.js files found in a directory
 
 ```sh
-$ madge path/src
+madge path/src
 ```
 
 > List dependencies from multiple directories
 
 ```sh
-$ madge path/src/foo path/src/bar
+madge path/src/foo path/src/bar
 ```
 
 > List dependencies from all *.js and *.jsx files found in a directory
 
 ```sh
-$ madge --extensions js,jsx path/src
+madge --extensions js,jsx path/src
 ```
 
 > Finding circular dependencies
 
 ```sh
-$ madge --circular path/src/app.js
+madge --circular path/src/app.js
 ```
 
 > Show modules that depends on a given module
 
 ```sh
-$ madge --depends wheels.js path/src/app.js
+madge --depends wheels.js path/src/app.js
 ```
 
 > Show modules that no one is depending on
 
 ```sh
-$ madge --orphans path/src/
+madge --orphans path/src/
 ```
 
+> Show modules that have no dependencies
+
 ```sh
-$ madge --leaves path/src/
+madge --leaves path/src/
 ```
 
 > Excluding modules
 
 ```sh
-$ madge --exclude '^(foo|bar)\.js$' path/src/app.js
+madge --exclude '^(foo|bar)\.js$' path/src/app.js
 ```
 
 > Save graph as a SVG image (requires [Graphviz](#graphviz-optional))
 
 ```sh
-$ madge --image graph.svg path/src/app.js
+madge --image graph.svg path/src/app.js
 ```
 
 > Save graph as a [DOT](http://en.wikipedia.org/wiki/DOT_language) file for further processing (requires [Graphviz](#graphviz-optional))
 
 ```sh
-$ madge --dot path/src/app.js > graph.gv
+madge --dot path/src/app.js > graph.gv
 ```
 
 > Using pipe to transform tree (this example will uppercase all paths)
 
 ```sh
-$ madge --json path/src/app.js | tr '[a-z]' '[A-Z]' | madge --stdin
+madge --json path/src/app.js | tr '[a-z]' '[A-Z]' | madge --stdin
 ```
 
 # Debugging
@@ -349,14 +351,14 @@ $ madge --json path/src/app.js | tr '[a-z]' '[A-Z]' | madge --stdin
 > To enable debugging output if you encounter problems, run madge with the `--debug` option then throw the result in a gist when creating issues on GitHub.
 
 ```sh
-$ madge --debug path/src/app.js
+madge --debug path/src/app.js
 ```
 
 # Running tests
 
 ```sh
-$ npm install
-$ npm test
+npm install
+npm test
 ```
 
 # FAQ
