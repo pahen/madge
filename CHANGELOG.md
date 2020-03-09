@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v3.8.0 (Mars 09, 2020)
+
+* Added `leaves` option to show modules that do not have dependencies (Thanks to @avahe-kellenberger)
+
 ## v3.7.0 (Jan 30, 2020)
 
 * Support package.json config (Thanks to @zekth)
