@@ -165,7 +165,7 @@ new Promise((resolve, reject) => {
 			config.dependencyFilter = dependencyFilter();
 		}
 
-		return madge(src, config);
+		return madge(src, config, program);
 	})
 	.then((res) => {
 		if (!program.json && !program.dot) {
@@ -234,6 +234,15 @@ function createOutputFromOptions(program, res) {
 		return res;
 	}
 
+	if (program.image) {
+		return res.image(program.image).then((imagePath) => {
+			spinner.succeed(
+				`${chalk.bold('Image created at')} ${chalk.cyan.bold(imagePath)}`
+			);
+			return res;
+		});
+	}
+
 	if (program.circular) {
 		const circular = res.circular();
 
@@ -246,13 +255,6 @@ function createOutputFromOptions(program, res) {
 		}
 
 		return res;
-	}
-
-	if (program.image) {
-		return res.image(program.image).then((imagePath) => {
-			spinner.succeed(`${chalk.bold('Image created at')} ${chalk.cyan.bold(imagePath)}`);
-			return res;
-		});
 	}
 
 	if (program.dot) {
