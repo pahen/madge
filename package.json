@@ -39,12 +39,8 @@
     "test:output": "./test/output.sh"
   },
   "funding": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/madge"
-  },
-  "collective": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/madge"
+    "type": "individual",
+    "url": "https://www.paypal.me/pahen"
   },
   "dependencies": {
     "chalk": "^3.0.0",

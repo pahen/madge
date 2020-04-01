@@ -475,25 +475,11 @@ Thanks to the awesome people below for making donations! 🙏[[Donate](https://p
 	<img src="https://github.com/Ziriax.png" width="64"/>
 </a>
 
-## Backers & Sponsors
-
-Support this project by becoming a backer or sponsor. Your logo will show up here with a link to your website.
-
-<a href="https://opencollective.com/webpack/donate" target="_blank">
-	<img src="https://opencollective.com/webpack/donate/button@2x.png?color=blue" width=300 />
-</a>
-
-Much love to the current backers/sponsors. ❤️
-
 **RxDB**
 
-<a href="https://opencollective.com/madge/sponsor/0/website" target="_blank">
-	<img src="https://images.opencollective.com/rxdbjs/avatar.png" width="64">
+<a href="https://github.com/pubkey/rxdb">
+	<img src="https://cdn.rawgit.com/pubkey/rxdb/ba7c9b80/docs/files/logo/logo_text.svg" width="128" style="margin-left: -10px"/>
 </a>
-
-## Patreon
-
-You can also support the project on Patreon. [[Become a backer or sponsor](https://www.patreon.com/bePatron?u=16473892)]
 
 # License
 
