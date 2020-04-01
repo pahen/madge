@@ -475,26 +475,21 @@ Thanks to the awesome people below for making donations! 🙏[[Donate](https://p
 	<img src="https://github.com/Ziriax.png" width="64"/>
 </a>
 
-## Backers
+## Backers & Sponsors
 
-[[Become a backer](https://opencollective.com/madge#backer)]
+Support this project by becoming a backer or sponsor. Your logo will show up here with a link to your website.
 
-<a href="https://opencollective.com/madge#backers" target="_blank"><img src="https://opencollective.com/madge/backers.svg?width=890&button=false"></a>
+<a href="https://opencollective.com/webpack/donate" target="_blank">
+	<img src="https://opencollective.com/webpack/donate/button@2x.png?color=blue" width=300 />
+</a>
 
-## Sponsors
+Much love to the current backers/sponsors. ❤️
 
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/madge#sponsor)]
+**RxDB**
 
-<!-- <a href="https://opencollective.com/madge/sponsor/0/website" target="_blank"><img src="https://opencollective.com/madge/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/madge/sponsor/1/website" target="_blank"><img src="https://opencollective.com/madge/sponsor/1/avatar.svg"></a>
-<a href="https://opencollective.com/madge/sponsor/2/website" target="_blank"><img src="https://opencollective.com/madge/sponsor/2/avatar.svg"></a>
-<a href="https://opencollective.com/madge/sponsor/3/website" target="_blank"><img src="https://opencollective.com/madge/sponsor/3/avatar.svg"></a>
-<a href="https://opencollective.com/madge/sponsor/4/website" target="_blank"><img src="https://opencollective.com/madge/sponsor/4/avatar.svg"></a>
-<a href="https://opencollective.com/madge/sponsor/5/website" target="_blank"><img src="https://opencollective.com/madge/sponsor/5/avatar.svg"></a>
-<a href="https://opencollective.com/madge/sponsor/6/website" target="_blank"><img src="https://opencollective.com/madge/sponsor/6/avatar.svg"></a>
-<a href="https://opencollective.com/madge/sponsor/7/website" target="_blank"><img src="https://opencollective.com/madge/sponsor/7/avatar.svg"></a>
-<a href="https://opencollective.com/madge/sponsor/8/website" target="_blank"><img src="https://opencollective.com/madge/sponsor/8/avatar.svg"></a>
-<a href="https://opencollective.com/madge/sponsor/9/website" target="_blank"><img src="https://opencollective.com/madge/sponsor/9/avatar.svg"></a> -->
+<a href="https://opencollective.com/madge/sponsor/0/website" target="_blank">
+	<img src="https://images.opencollective.com/rxdbjs/avatar.png" width="64">
+</a>
 
 ## Patreon
 
