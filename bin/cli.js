@@ -159,7 +159,7 @@ new Promise((resolve, reject) => {
 			config.dependencyFilter = dependencyFilter();
 		}
 
-		return madge(src, config);
+		return madge(src, config, program);
 	})
 	.then((res) => {
 		if (!program.json && !program.dot) {
@@ -191,6 +191,15 @@ new Promise((resolve, reject) => {
 			return res;
 		}
 
+		if (program.image) {
+			return res.image(program.image).then((imagePath) => {
+				spinner.succeed(
+					`${chalk.bold('Image created at')} ${chalk.cyan.bold(imagePath)}`
+				);
+				return res;
+			});
+		}
+
 		if (program.circular) {
 			const circular = res.circular();
 
@@ -202,25 +211,7 @@ new Promise((resolve, reject) => {
 				exitCode = 1;
 			}
 
-			if (program.image) {
-				return res.circularImage(program.image).then((imagePath) => {
-					spinner.succeed(
-						`${chalk.bold('Image created at')} ${chalk.cyan.bold(imagePath)}`
-					);
-					return res;
-				});
-			}
-
 			return res;
-		}
-
-		if (program.image) {
-			return res.image(program.image).then((imagePath) => {
-				spinner.succeed(
-					`${chalk.bold('Image created at')} ${chalk.cyan.bold(imagePath)}`
-				);
-				return res;
-			});
 		}
 
 		if (program.dot) {
