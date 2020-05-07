@@ -43,11 +43,11 @@
     "url": "https://www.paypal.me/pahen"
   },
   "dependencies": {
-    "chalk": "^3.0.0",
-    "commander": "^4.0.1",
+    "chalk": "^4.0.0",
+    "commander": "^5.1.0",
     "commondir": "^1.0.1",
     "debug": "^4.0.1",
-    "dependency-tree": "^7.0.2",
+    "dependency-tree": "^7.2.1",
     "detective-amd": "^3.0.0",
     "detective-cjs": "^3.1.1",
     "detective-es6": "^2.1.0",
@@ -56,19 +56,19 @@
     "detective-sass": "^3.0.1",
     "detective-scss": "^2.0.1",
     "detective-stylus": "^1.0.0",
-    "detective-typescript": "^5.7.0",
+    "detective-typescript": "^5.8.0",
     "graphviz": "0.0.9",
-    "ora": "^4.0.2",
-    "pify": "^4.0.0",
+    "ora": "^4.0.4",
+    "pify": "^5.0.0",
     "pluralize": "^8.0.0",
-    "pretty-ms": "^5.0.0",
+    "pretty-ms": "^7.0.0",
     "rc": "^1.2.7",
     "walkdir": "^0.4.1"
   },
   "devDependencies": {
     "@aptoma/eslint-config": "^7.0.1",
-    "eslint": "^6.6.0",
-    "mocha": "^6.2.2",
+    "eslint": "^6.8.0",
+    "mocha": "^7.1.2",
     "mz": "^2.7.0",
     "should": "^13.2.3"
   }
