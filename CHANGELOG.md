@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v3.9.0 (May 07, 2020)
+
+* Better support for TypeScript >=3.8 “import type” (Thanks to @eelco)
+
 ## v3.8.0 (Mars 09, 2020)
 
 * Added `leaves` option to show modules that do not have dependencies (Thanks to @avahe-kellenberger)
