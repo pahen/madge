@@ -367,6 +367,10 @@ npm test
 
 It could happen that the files you're not seeing have been skipped due to errors or that they can't be resolved. Run madge with the `--warning` option to see skipped files. If you need even more info run with the `--debug` option.
 
+## Using both Javascript and Typescript in your project?
+
+Madge uses [dependency-tree](https://www.npmjs.com/package/dependency-tree) which uses [filing-cabinet](https://www.npmjs.com/package/filing-cabinet) to resolve modules. However it requires configurations for each file type (js/jsx) and (ts/tsx). So provide both `webpackConfig` and `tsConfig` options to madge.
+
 ## Using mixed import syntax in the same file?
 
 Only one syntax is used by default. You can use both though if you're willing to take the degraded performance. Put this in your madge config to enable mixed imports.
