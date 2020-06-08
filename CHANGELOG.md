@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v3.9.1 (June 08, 2020)
+
+* Improved performance when reading TypeScript config (Thanks to @FauxFaux)
+
 ## v3.9.0 (May 07, 2020)
 
 * Better support for TypeScript >=3.8 “import type” (Thanks to @eelco)
