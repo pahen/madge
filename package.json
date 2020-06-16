@@ -43,7 +43,7 @@
     "url": "https://www.paypal.me/pahen"
   },
   "dependencies": {
-    "chalk": "^4.0.0",
+    "chalk": "^4.1.0",
     "commander": "^5.1.0",
     "commondir": "^1.0.1",
     "debug": "^4.0.1",
@@ -61,15 +61,16 @@
     "ora": "^4.0.4",
     "pify": "^5.0.0",
     "pluralize": "^8.0.0",
+    "precinct": "^6.3.1",
     "pretty-ms": "^7.0.0",
     "rc": "^1.2.7",
-    "typescript": "^3.7.5",
+    "typescript": "^3.9.5",
     "walkdir": "^0.4.1"
   },
   "devDependencies": {
     "@aptoma/eslint-config": "^7.0.1",
-    "eslint": "^6.8.0",
-    "mocha": "^7.1.2",
+    "eslint": "^7.2.0",
+    "mocha": "^8.0.1",
     "mz": "^2.7.0",
     "should": "^13.2.3"
   }
