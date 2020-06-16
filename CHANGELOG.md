@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v3.9.2 (June 16, 2020)
+
+* Updated dependencies to resolve TypeScript issues
+
 ## v3.9.1 (June 08, 2020)
 
 * Improved performance when reading TypeScript config (Thanks to @FauxFaux)
