@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v3.10.0 (Sep 14, 2020)
+
+* Add support for combining `--image` and `--circular` option to get a graph with only circular dependencies (Thanks to @gaspardip)
+
 ## v3.9.2 (June 16, 2020)
 
 * Updated dependencies to resolve TypeScript issues
