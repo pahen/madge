@@ -127,6 +127,18 @@ madge('path/to/app.js').then((res) => {
 });
 ```
 
+#### .circularGraph()
+
+> Returns an `Object` with only circular dependencies.
+
+```javascript
+const madge = require('madge');
+
+madge('path/to/app.js').then((res) => {
+	console.log(res.circularGraph());
+});
+```
+
 #### .depends()
 
 > Returns an `Array` of all modules that depend on a given module.
@@ -177,9 +189,9 @@ madge('path/to/app.js')
 	});
 ```
 
-#### .image(imagePath: string)
+#### .image(imagePath: string, [circularOnly: boolean])
 
-> Write the graph as an image to the given image path. The [image format](http://www.graphviz.org/content/output-formats) to use is determined from the file extension. Returns a `Promise` resolved with a full path to the written image.
+> Write the graph as an image to the given image path. Set `circularOnly` to only include circular dependencies. The [image format](http://www.graphviz.org/content/output-formats) to use is determined from the file extension. Returns a `Promise` resolved with a full path to the written image.
 
 ```javascript
 const madge = require('madge');
@@ -332,6 +344,12 @@ madge --exclude '^(foo|bar)\.js$' path/src/app.js
 
 ```sh
 madge --image graph.svg path/src/app.js
+```
+
+> Save graph with only circular dependencies
+
+```sh
+madge --circular --image graph.svg path/src/app.js
 ```
 
 > Save graph as a [DOT](http://en.wikipedia.org/wiki/DOT_language) file for further processing (requires [Graphviz](#graphviz-optional))

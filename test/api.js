@@ -190,6 +190,29 @@ describe('API', () => {
 		});
 	});
 
+	describe('circular()', () => {
+		it('returns list of circular dependencies', (done) => {
+			madge(__dirname + '/cjs/circular/a.js').then((res) => {
+				res.circular().should.eql([
+					['a.js', 'd.js']
+				]);
+				done();
+			}).catch(done);
+		});
+	});
+
+	describe('circularGraph()', () => {
+		it('returns graph with only circular dependencies', (done) => {
+			madge(__dirname + '/cjs/circular/a.js').then((res) => {
+				res.circularGraph().should.eql({
+					'a.js': ['d.js'],
+					'd.js': ['a.js']
+				});
+				done();
+			}).catch(done);
+		});
+	});
+
 	describe('warnings()', () => {
 		it('returns an array of skipped files', (done) => {
 			madge(__dirname + '/cjs/missing.js').then((res) => {
