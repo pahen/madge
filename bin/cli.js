@@ -248,6 +248,13 @@ function createOutputFromOptions(program, res) {
 		});
 	}
 
+	if (program.dot) {
+		return res.dot(program.circular).then((output) => {
+			process.stdout.write(output);
+			return res;
+		});
+	}
+
 	if (program.circular) {
 		const circular = res.circular();
 
@@ -260,12 +267,5 @@ function createOutputFromOptions(program, res) {
 		}
 
 		return res;
-	}
-
-	if (program.dot) {
-		return res.dot().then((output) => {
-			process.stdout.write(output);
-			return res;
-		});
 	}
 }
