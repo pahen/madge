@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v3.11.0 (Oct 1, 2020)
+
+* Add support for combining `--circular` and `--dot` (Thanks to @SaeedZhiany)
+
 ## v3.10.0 (Sep 14, 2020)
 
 * Add support for combining `--image` and `--circular` option to get a graph with only circular dependencies (Thanks to @gaspardip)
