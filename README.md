@@ -175,9 +175,9 @@ madge('path/to/app.js').then((res) => {
 });
 ```
 
-#### .dot()
+#### .dot([circularOnly: boolean])
 
-> Returns a `Promise` resolved with a DOT representation of the module dependency graph.
+> Returns a `Promise` resolved with a DOT representation of the module dependency graph. Set `circularOnly` to only include circular dependencies.
 
 ```javascript
 const madge = require('madge');
