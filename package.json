@@ -59,7 +59,6 @@
     "detective-typescript": "^5.8.0",
     "graphviz": "0.0.9",
     "ora": "^4.0.4",
-    "pify": "^5.0.0",
     "pluralize": "^8.0.0",
     "precinct": "^6.3.1",
     "pretty-ms": "^7.0.0",
