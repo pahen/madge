@@ -443,6 +443,19 @@ Put this in your madge config.
 }
 ```
 
+## Mixing TypesScript and Javascript imports?
+
+Ensure you have this in your `.tsconfig` file.
+
+```json
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"allowJs": true
+	}
+}
+```
+
 ## What's the "Error: write EPIPE" when exporting graph to image?
 
 Ensure you have [installed Graphviz](#graphviz-optional). If you're running Windows, note that Graphviz is not added to the `PATH` variable during install. You should add the folder of `gvpr.exe` (typically `%Graphviz_folder%/bin`) to the `PATH` variable manually.
@@ -485,22 +498,28 @@ This project exists thanks to all the people who contribute.
 
 Thanks to the awesome people below for making donations! 🙏[[Donate](https://paypal.me/pahen)]
 
-**Landon Alder**
+**Landon Alder** (Mar 19, 2019)
 
 <a href="https://github.com/landonalder" target="_blank">
 	<img src="https://github.com/landonalder.png" width="64"/>
 </a>
 
-**Peter Verswyvelen**
+**Peter Verswyvelen** (Feb 24, 2020)
 
 <a href="https://github.com/Ziriax" target="_blank">
 	<img src="https://github.com/Ziriax.png" width="64"/>
 </a>
 
-**RxDB**
+**RxDB** (Apr 1, 2020)
 
 <a href="https://github.com/pubkey/rxdb">
-	<img src="https://cdn.rawgit.com/pubkey/rxdb/ba7c9b80/docs/files/logo/logo_text.svg" width="128" style="margin-left: -10px"/>
+	<img src="https://cdn.rawgit.com/pubkey/rxdb/ba7c9b80/docs/files/logo/logo_text.svg" width="128" style="margin: -10px"/>
+</a>
+
+**Ole Jørgen Brønner** (Oct 8, 2020)
+
+<a href="https://github.com/olejorgenb" target="_blank">
+	<img src="https://github.com/olejorgenb.png" width="64"/>
 </a>
 
 # License
