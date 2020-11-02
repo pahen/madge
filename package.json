@@ -47,7 +47,7 @@
     "commander": "^5.1.0",
     "commondir": "^1.0.1",
     "debug": "^4.0.1",
-    "dependency-tree": "^7.2.1",
+    "dependency-tree": "^7.2.2",
     "detective-amd": "^3.0.0",
     "detective-cjs": "^3.1.1",
     "detective-es6": "^2.1.0",
