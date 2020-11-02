@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v3.12.0 (Nov 2, 2020)
+
+* Updated to dependency-tree@7.2.2 with support for mixing TypesScript and Javascript imports
+
 ## v3.11.0 (Oct 1, 2020)
 
 * Add support for combining `--circular` and `--dot` (Thanks to @SaeedZhiany)
