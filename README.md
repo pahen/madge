@@ -222,7 +222,7 @@ madge('path/to/app.js')
 Property | Type | Default | Description
 --- | --- | --- | ---
 `baseDir` | String | null | Base directory to use instead of the default
-`includeNpm` | Boolean | false | If shallow NPM modules should be included
+`include-npm` | Boolean | false | If shallow NPM modules should be included
 `fileExtensions` | Array | ['js'] | Valid file extensions used to find files in directories
 `excludeRegExp` | Array | false | An array of RegExp for excluding modules
 `requireConfig` | String | null | RequireJS config for resolving aliased modules
