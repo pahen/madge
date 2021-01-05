@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v4.0.0 (Jan 5, 2021)
+
+* Upgrade core dependencies and require Node.js 10.13 (Thanks to @realityking)
+
 ## v3.12.0 (Nov 2, 2020)
 
 * Updated to dependency-tree@7.2.2 with support for mixing TypesScript and Javascript imports
