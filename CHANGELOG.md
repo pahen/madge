@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v4.0.1 (Mars 5, 2021)
+
+* Fix potential command injection vulnerability
+
 ## v4.0.0 (Jan 5, 2021)
 
 * Upgrade core dependencies and require Node.js 10.13 (Thanks to @realityking)
