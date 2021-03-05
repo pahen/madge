@@ -313,7 +313,7 @@ describe('API', () => {
 			madge(__dirname + '/cjs/a.js', {graphVizPath: '/invalid/path'})
 				.then((res) => res.image('image.png'))
 				.catch((err) => {
-					err.message.should.match(/Could not execute .*gvpr \-V/);
+					err.message.should.eql('Graphviz could not be found. Ensure that "gvpr" is in your $PATH. Error: spawn /invalid/path/gvpr ENOENT');
 					done();
 				});
 		});
