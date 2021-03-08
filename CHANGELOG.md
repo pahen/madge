@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v4.0.2 (Mars 8, 2021)
+
+* Updated to detective-typescript 7.0.0
+
 ## v4.0.1 (Mars 5, 2021)
 
 * Fix potential command injection vulnerability
