@@ -60,7 +60,7 @@
     "graphviz": "0.0.9",
     "ora": "^5.1.0",
     "pluralize": "^8.0.0",
-    "precinct": "^7.0.0",
+    "precinct": "^8.1.0",
     "pretty-ms": "^7.0.0",
     "rc": "^1.2.7",
     "typescript": "^3.9.5",
