@@ -498,29 +498,40 @@ This project exists thanks to all the people who contribute.
 
 Thanks to the awesome people below for making donations! 🙏[[Donate](https://paypal.me/pahen)]
 
-**Landon Alder** (Mar 19, 2019)
+<p>
+  <a href="https://github.com/BeroBurny" target="_blank">
+    <div><b>Bernard Stojanović</b> (24 Mars, 2021)</div>
+    <img src="https://github.com/BeroBurny.png" width="64"/>
+  </a>
+</p>
 
-<a href="https://github.com/landonalder" target="_blank">
-	<img src="https://github.com/landonalder.png" width="64"/>
-</a>
+<p>
+  <a href="https://github.com/olejorgenb" target="_blank">
+    <div><b>Ole Jørgen Brønner</b> (Oct 8, 2020)</div>
+    <img src="https://github.com/olejorgenb.png" width="64"/>
+  </a>
+</p>
 
-**Peter Verswyvelen** (Feb 24, 2020)
+<p>
+  <a href="https://github.com/pubkey/rxdb" target="_blank">
+    <div><b>RxDB</b> (Apr 1, 2020)</div>
+    <img src="https://cdn.rawgit.com/pubkey/rxdb/ba7c9b80/docs/files/logo/logo_text.svg" width="128" style="margin: -4px -10px"/>
+  </a>
+</p>
 
-<a href="https://github.com/Ziriax" target="_blank">
-	<img src="https://github.com/Ziriax.png" width="64"/>
-</a>
+<p>
+  <a href="https://github.com/Ziriax" target="_blank">
+    <div><b>Peter Verswyvelen</b> (Feb 24, 2020)</div>
+    <img src="https://github.com/Ziriax.png" width="64"/>
+  </a>
+</p>
 
-**RxDB** (Apr 1, 2020)
-
-<a href="https://github.com/pubkey/rxdb">
-	<img src="https://cdn.rawgit.com/pubkey/rxdb/ba7c9b80/docs/files/logo/logo_text.svg" width="128" style="margin: -10px"/>
-</a>
-
-**Ole Jørgen Brønner** (Oct 8, 2020)
-
-<a href="https://github.com/olejorgenb" target="_blank">
-	<img src="https://github.com/olejorgenb.png" width="64"/>
-</a>
+<p>
+  <a href="https://github.com/landonalder" target="_blank">
+    <div><b>Landon Alder</b> (Mar 19, 2019)</div>
+    <img src="https://github.com/landonalder.png" width="64"/>
+  </a>
+</p>
 
 # License
 
