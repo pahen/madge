@@ -146,6 +146,28 @@ describe('API', () => {
 			}).catch(done);
 		});
 
+		it('can filter full module tree', (done) => {
+			madge(__dirname + '/cjs/a.js', {
+				includeNpm: true,
+				dependencyFilter: (dependencyFilePath, traversedFilePath) => {
+					if (dependencyFilePath.includes(path.join('node_modules', 'a.js'))) {
+						return true;
+					}
+
+					return !traversedFilePath.includes('node_modules');
+				}
+			}).then((res) => {
+				res.obj().should.eql({
+					'a.js': ['b.js', 'c.js'],
+					'b.js': ['c.js'],
+					'c.js': ['node_modules/c.js'],
+					'node_modules/a.js': [],
+					'node_modules/c.js': ['node_modules/a.js']
+				});
+				done();
+			}).catch(done);
+		});
+
 		it('will pass arguments to the function', (done) => {
 			let counter = 0;
 
