@@ -47,7 +47,7 @@
     "commander": "^6.2.1",
     "commondir": "^1.0.1",
     "debug": "^4.0.1",
-    "dependency-tree": "https://github.com/appdynamics/node-dependency-tree.git#update-precinct",
+    "dependency-tree": "^8.1.1",
     "detective-amd": "^3.0.1",
     "detective-cjs": "^3.1.1",
     "detective-es6": "^2.1.0",
