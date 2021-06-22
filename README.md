@@ -4,7 +4,7 @@
 
 <p align="center">
 	<img alt="Last version" src="https://img.shields.io/github/tag/pahen/madge.svg?style=flat-square" />
-	<a href="https://travis-ci.org/pahen/madge">
+	<a href="https://travis-ci.com/pahen/madge">
 		<img alt="Build Status" src="http://img.shields.io/travis/pahen/madge/master.svg?style=flat-square" />
 	</a>
 	<a href="https://david-dm.org/pahen/madge">
