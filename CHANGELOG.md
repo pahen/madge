@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v5.0.0 (June 22, 2021)
+
+* Updated dependencies
+
 ## v4.0.2 (Mars 8, 2021)
 
 * Updated to detective-typescript 7.0.0
