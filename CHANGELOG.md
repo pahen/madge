@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v5.0.1 (June 23, 2021)
+
+* Fix issue with command line options stopped working
+
 ## v5.0.0 (June 22, 2021)
 
 * Updated dependencies
