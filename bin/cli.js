@@ -10,6 +10,9 @@ const ora = require('ora');
 const chalk = require('chalk');
 const startTime = Date.now();
 
+// Revert https://github.com/tj/commander.js/pull/1409
+program.storeOptionsAsProperties();
+
 program
 	.version(version)
 	.usage('[options] <src...>')
