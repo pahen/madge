@@ -117,7 +117,7 @@ madge('path/to/app.js').then((res) => {
 
 #### .circular()
 
-> Returns an `Array` of all modules that has circular dependencies.
+> Returns an `Array` of all modules that have circular dependencies.
 
 ```javascript
 const madge = require('madge');
