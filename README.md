@@ -310,10 +310,16 @@ madge path/src/foo path/src/bar
 madge --extensions js,jsx path/src
 ```
 
-> Finding circular dependencies
+> Finding circular dependencies – exits 1 if any are found
 
 ```sh
 madge --circular path/src/app.js
+```
+
+> Finding circular dependencies – exits 0 if any are found
+
+```sh
+madge --circular --allow-circular path/src/app.js
 ```
 
 > Show modules that depends on a given module

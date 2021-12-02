@@ -37,6 +37,7 @@ program
 	.option('--stdin', 'read predefined tree from STDIN', false)
 	.option('--warning', 'show warnings about skipped files', false)
 	.option('--debug', 'turn on debug output', false)
+	.option('--allow-circular', 'exit with code 0 when circular dependencies are found', false)
 	.parse(process.argv);
 
 if (!program.args.length && !program.stdin) {
@@ -265,7 +266,7 @@ function createOutputFromOptions(program, res) {
 			json: program.json
 		});
 
-		if (circular.length) {
+		if (circular.length && !program.allowFailures) {
 			exitCode = 1;
 		}
 
