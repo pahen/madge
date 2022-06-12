@@ -336,4 +336,52 @@ describe('API', () => {
 				.catch(done);
 		});
 	});
+
+	describe('output depth limit', () => {
+		const baseDir = path.join(__dirname, 'deep-dependencies');
+		const entryFile = path.join(baseDir, 'a.js');
+
+		it('limits the output depth to 0', async () => {
+			const res = await madge(entryFile, {depth: 0});
+
+			res.obj().should.eql({
+				'a.js': []
+			});
+		});
+
+		it('limits the output depth to 1', async () => {
+			const res = await madge(entryFile, {depth: 1});
+
+			res.obj().should.eql({
+				'a.js': ['b.js', 'c.js'],
+				'b.js': [],
+				'c.js': ['b.js', 'c.js']
+			});
+		});
+
+		it('limits the output depth to 2', async () => {
+			const res = await madge(entryFile, {depth: 2});
+
+			res.obj().should.eql({
+				'a.js': ['b.js', 'c.js'],
+				'b.js': [],
+				'c.js': ['d.js', 'e.js'],
+				'd.js': [],
+				'e.js': ['b.js', 'c.js']
+			});
+		});
+
+		it('limits the output depth to 3', async () => {
+			const res = await madge(entryFile, {depth: 3});
+
+			res.obj().should.eql({
+				'a.js': ['b.js', 'c.js'],
+				'b.js': [],
+				'c.js': ['d.js', 'e.js'],
+				'd.js': [],
+				'e.js': ['f.js'],
+				'f.js': ['b.js', 'c.js']
+			});
+		});
+	});
 });

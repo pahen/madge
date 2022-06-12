@@ -222,6 +222,7 @@ Property | Type | Default | Description
 `requireConfig` | String | null | RequireJS config for resolving aliased modules
 `webpackConfig` | String | null | Webpack config for resolving aliased modules
 `tsConfig` | String\|Object | null | TypeScript config for resolving aliased modules - Either a path to a tsconfig file or an object containing the config
+`depth` | Number | null | Maximum dependency depth from source files to display
 `layout` | String | dot | Layout to use in the graph
 `rankdir` | String | LR | Sets the [direction](https://graphviz.gitlab.io/_pages/doc/info/attrs.html#d:rankdir) of the graph layout
 `fontName` | String | Arial | Font name to use in the graph
