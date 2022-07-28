@@ -52,7 +52,7 @@
     "detective-cjs": "^3.1.1",
     "detective-es6": "^2.2.0",
     "detective-less": "^1.0.2",
-    "detective-postcss": "^5.0.0",
+    "detective-postcss": "^6.1.0",
     "detective-sass": "^3.0.1",
     "detective-scss": "^2.0.1",
     "detective-stylus": "^1.0.0",
