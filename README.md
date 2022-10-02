@@ -242,7 +242,7 @@ Property | Type | Default | Description
 `graphVizOptions` | Object | false | Custom Graphviz [options](https://graphviz.gitlab.io/_pages/doc/info/attrs.html)
 `graphVizPath` | String | null | Custom Graphviz path
 `detectiveOptions` | Object | false | Custom `detective` options for [dependency-tree](https://github.com/dependents/node-dependency-tree) and [precinct](https://github.com/dependents/node-precinct#usage)
-`dependencyFilter` | Function | false | Function called with a dependency filepath (exclude substree by returning false)
+`dependencyFilter` | Function | false | Function called with a dependency filepath (exclude subtrees by returning false)
 
 You can use configuration file either in `.madgerc` in your project or home folder or directly in `package.json`. Look [here](https://github.com/dominictarr/rc#standards) for alternative locations for the file.
 
