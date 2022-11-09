@@ -68,7 +68,7 @@
   },
   "devDependencies": {
     "@aptoma/eslint-config": "^7.0.1",
-    "eslint": "^7.29.0",
+    "eslint": "^8.27.0",
     "mocha": "^9.0.1",
     "mz": "^2.7.0",
     "should": "^13.2.3"
