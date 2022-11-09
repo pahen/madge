@@ -63,7 +63,7 @@
     "precinct": "^9.0.1",
     "pretty-ms": "^8.0.0",
     "rc": "^1.2.7",
-    "typescript": "^3.9.5",
+    "typescript": "^4.8.4",
     "walkdir": "^0.4.1"
   },
   "devDependencies": {
