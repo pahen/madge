@@ -43,7 +43,7 @@
     "url": "https://www.paypal.me/pahen"
   },
   "dependencies": {
-    "chalk": "^4.1.1",
+    "chalk": "^5.1.2",
     "commander": "^7.2.0",
     "commondir": "^1.0.1",
     "debug": "^4.3.1",
