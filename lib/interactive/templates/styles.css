@@ -4,28 +4,28 @@ svg {
 }
 
 .node, .edge {
-  stroke-width: 1.5;
+	stroke-width: 1.5;
 }
 
 .node.selected path, .node.selected polygon {
-  stroke-width: 4.5;
+	stroke-width: 4.5;
 }
 
 .edge.selected path, .edge.selected polygon {
-  stroke: blue;
-  stroke-width: 4.5;
+	stroke: blue;
+	stroke-width: 4.5;
 }
 
 .edge.selected polygon {
-  fill: blue;
+	fill: blue;
 }
 
 .edge.selected.from path, .edge.selected.from polygon {
-  stroke: yellow;
+	stroke: yellow;
 }
 
 .edge.selected.from polygon, .edge.selected.dual polygon {
-  fill: yellow;
+	fill: yellow;
 }
 
 .edge.selected.dual path {
@@ -38,9 +38,9 @@ svg {
 }
 
 .edge.dimmed path, .edge.dimmed polygon {
-  stroke-width: 1;
-  stroke-opacity: 0.3;
-  fill-opacity: 0.3;
+	stroke-width: 1;
+	stroke-opacity: 0.3;
+	fill-opacity: 0.3;
 }
 
 .edge.selected.dimmed path, .edge.selected.dimmed polygon {
