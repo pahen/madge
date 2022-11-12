@@ -203,6 +203,20 @@ madge('path/to/app.js')
 	});
 ```
 
+#### .interactive(pagePath: string, [circularOnly: boolean])
+
+> Write the graph as an interactive html page to the given page path. Set `circularOnly` to only include circular dependencies. Returns a `Promise` resolved with a full path to the written page.
+
+```javascript
+const madge = require('madge');
+
+madge('path/to/app.js')
+	.then((res) => res.interactive('path/to/page.html'))
+	.then((writtenPagePath) => {
+		console.log('Page written to ' + writtenPagePath);
+	});
+```
+
 #### .svg()
 
 > Return a `Promise` resolved with the XML SVG representation of the dependency graph as a `Buffer`.
@@ -350,6 +364,12 @@ madge --image graph.svg path/src/app.js
 
 ```sh
 madge --circular --image graph.svg path/src/app.js
+```
+
+> Save graph as an interactive html page (requires [Graphviz](#graphviz-optional))
+
+```sh
+madge --interactive graph.html path/src/app.js
 ```
 
 > Save graph as a [DOT](http://en.wikipedia.org/wiki/DOT_language) file for further processing (requires [Graphviz](#graphviz-optional))
