@@ -1,0 +1,38 @@
+.node, .edge {
+  stroke-width: 2;
+}
+
+.node.selected path, .node.selected polygon {
+  stroke-width: 4;
+}
+
+.edge.selected path, .edge.selected polygon {
+  stroke: blue;
+  stroke-width: 4;
+}
+
+.edge.selected polygon {
+  fill: blue;
+}
+
+.edge.selected.from path, .edge.selected.from polygon {
+  stroke: yellow;
+}
+
+.edge.selected.from polygon {
+  fill: yellow;
+}
+
+.edge.dimmed path, .edge.dimmed polygon {
+  stroke-width: 1;
+  stroke-opacity: 0.3;
+  fill-opacity: 0.3;
+}
+
+.node:hover, .edge:hover {
+	cursor: pointer;
+}
+
+.edge:hover, .edge.dimmed path:hover, .edge.dimmed polygon:hover {
+	stroke-width: 10;
+}
