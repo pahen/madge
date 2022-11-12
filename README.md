@@ -384,6 +384,16 @@ madge --dot path/src/app.js > graph.gv
 madge --json path/src/app.js | tr '[a-z]' '[A-Z]' | madge --stdin
 ```
 
+# Interactive Controls
+`Left click` selects node(with edges) or edge. Other edges will be dimmed.
+
+`Left click` out of context(node or edge) resets everything to the initial state.
+
+`Right click` selects an additional node(with edges) or edge. Has no effect if there are no previously selected items.
+Previously selected nodes or edges will be slightly dimmed(but will stay colored).
+
+`Escape` resets everything to the initial state.
+
 # Debugging
 
 > To enable debugging output if you encounter problems, run madge with the `--debug` option then throw the result in a gist when creating issues on GitHub.
