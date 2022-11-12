@@ -1,14 +1,14 @@
 .node, .edge {
-  stroke-width: 2;
+  stroke-width: 1.5;
 }
 
 .node.selected path, .node.selected polygon {
-  stroke-width: 4;
+  stroke-width: 4.5;
 }
 
 .edge.selected path, .edge.selected polygon {
   stroke: blue;
-  stroke-width: 4;
+  stroke-width: 4.5;
 }
 
 .edge.selected polygon {
@@ -19,14 +19,29 @@
   stroke: yellow;
 }
 
-.edge.selected.from polygon {
+.edge.selected.from polygon, .edge.selected.dual polygon {
   fill: yellow;
+}
+
+.edge.selected.dual path {
+	stroke: url(#dualDirection);
+}
+
+#dualDirection {
+	--color-from: yellow;
+	--color-to: blue;
 }
 
 .edge.dimmed path, .edge.dimmed polygon {
   stroke-width: 1;
   stroke-opacity: 0.3;
   fill-opacity: 0.3;
+}
+
+.edge.selected.dimmed path, .edge.selected.dimmed polygon {
+	stroke-width: 1.8;
+	stroke-opacity: 0.55;
+	fill-opacity: 0.55;
 }
 
 .node:hover, .edge:hover {
