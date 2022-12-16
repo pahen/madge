@@ -191,7 +191,7 @@ madge('path/to/app.js')
 
 #### .image(imagePath: string, [circularOnly: boolean])
 
-> Write the graph as an image to the given image path. Set `circularOnly` to only include circular dependencies. The [image format](http://www.graphviz.org/content/output-formats) to use is determined from the file extension. Returns a `Promise` resolved with a full path to the written image.
+> Write the graph as an image to the given image path. Set `circularOnly` to only include circular dependencies. The [image format](http://www.graphviz.org/docs/outputs/) to use is determined from the file extension. Returns a `Promise` resolved with a full path to the written image.
 
 ```javascript
 const madge = require('madge');
