@@ -4,7 +4,7 @@ node_js:
 - 16
 - 18
 sudo: false
-dist: bionic
+dist: focal
 addons:
   apt:
     packages:
