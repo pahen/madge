@@ -36,7 +36,8 @@
     "generate": "npm run generate:small && npm run generate:madge",
     "generate:small": "bin/cli.js --image /tmp/simple.svg test/cjs/circular/a.js",
     "generate:madge": "bin/cli.js --image /tmp/madge.svg bin lib",
-    "test:output": "./test/output.sh"
+    "test:output": "./test/output.sh",
+    "release": "npm test && release-it"
   },
   "funding": {
     "type": "individual",
@@ -68,9 +69,11 @@
   },
   "devDependencies": {
     "@aptoma/eslint-config": "^7.0.1",
+    "auto-changelog": "^2.4.0",
     "eslint": "^7.29.0",
     "mocha": "^9.0.1",
     "mz": "^2.7.0",
+    "release-it": "^15.6.0",
     "should": "^13.2.3"
   }
 }
