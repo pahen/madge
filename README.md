@@ -4,14 +4,8 @@
 
 <p align="center">
 	<img alt="Last version" src="https://img.shields.io/github/tag/pahen/madge.svg?style=flat-square" />
-	<a href="https://travis-ci.com/pahen/madge">
+	<a href="https://app.travis-ci.com/github/pahen/madge">
 		<img alt="Build Status" src="http://img.shields.io/travis/pahen/madge/master.svg?style=flat-square" />
-	</a>
-	<a href="https://david-dm.org/pahen/madge">
-		<img alt="Dependency status" src="http://img.shields.io/david/pahen/madge.svg?style=flat-square" />
-	</a>
-	<a href="https://david-dm.org/pahen/madge#info=devDependencies">
-		<img alg="Dev Dependencies status" src="http://img.shields.io/david/dev/pahen/madge.svg?style=flat-square" />
 	</a>
 	<a href="https://www.npmjs.org/package/madge">
 		<img alg="NPM Status" src="http://img.shields.io/npm/dm/madge.svg?style=flat-square" />
