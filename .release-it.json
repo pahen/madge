@@ -1,0 +1,12 @@
+{
+	"pkgFiles": ["package.json", "package-lock.json"],
+	"git": {
+		"requireCleanWorkingDir": false
+	},
+	"npm": {
+		"publish": false
+	},
+	"hooks": {
+		"after:bump": "auto-changelog --hide-credit --package"
+	}
+}
