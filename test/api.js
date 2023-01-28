@@ -232,7 +232,7 @@ describe('API', () => {
 		it('returns a promise resolved with graphviz DOT output', async () => {
 			const res = await madge(__dirname + '/cjs/b.js');
 			const output = await res.dot();
-			output.should.match(/digraph G/);
+			output.should.match(/digraph madge/);
 			output.should.match(/bgcolor="#111111"/);
 			output.should.match(/fontcolor="#c6c5fe"/);
 			output.should.match(/color="#757575"/);
