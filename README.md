@@ -4,14 +4,8 @@
 
 <p align="center">
 	<img alt="Last version" src="https://img.shields.io/github/tag/pahen/madge.svg?style=flat-square" />
-	<a href="https://travis-ci.com/pahen/madge">
+	<a href="https://app.travis-ci.com/github/pahen/madge">
 		<img alt="Build Status" src="http://img.shields.io/travis/pahen/madge/master.svg?style=flat-square" />
-	</a>
-	<a href="https://david-dm.org/pahen/madge">
-		<img alt="Dependency status" src="http://img.shields.io/david/pahen/madge.svg?style=flat-square" />
-	</a>
-	<a href="https://david-dm.org/pahen/madge#info=devDependencies">
-		<img alg="Dev Dependencies status" src="http://img.shields.io/david/dev/pahen/madge.svg?style=flat-square" />
 	</a>
 	<a href="https://www.npmjs.org/package/madge">
 		<img alg="NPM Status" src="http://img.shields.io/npm/dm/madge.svg?style=flat-square" />
@@ -242,7 +236,7 @@ Property | Type | Default | Description
 `graphVizOptions` | Object | false | Custom Graphviz [options](https://graphviz.gitlab.io/_pages/doc/info/attrs.html)
 `graphVizPath` | String | null | Custom Graphviz path
 `detectiveOptions` | Object | false | Custom `detective` options for [dependency-tree](https://github.com/dependents/node-dependency-tree) and [precinct](https://github.com/dependents/node-precinct#usage)
-`dependencyFilter` | Function | false | Function called with a dependency filepath (exclude substree by returning false)
+`dependencyFilter` | Function | false | Function called with a dependency filepath (exclude subtrees by returning false)
 
 You can use configuration file either in `.madgerc` in your project or home folder or directly in `package.json`. Look [here](https://github.com/dominictarr/rc#standards) for alternative locations for the file.
 
@@ -377,6 +371,14 @@ madge --debug path/src/app.js
 ```sh
 npm install
 npm test
+```
+
+# Creating a release
+
+> Travis CI will automatically release the npm package to npmjs.com after a successful build.
+
+```sh
+npm run release
 ```
 
 # FAQ
