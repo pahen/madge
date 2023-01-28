@@ -197,6 +197,20 @@ madge('path/to/app.js')
 	});
 ```
 
+#### .interactive(pagePath: string, [circularOnly: boolean])
+
+> Write the graph as an interactive html page to the given page path. Set `circularOnly` to only include circular dependencies. Returns a `Promise` resolved with a full path to the written page.
+
+```javascript
+const madge = require('madge');
+
+madge('path/to/app.js')
+	.then((res) => res.interactive('path/to/page.html'))
+	.then((writtenPagePath) => {
+		console.log('Page written to ' + writtenPagePath);
+	});
+```
+
 #### .svg()
 
 > Return a `Promise` resolved with the XML SVG representation of the dependency graph as a `Buffer`.
@@ -346,6 +360,12 @@ madge --image graph.svg path/src/app.js
 madge --circular --image graph.svg path/src/app.js
 ```
 
+> Save graph as an interactive html page (requires [Graphviz](#graphviz-optional))
+
+```sh
+madge --interactive graph.html path/src/app.js
+```
+
 > Save graph as a [DOT](http://en.wikipedia.org/wiki/DOT_language) file for further processing (requires [Graphviz](#graphviz-optional))
 
 ```sh
@@ -357,6 +377,16 @@ madge --dot path/src/app.js > graph.gv
 ```sh
 madge --json path/src/app.js | tr '[a-z]' '[A-Z]' | madge --stdin
 ```
+
+# Interactive Controls
+`Left click` selects node(with edges) or edge. Other edges will be dimmed.
+
+`Left click` out of context(node or edge) resets everything to the initial state.
+
+`Right click` selects an additional node(with edges) or edge. Has no effect if there are no previously selected items.
+Previously selected nodes or edges will be slightly dimmed(but will stay colored).
+
+`Escape` resets everything to the initial state.
 
 # Debugging
 

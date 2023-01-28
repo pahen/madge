@@ -23,6 +23,7 @@ program
 	.option('-x, --exclude <regexp>', 'exclude modules using RegExp')
 	.option('-j, --json', 'output as JSON')
 	.option('-i, --image <file>', 'write graph to file as an image')
+	.option('-I, --interactive <file>', 'write graph to file as an interactive html page')
 	.option('-l, --layout <name>', 'layout engine to use for graph (dot/neato/fdp/sfdp/twopi/circo)')
 	.option('--orphans', 'show modules that no one is depending on')
 	.option('--leaves', 'show modules that have no dependencies')
@@ -247,6 +248,13 @@ function createOutputFromOptions(program, res) {
 	if (program.image) {
 		return res.image(program.image, program.circular).then((imagePath) => {
 			spinner.succeed(`${chalk.bold('Image created at')} ${chalk.cyan.bold(imagePath)}`);
+			return res;
+		});
+	}
+
+	if (program.interactive) {
+		return res.interactive(program.interactive, program.circular).then((pagePath) => {
+			spinner.succeed(`${chalk.bold('Html page created at')} ${chalk.cyan.bold(pagePath)}`);
 			return res;
 		});
 	}
