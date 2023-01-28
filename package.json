@@ -1,6 +1,6 @@
 {
   "name": "madge",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "author": "Patrik Henningsson <patrik.henningsson@gmail.com>",
   "repository": "git://github.com/pahen/madge",
   "homepage": "https://github.com/pahen/madge",
@@ -21,7 +21,7 @@
     "graph"
   ],
   "engines": {
-    "node": "^10.13 || ^12 || >=14"
+    "node": ">=14"
   },
   "main": "./lib/api",
   "bin": {
@@ -36,7 +36,8 @@
     "generate": "npm run generate:small && npm run generate:madge",
     "generate:small": "bin/cli.js --image /tmp/simple.svg test/cjs/circular/a.js",
     "generate:madge": "bin/cli.js --image /tmp/madge.svg bin lib",
-    "test:output": "./test/output.sh"
+    "test:output": "./test/output.sh",
+    "release": "npm test && release-it"
   },
   "funding": {
     "type": "individual",
@@ -57,20 +58,24 @@
     "detective-scss": "^3.0.0",
     "detective-stylus": "^2.0.1",
     "detective-typescript": "^9.0.0",
-    "graphviz": "0.0.9",
     "ora": "^6.1.2",
     "pluralize": "^8.0.0",
     "precinct": "^9.0.1",
     "pretty-ms": "^8.0.0",
     "rc": "^1.2.7",
+
+    "stream-to-array": "^2.3.0",
+    "ts-graphviz": "^1.5.0",
     "typescript": "^4.8.4",
     "walkdir": "^0.4.1"
   },
   "devDependencies": {
     "@aptoma/eslint-config": "^7.0.1",
+    "auto-changelog": "^2.4.0",
     "eslint": "^8.27.0",
     "mocha": "^10.1.0",
     "mz": "^2.7.0",
+    "release-it": "^15.6.0",
     "should": "^13.2.3"
   }
 }
