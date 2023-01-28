@@ -2,6 +2,7 @@
 'use strict';
 
 const madge = require('../lib/api');
+const ts = require('typescript');
 require('should');
 
 describe('TypeScript', () => {
@@ -37,6 +38,22 @@ describe('TypeScript', () => {
 				'subfolder/index.ts': [],
 				'subfolder/require.tsx': ['subfolder2/export.ts'],
 				'subfolder2/export.ts': []
+			});
+			done();
+		}).catch(done);
+	});
+
+	it('got tsConfig as a string, "extends" field is interpreted', (done) => {
+		madge(dir + '/custom-paths/import.ts', {tsConfig: dir + '/with-config/tsconfig.json'}).then((res) => {
+			res.config.tsConfig.should.eql({
+				extends: './tsconfig.base.json',
+				compilerOptions: {
+					target: ts.ScriptTarget.ESNext,
+					module: ts.ModuleKind.CommonJS,
+					allowJs: true,
+					configFilePath: undefined
+				},
+				compileOnSave: undefined
 			});
 			done();
 		}).catch(done);
