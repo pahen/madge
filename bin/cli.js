@@ -111,13 +111,6 @@ if (program.tsConfig) {
 	config.tsConfig = program.tsConfig;
 }
 
-if (config.tsConfig) {
-	const ts = require('typescript');
-	const tsParsedConfig = ts.readJsonConfigFile(config.tsConfig, ts.sys.readFile);
-	const obj = ts.parseJsonSourceFileConfigFileContent(tsParsedConfig, ts.sys, path.dirname(config.tsConfig));
-	config.tsConfig = obj.raw;
-}
-
 if (program.includeNpm) {
 	config.includeNpm = program.includeNpm;
 }
