@@ -2,12 +2,28 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v6.0.0](https://github.com/pahen/madge/compare/v5.0.2...v6.0.0)
+
+- Handle collect tsconfig's extends fileds [`#349`](https://github.com/pahen/madge/pull/349)
+- Update packages detective-* to latest [`#348`](https://github.com/pahen/madge/pull/348)
+- chore: bump 'detective-typescript' package to allow newer TS versions [`#321`](https://github.com/pahen/madge/pull/321)
+- Replace to ts-graphviz package [`#341`](https://github.com/pahen/madge/pull/341)
+- chore: bump detective-postcss to v6 [`#319`](https://github.com/pahen/madge/pull/319)
+- Drop support Node.js EOL versions(&lt;14) [`#342`](https://github.com/pahen/madge/pull/342)
+- handle collect tsconfig's extends fileds [`#323`](https://github.com/pahen/madge/issues/323)
+- Changed to depend on the ts-graphviz package [`9b9ae87`](https://github.com/pahen/madge/commit/9b9ae878622be4a58951c5fcb9d46cc0c44e4593)
+- update packages detective-* to latest [`60b6557`](https://github.com/pahen/madge/commit/60b6557efc5a1da04452dfc0f0b1a0281f9c8776)
+- Set to Node.js 16 by default on nvm [`383452b`](https://github.com/pahen/madge/commit/383452b55294e3db1d8a9ef071b8b040ca295e14)
+
 #### [v5.0.2](https://github.com/pahen/madge/compare/v5.0.1...v5.0.2)
+
+> 27 January 2023
 
 - Add NPM task and docs for creating a release [`#346`](https://github.com/pahen/madge/pull/346)
 - Fix broken link to Travis in README [`#345`](https://github.com/pahen/madge/pull/345)
 - docs: fix subtrees typo in README [`#325`](https://github.com/pahen/madge/pull/325)
 - minor typo in README.md [`#300`](https://github.com/pahen/madge/pull/300)
+- Release 5.0.2 [`614d44d`](https://github.com/pahen/madge/commit/614d44d5f1ab3cc9e9875e67d1e46f4b971d660a)
 - minor typos in README.md [`edc27c8`](https://github.com/pahen/madge/commit/edc27c85c5257df65184fd44c80549ffd0346360)
 - minor type in README.md [`9f5514c`](https://github.com/pahen/madge/commit/9f5514c568aa1d3944a17c459daee93c2948e144)
 
