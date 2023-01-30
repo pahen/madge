@@ -27,6 +27,7 @@ program
 	.option('--orphans', 'show modules that no one is depending on')
 	.option('--leaves', 'show modules that have no dependencies')
 	.option('--dot', 'show graph using the DOT language')
+	.option('--rankdir <direction>', 'set the direction of the graph layout')
 	.option('--extensions <list>', 'comma separated string of valid file extensions')
 	.option('--require-config <file>', 'path to RequireJS config')
 	.option('--webpack-config <file>', 'path to webpack config')
@@ -121,6 +122,10 @@ if (!program.color) {
 	config.noDependencyColor = '#000000';
 	config.cyclicNodeColor = '#000000';
 	config.edgeColor = '#757575';
+}
+
+if (program.rankdir) {
+	config.rankdir = program.rankdir;
 }
 
 function dependencyFilter() {
