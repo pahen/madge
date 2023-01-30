@@ -3,9 +3,6 @@
 	"git": {
 		"requireCleanWorkingDir": false
 	},
-	"npm": {
-		"publish": false
-	},
 	"hooks": {
 		"after:bump": "auto-changelog --hide-credit --package"
 	}
