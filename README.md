@@ -375,8 +375,6 @@ npm test
 
 # Creating a release
 
-> Travis CI will automatically release the npm package to npmjs.com after a successful build.
-
 ```sh
 npm run release
 ```
