@@ -35,7 +35,7 @@
     "debug": "node bin/cli.js --debug bin lib",
     "generate": "npm run generate:small && npm run generate:madge",
     "generate:small": "bin/cli.js --image /tmp/simple.svg test/cjs/circular/a.js",
-    "generate:madge": "export CI=true; bin/cli.js --image /tmp/madge.svg bin lib",
+    "generate:madge": "bin/cli.js --image /tmp/madge.svg bin lib",
     "test:output": "./test/output.sh",
     "release": "npm test && release-it"
   },
