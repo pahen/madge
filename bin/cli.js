@@ -3,14 +3,13 @@
 
 const path = require('path');
 const process = require('process');
-const {Command, Option} = require('commander');
+const program = require('commander');
 const rc = require('rc')('madge');
 const version = require('../package.json').version;
 const ora = require('ora');
 const chalk = require('chalk');
 const startTime = Date.now();
-
-const program = new Command();
+const ci = require('ci-info');
 
 // Revert https://github.com/tj/commander.js/pull/1409
 program.storeOptionsAsProperties();
@@ -36,7 +35,7 @@ program
 	.option('--ts-config <file>', 'path to typescript config')
 	.option('--include-npm', 'include shallow NPM modules', false)
 	.option('--no-color', 'disable color in output and image', false)
-	.addOption(new Option('--no-spinner', 'disable progress spinner', false).env('MADGE_NO_SPINNER'))
+	.option('--no-spinner', 'disable progress spinner', false)
 	.option('--stdin', 'read predefined tree from STDIN', false)
 	.option('--warning', 'show warnings about skipped files', false)
 	.option('--debug', 'turn on debug output', false)
@@ -77,7 +76,8 @@ const spinner = ora({
 	text: 'Finding files',
 	color: 'white',
 	interval: 100000,
-	isEnabled: program.spinner
+	isEnabled: !ci.isCI && program.spinner,
+	isSilent: ci.isCI
 });
 
 let exitCode = 0;
