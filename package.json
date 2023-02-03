@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "chalk": "^4.1.1",
-    "commander": "^7.2.0",
+    "commander": "^8.2.0",
     "commondir": "^1.0.1",
     "debug": "^4.3.1",
     "dependency-tree": "^9.0.0",
