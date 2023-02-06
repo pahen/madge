@@ -9,7 +9,6 @@ const version = require('../package.json').version;
 const ora = require('ora');
 const chalk = require('chalk');
 const startTime = Date.now();
-const ci = require('ci-info');
 
 // Revert https://github.com/tj/commander.js/pull/1409
 program.storeOptionsAsProperties();
@@ -76,8 +75,7 @@ const spinner = ora({
 	text: 'Finding files',
 	color: 'white',
 	interval: 100000,
-	isEnabled: !ci.isCI && program.spinner,
-	isSilent: ci.isCI
+	isEnabled: program.spinner === 'false' ? false : null
 });
 
 let exitCode = 0;
@@ -139,10 +137,8 @@ function dependencyFilter() {
 			const dir = path.dirname(relPath) + '/';
 			const file = path.basename(relPath);
 
-			if (program.spinner) {
-				spinner.text = chalk.grey(dir) + chalk.cyan(file);
-				spinner.render();
-			}
+			spinner.text = chalk.grey(dir) + chalk.cyan(file);
+
 			prevFile = traversedFilePath;
 		}
 	};
