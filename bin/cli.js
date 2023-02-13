@@ -75,7 +75,7 @@ const spinner = ora({
 	text: 'Finding files',
 	color: 'white',
 	interval: 100000,
-	isEnabled: program.spinner
+	isEnabled: program.spinner === 'false' ? false : null
 });
 
 let exitCode = 0;
@@ -137,10 +137,8 @@ function dependencyFilter() {
 			const dir = path.dirname(relPath) + '/';
 			const file = path.basename(relPath);
 
-			if (program.spinner) {
-				spinner.text = chalk.grey(dir) + chalk.cyan(file);
-				spinner.render();
-			}
+			spinner.text = chalk.grey(dir) + chalk.cyan(file);
+
 			prevFile = traversedFilePath;
 		}
 	};
