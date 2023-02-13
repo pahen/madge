@@ -316,10 +316,10 @@ madge --circular path/src/app.js
 madge --depends wheels.js path/src/app.js
 ```
 
-> Show modules that no one is depending on
+> Show modules that no one is depending on. Only scans files with the current `--extensions`.
 
 ```sh
-madge --orphans path/src/
+madge --extensions ts,tsx,js,jsx --orphans path/src/
 ```
 
 > Show modules that have no dependencies
