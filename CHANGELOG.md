@@ -2,7 +2,21 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v6.0.0](https://github.com/pahen/madge/compare/v5.0.2...v6.0.0)
+#### [v6.1.0](https://github.com/pahen/madge/compare/v6.0.0...v6.1.0)
+
+- constrain and bump typescript versions [`#376`](https://github.com/pahen/madge/pull/376)
+- Disable spinner when running in CI [`#356`](https://github.com/pahen/madge/pull/356)
+- Remove deploy to NPM from Travis build [`#354`](https://github.com/pahen/madge/pull/354)
+- feat: support for rankdir in CLI [`#311`](https://github.com/pahen/madge/pull/311)
+- Move typescript to peer dependencies [`#350`](https://github.com/pahen/madge/pull/350)
+- Release 6.0.0 [`#352`](https://github.com/pahen/madge/pull/352)
+- install and use ci-info [`c35da47`](https://github.com/pahen/madge/commit/c35da472e7352340209f4537d020b2702f9e67e7)
+- remove ci-info and change isEnabled setting [`a771115`](https://github.com/pahen/madge/commit/a771115ce570c8ea8d4c3ca68300dcfa0b5759ea)
+- control no-spinner from env var [`3a7d544`](https://github.com/pahen/madge/commit/3a7d544fc19b0e23a5e106da969274950e7f7ebc)
+
+### [v6.0.0](https://github.com/pahen/madge/compare/v5.0.2...v6.0.0)
+
+> 29 January 2023
 
 - Handle collect tsconfig's extends fileds [`#349`](https://github.com/pahen/madge/pull/349)
 - Update packages detective-* to latest [`#348`](https://github.com/pahen/madge/pull/348)
@@ -12,8 +26,8 @@ All notable changes to this project will be documented in this file. Dates are d
 - Drop support Node.js EOL versions(&lt;14) [`#342`](https://github.com/pahen/madge/pull/342)
 - handle collect tsconfig's extends fileds [`#323`](https://github.com/pahen/madge/issues/323)
 - Changed to depend on the ts-graphviz package [`9b9ae87`](https://github.com/pahen/madge/commit/9b9ae878622be4a58951c5fcb9d46cc0c44e4593)
+- Release 6.0.0 [`2aa75b2`](https://github.com/pahen/madge/commit/2aa75b2aba279d02dd7cf7640a0fcd6236322228)
 - update packages detective-* to latest [`60b6557`](https://github.com/pahen/madge/commit/60b6557efc5a1da04452dfc0f0b1a0281f9c8776)
-- Set to Node.js 16 by default on nvm [`383452b`](https://github.com/pahen/madge/commit/383452b55294e3db1d8a9ef071b8b040ca295e14)
 
 #### [v5.0.2](https://github.com/pahen/madge/compare/v5.0.1...v5.0.2)
 
