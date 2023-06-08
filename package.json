@@ -44,16 +44,16 @@
     "url": "https://www.paypal.me/pahen"
   },
   "dependencies": {
-    "chalk": "^4.1.1",
+    "chalk": "^4.1.2",
     "commander": "^7.2.0",
     "commondir": "^1.0.1",
-    "debug": "^4.3.1",
+    "debug": "^4.3.4",
     "dependency-tree": "^10.0.9",
     "ora": "^5.4.1",
     "pluralize": "^8.0.0",
     "precinct": "^8.1.0",
     "pretty-ms": "^7.0.1",
-    "rc": "^1.2.7",
+    "rc": "^1.2.8",
     "stream-to-array": "^2.3.0",
     "ts-graphviz": "^1.5.0",
     "walkdir": "^0.4.1"
