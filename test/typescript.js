@@ -52,8 +52,7 @@ describe('TypeScript', () => {
 					module: ts.ModuleKind.CommonJS,
 					allowJs: true,
 					configFilePath: undefined
-				},
-				compileOnSave: undefined
+				}
 			});
 			done();
 		}).catch(done);
