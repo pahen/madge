@@ -55,7 +55,7 @@
     "pretty-ms": "^7.0.1",
     "rc": "^1.2.8",
     "stream-to-array": "^2.3.0",
-    "ts-graphviz": "^1.5.0",
+    "ts-graphviz": "^1.8.0",
     "walkdir": "^0.4.1"
   },
   "peerDependencies": {
