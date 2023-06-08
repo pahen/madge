@@ -48,7 +48,7 @@
     "commander": "^7.2.0",
     "commondir": "^1.0.1",
     "debug": "^4.3.1",
-    "dependency-tree": "^9.0.0",
+    "dependency-tree": "^10.0.9",
     "ora": "^5.4.1",
     "pluralize": "^8.0.0",
     "precinct": "^8.1.0",
