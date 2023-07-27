@@ -35,6 +35,7 @@ program
 	.option('--include-npm', 'include shallow NPM modules', false)
 	.option('--no-color', 'disable color in output and image', false)
 	.option('--no-spinner', 'disable progress spinner', false)
+	.option('--no-index', 'disable index in output', false)
 	.option('--stdin', 'read predefined tree from STDIN', false)
 	.option('--warning', 'show warnings about skipped files', false)
 	.option('--debug', 'turn on debug output', false)
@@ -258,7 +259,8 @@ function createOutputFromOptions(program, res) {
 		const circular = res.circular();
 
 		output.circular(spinner, res, circular, {
-			json: program.json
+			json: program.json,
+			index: program.index
 		});
 
 		if (circular.length) {
