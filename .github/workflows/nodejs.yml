@@ -27,6 +27,7 @@ jobs:
 
       - name: npm install, build, and test
         run: |
+          sudo apt install -y --no-install-recommends graphviz
           npm i -g npm@9
           npm ci
           npm run test
