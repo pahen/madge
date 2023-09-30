@@ -443,6 +443,20 @@ Put this in your madge config.
 }
 ```
 
+## How to ignore dynamic imports in Typescript?
+
+Put this in your madge config.
+
+```json
+{
+	"detectiveOptions": {
+		"ts": {
+			"skipAsyncImports": true
+		}
+	}
+}
+```
+
 ## Mixing TypesScript and Javascript imports?
 
 Ensure you have this in your `.tsconfig` file.
