@@ -452,10 +452,15 @@ Put this in your madge config.
 	"detectiveOptions": {
 		"ts": {
 			"skipAsyncImports": true
+		},
+		"tsx": {
+			"skipAsyncImports": true
 		}
 	}
 }
 ```
+
+Note: `tsx` is optional, use this when working with JSX.
 
 ## Mixing TypesScript and Javascript imports?
 
