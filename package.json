@@ -58,14 +58,6 @@
     "ts-graphviz": "^1.8.1",
     "walkdir": "^0.4.1"
   },
-  "peerDependencies": {
-    "typescript": "^3.9.5 || ^4.9.5 || ^5"
-  },
-  "peerDependenciesMeta": {
-    "typescript": {
-      "optional": true
-    }
-  },
   "devDependencies": {
     "@aptoma/eslint-config": "^7.0.1",
     "auto-changelog": "^2.4.0",
@@ -74,6 +66,6 @@
     "mz": "^2.7.0",
     "release-it": "^15.6.0",
     "should": "^13.2.3",
-    "typescript": "^5.0.4"
+    "typescript": "<=5.2.0"
   }
 }
