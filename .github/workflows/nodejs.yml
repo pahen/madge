@@ -14,12 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: setup git
-        if: matrix.os == 'windows-latest'
-        run: |
-          git config core.symlinks true
-          git reset --hard
-
       - name: ${{ matrix.os }} / Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
