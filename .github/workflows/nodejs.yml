@@ -27,10 +27,3 @@ jobs:
           npm run test
           npm run debug
           npm run generate
-
-      - uses: codecov/codecov-action@v1
-        if: matrix.os == 'ubuntu-latest' && matrix.node-version == '16.x'
-        with:
-          file: ./coverage/coverage.lcov
-          name: codecov-umbrella
-          fail_ci_if_error: false
