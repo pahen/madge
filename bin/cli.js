@@ -32,6 +32,7 @@ program
 	.option('--require-config <file>', 'path to RequireJS config')
 	.option('--webpack-config <file>', 'path to webpack config')
 	.option('--ts-config <file>', 'path to typescript config')
+	.option('--depth <integer>', 'maximum depth from source files to draw')
 	.option('--include-npm', 'include shallow NPM modules', false)
 	.option('--no-color', 'disable color in output and image', false)
 	.option('--no-spinner', 'disable progress spinner', false)
@@ -111,6 +112,19 @@ if (program.webpackConfig) {
 
 if (program.tsConfig) {
 	config.tsConfig = program.tsConfig;
+}
+
+if ('depth' in program) {
+	config.depth = program.depth;
+}
+
+if ('depth' in config) {
+	config.depth = Number(config.depth);
+
+	if (!Number.isInteger(config.depth) || config.depth < 0) {
+		console.log('%s %s', chalk.red('✖'), 'Invalid depth');
+		process.exit(1);
+	}
 }
 
 if (program.includeNpm) {
