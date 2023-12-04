@@ -21,7 +21,7 @@
     "graph"
   ],
   "engines": {
-    "node": ">=14"
+    "node": "^16.20 || ^18.16 || >=20"
   },
   "main": "./lib/api",
   "bin": {
