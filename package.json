@@ -48,7 +48,7 @@
     "commander": "^7.2.0",
     "commondir": "^1.0.1",
     "debug": "^4.3.1",
-    "dependency-tree": "^9.0.0",
+    "dependency-tree": "^10.0.7",
     "detective-amd": "^4.0.1",
     "detective-cjs": "^4.0.0",
     "detective-es6": "^3.0.0",
@@ -66,14 +66,6 @@
     "stream-to-array": "^2.3.0",
     "ts-graphviz": "^1.5.0",
     "walkdir": "^0.4.1"
-  },
-  "peerDependencies": {
-    "typescript": "*"
-  },
-  "peerDependenciesMeta": {
-    "typescript": {
-      "optional": true
-    }
   },
   "devDependencies": {
     "@aptoma/eslint-config": "^7.0.1",
