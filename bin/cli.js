@@ -3,7 +3,7 @@
 
 const path = require('path');
 const process = require('process');
-const program = require('commander');
+const {program} = require('commander');
 const rc = require('rc')('madge');
 const version = require('../package.json').version;
 const ora = require('ora');
