@@ -3,20 +3,20 @@
 </p>
 
 <p align="center">
-	<img alt="Last version" src="https://img.shields.io/github/tag/pahen/madge.svg?style=flat-square" />
-	<a href="https://app.travis-ci.com/github/pahen/madge">
-		<img alt="Build Status" src="http://img.shields.io/travis/pahen/madge/master.svg?style=flat-square" />
+	<img alt="Last version" src="https://img.shields.io/github/tag/pahen/madge?style=flat-square">
+	<a href="https://github.com/pahen/madge/actions/workflows/ci.yml?query=branch%3Amaster">
+		<img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/pahen/madge/ci.yml?branch=master&style=flat-square">
 	</a>
-	<a href="https://www.npmjs.org/package/madge">
-		<img alg="NPM Status" src="http://img.shields.io/npm/dm/madge.svg?style=flat-square" />
+	<a href="https://www.npmjs.com/package/madge">
+		<img alg="npm" src="http://img.shields.io/npm/dm/madge?style=flat-square">
 	</a>
 	<a href="https://paypal.me/pahen" target="_blank">
-		<img alt="Donate" src="https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square" />
+		<img alt="Donate" src="https://img.shields.io/badge/donate-paypal-blue?style=flat-square">
 	</a>
 </p>
 
 
-**Madge** is a developer tool for generating a visual graph of your module dependencies, finding circular dependencies, and giving you other useful info. Joel Kemp's awesome [dependency-tree](https://github.com/mrjoelkemp/node-dependency-tree) is used for extracting the dependency tree.
+**Madge** is a developer tool for generating a visual graph of your module dependencies, finding circular dependencies, and giving you other useful info. Joel Kemp's awesome [dependency-tree](https://github.com/dependents/node-dependency-tree) is used for extracting the dependency tree.
 
 
 * Works for JavaScript (AMD, CommonJS, and ES6 modules)
@@ -254,6 +254,7 @@ You can use configuration file either in `.madgerc` in your project or home fold
 ```
 
 > package.json
+
 ```json
 {
 	"name": "foo",
@@ -286,7 +287,7 @@ madge path/src/app.js
 madge path/src/foo.js path/src/bar.js
 ```
 
-> List dependencies from all *.js files found in a directory
+> List dependencies from all \*.js files found in a directory
 
 ```sh
 madge path/src
@@ -298,7 +299,7 @@ madge path/src
 madge path/src/foo path/src/bar
 ```
 
-> List dependencies from all *.js and *.jsx files found in a directory
+> List dependencies from all \*.js and \*.jsx files found in a directory
 
 ```sh
 madge --extensions js,jsx path/src
@@ -394,6 +395,7 @@ Madge uses [dependency-tree](https://www.npmjs.com/package/dependency-tree) whic
 Only one syntax is used by default. You can use both though if you're willing to take the degraded performance. Put this in your madge config to enable mixed imports.
 
 For ES6 + CommonJS:
+
 ```json
 {
 	"detectiveOptions": {
@@ -405,6 +407,7 @@ For ES6 + CommonJS:
 ```
 
 For TypeScript + CommonJS:
+
 ```json
 {
 	"detectiveOptions": {
