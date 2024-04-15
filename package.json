@@ -27,6 +27,9 @@
   "bin": {
     "madge": "./bin/cli.js"
   },
+  "files": [
+    "{bin,lib}/*.js"
+  ],
   "scripts": {
     "test": "npm run lint && npm run mocha",
     "mocha": "mocha test/*.js",
