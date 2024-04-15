@@ -1,11 +1,12 @@
 /* eslint-env mocha */
 'use strict';
 
-const madge = require('../lib/api');
-require('should');
+const path = require('path');
+const madge = require('../lib/api.js');
+require('should'); // eslint-disable-line import/no-unassigned-import
 
 describe('ES6', () => {
-	const dir = __dirname + '/es6';
+	const dir = path.join(__dirname, '/fixtures/es6');
 
 	it('extracts dependencies', (done) => {
 		madge(dir + '/absolute.js').then((res) => {

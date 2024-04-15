@@ -1,11 +1,12 @@
 /* eslint-env mocha */
 'use strict';
 
-const madge = require('../lib/api');
-require('should');
+const path = require('path');
+const madge = require('../lib/api.js');
+require('should'); // eslint-disable-line import/no-unassigned-import
 
 describe('Flow', () => {
-	const dir = __dirname + '/flow';
+	const dir = path.join(__dirname, '/fixtures/flow');
 
 	it('extracts ES module ependencies', (done) => {
 		madge(dir + '/es/calc.js').then((res) => {

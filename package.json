@@ -31,7 +31,8 @@
     "test": "npm run lint && npm run mocha",
     "mocha": "mocha \"test/*.js\"",
     "watch": "mocha --watch --growl \"test/*.js\"",
-    "lint": "eslint bin/cli.js lib \"test/*.js\"",
+    "lint": "xo",
+    "fix": "xo --fix",
     "debug": "node bin/cli.js --debug bin lib",
     "generate": "npm run generate:small && npm run generate:madge",
     "generate:small": "bin/cli.js --image /tmp/simple.svg test/cjs/circular/a.js",
@@ -66,13 +67,42 @@
     }
   },
   "devDependencies": {
-    "@aptoma/eslint-config": "^7.0.1",
     "auto-changelog": "^2.4.0",
-    "eslint": "^7.32.0",
     "mocha": "^10.4.0",
     "mz": "^2.7.0",
     "release-it": "^17.2.0",
     "should": "^13.2.3",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "xo": "^0.58.0"
+  },
+  "xo": {
+    "ignores": [
+      "test/fixtures/*"
+    ],
+    "rules": {
+      "arrow-body-style": "off",
+      "arrow-parens": [
+        "error",
+        "always"
+      ],
+      "capitalized-comments": "off",
+      "comma-dangle": [
+        "error",
+        "never"
+      ],
+      "curly": [
+        "error",
+        "multi-line"
+      ],
+      "space-before-function-paren": [
+        "error",
+        "never"
+      ],
+      "unicorn/no-array-reduce": "off",
+      "unicorn/prefer-module": "off",
+      "unicorn/prefer-node-protocol": "off",
+      "unicorn/prefer-top-level-await": "off",
+      "unicorn/prevent-abbreviations": "off"
+    }
   }
 }

@@ -1,11 +1,12 @@
 /* eslint-env mocha */
 'use strict';
 
-const madge = require('../lib/api');
-require('should');
+const path = require('path');
+const madge = require('../lib/api.js');
+require('should'); // eslint-disable-line import/no-unassigned-import
 
 describe('CommonJS', () => {
-	const dir = __dirname + '/cjs';
+	const dir = path.join(__dirname, '/fixtures/cjs');
 
 	it('finds recursive dependencies', (done) => {
 		madge(dir + '/normal/a.js').then((res) => {

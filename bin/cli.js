@@ -5,9 +5,13 @@ const path = require('path');
 const process = require('process');
 const {program} = require('commander');
 const rc = require('rc')('madge');
-const version = require('../package.json').version;
 const ora = require('ora');
 const chalk = require('chalk');
+const log = require('../lib/log.js');
+const output = require('../lib/output.js');
+const madge = require('../lib/api.js');
+const {version} = require('../package.json');
+
 const startTime = Date.now();
 
 // Revert https://github.com/tj/commander.js/pull/1409
@@ -41,7 +45,7 @@ program
 	.option('--debug', 'turn on debug output', false)
 	.parse(process.argv);
 
-if (!program.args.length && !program.stdin) {
+if (program.args.length === 0 && !program.stdin) {
 	console.log(program.helpInformation());
 	process.exit(1);
 }
@@ -54,28 +58,25 @@ if (!program.color) {
 	process.env.DEBUG_COLORS = false;
 }
 
-const log = require('../lib/log');
-const output = require('../lib/output');
-const madge = require('../lib/api');
-
 let packageConfig = {};
 try {
 	packageConfig = require(path.join(process.cwd(), 'package.json')).madge;
-} catch (e) { }
+} catch {}
+
 const config = Object.assign(rc, packageConfig);
 
-program.options.forEach((opt) => {
+for (const opt of program.options) {
 	const name = opt.name();
 
 	if (program[name]) {
 		config[name] = program[name];
 	}
-});
+}
 
 const spinner = ora({
 	text: 'Finding files',
 	color: 'white',
-	interval: 100000,
+	interval: 100_000,
 	isEnabled: program.spinner === 'false' ? false : null
 });
 
@@ -158,8 +159,8 @@ new Promise((resolve, reject) => {
 			.on('end', () => {
 				try {
 					resolve(JSON.parse(buffer));
-				} catch (e) {
-					reject(e);
+				} catch (error) {
+					reject(error);
 				}
 			});
 	} else {
@@ -202,9 +203,9 @@ new Promise((resolve, reject) => {
 
 		process.exit(exitCode);
 	})
-	.catch((err) => {
+	.catch((error) => {
 		spinner.stop();
-		console.log('\n%s %s\n', chalk.red('✖'), err.stack);
+		console.log('\n%s %s\n', chalk.red('✖'), error.stack);
 		process.exit(1);
 	});
 
@@ -263,7 +264,7 @@ function createOutputFromOptions(program, res) {
 			printCount: program.count
 		});
 
-		if (circular.length) {
+		if (circular.length > 0) {
 			exitCode = 1;
 		}
 

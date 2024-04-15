@@ -4,9 +4,9 @@
 const os = require('os');
 const path = require('path');
 const fs = require('mz/fs');
-const madge = require('../lib/api');
+const madge = require('../lib/api.js');
 
-require('should');
+require('should'); // eslint-disable-line import/no-unassigned-import
 
 describe('API', () => {
 	it('throws error on missing path argument', () => {
@@ -16,18 +16,18 @@ describe('API', () => {
 	});
 
 	it('returns a Promise', () => {
-		madge(__dirname + '/cjs/a.js').should.be.Promise(); // eslint-disable-line new-cap
+		madge(path.join(__dirname, 'fixtures/cjs/a.js')).should.be.Promise(); // eslint-disable-line new-cap
 	});
 
 	it('throws error if file or directory does not exists', (done) => {
-		madge(__dirname + '/missing.js').catch((err) => {
-			err.message.should.match(/no such file or directory/);
+		madge(path.join(__dirname, 'fixtures/missing.js')).catch((error) => {
+			error.message.should.match(/no such file or directory/);
 			done();
 		}).catch(done);
 	});
 
 	it('takes single file as path', (done) => {
-		madge(__dirname + '/cjs/a.js').then((res) => {
+		madge(path.join(__dirname, 'fixtures/cjs/a.js')).then((res) => {
 			res.obj().should.eql({
 				'a.js': ['b.js', 'c.js'],
 				'b.js': ['c.js'],
@@ -38,7 +38,7 @@ describe('API', () => {
 	});
 
 	it('takes an array of files as path and combines the result', (done) => {
-		madge([__dirname + '/cjs/a.js', __dirname + '/cjs/normal/d.js']).then((res) => {
+		madge([path.join(__dirname, 'fixtures/cjs/a.js'), path.join(__dirname, 'fixtures/cjs/normal/d.js')]).then((res) => {
 			res.obj().should.eql({
 				'a.js': ['b.js', 'c.js'],
 				'b.js': ['c.js'],
@@ -50,7 +50,7 @@ describe('API', () => {
 	});
 
 	it('take a single directory as path and find files in it', (done) => {
-		madge(__dirname + '/cjs/normal').then((res) => {
+		madge(path.join(__dirname, 'fixtures/cjs/normal')).then((res) => {
 			res.obj().should.eql({
 				'a.js': ['sub/b.js'],
 				'd.js': [],
@@ -62,7 +62,7 @@ describe('API', () => {
 	});
 
 	it('takes an array of directories as path and compute the basedir correctly', (done) => {
-		madge([__dirname + '/cjs/multibase/1', __dirname + '/cjs/multibase/2']).then((res) => {
+		madge([path.join(__dirname, 'fixtures/cjs/multibase/1'), path.join(__dirname, 'fixtures/cjs/multibase/2')]).then((res) => {
 			res.obj().should.eql({
 				'1/a.js': [],
 				'2/b.js': []
@@ -89,7 +89,7 @@ describe('API', () => {
 	});
 
 	it('can exclude modules using RegExp', (done) => {
-		madge(__dirname + '/cjs/a.js', {
+		madge(path.join(__dirname, 'fixtures/cjs/a.js'), {
 			excludeRegExp: ['^b.js$']
 		}).then((res) => {
 			res.obj().should.eql({
@@ -101,10 +101,9 @@ describe('API', () => {
 	});
 
 	it('extracts dependencies but excludes .git', (done) => {
-		// eslint-disable-next-line no-sync
-		fs.renameSync(`${__dirname}/git/.git_tmp`, `${__dirname}/git/.git`);
+		fs.renameSync(path.join(__dirname, '/fixtures/git/.git_tmp'), path.join(__dirname, '/fixtures/git/.git'));
 
-		madge(__dirname + '/git/a.js', {}).then((res) => {
+		madge(path.join(__dirname, 'fixtures/fixtures/git/a.js'), {}).then((res) => {
 			res.obj().should.eql({
 				'a.js': ['b.js', 'c.js'],
 				'b.js': ['c.js'],
@@ -114,15 +113,14 @@ describe('API', () => {
 		}).catch(() => {
 			done();
 		}).finally(() => {
-			// eslint-disable-next-line no-sync
-			fs.renameSync(`${__dirname}/git/.git`, `${__dirname}/git/.git_tmp`);
+			fs.renameSync(path.join(__dirname, '/fixtures/git/.git'), path.join(__dirname, '/fixtures/git/.git_tmp'));
 		});
 	});
 
 	describe('dependencyFilter', () => {
 		it('will stop traversing when returning false', (done) => {
-			madge(__dirname + '/cjs/a.js', {
-				dependencyFilter: () => {
+			madge(path.join(__dirname, 'fixtures/cjs/a.js'), {
+				dependencyFilter() {
 					return false;
 				}
 			}).then((res) => {
@@ -134,8 +132,8 @@ describe('API', () => {
 		});
 
 		it('will not stop traversing when not returning anything', (done) => {
-			madge(__dirname + '/cjs/a.js', {
-				dependencyFilter: () => {}
+			madge(path.join(__dirname, 'fixtures/cjs/a.js'), {
+				dependencyFilter() {}
 			}).then((res) => {
 				res.obj().should.eql({
 					'a.js': ['b.js', 'c.js'],
@@ -149,24 +147,24 @@ describe('API', () => {
 		it('will pass arguments to the function', (done) => {
 			let counter = 0;
 
-			madge(__dirname + '/cjs/a.js', {
-				dependencyFilter: (dependencyFilePath, traversedFilePath, baseDir) => {
+			madge(path.join(__dirname, 'fixtures/cjs/a.js'), {
+				dependencyFilter(dependencyFilePath, traversedFilePath, baseDir) {
 					if (counter === 0) {
-						dependencyFilePath.should.match(/test\/cjs\/b\.js$/);
-						traversedFilePath.should.match(/test\/cjs\/a\.js$/);
-						baseDir.should.match(/test\/cjs$/);
+						dependencyFilePath.should.match(/test\/fixtures\/cjs\/b\.js$/);
+						traversedFilePath.should.match(/test\/fixtures\/cjs\/a\.js$/);
+						baseDir.should.match(/test\/fixtures\/cjs$/);
 					}
 
 					if (counter === 1) {
-						dependencyFilePath.should.match(/test\/cjs\/c\.js$/);
-						traversedFilePath.should.match(/test\/cjs\/a\.js$/);
-						baseDir.should.match(/test\/cjs$/);
+						dependencyFilePath.should.match(/test\/fixtures\/cjs\/c\.js$/);
+						traversedFilePath.should.match(/test\/fixtures\/cjs\/a\.js$/);
+						baseDir.should.match(/test\/fixtures\/cjs$/);
 					}
 
 					if (counter === 2) {
-						dependencyFilePath.should.match(/test\/cjs\/c\.js$/);
-						traversedFilePath.should.match(/test\/cjs\/b\.js$/);
-						baseDir.should.match(/test\/cjs$/);
+						dependencyFilePath.should.match(/test\/fixtures\/cjs\/c\.js$/);
+						traversedFilePath.should.match(/test\/fixtures\/cjs\/b\.js$/);
+						baseDir.should.match(/test\/fixtures\/cjs$/);
 					}
 
 					counter++;
@@ -179,7 +177,7 @@ describe('API', () => {
 
 	describe('obj()', () => {
 		it('returns dependency object', (done) => {
-			madge(__dirname + '/cjs/a.js').then((res) => {
+			madge(path.join(__dirname, 'fixtures/cjs/a.js')).then((res) => {
 				res.obj().should.eql({
 					'a.js': ['b.js', 'c.js'],
 					'b.js': ['c.js'],
@@ -192,7 +190,7 @@ describe('API', () => {
 
 	describe('circular()', () => {
 		it('returns list of circular dependencies', (done) => {
-			madge(__dirname + '/cjs/circular/a.js').then((res) => {
+			madge(path.join(__dirname, 'fixtures/cjs/circular/a.js')).then((res) => {
 				res.circular().should.eql([
 					['a.js', 'd.js']
 				]);
@@ -203,7 +201,7 @@ describe('API', () => {
 
 	describe('circularGraph()', () => {
 		it('returns graph with only circular dependencies', (done) => {
-			madge(__dirname + '/cjs/circular/a.js').then((res) => {
+			madge(path.join(__dirname, 'fixtures/cjs/circular/a.js')).then((res) => {
 				res.circularGraph().should.eql({
 					'a.js': ['d.js'],
 					'd.js': ['a.js']
@@ -215,7 +213,7 @@ describe('API', () => {
 
 	describe('warnings()', () => {
 		it('returns an array of skipped files', (done) => {
-			madge(__dirname + '/cjs/missing.js').then((res) => {
+			madge(path.join(__dirname, 'fixtures/cjs/missing.js')).then((res) => {
 				res.obj().should.eql({
 					'missing.js': ['c.js'],
 					'c.js': []
@@ -229,10 +227,11 @@ describe('API', () => {
 	});
 
 	describe('dot()', () => {
-		it('returns a promise resolved with graphviz DOT output', async () => {
-			const res = await madge(__dirname + '/cjs/b.js');
+		it('returns a promise resolved with graphviz DOT output', async() => {
+			const res = await madge(path.join(__dirname, 'fixtures/cjs/b.js'));
 			const output = await res.dot();
 			output.should.match(/digraph G/);
+			// eslint-disable-next-line unicorn/better-regex
 			output.should.match(/bgcolor="#111111"/);
 			output.should.match(/fontcolor="#c6c5fe"/);
 			output.should.match(/color="#757575"/);
@@ -242,7 +241,7 @@ describe('API', () => {
 
 	describe('depends()', () => {
 		it('returns modules that depends on another', (done) => {
-			madge(__dirname + '/cjs/a.js').then((res) => {
+			madge(path.join(__dirname, 'fixtures/cjs/a.js')).then((res) => {
 				res.depends('c.js').should.eql(['a.js', 'b.js']);
 				done();
 			}).catch(done);
@@ -251,7 +250,7 @@ describe('API', () => {
 
 	describe('orphans()', () => {
 		it('returns modules that no one is depending on', (done) => {
-			madge(__dirname + '/cjs/normal').then((res) => {
+			madge(path.join(__dirname, 'fixtures/cjs/normal')).then((res) => {
 				res.orphans().should.eql(['a.js']);
 				done();
 			}).catch(done);
@@ -260,7 +259,7 @@ describe('API', () => {
 
 	describe('leaves()', () => {
 		it('returns modules that have no dependencies', (done) => {
-			madge(__dirname + '/cjs/normal').then((res) => {
+			madge(path.join(__dirname, 'fixtures/cjs/normal')).then((res) => {
 				res.leaves().should.eql(['d.js']);
 				done();
 			}).catch(done);
@@ -269,7 +268,7 @@ describe('API', () => {
 
 	describe('svg()', () => {
 		it('returns a promise resolved with XML SVG output in a Buffer', (done) => {
-			madge(__dirname + '/cjs/b.js')
+			madge(path.join(__dirname, 'fixtures/cjs/b.js'))
 				.then((res) => res.svg())
 				.then((output) => {
 					output.should.instanceof(Buffer);
@@ -292,34 +291,34 @@ describe('API', () => {
 		});
 
 		it('rejects if a filename is not supplied', (done) => {
-			madge(__dirname + '/cjs/a.js')
+			madge(path.join(__dirname, 'fixtures/cjs/a.js'))
 				.then((res) => res.image())
-				.catch((err) => {
-					err.message.should.eql('imagePath not provided');
+				.catch((error) => {
+					error.message.should.eql('imagePath not provided');
 					done();
 				});
 		});
 
 		it('rejects on unsupported image format', (done) => {
-			madge(__dirname + '/cjs/a.js')
+			madge(path.join(__dirname, 'fixtures/cjs/a.js'))
 				.then((res) => res.image('image.zyx'))
-				.catch((err) => {
-					err.message.should.match(/Format: "zyx" not recognized/);
+				.catch((error) => {
+					error.message.should.match(/Format: "zyx" not recognized/);
 					done();
 				});
 		});
 
 		it('rejects if graphviz is not installed', (done) => {
-			madge(__dirname + '/cjs/a.js', {graphVizPath: '/invalid/path'})
+			madge(path.join(__dirname, 'fixtures/cjs/a.js'), {graphVizPath: '/invalid/path'})
 				.then((res) => res.image('image.png'))
-				.catch((err) => {
-					err.message.should.eql('Graphviz could not be found. Ensure that "gvpr" is in your $PATH. Error: spawn /invalid/path/gvpr ENOENT');
+				.catch((error) => {
+					error.message.should.eql('Graphviz could not be found. Ensure that "gvpr" is in your $PATH. Error: spawn /invalid/path/gvpr ENOENT');
 					done();
 				});
 		});
 
 		it('writes image to file', (done) => {
-			madge(__dirname + '/cjs/a.js')
+			madge(path.join(__dirname, 'fixtures/cjs/a.js'))
 				.then((res) => res.image(imagePath))
 				.then((writtenImagePath) => {
 					writtenImagePath.should.eql(imagePath);
@@ -330,6 +329,7 @@ describe('API', () => {
 							if (!exists) {
 								throw new Error(imagePath + ' not created');
 							}
+
 							done();
 						});
 				})

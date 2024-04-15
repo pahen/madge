@@ -1,12 +1,13 @@
 /* eslint-env mocha */
 'use strict';
 
-const madge = require('../lib/api');
+const path = require('path');
 const ts = require('typescript');
-require('should');
+const madge = require('../lib/api.js');
+require('should'); // eslint-disable-line import/no-unassigned-import
 
 describe('TypeScript', () => {
-	const dir = __dirname + '/typescript';
+	const dir = path.join(__dirname, '/fixtures/typescript');
 
 	it('extracts module dependencies', (done) => {
 		madge(dir + '/import.ts').then((res) => {
@@ -32,7 +33,7 @@ describe('TypeScript', () => {
 				}
 			}
 		};
-		madge(dir + '/custom-paths/import.ts', {tsConfig: tsConfig}).then((res) => {
+		madge(dir + '/custom-paths/import.ts', {tsConfig}).then((res) => {
 			res.obj().should.eql({
 				'import.ts': ['subfolder/index.ts', 'subfolder/require.tsx'],
 				'subfolder/index.ts': [],
