@@ -14,16 +14,16 @@ desc "DEPENDS"
 ./bin/cli.js lib/api.js -d log.js
 
 desc "CIRCULAR (OK)"
-./bin/cli.js test/cjs/a.js -c
+./bin/cli.js test/fixtures/cjs/a.js -c
 
 desc "CIRCULAR (FOUND, NO INDEX COUNTING)"
-./bin/cli.js test/cjs/circular/a.js -c --no-count
+./bin/cli.js test/fixtures/cjs/circular/a.js -c --no-count
 
 desc "CIRCULAR (FOUND, WITH INDEX COUNT)"
-./bin/cli.js test/cjs/circular/a.js -c
+./bin/cli.js test/fixtures/cjs/circular/a.js -c
 
 desc "NPM"
-./bin/cli.js test/cjs/npm.js --include-npm
+./bin/cli.js test/fixtures/cjs/npm.js --include-npm
 
 desc "STDIN"
 ./bin/cli.js --json lib/api.js | tr '[a-z]' '[A-Z]' | ./bin/cli.js --stdin
@@ -44,10 +44,10 @@ desc "SHOW EXTENSION"
 ./bin/cli.js lib/api.js --show-extension
 
 desc "WARNINGS (NOTE)"
-./bin/cli.js test/cjs/missing.js -c
+./bin/cli.js test/fixtures/cjs/missing.js -c
 
 desc "WARNINGS (LIST)"
-./bin/cli.js test/cjs/missing.js -c --warning
+./bin/cli.js test/fixtures/cjs/missing.js -c --warning
 
 desc "ERROR"
 ./bin/cli.js file/not/found.js

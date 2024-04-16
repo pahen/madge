@@ -5,7 +5,7 @@ const madge = require('../lib/api');
 require('should');
 
 describe('Flow', () => {
-	const dir = __dirname + '/flow';
+	const dir = __dirname + '/fixtures/flow';
 
 	it('extracts ES module ependencies', (done) => {
 		madge(dir + '/es/calc.js').then((res) => {

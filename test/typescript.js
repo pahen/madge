@@ -6,7 +6,7 @@ const ts = require('typescript');
 require('should');
 
 describe('TypeScript', () => {
-	const dir = __dirname + '/typescript';
+	const dir = __dirname + '/fixtures/typescript';
 
 	it('extracts module dependencies', (done) => {
 		madge(dir + '/import.ts').then((res) => {

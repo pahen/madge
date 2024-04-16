@@ -5,7 +5,7 @@ const madge = require('../lib/api');
 require('should');
 
 describe('ES6', () => {
-	const dir = __dirname + '/es6';
+	const dir = __dirname + '/fixtures/es6';
 
 	it('extracts dependencies', (done) => {
 		madge(dir + '/absolute.js').then((res) => {

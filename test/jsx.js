@@ -5,7 +5,7 @@ const madge = require('../lib/api');
 require('should');
 
 describe('JSX', () => {
-	const dir = __dirname + '/jsx';
+	const dir = __dirname + '/fixtures/jsx';
 
 	it('finds import in JSX files', (done) => {
 		madge(dir + '/basic.jsx').then((res) => {
