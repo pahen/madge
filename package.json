@@ -52,6 +52,7 @@
     "commondir": "^1.0.1",
     "debug": "^4.3.4",
     "dependency-tree": "^11.0.0",
+    "figures": "^3.2.0",
     "ora": "^5.4.1",
     "pluralize": "^8.0.0",
     "pretty-ms": "^7.0.1",

@@ -4,6 +4,7 @@
 const path = require('path');
 const process = require('process');
 const {program} = require('commander');
+const figures = require('figures');
 const rc = require('rc')('madge');
 const version = require('../package.json').version;
 const ora = require('ora');
@@ -204,7 +205,7 @@ new Promise((resolve, reject) => {
 	})
 	.catch((err) => {
 		spinner.stop();
-		console.log('\n%s %s\n', chalk.red('✖'), err.stack);
+		console.log('\n%s %s\n', chalk.red(figures.cross), err.stack);
 		process.exit(1);
 	});
 
