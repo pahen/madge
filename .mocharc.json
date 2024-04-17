@@ -1,6 +1,7 @@
 {
   "check-leaks": false,
   "throw-deprecation": true,
+  "timeout": 5000,
   "trace-deprecation": true,
   "trace-warnings": true,
   "use-strict": true
