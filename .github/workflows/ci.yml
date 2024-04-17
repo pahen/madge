@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macos-latest]
         node: [18, 20]
 
     steps:
@@ -39,8 +39,13 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
 
-      - name: Install graphviz
+      - name: Install graphviz (Ubuntu)
         run: sudo apt install -y --no-install-recommends graphviz
+        if: "startsWith(matrix.os, 'ubuntu')"
+
+      - name: Install graphviz (macOS)
+        run: brew install graphviz || port install graphviz
+        if: "startsWith(matrix.os, 'macos')"
 
       - name: Test
         run: |
