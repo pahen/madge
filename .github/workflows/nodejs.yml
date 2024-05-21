@@ -17,7 +17,6 @@ jobs:
       - name: ${{ matrix.os }} / Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
-          cache: "npm"
           node-version: ${{ matrix.node-version }}
       - name: npm install, build, and test
         run: |
