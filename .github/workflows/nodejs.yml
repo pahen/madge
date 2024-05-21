@@ -7,18 +7,18 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node-version: [14.x, 16.x, 18.x, 20.x]
+        node-version: [18.x, 20.x]
 
     runs-on: ${{ matrix.os }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: ${{ matrix.os }} / Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
+          cache: "npm"
           node-version: ${{ matrix.node-version }}
-
       - name: npm install, build, and test
         run: |
           sudo apt install -y --no-install-recommends graphviz
