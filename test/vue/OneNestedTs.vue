@@ -1,7 +1,7 @@
-<script setup>
+<script lang="ts" setup>
 import { ref } from "vue";
 import ThreeNested from "./ThreeNested.vue";
-import "./two";
+import "./one";
 
 const count = ref(0);
 </script>
