@@ -1,23 +1,18 @@
 <p align="center">
-	<img alt="madge" src="http://pahen.github.io/madge/logo.svg" width="320">
+  <img alt="madge" src="http://pahen.github.io/madge/logo.svg" width="320">
 </p>
 
 <p align="center">
-	<img alt="Last version" src="https://img.shields.io/github/tag/pahen/madge.svg?style=flat-square" />
-	<a href="https://app.travis-ci.com/github/pahen/madge">
-		<img alt="Build Status" src="http://img.shields.io/travis/pahen/madge/master.svg?style=flat-square" />
-	</a>
-	<a href="https://www.npmjs.org/package/madge">
-		<img alg="NPM Status" src="http://img.shields.io/npm/dm/madge.svg?style=flat-square" />
-	</a>
-	<a href="https://paypal.me/pahen" target="_blank">
-		<img alt="Donate" src="https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square" />
-	</a>
+  <img alt="Last version" src="https://img.shields.io/github/tag/pahen/madge.svg?style=flat-square" />
+  <a href="https://www.npmjs.org/package/madge">
+    <img alg="NPM Status" src="http://img.shields.io/npm/dm/madge.svg?style=flat-square" />
+  </a>
+  <a href="https://paypal.me/pahen" target="_blank">
+    <img alt="Donate" src="https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square" />
+  </a>
 </p>
 
-
 **Madge** is a developer tool for generating a visual graph of your module dependencies, finding circular dependencies, and giving you other useful info. Joel Kemp's awesome [dependency-tree](https://github.com/mrjoelkemp/node-dependency-tree) is used for extracting the dependency tree.
-
 
 * Works for JavaScript (AMD, CommonJS, and ES6 modules)
 * Also works for CSS preprocessors (Sass, Stylus, and Less)
@@ -36,19 +31,19 @@ Read the [changelog](CHANGELOG.md) for latest changes.
 > Graph generated from madge's own code and dependencies.
 
 <a href="http://pahen.github.io/madge/madge.svg">
-	<img src="http://pahen.github.io/madge/madge.svg" width="888"/>
+  <img alt="graph" src="http://pahen.github.io/madge/madge.svg" width="888"/>
 </a>
 
 > A graph with circular dependencies. Blue has dependencies, green has no dependencies, and red has circular dependencies.
 
 <a href="http://pahen.github.io/madge/simple.svg">
-	<img src="http://pahen.github.io/madge/simple.svg" width="300"/>
+  <img alt="graph-circular" src="http://pahen.github.io/madge/simple.svg" width="300"/>
 </a>
 
 ## See it in action
 
 <a href="https://asciinema.org/a/l9tM7lIraCpmzH0rdWw2KLrMc?autoplay=1">
-	<img src="https://asciinema.org/a/l9tM7lIraCpmzH0rdWw2KLrMc.png" width="590"/>
+  <img alt="in-action" src="https://asciinema.org/a/l9tM7lIraCpmzH0rdWw2KLrMc.png" width="590"/>
 </a>
 
 # Installation
@@ -244,29 +239,30 @@ You can use configuration file either in `.madgerc` in your project or home fold
 
 ```json
 {
-	"fontSize": "10px",
-	"graphVizOptions": {
-		"G": {
-			"rankdir": "LR"
-		}
-	}
+  "fontSize": "10px",
+  "graphVizOptions": {
+    "G": {
+      "rankdir": "LR"
+    }
+  }
 }
 ```
 
 > package.json
+
 ```json
 {
-	"name": "foo",
-	"version": "0.0.1",
-	...
-	"madge": {
-		"fontSize": "10px",
-		"graphVizOptions": {
-			"G": {
-				"rankdir": "LR"
-			}
-		}
-	}
+  "name": "foo",
+  "version": "0.0.1",
+  ...
+  "madge": {
+    "fontSize": "10px",
+    "graphVizOptions": {
+      "G": {
+        "rankdir": "LR"
+      }
+    }
+  }
 }
 ```
 
@@ -298,7 +294,7 @@ madge path/src
 madge path/src/foo path/src/bar
 ```
 
-> List dependencies from all *.js and *.jsx files found in a directory
+> List dependencies from all \*.js and \*.jsx files found in a directory
 
 ```sh
 madge --extensions js,jsx path/src
@@ -394,24 +390,26 @@ Madge uses [dependency-tree](https://www.npmjs.com/package/dependency-tree) whic
 Only one syntax is used by default. You can use both though if you're willing to take the degraded performance. Put this in your madge config to enable mixed imports.
 
 For ES6 + CommonJS:
+
 ```json
 {
-	"detectiveOptions": {
-		"es6": {
-			"mixedImports": true
-		}
-	}
+  "detectiveOptions": {
+    "es6": {
+      "mixedImports": true
+    }
+  }
 }
 ```
 
 For TypeScript + CommonJS:
+
 ```json
 {
-	"detectiveOptions": {
-		"ts": {
-			"mixedImports": true
-		}
-	}
+  "detectiveOptions": {
+    "ts": {
+      "mixedImports": true
+    }
+  }
 }
 ```
 
@@ -421,11 +419,11 @@ Put this in your madge config.
 
 ```json
 {
-	"detectiveOptions": {
-		"es6": {
-			"skipTypeImports": true
-		}
-	}
+  "detectiveOptions": {
+    "es6": {
+      "skipTypeImports": true
+    }
+  }
 }
 ```
 
@@ -435,11 +433,11 @@ Put this in your madge config.
 
 ```json
 {
-	"detectiveOptions": {
-		"ts": {
-			"skipTypeImports": true
-		}
-	}
+  "detectiveOptions": {
+    "ts": {
+      "skipTypeImports": true
+    }
+  }
 }
 ```
 
@@ -449,14 +447,14 @@ Put this in your madge config.
 
 ```json
 {
-	"detectiveOptions": {
-		"ts": {
-			"skipAsyncImports": true
-		},
-		"tsx": {
-			"skipAsyncImports": true
-		}
-	}
+  "detectiveOptions": {
+    "ts": {
+      "skipAsyncImports": true
+    },
+    "tsx": {
+      "skipAsyncImports": true
+    }
+  }
 }
 ```
 
@@ -468,10 +466,10 @@ Ensure you have this in your `.tsconfig` file.
 
 ```json
 {
-	"compilerOptions": {
-		"module": "commonjs",
-		"allowJs": true
-	}
+  "compilerOptions": {
+    "module": "commonjs",
+    "allowJs": true
+  }
 }
 ```
 
@@ -493,12 +491,12 @@ brew install graphviz
 
 Try running madge with a different layout, here's a list of the ones you can try:
 
-* **dot**	"hierarchical" or layered drawings of directed graphs. This is the default tool to use if edges have directionality.
+* **dot** "hierarchical" or layered drawings of directed graphs. This is the default tool to use if edges have directionality.
 
 * **neato** "spring model'' layouts.  This is the default tool to use if the graph is not too large (about 100 nodes) and you don't know anything else about it. Neato attempts to
 minimize a global energy function, which is equivalent to statistical multi-dimensional scaling.
 
-* **fdp**	"spring model'' layouts similar to those of neato, but does this by reducing forces rather than working with energy.
+* **fdp** "spring model'' layouts similar to those of neato, but does this by reducing forces rather than working with energy.
 
 * **sfdp** multiscale version of fdp for the layout of large graphs.
 
@@ -511,7 +509,9 @@ minimize a global energy function, which is equivalent to statistical multi-dime
 ## Contributors
 
 This project exists thanks to all the people who contribute.
-<a href="https://github.com/pahen/madge/graphs/contributors"><img src="https://opencollective.com/madge/contributors.svg?width=890&button=false" alt="Contributors"/></a>
+<a href="https://github.com/pahen/madge/graphs/contributors">
+  <img src="https://opencollective.com/madge/contributors.svg?width=890&button=false" alt="Contributors"/>
+</a>
 
 ## Donations ❤️
 
@@ -520,35 +520,35 @@ Thanks to the awesome people below for making donations! 🙏[Donate](https://pa
 <p>
   <a href="https://github.com/BeroBurny" target="_blank">
     <div><b>Bernard Stojanović</b> (24 Mars, 2021)</div>
-    <img src="https://github.com/BeroBurny.png" width="64"/>
+    <img alt="BeroBurny" src="https://github.com/BeroBurny.png" width="64"/>
   </a>
 </p>
 
 <p>
   <a href="https://github.com/olejorgenb" target="_blank">
     <div><b>Ole Jørgen Brønner</b> (Oct 8, 2020)</div>
-    <img src="https://github.com/olejorgenb.png" width="64"/>
+    <img alt="olejorgenb" src="https://github.com/olejorgenb.png" width="64"/>
   </a>
 </p>
 
 <p>
   <a href="https://github.com/pubkey/rxdb" target="_blank">
     <div><b>RxDB</b> (Apr 1, 2020)</div>
-    <img src="https://cdn.rawgit.com/pubkey/rxdb/ba7c9b80/docs/files/logo/logo_text.svg" width="128" style="margin: -4px -10px"/>
+    <img alt="RxDB" src="https://cdn.rawgit.com/pubkey/rxdb/ba7c9b80/docs/files/logo/logo_text.svg" width="128" style="margin: -4px -10px"/>
   </a>
 </p>
 
 <p>
   <a href="https://github.com/Ziriax" target="_blank">
     <div><b>Peter Verswyvelen</b> (Feb 24, 2020)</div>
-    <img src="https://github.com/Ziriax.png" width="64"/>
+    <img alt="Ziriax" src="https://github.com/Ziriax.png" width="64"/>
   </a>
 </p>
 
 <p>
   <a href="https://github.com/landonalder" target="_blank">
     <div><b>Landon Alder</b> (Mar 19, 2019)</div>
-    <img src="https://github.com/landonalder.png" width="64"/>
+    <img alt="landonalder" src="https://github.com/landonalder.png" width="64"/>
   </a>
 </p>
 
