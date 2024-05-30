@@ -51,7 +51,6 @@
     "dependency-tree": "^11.0.0",
     "ora": "^5.4.1",
     "pluralize": "^8.0.0",
-    "precinct": "^11.0.5",
     "pretty-ms": "^7.0.1",
     "rc": "^1.2.8",
     "stream-to-array": "^2.3.0",
