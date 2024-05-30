@@ -54,11 +54,11 @@
     "pretty-ms": "^7.0.1",
     "rc": "^1.2.8",
     "stream-to-array": "^2.3.0",
-    "ts-graphviz": "^1.8.1",
+    "ts-graphviz": "^2.1.2",
     "walkdir": "^0.4.1"
   },
   "peerDependencies": {
-    "typescript": "^3.9.5 || ^4.9.5 || ^5"
+    "typescript": "^5.4.4"
   },
   "peerDependenciesMeta": {
     "typescript": {
@@ -73,6 +73,6 @@
     "mz": "^2.7.0",
     "release-it": "^16.2.1",
     "should": "^13.2.3",
-    "typescript": "^5.0.4 <5.2"
+    "typescript": "^5.4.4"
   }
 }
