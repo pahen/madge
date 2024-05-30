@@ -4,4 +4,4 @@ class ExportClass {
 	}
 }
 
-export = ExportClass;
+export default ExportClass;
