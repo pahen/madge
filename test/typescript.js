@@ -1,9 +1,10 @@
 /* eslint-env mocha */
-'use strict';
+import madge from '../lib/api.js';
+import ts from 'typescript';
+import {fileURLToPath} from 'url';
+import 'should';
 
-const madge = require('../lib/api');
-const ts = require('typescript');
-require('should');
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 describe('TypeScript', () => {
 	const dir = __dirname + '/typescript';

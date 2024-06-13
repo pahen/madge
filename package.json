@@ -6,6 +6,7 @@
   "homepage": "https://github.com/pahen/madge",
   "license": "MIT",
   "reveal": true,
+  "type": "module",
   "description": "Create graphs from module dependencies.",
   "keywords": [
     "ES6",
@@ -23,7 +24,7 @@
   "engines": {
     "node": ">=18"
   },
-  "main": "./lib/api",
+  "main": "./lib/api.js",
   "bin": {
     "madge": "./bin/cli.js"
   },
@@ -45,11 +46,11 @@
   },
   "dependencies": {
     "chalk": "^4.1.2",
-    "commander": "^7.2.0",
+    "commander": "^12.1.0",
     "commondir": "^1.0.1",
-    "debug": "^4.3.4",
+    "debug": "^4.3.5",
     "dependency-tree": "^11.0.0",
-    "ora": "^5.4.1",
+    "ora": "^8.0.1",
     "pluralize": "^8.0.0",
     "pretty-ms": "^7.0.1",
     "rc": "^1.2.8",

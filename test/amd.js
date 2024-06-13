@@ -1,8 +1,10 @@
 /* eslint-env mocha */
-'use strict';
 
-const madge = require('../lib/api');
-require('should');
+import madge from '../lib/api.js';
+import 'should';
+import {fileURLToPath} from 'url';
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 describe('AMD', () => {
 	const dir = __dirname + '/amd';

@@ -1,8 +1,9 @@
 /* eslint-env mocha */
-'use strict';
+import madge from '../lib/api.js';
+import {fileURLToPath} from 'url';
+import 'should';
 
-const madge = require('../lib/api');
-require('should');
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 describe('Flow', () => {
 	const dir = __dirname + '/flow';

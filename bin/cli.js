@@ -1,13 +1,20 @@
 #!/usr/bin/env node
-'use strict';
 
-const path = require('path');
-const process = require('process');
-const program = require('commander');
-const rc = require('rc')('madge');
+import path from 'node:path';
+import process from 'node:process';
+import {createRequire} from 'node:module';
+import {program} from 'commander';
+import rc from 'rc';
+import ora from 'ora';
+import chalk from 'chalk';
+import log from '../lib/log.js';
+import * as output from '../lib/output.js';
+import madge from '../lib/api.js';
+
+const require = createRequire(import.meta.url);
+
+const madgeRC = rc('madge');
 const version = require('../package.json').version;
-const ora = require('ora');
-const chalk = require('chalk');
 const startTime = Date.now();
 
 // Revert https://github.com/tj/commander.js/pull/1409
@@ -54,10 +61,6 @@ if (!program.color) {
 	process.env.DEBUG_COLORS = false;
 }
 
-const log = require('../lib/log');
-const output = require('../lib/output');
-const madge = require('../lib/api');
-
 let packageConfig = {};
 try {
 	packageConfig = require(path.join(process.cwd(), 'package.json')).madge;
@@ -85,8 +88,8 @@ delete config._;
 delete config.config;
 delete config.configs;
 
-if (rc.config) {
-	log('using runtime config %s', rc.config);
+if (madgeRC.config) {
+	log('using runtime config %s', madgeRC.config);
 }
 
 if (program.basedir) {

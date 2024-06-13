@@ -1,4 +1,4 @@
 require('a');
 require('b');
-require('c'+x);
-var moo = require('d'+y).moo;
+require('c' + x);
+const moo = require('d' + y).moo;

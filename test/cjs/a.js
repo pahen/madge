@@ -1,2 +1,2 @@
- require('./b');
- require('./c');
+require('./b');
+require('./c');

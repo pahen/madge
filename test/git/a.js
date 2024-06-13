@@ -1,3 +1,3 @@
- require('./b');
- require('./c');
- require('./.git/d');
+require('./b');
+require('./c');
+require('./.git/d');

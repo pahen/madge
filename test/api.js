@@ -1,12 +1,12 @@
 /* eslint-env mocha */
-'use strict';
+import madge from '../lib/api.js';
+import os from 'os';
+import path from 'path';
+import fs from 'node:fs';
+import {fileURLToPath} from 'url';
+import 'should';
 
-const os = require('os');
-const path = require('path');
-const fs = require('mz/fs');
-const madge = require('../lib/api');
-
-require('should');
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 describe('API', () => {
 	it('throws error on missing path argument', () => {
@@ -287,8 +287,10 @@ describe('API', () => {
 			imagePath = path.join(os.tmpdir(), 'madge_' + Date.now() + '_image.png');
 		});
 
-		afterEach(() => {
-			return fs.unlink(imagePath).catch(() => {});
+		afterEach((done) => {
+			fs.unlink(imagePath, () => {
+				done();
+			});
 		});
 
 		it('rejects if a filename is not supplied', (done) => {
@@ -324,14 +326,11 @@ describe('API', () => {
 				.then((writtenImagePath) => {
 					writtenImagePath.should.eql(imagePath);
 
-					return fs
-						.exists(imagePath)
-						.then((exists) => {
-							if (!exists) {
-								throw new Error(imagePath + ' not created');
-							}
-							done();
-						});
+					// eslint-disable-next-line no-sync
+					if (!fs.existsSync(imagePath)) {
+						throw new Error(imagePath + ' not created');
+					}
+					done();
 				})
 				.catch(done);
 		});

@@ -1,7 +1,8 @@
 {
 	"extends": "@aptoma/eslint-config",
 	"parserOptions": {
-		"ecmaVersion": 9
+		"ecmaVersion": 2020,
+		"sourceType": "module"
 	},
 	"env": {
 		"node": true,
