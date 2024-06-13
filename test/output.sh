@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
 make_title() {
-	printf '\033[01;38;5;022m############### %s ###############\033[0m' "$1"
+	printf '\033[01;38;5;022m############### %s ###############\033[0m\n' "$1"
 }
 
 make_title "LIST"
@@ -16,7 +16,10 @@ make_title "DEPENDS"
 make_title "CIRCULAR (OK)"
 ./bin/cli.js test/cjs/a.js -c
 
-make_title "CIRCULAR (FOUND)"
+make_title "CIRCULAR (FOUND, NO INDEX COUNTING)"
+./bin/cli.js test/cjs/circular/a.js -c --no-count
+
+make_title "CIRCULAR (FOUND, WITH INDEX COUNT)"
 ./bin/cli.js test/cjs/circular/a.js -c
 
 make_title "NPM"
