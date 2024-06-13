@@ -1,2 +1,2 @@
-var fs = require('fs');
-var a = require('a');
+const fs = require('fs');
+const a = require('a');

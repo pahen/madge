@@ -1,5 +1,5 @@
 
 
-require('c').hello().goodbye()
-require('b').hello()
-require('a')
+require('c').hello().goodbye();
+require('b').hello();
+require('a');
