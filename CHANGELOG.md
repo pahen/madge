@@ -2,7 +2,22 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v7.0.0](https://github.com/pahen/madge/compare/v6.1.0...v7.0.0)
+#### [v8.0.0](https://github.com/pahen/madge/compare/v7.0.0...v8.0.0)
+
+- chore: edit test/output.sh comply with POSIX [`#391`](https://github.com/pahen/madge/pull/391)
+- Update ts-graphviz@2.1.2 and typescript@5.4.4 [`#424`](https://github.com/pahen/madge/pull/424)
+- Remove not required dep on precinct [`#421`](https://github.com/pahen/madge/pull/421)
+- Cleanup README and remove Travis config [`#422`](https://github.com/pahen/madge/pull/422)
+- Correct engine requirements [`#419`](https://github.com/pahen/madge/pull/419)
+- Add tests for Vue [`#418`](https://github.com/pahen/madge/pull/418)
+- Update to dependency-tree@11 [`#417`](https://github.com/pahen/madge/pull/417)
+- Add empty TS config to fix the tests [`0163dc4`](https://github.com/pahen/madge/commit/0163dc469b3a52af423540ea75301d2f6e01b018)
+- Add comment [`3a52fae`](https://github.com/pahen/madge/commit/3a52fae6cf4ad3018c3a8c43be4e361cbf4679ec)
+- Remove integrated npm cache [`e25fa64`](https://github.com/pahen/madge/commit/e25fa6440631af238edafe02706f3a4616862ffa)
+
+### [v7.0.0](https://github.com/pahen/madge/compare/v6.1.0...v7.0.0)
+
+> 8 April 2024
 
 - devDeps: release-it@^15.6.0-&gt;^16.2.1 [`#393`](https://github.com/pahen/madge/pull/393)
 - ci: Run build & test scripts on GitHub Actions [`#394`](https://github.com/pahen/madge/pull/394)
