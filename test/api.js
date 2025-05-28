@@ -213,6 +213,44 @@ describe('API', () => {
 		});
 	});
 
+	describe('incomplete circular() dependencies', () => {
+		it('base case (correct)', (done) => {
+			// Graph: d -> c,e -> g -> d
+			madge(__dirname + '/bcdeg/d.js').then((res) => {
+				res.circular().should.eql([
+					['c.js', 'g.js', 'd.js'],
+					['d.js', 'e.js', 'g.js']
+				]);
+				done();
+			}).catch(done);
+		});
+
+		it('returns different results depending on entry point', (done) => {
+			// This should return the same results but don't.
+			// Graph: b -> d -> c,e -> g -> d
+			madge(__dirname + '/bcdeg/b.js').then((res) => {
+				res.circular().should.eql([
+					['c.js', 'g.js', 'd.js'],
+					['d.js', 'e.js', 'g.js']
+				]);
+				done();
+			}).catch(done);
+		});
+
+		it('misses cycles depending on alphabetical ordering', (done) => {
+			// Minimal test with 2 cycles but 1 of them is always missing.
+			// Graph: d -> e,f -> g -> d
+			madge(__dirname + '/defg/d.js').then((res) => {
+				res.circular().should.eql([
+					['d.js', 'e.js', 'g.js'],
+					['d.js', 'f.js', 'g.js']
+				]);
+				done();
+			}).catch(done);
+
+		});
+	});
+
 	describe('warnings()', () => {
 		it('returns an array of skipped files', (done) => {
 			madge(__dirname + '/cjs/missing.js').then((res) => {
