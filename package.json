@@ -58,7 +58,7 @@
     "walkdir": "^0.4.1"
   },
   "peerDependencies": {
-    "typescript": "^5.4.4"
+    "typescript": "^5.4.4 || ^6.0.2"
   },
   "peerDependenciesMeta": {
     "typescript": {
