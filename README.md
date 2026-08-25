@@ -375,6 +375,13 @@ npm test
 npm run release
 ```
 
+# Docker
+Mount your code and pass a command you need.
+```sh
+docker run -v "$(pwd):/code" ghcr.io/pahen/madge:8.0.0 -h
+```
+Check [release tags](https://github.com/pahen/madge/tags) for image tags. Use a version without the leading "v".
+
 # FAQ
 
 ## Missing dependencies?

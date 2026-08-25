@@ -1,0 +1,12 @@
+*.md
+.dockerignore
+.git
+.github
+.gitignore
+.editorconfig
+.eslintrc
+.nvmrc
+.release-it.json
+Dockerfile
+LICENSE
+test
