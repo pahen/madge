@@ -1,11 +1,11 @@
 <p align="center">
-  <img alt="madge" src="http://pahen.github.io/madge/logo.svg" width="320">
+  <img alt="madge" src="https://pahen.github.io/madge/logo.svg" width="320">
 </p>
 
 <p align="center">
   <img alt="Last version" src="https://img.shields.io/github/tag/pahen/madge.svg?style=flat-square" />
   <a href="https://www.npmjs.org/package/madge">
-    <img alg="NPM Status" src="http://img.shields.io/npm/dm/madge.svg?style=flat-square" />
+    <img alt="NPM Status" src="https://img.shields.io/npm/dm/madge.svg?style=flat-square" />
   </a>
   <a href="https://paypal.me/pahen" target="_blank">
     <img alt="Donate" src="https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square" />
@@ -30,14 +30,14 @@ Read the [changelog](CHANGELOG.md) for latest changes.
 
 > Graph generated from madge's own code and dependencies.
 
-<a href="http://pahen.github.io/madge/madge.svg">
-  <img alt="graph" src="http://pahen.github.io/madge/madge.svg" width="888"/>
+<a href="https://pahen.github.io/madge/madge.svg">
+  <img alt="graph" src="https://pahen.github.io/madge/madge.svg" width="888"/>
 </a>
 
 > A graph with circular dependencies. Blue has dependencies, green has no dependencies, and red has circular dependencies.
 
-<a href="http://pahen.github.io/madge/simple.svg">
-  <img alt="graph-circular" src="http://pahen.github.io/madge/simple.svg" width="300"/>
+<a href="https://pahen.github.io/madge/simple.svg">
+  <img alt="graph-circular" src="https://pahen.github.io/madge/simple.svg" width="300"/>
 </a>
 
 ## See it in action
@@ -54,7 +54,7 @@ npm -g install madge
 
 ## Graphviz (optional)
 
-> [Graphviz](http://www.graphviz.org/) is only required if you want to generate visual graphs (e.g. in SVG or DOT format).
+> [Graphviz](https://graphviz.org/) is only required if you want to generate visual graphs (e.g. in SVG or DOT format).
 
 ### Mac OS X
 
@@ -180,7 +180,7 @@ madge('path/to/app.js')
 
 #### .image(imagePath: string, [circularOnly: boolean])
 
-> Write the graph as an image to the given image path. Set `circularOnly` to only include circular dependencies. The [image format](http://www.graphviz.org/content/output-formats) to use is determined from the file extension. Returns a `Promise` resolved with a full path to the written image.
+> Write the graph as an image to the given image path. Set `circularOnly` to only include circular dependencies. The [image format](https://graphviz.org/docs/outputs/) to use is determined from the file extension. Returns a `Promise` resolved with a full path to the written image.
 
 ```javascript
 const madge = require('madge');
@@ -218,17 +218,17 @@ Property | Type | Default | Description
 `webpackConfig` | String | null | Webpack config for resolving aliased modules
 `tsConfig` | String\|Object | null | TypeScript config for resolving aliased modules - Either a path to a tsconfig file or an object containing the config
 `layout` | String | dot | Layout to use in the graph
-`rankdir` | String | LR | Sets the [direction](https://graphviz.gitlab.io/_pages/doc/info/attrs.html#d:rankdir) of the graph layout
+`rankdir` | String | LR | Sets the [direction](https://graphviz.org/docs/attrs/rankdir/) of the graph layout
 `fontName` | String | Arial | Font name to use in the graph
 `fontSize` | String | 14px | Font size to use in the graph
 `backgroundColor` | String | #000000 | Background color for the graph
-`nodeShape` | String | box | A string specifying the [shape](https://graphviz.gitlab.io/_pages/doc/info/attrs.html#k:shape) of a node in the graph
-`nodeStyle` | String | rounded | A string specifying the [style](https://graphviz.gitlab.io/_pages/doc/info/attrs.html#k:style) of a node in the graph
+`nodeShape` | String | box | A string specifying the [shape](https://graphviz.org/docs/attrs/shape/) of a node in the graph
+`nodeStyle` | String | rounded | A string specifying the [style](https://graphviz.org/docs/attrs/style/) of a node in the graph
 `nodeColor` | String | #c6c5fe | Default node color to use in the graph
 `noDependencyColor` | String | #cfffac | Color to use for nodes with no dependencies
 `cyclicNodeColor` | String | #ff6c60 | Color to use for circular dependencies
 `edgeColor` | String | #757575 | Edge color to use in the graph
-`graphVizOptions` | Object | false | Custom Graphviz [options](https://graphviz.gitlab.io/_pages/doc/info/attrs.html)
+`graphVizOptions` | Object | false | Custom Graphviz [options](https://graphviz.org/doc/info/attrs.html)
 `graphVizPath` | String | null | Custom Graphviz path
 `detectiveOptions` | Object | false | Custom `detective` options for [dependency-tree](https://github.com/dependents/node-dependency-tree) and [precinct](https://github.com/dependents/node-precinct#usage)
 `dependencyFilter` | Function | false | Function called with a dependency filepath (exclude subtrees by returning false)
@@ -342,7 +342,7 @@ madge --image graph.svg path/src/app.js
 madge --circular --image graph.svg path/src/app.js
 ```
 
-> Save graph as a [DOT](http://en.wikipedia.org/wiki/DOT_language) file for further processing (requires [Graphviz](#graphviz-optional))
+> Save graph as a [DOT](https://en.wikipedia.org/wiki/DOT_language) file for further processing (requires [Graphviz](#graphviz-optional))
 
 ```sh
 madge --dot path/src/app.js > graph.gv
